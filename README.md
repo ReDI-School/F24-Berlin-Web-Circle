@@ -1,5 +1,5 @@
 # F24-Berlin-Web-Circle
-
+Fun place to create fun features and learn
 ## Getting Started
 
 ```bash
