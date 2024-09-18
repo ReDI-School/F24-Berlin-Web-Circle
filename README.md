@@ -37,3 +37,5 @@ Currently, two official plugins are available:
 
 
 ## Collaborators:
+
+- Bohdan Hrabynskyi ([@grabinskij](https://github.com/grabinskij))
