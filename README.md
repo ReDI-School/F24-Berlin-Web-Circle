@@ -39,3 +39,4 @@ Currently, two official plugins are available:
 ## Collaborators:
 
 - Bohdan Hrabynskyi ([@grabinskij](https://github.com/grabinskij))
+- Alina Cuznetov ([@alinaincodeland](https://github.com/alinaincodeland))
