@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <h1 data-testid="heading">Hello F24-Berlin-Web-Circle</h1>
+      <h1 data-testid="heading">Hello F24-Berlin-Web-Circle Typo fixed</h1>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
