@@ -43,3 +43,4 @@ Currently, two official plugins are available:
 - Samuel Konzi ([@Konzisam](https://github.com/Konzisam))
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))
+- Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
