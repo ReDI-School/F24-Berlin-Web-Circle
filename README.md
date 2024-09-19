@@ -41,3 +41,4 @@ Currently, two official plugins are available:
 - Bohdan Hrabynskyi ([@grabinskij](https://github.com/grabinskij))
 - Alina Cuznetov ([@alinaincodeland](https://github.com/alinaincodeland))
 - Samuel Konzi ([@Konzisam](https://github.com/Konzisam))
+- Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
