@@ -42,3 +42,7 @@ Currently, two official plugins are available:
 - Bohdan Hrabynskyi ([@grabinskij](https://github.com/grabinskij))
 - Alina Cuznetov ([@alinaincodeland](https://github.com/alinaincodeland))
 - Iman Bajalan ([@BajalanIman](https://github.com/BajalanIman))
+- Samuel Konzi ([@Konzisam](https://github.com/Konzisam))
+- Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
+- Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))
+- Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
