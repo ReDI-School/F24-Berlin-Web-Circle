@@ -53,7 +53,7 @@ const MeetTheHost = () => {
             <span className="reviews-numbrs">74</span>
             <span className="reviews-text">Reviews</span>
           </div>
-          <hr className="border" />
+          <hr className="borders" />
           <div className="reviews-container">
             <div>
               <span className="reviews-numbrs">4.85</span>
@@ -71,7 +71,7 @@ const MeetTheHost = () => {
             </div>
             <span className="reviews-text">Rating</span>
           </div>
-          <hr className="border" />
+          <hr className="borders" />
           <div className="reviews-container">
             <span className="reviews-numbrs">1</span>
             <span className="reviews-text">Year hosting</span>
