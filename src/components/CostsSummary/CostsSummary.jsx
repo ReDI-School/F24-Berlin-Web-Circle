@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react'
 import styles from './CostsSummary.module.css'
 
 const CostsSummary = () => {
