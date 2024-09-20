@@ -1,18 +1,30 @@
+// import { useEffect, useState } from 'react'
 import styles from './CostsSummary.module.css'
 
 const CostsSummary = () => {
   // These will be replaced by dynamic data fetched from the database in the future
   const checkInDate = '2024-09-20'
-  const checkOutDate = '2024-09-22'
+  const checkOutDate = '2024-09-25'
   const pricePerNight = 90
-  const serviceFee = 30
+  const airbnbServiceFee = 30
+  const cleaningFee = 60
+  const longStayDiscount = 50
+  const nightsCountForDiscount = 5
+
+  const calculateNights = (checkIn, checkOut) => {
+    return (new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24)
+  }
 
   const nights =
-    checkInDate && checkOutDate
-      ? (new Date(checkOutDate) - new Date(checkInDate)) / (1000 * 60 * 60 * 24)
-      : 0
+    checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
+  const isDiscount = nights >= nightsCountForDiscount
+
   const basePrice = nights * pricePerNight
-  const totalPrice = basePrice + serviceFee
+  const totalPrice =
+    basePrice +
+    airbnbServiceFee +
+    cleaningFee -
+    (isDiscount ? longStayDiscount : 0)
 
   return (
     <div className={styles.priceSummary}>
@@ -28,10 +40,26 @@ const CostsSummary = () => {
             }`}</span>
             <span>{`€ ${basePrice}`}</span>
           </div>
-          <div className={styles.priceItem}>
-            <span>Airbnb service fee</span>
-            <span>{`€ ${serviceFee}`}</span>
-          </div>
+          {longStayDiscount > 0 && isDiscount && (
+            <div className={styles.priceItem}>
+              <span>Long stay discount</span>
+              <span
+                className={styles.discountPriceItem}
+              >{`-€ ${longStayDiscount}`}</span>
+            </div>
+          )}
+          {cleaningFee > 0 && (
+            <div className={styles.priceItem}>
+              <span>Cleaning fee</span>
+              <span>{`€ ${cleaningFee}`}</span>
+            </div>
+          )}
+          {airbnbServiceFee > 0 && (
+            <div className={styles.priceItem}>
+              <span>Airbnb service fee</span>
+              <span>{`€ ${airbnbServiceFee}`}</span>
+            </div>
+          )}
         </div>
         <div className={styles.totalPrice}>
           <strong>Total</strong>
