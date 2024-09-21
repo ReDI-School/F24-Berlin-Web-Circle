@@ -45,3 +45,4 @@ Currently, two official plugins are available:
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))
 - Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
+- Nataliia Rodionova ([@006090] (https://github.com/006080))
