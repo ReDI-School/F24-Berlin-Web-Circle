@@ -34,8 +34,9 @@
   position: relative;
 }
 
-.raus-img {
+.person-img {
   width: 100px;
+  height: 100px;
   border-radius: 100%;
   opacity: 0.9;
 }
@@ -54,25 +55,25 @@
   fill: white;
 }
 
-.raus-superhost-container {
+.person-role-container {
   display: flex;
   gap: 0px;
   flex-direction: column;
   align-items: center;
 }
-.raus-info {
+.person-info {
   font-size: 30px;
   font-weight: 700;
   line-height: 0%;
 }
-.superhost-container {
+.role-container {
   margin-top: -8px;
 }
-.superhosticon-svg {
+.roleicon-svg {
   width: 12px;
   height: 12px;
 }
-.superhost {
+.role {
   font-size: 13px;
   font-weight: bold;
 }
