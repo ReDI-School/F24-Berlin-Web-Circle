@@ -5,11 +5,11 @@ import Header from "../components/Header/Header";
 const Root = () =>
 {
 	return (
-	<>
+	<div>
 		<Header/>
 		<Outlet/>	{/* <Outlet/> render the child route elements. */}
 		<Footer/>
-	</>
+	</div>
 	)
 }
 	
