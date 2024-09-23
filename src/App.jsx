@@ -6,17 +6,6 @@ import PersonProfile from "./components/personProfile/PersonProfile";
 
 function App() {
   const [count, setCount] = useState(0);
-  const meetTheHostData = {
-    id: 1,
-    image:
-      "https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg",
-    verified: true,
-    name: "Raus",
-    role: "Superhost",
-    reviews: 74,
-    rating: 4.85,
-    yearsHosting: 1,
-  };
 
   return (
     <>
