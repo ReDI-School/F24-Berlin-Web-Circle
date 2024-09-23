@@ -47,3 +47,4 @@ Currently, two official plugins are available:
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))
 - Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
+- Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
