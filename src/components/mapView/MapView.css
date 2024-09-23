@@ -1,0 +1,47 @@
+.map-wiew-container {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding-top: 15px;
+  padding-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.where-you-be {
+  font-weight: 500;
+}
+.map-container {
+  width: 100%;
+  height: 480px;
+  background-color: rgb(199, 207, 207);
+  border-radius: 10px;
+}
+.address-container {
+  margin-top: 10px;
+}
+.address-location {
+  font-weight: 600;
+}
+.address-description {
+  color: rgb(0, 0, 0);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.arrow-right-container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+.show-more {
+  margin-top: 5px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.arrow-right {
+  margin-top: 5px;
+}
