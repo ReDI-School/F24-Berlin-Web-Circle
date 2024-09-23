@@ -2,7 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import MeetTheHost from "./feature/MeetTheHost";
+import PersonProfile from "./components/personProfile/PersonProfile";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,7 +41,16 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <MeetTheHost data={meetTheHostData} />
+      <PersonProfile
+        title="Meet your host"
+        image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
+        name="Raus"
+        role="Superhost"
+        verified={true}
+        reviews={74}
+        rating={4.85}
+        yearsHosting={1}
+      />
     </>
   );
 }
