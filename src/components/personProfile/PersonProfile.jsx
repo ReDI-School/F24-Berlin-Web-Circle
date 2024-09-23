@@ -1,16 +1,25 @@
 import React from "react";
-import "./MeetTheHost.css";
+import "./PersonProfile.css";
 
-const MeetTheHost = ({ data }) => {
+const PersonProfile = ({
+  title,
+  image,
+  name,
+  role,
+  verified,
+  reviews,
+  rating,
+  yearsHosting,
+}) => {
   return (
     <div className="host-info-container">
-      <h2 className="header">Meet your Host</h2>
+      <h2 className="header">{title}</h2>
       <div className="main-container">
         <div className="leaf-side">
           <div className="round-photo-component">
-            <img className="person-img" src={data.image} alt={data.name} />
+            <img className="person-img" src={image} alt={name} />
           </div>
-          {data.verified && (
+          {verified && (
             <div className="verified-container">
               <svg
                 version="1.1"
@@ -28,9 +37,9 @@ const MeetTheHost = ({ data }) => {
             </div>
           )}
           <div className="person-role-container">
-            <h2 className="person-info">{data.name}</h2>
+            <h2 className="person-info">{name}</h2>
             <div className="role-container">
-              {data.role === "Superhost" ? (
+              {role === "Superhost" ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -45,20 +54,20 @@ const MeetTheHost = ({ data }) => {
               ) : (
                 ""
               )}
-              <span className="role">{data.role}</span>
+              <span className="role">{role}</span>
             </div>
           </div>
         </div>
 
         <div className="right-side">
           <div className="reviews-container">
-            <span className="reviews-numbrs">{data.reviews}</span>
+            <span className="reviews-numbrs">{reviews}</span>
             <span className="reviews-text">Reviews</span>
           </div>
           <hr className="borders" />
           <div className="reviews-container">
             <div>
-              <span className="reviews-numbrs">{data.rating}</span>
+              <span className="reviews-numbrs">{rating}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -75,7 +84,7 @@ const MeetTheHost = ({ data }) => {
           </div>
           <hr className="borders" />
           <div className="reviews-container">
-            <span className="reviews-numbrs">{data.yearsHosting}</span>
+            <span className="reviews-numbrs">{yearsHosting}</span>
             <span className="reviews-text">Year hosting</span>
           </div>
         </div>
@@ -84,4 +93,4 @@ const MeetTheHost = ({ data }) => {
   );
 };
 
-export default MeetTheHost;
+export default PersonProfile;
