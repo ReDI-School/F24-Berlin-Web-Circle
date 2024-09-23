@@ -1,36 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Button from "./components/ShareSaveButton/Button";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  const [count, setCount] = useState(0)
+  function handleShare() {
+    // console.log("handle share");
+  }
+  function handleSave() {
+    // console.log("handle save");
+  }
 
   return (
     <>
-      <h1 data-testid="heading">Hello F24-Berlin-Web-Circle Typo fixed</h1>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Button
+        label="Share"
+        faIcon={faArrowUpFromBracket}
+        onClick={handleShare}
+      />
+      <Button label="Save" faIcon={faHeart} onClick={handleSave} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
