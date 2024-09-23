@@ -1,0 +1,2 @@
+#install the Font Awesome package
+npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
