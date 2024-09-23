@@ -52,9 +52,9 @@
     background-color: #ff385c;
     color: white;
     border: none;
-    border-radius: 50%; 
-    width: 40px;  
-    height: 40px; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
@@ -64,6 +64,6 @@
   }
   
   .circle-button svg {
-    width: 16px; 
+    width: 16px;
     height: 16px;
   }
