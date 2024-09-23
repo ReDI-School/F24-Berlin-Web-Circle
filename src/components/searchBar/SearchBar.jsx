@@ -3,15 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({ checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [guests, setGuests] = useState("");
+  const [checkIn, setCheckIn] = useState(initialCheckIn || "");
+  const [checkOut, setCheckOut] = useState(initialCheckOut || "");
+  const [guests, setGuests] = useState(initialGuests || "");
 
   const handleSearch = () => {
     console.log("Search", { location, checkIn, checkOut, guests });
     //search logic here
+    onSearch({ location, checkIn, checkOut, guests });
   };
 
   return (
