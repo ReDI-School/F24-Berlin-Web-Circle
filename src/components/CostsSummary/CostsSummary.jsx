@@ -1,15 +1,14 @@
 import styles from './CostsSummary.module.css'
 
-const CostsSummary = () => {
-  // These will be replaced by dynamic data fetched from the database in the future
-  const checkInDate = '2024-09-20'
-  const checkOutDate = '2024-09-25'
-  const pricePerNight = 90
-  const airbnbServiceFee = 30
-  const cleaningFee = 60
-  const longStayDiscount = 50
-  const nightsCountForDiscount = 5
-
+const CostsSummary = ({
+  checkInDate,
+  checkOutDate,
+  pricePerNight,
+  airbnbServiceFee,
+  cleaningFee,
+  longStayDiscount,
+  nightsCountForDiscount,
+}) => {
   const calculateNights = (checkIn, checkOut) => {
     return (new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24)
   }
