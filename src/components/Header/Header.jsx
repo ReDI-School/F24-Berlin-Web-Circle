@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./Header.module.css"
-import airbnbLogo from "/logo_airbnb.svg"
+import airbnbLogo from "../../assets/logo_airbnb.svg"
 import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
 import ButtonBeAHost from '../ButtonBeAHost/ButtonBeAHost'
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
