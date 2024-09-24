@@ -1,0 +1,112 @@
+.host-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.header {
+  font-weight: 500;
+}
+.main-container {
+  width: 382px;
+  height: 230px;
+  border-radius: 25px;
+  box-shadow: 1px 1px 8px 2px lightgrey;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.leaf-side {
+  width: 68%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.round-photo-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.person-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  opacity: 0.9;
+}
+.verified-container {
+  display: flex;
+  justify-content: center;
+  border-radius: 100%;
+  padding: 5px;
+  background-color: rgb(206, 81, 106);
+  position: absolute;
+  margin-left: 70px;
+}
+.verifiedicon-svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.person-role-container {
+  display: flex;
+  gap: 0px;
+  flex-direction: column;
+  align-items: center;
+}
+.person-info {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 0%;
+}
+.role-container {
+  margin-top: -8px;
+}
+.roleicon-svg {
+  width: 12px;
+  height: 12px;
+}
+.role {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.right-side {
+  width: 32%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  width: 100%;
+}
+.reviews-numbrs {
+  font-size: 20px;
+  font-weight: bold;
+}
+.reviews-text {
+  font-size: 11px;
+}
+.star-svg {
+  width: 14px;
+  height: 14px;
+}
+.borders {
+  width: 100%;
+  border-color: rgb(255, 254, 246);
+}
