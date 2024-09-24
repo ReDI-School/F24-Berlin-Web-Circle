@@ -1,0 +1,47 @@
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .calendar-row {
+    display: flex;
+    justify-content: center; 
+    gap: 20px; 
+  }
+  
+  .month-container {
+    width: 250px; 
+    margin: 0 10px; 
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .day-header,
+  .date,
+  .empty-slot {
+    padding: 5px; 
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 12px; 
+  
+  h3 {
+    font-size: 16px; 
+  }
+  
+  button {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  

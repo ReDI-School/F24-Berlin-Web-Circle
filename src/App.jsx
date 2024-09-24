@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
+import Calendar from "./components/Calendar/calendar"; // Import the Calendar component
 
 function App() {
   const [count, setCount] = useState(0);
@@ -40,6 +41,9 @@ function App() {
         rating={4.85}
         yearsHosting={1}
       />
+      
+      {/* Display the Calendar component */}
+      <Calendar />
     </>
   );
 }
