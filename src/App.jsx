@@ -41,7 +41,7 @@ function App() {
         yearsHosting={1}
       />
        <ProductCard 
-        image="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/4f7a276e-9995-4b32-bda6-300de0619b25.png?im_w=2560&im_q=highq" 
+        image="src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp" 
         title="Cozy Apartment in City Center" 
         host="Hosted by Wendy and Elisa"
         price="Coming soon"
