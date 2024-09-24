@@ -1,0 +1,40 @@
+.priceSummary {
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.infoSection div {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+}
+
+.priceItemsContainer {
+  padding-top: 24px;
+}
+
+.priceItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricingDetails .priceItem:not(:first-child) {
+  padding-top: 16px;
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.totalPrice strong {
+  font-weight: 500;
+}
+
+.discountPriceItem {
+  color: #008a05;
+}
