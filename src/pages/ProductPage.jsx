@@ -8,11 +8,11 @@ const ProductPage = () =>
 	const {productId} = useParams();	// Object Destructuring
 
 	function handleShare() {
-		console.log("handle share")
+		// console.log("handle share")
 	}
 
 	function handleSave() {
-		console.log("handle share")
+		// console.log("handle save")
 	}
 
 	return (
