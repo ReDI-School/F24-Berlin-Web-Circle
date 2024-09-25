@@ -1,9 +1,18 @@
+import DestinationPopUp from '../components/DestinationPopUp/DestinationPopUp'
+
 const Header = () =>
 {
+	const handelRegionClick = (item) => {
+	}
+
 	return (
-	<header>
-		Dummy Header
-	</header>
+		<div>
+			<header>
+				Dummy Header
+			</header>
+          	<DestinationPopUp title = 'Search by region' onClick = {(e)=>handelRegionClick(e)}/>
+		</div>
+
 	)
 }
 
