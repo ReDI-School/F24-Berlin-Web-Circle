@@ -11,6 +11,7 @@ import ProductPage from './pages/ProductPage.jsx';
 import Root from './pages/Root.jsx';
 
 
+
 // Root is used to render the basic layout, header and footer for all children elements.
 const router = createBrowserRouter([
   {
