@@ -1,0 +1,87 @@
+.product-gallery-main {
+  height: 350px;
+  width: 100%;
+  display: flex;
+  gap: 7px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.big-img-container {
+  width: 50%;
+  height: 100%;
+}
+.big-image {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.big-image:hover {
+  opacity: 0.9;
+}
+.small-imgs-container {
+  width: 50%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  box-sizing: border-box;
+}
+.small-img-left {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.small-img-right-top {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+.small-img-right-bottom {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 10px;
+  object-fit: fill;
+  overflow: hidden;
+}
+.small-img-left:hover,
+.small-img-right-bottom:hover,
+.small-img-right-top:hover {
+  opacity: 80%;
+}
+
+.show-photos-btn-container {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.show-photos-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  border: 1px solid black;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  color: black;
+  background-color: white;
+  font-family: "arial";
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.show-photos-btn-svg {
+  margin-right: 5px;
+  height: 15px;
+  width: 15px;
+}
