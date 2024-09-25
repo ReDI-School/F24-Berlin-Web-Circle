@@ -4,14 +4,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import PersonProfile from "./components/personProfile/PersonProfile";
-import Header from './components/Header/Header'
+
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-    <Header />
       <h1 data-testid="heading">Hello F24-Berlin-Web-Circle Typo fixed</h1>
       <div>
         <a href="https://vitejs.dev" target="_blank">
