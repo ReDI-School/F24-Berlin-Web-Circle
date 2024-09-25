@@ -10,7 +10,6 @@ const SearchBar = ({ checkIn: initialCheckIn, checkOut: initialCheckOut, guests:
   const [guests, setGuests] = useState(initialGuests || "");
 
   const handleSearch = () => {
-    console.log("Search", { location, checkIn, checkOut, guests });
     //search logic here
     onSearch({ location, checkIn, checkOut, guests });
   };

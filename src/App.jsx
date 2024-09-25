@@ -5,7 +5,7 @@ import SearchBar from './components/searchBar/SearchBar';
 function App() {
   const handleAirbnbSearch = ({ location, checkIn, checkOut, guests }) => {
     // Logic for home search
-    console.log("Searching for homes with", { location, checkIn, checkOut, guests });
+    
   };
 
   return (
@@ -15,7 +15,7 @@ function App() {
       <SearchBar
         checkIn=""
         checkOut=""
-        guests={1}
+        guests=""
         onSearch={handleAirbnbSearch}
       />
       </div>
