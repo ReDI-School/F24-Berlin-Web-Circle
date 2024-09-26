@@ -41,10 +41,10 @@ function App() {
         yearsHosting={1}
       />
        <ProductCard 
-        image="src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp" 
-        title="Cozy Apartment in City Center" 
-        host="Hosted by Wendy and Elisa"
-        price="Coming soon"
+        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"} 
+        title={"Cozy Apartment in City Center"}
+        host={"Hosted by Wendy and Elisa"}
+        price={"Coming soon"}
       
       />
     </>
