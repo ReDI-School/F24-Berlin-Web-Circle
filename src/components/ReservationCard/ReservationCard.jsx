@@ -7,6 +7,8 @@ function ReservationCard() {
   const pricePerNight = 146;
   const cleaningFee = 10;
   const airbnbServiceFee = 10;
+  const longStayDiscount = 30;
+  const nightsCountForDiscount = 5;
 
   return (
     <div className={styles.reservationCard}>
@@ -49,6 +51,8 @@ function ReservationCard() {
           pricePerNight={pricePerNight}
           cleaningFee={cleaningFee}
           airbnbServiceFee={airbnbServiceFee}
+          longStayDiscount={longStayDiscount}
+          nightsCountForDiscount={nightsCountForDiscount}
         />
       )}
     </div>
