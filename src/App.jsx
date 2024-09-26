@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PersonProfile from "./components/personProfile/PersonProfile";
 import SearchBar from "./components/searchBar/SearchBar";
 
@@ -9,7 +10,6 @@ function App() {
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
     { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
-
     { id: "3", name: "Funen's best ocean view" },
   ];
 
@@ -26,6 +26,10 @@ function App() {
           guests=""
           onSearch={handleAirbnbSearch}
         />
+      </div>
+
+      <div>
+        <CalendarToggle />
       </div>
 
       <div className="card">
