@@ -1,88 +1,91 @@
 .product-card {
-    width: 300px;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    background-color: #fff;
-    transition: transform 0.3s ease; 
-    cursor: pointer;
-  }
-  
-  .product-card:hover {
-    transform: scale(1.03); 
-  }
-  
-  .product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd; 
-  }
-  
+  width: 300px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  background-color: #fff;
+  transition: transform 0.3s ease; 
+  cursor: pointer;
+  text-align: left;
 
-  .card-content {
-    padding: 16px;
-    text-align: left;
-   
-  }
-  
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-    margin-bottom: 8px;
-  }
-  
-  .card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-    color: #333;
-  }
-  
-  .card-host {
-    font-size: 14px;
-    color: #717171;
-    margin: 0;
-  }
-  
-  .card-price {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 8px;
-    color: #333;
-  }
-  
+}
 
-  .share-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9); 
-    color: #333;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .share-icon {
-    font-size: 16px;
-    width: 20px;
-    height: 20px;
-    fill: white;
-  }
+.product-card:hover {
+  transform: scale(1.03); 
+}
 
-  
-  
-  .share-button:hover {
-    background-color: rgba(245, 245, 245, 1);
-  }
-  
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px; 
+}
+
+
+.card-content {
+  padding: 16px; 
+  text-align: left;
+}
+
+
+.card-header {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 8px;
+  color: #333;
+  margin-bottom: 8px; 
+}
+
+.card-host {
+  font-size: 14px;
+  color: #717171;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 8px;
+  margin-top: 8px;
+  color: #333;
+}
+
+
+.share-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9); 
+  color: #333;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.share-icon {
+  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.share-button:hover {
+  background-color: rgba(245, 245, 245, 1);
+}
