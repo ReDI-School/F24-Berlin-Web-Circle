@@ -4,8 +4,13 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
 import ProductCard from "./components/ProductCard/ProductCard";
+import { Link } from 'react-router-dom'
+
 function App() {
   const [count, setCount] = useState(0);
+  const places = [{id: "1", name: "Idyllic house by the sea"}, {id: "2", name: "Studio Zempow / ecological wooden house / photo studio"},
+    {id: "3", name: "Funen's best ocean view"}
+  ]
 
   return (
     <>
@@ -47,6 +52,18 @@ function App() {
         price={"Coming soon"}
       
       />
+      {/* FOR TESTING */}
+      {
+        places.map((place) => {
+          return (
+            <Link to={`/rooms/${place.id}`} key={place.id}>
+              <div>
+                {`${place.id} - ${place.name}`}
+              </div>
+            </Link>
+          )
+        })
+      }
     </>
     
   );
