@@ -8,10 +8,6 @@ function ReservationCard() {
   const cleaningFee = 10;
   const airbnbServiceFee = 10;
 
-  const handleReservation = () => {
-    console.log(typeof checkInDate);
-  };
-
   return (
     <div className={styles.reservationCard}>
       <div className={styles.reservationSection}>
@@ -22,27 +18,31 @@ function ReservationCard() {
         <div className={styles.reservationForm}>
           <button className={styles.datesPickerSection}>
             <div className={styles.checkinSection}>
-              <label>Check-in</label>
-              <div>10/12/2024</div>
+              <div className={styles.checkinSectionContent}>
+                <label>Check-in</label>
+                <div>01/01/2024</div>
+              </div>
             </div>
             <div className={styles.checkoutSection}>
-              <label>Checkout</label>
-              <div>10/12/2024</div>
+              <div className={styles.checkoutSectionContent}>
+                <label>Checkout</label>
+                <div>10/12/2024</div>
+              </div>
             </div>
           </button>
           <button className={styles.guestsNumberPickerSection}>
-            <label>Guests</label>
-            <div>1 guest</div>
+            <div className={styles.guestsPickerSectionContent}>
+              <label>Guests</label>
+              <div>1 guest</div>
+            </div>
           </button>
         </div>
         <div className="buttonContainer">
-          <button onClick={handleReservation} className={styles.reserveButton}>
-            Reserve
-          </button>
+          <button className={styles.reserveButton}>Reserve</button>
         </div>
       </div>
 
-      {checkInDate && checkOutDate && (
+      {checkInDate !== null && checkOutDate !== null && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}

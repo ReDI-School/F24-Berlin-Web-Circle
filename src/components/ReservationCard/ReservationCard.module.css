@@ -4,7 +4,7 @@
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   max-width: 1120px;
-  width: 19.375rem !important;
+  width: 16.25rem !important;
 }
 
 .reservationSection {
@@ -27,6 +27,10 @@
   text-align: left;
 }
 
+.reservationForm button {
+  padding: 0;
+}
+
 .reservationForm label {
   font-size: 0.625rem;
   text-transform: uppercase;
@@ -39,6 +43,14 @@
   background-color: transparent !important;
   border: 1px solid #ddd;
   font-size: 0.875rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.checkoutSectionContent,
+.guestsPickerSectionContent,
+.checkinSectionContent {
+  margin: 12px 10px;
 }
 
 .checkinSection {
@@ -58,6 +70,9 @@
   border-top: transparent;
   text-align: left;
   background-color: transparent !important;
+  font-size: 0.875rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .buttonContainer {
@@ -65,8 +80,9 @@
 }
 
 .reserveButton {
+  border: none;
   width: 100%;
-  margin-top: 1rem;
+  margin: 1rem 0;
   padding: 14px 24px;
   color: white;
   background-image: radial-gradient(
@@ -78,8 +94,4 @@
     rgb(189, 30, 89) 75%,
     rgb(189, 30, 89) 100%
   );
-}
-
-.reserveButton:hover {
-  border: none;
 }
