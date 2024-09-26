@@ -5,9 +5,11 @@
     border: none;
     white-space: nowrap;
     cursor: pointer;
-    
+    font-weight: 550;
 }
+
 .hostButton:hover {
     background: rgb(245, 243, 243);
     border-radius: 24px;
+    transition: background-color 0.3s ease
 }
