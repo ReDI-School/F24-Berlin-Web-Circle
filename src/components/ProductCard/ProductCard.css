@@ -69,7 +69,7 @@
   top: 20px;
   right: 20px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.9); 
+  background-color: rgba(255, 255, 255, 0.5); 
   color: #333;
   border: none;
   cursor: pointer;
@@ -83,10 +83,13 @@
 }
 
 .share-icon {
-  font-size: 16px;
-  width: 20px;
-  height: 20px;
-  fill: white;
+display: block;
+fill: none;
+height: 16px;
+width: 16px;
+stroke: #040404;
+stroke-width: 3; 
+overflow: visible;
 }
 
 .share-button:hover {
