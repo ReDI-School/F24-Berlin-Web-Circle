@@ -40,6 +40,7 @@
   font-size: 18px;
   font-weight: bold;
   text-align: left;
+  line-height: 90%;
   margin-left: 8px;
   color: #333;
   
@@ -48,6 +49,7 @@
 .card-host {
   font-size: 14px;
   color: #717171;
+  line-height: 90%;
   margin-left: 8px;
   margin-bottom: 8px;
 }
@@ -57,14 +59,15 @@
   font-weight: bold;
   margin-left: 8px;
   margin-top: 8px;
+  line-height: 90%;
   color: #333;
 }
 
 
 .share-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.9); 
   color: #333;
