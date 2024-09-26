@@ -1,0 +1,8 @@
+footer {
+	border-top: 1px solid var(--palette-deco);
+	font-size: 0.875rem;
+	color: var(--primary);
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
