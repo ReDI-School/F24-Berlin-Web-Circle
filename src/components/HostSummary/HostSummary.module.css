@@ -38,6 +38,6 @@
 }
 
 .hostingDuration {
-  color: gray;
+  color: var(--neutral);
   font-size: 14px;
 }
