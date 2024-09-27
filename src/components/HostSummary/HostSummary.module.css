@@ -4,12 +4,21 @@
   gap: 24px;
   padding: 24px 0px;
   text-align: left;
-  border-top: 1px solid rgb(221, 221, 221);
 }
 
-/* .profilePicContainer {
-  margin-right: 10px;
-} */
+.profilePicContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.superhostIcon {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  height: 20px;
+  width: 20px;
+}
 
 .profilePic {
   width: 40px;
@@ -32,4 +41,3 @@
   color: gray;
   font-size: 14px;
 }
-
