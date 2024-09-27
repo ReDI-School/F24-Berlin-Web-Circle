@@ -1,13 +1,14 @@
 import PersonProfile from "../components/personProfile/PersonProfile";
 import { useParams } from "react-router-dom";
+import ReservationCard from "../components/ReservationCard/ReservationCard";
 
-const ProductPage = () =>
-{
-	const {productId} = useParams();	// Object Destructuring
+const ProductPage = () => {
+  const { productId } = useParams(); // Object Destructuring
 
 	return (
 	<div>
 		{`Dummy Product Page ${productId}`}
+		<ReservationCard />
 		<PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
