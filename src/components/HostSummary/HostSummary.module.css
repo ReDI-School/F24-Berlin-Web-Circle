@@ -1,0 +1,35 @@
+.hostInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0px;
+  text-align: left;
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+/* .profilePicContainer {
+  margin-right: 10px;
+} */
+
+.profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.hostDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.hostedBy {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.hostingDuration {
+  color: gray;
+  font-size: 14px;
+}
+
