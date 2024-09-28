@@ -1,9 +1,14 @@
+import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 const Header = () =>
 {
 	return (
-	<header>
-		Dummy Header
-	</header>
+		<div>
+			<header>
+				Dummy Header
+			</header>
+			<AddGuestsPopUp/>
+		</div>
+
 	)
 }
 
