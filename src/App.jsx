@@ -3,10 +3,13 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
-import FavoriteStay from "./components/FavouriteStay/FavoriteStay";
+import { Link } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0);
+  const places = [{id: "1", name: "Idyllic house by the sea"}, {id: "2", name: "Studio Zempow / ecological wooden house / photo studio"},
+    {id: "3", name: "Funen's best ocean view"}
+  ]
 
   return (
     <>
@@ -42,6 +45,18 @@ function App() {
         rating={4.85}
         yearsHosting={1}
       />
+      {/* FOR TESTING */}
+      {
+        places.map((place) => {
+          return (
+            <Link to={`/rooms/${place.id}`} key={place.id}>
+              <div>
+                {`${place.id} - ${place.name}`}
+              </div>
+            </Link>
+          )
+        })
+      }
     </>
   );
 }
