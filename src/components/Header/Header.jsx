@@ -1,4 +1,4 @@
-import DestinationPopUp from '../components/DestinationPopUp/DestinationPopUp'
+import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
 
 const Header = () =>
 {
@@ -7,9 +7,6 @@ const Header = () =>
 
 	return (
 		<div>
-			<header>
-				Dummy Header
-			</header>
           	<DestinationPopUp title = 'Search by region' onClick = {(e)=>handelRegionClick(e)}/>
 		</div>
 

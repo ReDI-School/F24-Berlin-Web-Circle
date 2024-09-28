@@ -3,11 +3,8 @@ import World from '../../assets/Destination/World.jpg';
 import UnitedStates from '../../assets/Destination/UnitedStates.webp';
 import Spain from '../../assets/Destination/Spain.webp';
 import SouthEastAsia from '../../assets/Destination/SouthEastAsia.webp';
-import SouthAmerica from '../../assets/Destination/SouthAmerica.webp';
-import Protugal from '../../assets/Destination/Protugal.webp';
 import MiddleEast from '../../assets/Destination/MiddleEast.webp';
 import Italy from '../../assets/Destination/Italy.webp';
-import Greece from '../../assets/Destination/Greece.webp';
 import DestinationButton from './DestinationButton/DestinationButton';
 
 const DestinationPopUp = ({
@@ -19,15 +16,11 @@ const destinations = [
     {image:UnitedStates, description:"United States"},
     {image:Spain, description:"Spain"},
     {image:SouthEastAsia, description:"Southeast Asia"},
-    {image:SouthAmerica, description:"South America"},
-    {image:Protugal, description:"Protugal"},
     {image:MiddleEast, description:"Middle East"},
-    {image:Italy, description:"Italy"},
-    {image:Greece, description:"Greece"}];
+    {image:Italy, description:"Italy"}];
 
 const handelDestination = (item) =>{
     onClick(item);
-
 }
 const arrayChunk = (arr, n) => {
     const array = arr.slice();
