@@ -1,7 +1,6 @@
 import styles from './HostSummary.module.css'
 
-function HostSummary({ hostName, hostingDuration, role, profilePicUrl }) {
-  const isSuperhost = role === 'Superhost';
+const HostSummary = ({ hostName, hostingDuration, role, profilePicUrl }) => {
   return (
     <div className={styles.hostInfo}>
       <div className={styles.profilePicContainer}>
@@ -10,7 +9,7 @@ function HostSummary({ hostName, hostingDuration, role, profilePicUrl }) {
           alt={`Hosted by ${hostName}`}
           className={styles.profilePic}
         />
-        {isSuperhost && (
+        {role === 'Superhost' && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 12 14"
@@ -43,16 +42,20 @@ function HostSummary({ hostName, hostingDuration, role, profilePicUrl }) {
       </div>
 
       <div className={styles.hostDetails}>
-        <div className={styles.hostedBy}>{`Hosted by ${hostName}`}</div>
-        <div className={styles.hostingDuration}>
-          {isSuperhost && (
+        <h2 className={styles.hostedBy}>{`Hosted by ${hostName}`}</h2>
+        <p className={styles.hostingDuration}>
+          {role === 'Superhost' && (
             <>
               {`${role} `}
               <span>&#183;</span>
             </>
           )}
-          {` ${hostingDuration || 0} ${hostingDuration > 1 ? 'years' : 'year'} hosting`}
-        </div>
+          <span>
+            {` ${hostingDuration || 0} ${
+              hostingDuration > 1 ? 'years' : 'year'
+            } hosting`}
+          </span>
+        </p>
       </div>
     </div>
   )
