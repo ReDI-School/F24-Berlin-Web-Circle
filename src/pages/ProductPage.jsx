@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import ReservationCard from "../components/ReservationCard/ReservationCard";
+import HostSummary from "../components/HostSummary/HostSummary";
+import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/mapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 
@@ -10,6 +12,12 @@ const ProductPage = () => {
     <div>
       {`Dummy Product Page ${productId}`}
       <ReservationCard />
+      <HostSummary 
+          hostName="Raus"
+          hostingDuration={1}
+          role="Superhost"
+          profilePicUrl={hostImage}
+      />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
         address={"Königslutter am Elm, Niedersachsen, Germany"}
