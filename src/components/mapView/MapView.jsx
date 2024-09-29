@@ -1,13 +1,12 @@
 import React from "react";
 import "./MapView.css";
-import mapViewSamleImg from "./../../../public/map-view-samle-img.png";
 
-const MapView = ({ address, addressDescription }) => {
+const MapView = ({ address, addressDescription, mapViewSampleImg }) => {
   return (
     <div className="map-wiew-container">
       <h2 className="where-you-be">Where you’ll be</h2>
       <div className="map-container">
-        <img src={mapViewSamleImg} alt="" className="map-img" />
+        <img src={mapViewSampleImg} alt="map view sample" className="map-img" />
       </div>
       <div className="address-container">
         <h4 className="address-location">{address}</h4>
