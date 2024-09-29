@@ -1,0 +1,19 @@
+.product-summary-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-bottom: 15px;
+}
+.address {
+  margin: 0px;
+}
+
+.reviews-container {
+  display: inline;
+  padding-top: 5px;
+  font-weight: bold;
+}
+.reviews {
+  text-decoration: underline;
+  cursor: pointer;
+}
