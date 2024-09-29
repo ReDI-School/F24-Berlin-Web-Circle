@@ -11,6 +11,12 @@ const ProductPage = () => {
     <div>
       {`Dummy Product Page ${productId}`}
       <ReservationCard />
+      <HostSummary
+        hostName="Raus"
+        hostingDuration={1}
+        role="Superhost"
+        profilePicUrl={hostImage}
+      />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
         address={"Königslutter am Elm, Niedersachsen, Germany"}
