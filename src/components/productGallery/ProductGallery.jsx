@@ -8,9 +8,9 @@ const ProductGallery = ({
   smallBottomLeftImage,
   smallBottomRightImage,
 }) => {
-  const [showPopupProductGallery, setShowPopupProductGallery] = useState(true);
+  const [showPopupProductGallery, setShowPopupProductGallery] = useState(false);
   const showPopupHandler = () => {
-    setShowPopupProductGallery(!showPopupProductGallery);
+    setShowPopupProductGallery((prevState) => !prevState);
   };
 
   return (
