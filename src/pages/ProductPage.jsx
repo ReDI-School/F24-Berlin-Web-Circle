@@ -7,13 +7,9 @@ import ReservationCard from "../components/ReservationCard/ReservationCard";
 const ProductPage = () => {
   const { productId } = useParams(); // Object Destructuring
 
-  function handleShare() {
-    // console.log("handle share")
-  }
+  function handleShare() {}
 
-  function handleSave() {
-    // console.log("handle save")
-  }
+  function handleSave() {}
 
   return (
     <div>
