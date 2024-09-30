@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import ReservationCard from "../components/ReservationCard/ReservationCard";
+import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
 import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
@@ -31,6 +32,7 @@ const ProductPage = () => {
         }
       />
       <ReservationCard />
+      <FavoriteStay />
       <HostSummary
         hostName="Raus"
         hostingDuration={1}
