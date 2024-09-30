@@ -1,10 +1,8 @@
 import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
 
-const Header = () =>
-{
-	const handelRegionClick = (item) => {
-	}
+const Header = () => {
+  const handelRegionClick = (item) => {};
 
 	return (
 		<div>
