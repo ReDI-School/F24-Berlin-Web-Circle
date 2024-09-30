@@ -1,0 +1,85 @@
+.popup-main-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  background: white;
+  z-index: 10;
+  overflow-y: auto;
+}
+.header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  position: fixed;
+}
+.left-arrow {
+  width: 13px;
+  fill: black;
+}
+.subheader-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.small-top-imgs-container {
+  width: 150vh;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-top: 10px;
+  gap: 15px;
+}
+.photo-tour-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+.small-top-imgs-all-containers {
+  display: flex;
+  gap: 15px;
+}
+.small-top-imgs-main {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: black;
+}
+.small-top-imgs-main:hover {
+  color: black;
+}
+.small-top-imgs {
+  cursor: pointer;
+  height: 90px;
+  width: 130px;
+  object-fit: cover;
+  overflow: hidden;
+}
+.small-top-imgs-name {
+  padding-top: 5px;
+  font-size: 12px;
+}
+.bottom-images-container {
+  margin-top: 20px;
+  padding-bottom: 15px;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+.bottom-images {
+  width: 60%;
+  padding-right: 60px;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+}
+.bottom-images:hover {
+  opacity: 0.9;
+}
