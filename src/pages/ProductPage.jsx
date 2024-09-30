@@ -7,8 +7,14 @@ import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
+import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 
 const ProductPage = () => {
+  const highlights = [{type: "CHECK_IN", text: "Self check-in", subText: "Check yourself in with the lockbox."},
+    {type: "AWARD", text: "Superhost", subText: "Superhosts are experienced, highly rated Hosts." },
+    {type: "WIFI", text: "Free Wifi", subText: "Superhosts are experienced, highly rated Hosts." },
+    {type: "CANCELLATION", text: "Free cancellation", subText: "Get a full refund if you change your mind."}];
+
   const { productId } = useParams(); // Object Destructuring
     
   return (
@@ -39,6 +45,7 @@ const ProductPage = () => {
         role="Superhost"
         profilePicUrl={hostImage}
       />
+      <ProductHighlight highlights={highlights}/>
       <MapView
         mapViewSampleImg={mapViewSampleImg}
         address={"Königslutter am Elm, Niedersachsen, Germany"}
