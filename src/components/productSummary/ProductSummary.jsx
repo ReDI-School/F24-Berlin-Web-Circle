@@ -17,8 +17,9 @@ const ProductSummary = ({
         {accommodation} in {address}
       </h2>
       <div>
-        <span>{guests} guests</span> . <span>{bedrooms} bedrooms</span> .
-        <span> {beds} beds</span> . <span>{baths} baths</span>
+        <span>{guests} guests</span> <span>&#183;</span>{" "}
+        <span>{bedrooms} bedrooms</span> <span>&#183;</span>
+        <span> {beds} beds</span> <span>&#183;</span> <span>{baths} baths</span>
       </div>
       <div className="reviews-container">
         <svg
