@@ -36,10 +36,10 @@ const ProductPage = () => {
       <ProductSummary
         accommodation={"Entire rental unit"}
         address={"Berlin, Germany"}
-        guests={3}
-        bedrooms={1}
-        beds={3}
-        baths={1}
+        guests={{ key: "guest", value: 3 }}
+        bedrooms={{ key: "bedroom", value: 1 }}
+        beds={{ key: "bed", value: 3 }}
+        baths={{ key: "bath", value: 1 }}
         starGrade={4.65}
         reviews={23}
       />

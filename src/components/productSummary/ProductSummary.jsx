@@ -11,27 +11,23 @@ const ProductSummary = ({
   starGrade,
   reviews,
 }) => {
+  const ProductSummaryInformation = [guests, bedrooms, beds, baths];
   return (
     <div className="product-summary-container">
       <h2 className="address">
         {accommodation} in {address}
       </h2>
       <div>
-        <span>
-          {guests} {guests > 1 ? "guests " : "guest "}
-        </span>
-        <span>&#183;</span>
-        <span>
-          {bedrooms} {bedrooms > 1 ? "bedrooms " : "bedroom "}
-        </span>
-        <span>&#183;</span>
-        <span>
-          {beds} {beds > 1 ? "beds " : "bed "}
-        </span>
-        <span>&#183;</span>
-        <span>
-          {baths} {baths > 1 ? "baths " : "bath "}
-        </span>
+        {ProductSummaryInformation.map((el, index) => (
+          <div className="information" key={index}>
+            <span>
+              {el.value} {el.value > 1 ? el.key + "s" : el.key}
+            </span>{" "}
+            {index < ProductSummaryInformation.length - 1 && (
+              <span>&#183; </span>
+            )}
+          </div>
+        ))}
       </div>
       <div className="reviews-container">
         <svg
