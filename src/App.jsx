@@ -11,17 +11,13 @@ function App() {
   return (
     <>
       <h1 data-testid="heading">Hello F24-Berlin-Web-Circle Typo fixed</h1>
-      {
-        places.map((place) => {
-          return (
-            <Link to={`/rooms/${place.id}`} key={place.id}>
-              <div>
-                {`${place.id} - ${place.name}`}
-              </div>
-            </Link>
-          )
-        })
-      }
+      {places.map((place) => {
+        return (
+          <Link to={`/rooms/${place.id}`} key={place.id}>
+            <div>{`${place.id} - ${place.name}`}</div>
+          </Link>
+        );
+      })}
     </>
   );
 }
