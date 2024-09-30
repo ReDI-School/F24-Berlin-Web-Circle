@@ -31,16 +31,12 @@ const Header = () => {
                         <LanguageSelector />
                     </div>
                 </div>
-
-
             </header>
             <div className={styles.destinationPopUp}>
                 <DestinationPopUp title='Search by region' onClick={(e) => handelRegionClick(e)} />
             </div>
-
         </div >
     )
-
 }
 
 export default Header

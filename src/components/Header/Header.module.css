@@ -1,13 +1,15 @@
 .header {
     width: 100%;
     height: 80px;
-    z-index: 100;
+    z-index: 9990;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
-    position: relative;
+    position: fixed;
 
 }
 
@@ -26,8 +28,6 @@
 .logoAirbnb {
     height: 80px;
     width: 80px;
-    /*  display: inline-block; */
-
 }
 
 .toggleButtonsStaysExperiences {
@@ -46,8 +46,6 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-
-
 }
 
 .buttonStays:hover,
@@ -62,7 +60,6 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 8px;
-    
 }
 
 .hostButtonDiv {
@@ -75,8 +72,8 @@
 .languageSelectorDiv {
     display: flex;
     align-items: center;
-}
 
+}
 
 @media (max-width: 1024px) {
     .languageSelectorDiv {
@@ -91,17 +88,12 @@
 }
 
 @media (max-width: 600px) {
-.toggleButtonsStaysExperiences {
-    display: none;
+    .toggleButtonsStaysExperiences {
+        display: none;
+    }
 }
-}
-
 
 .headerContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.destinationPopUp {
-    margin-top: 80px;
+    width: 100%;
+    position: relative;
 }
