@@ -29,15 +29,18 @@
 .hostDetails {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .hostedBy {
   font-weight: 500;
   font-size: 16px;
   color: var(--primary);
+  margin: 0;
 }
 
 .hostingDuration {
   color: var(--neutral);
   font-size: 14px;
+  margin: 0;
 }

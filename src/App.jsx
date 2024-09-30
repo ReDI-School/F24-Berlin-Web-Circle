@@ -1,10 +1,12 @@
 import "./App.css";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function App() {
-  const places = [{id: "1", name: "Idyllic house by the sea"}, {id: "2", name: "Studio Zempow / ecological wooden house / photo studio"},
-    {id: "3", name: "Funen's best ocean view"}
-  ]
+  const places = [
+    { id: "1", name: "Idyllic house by the sea" },
+    { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
+    { id: "3", name: "Funen's best ocean view" },
+  ];
 
   return (
     <>
