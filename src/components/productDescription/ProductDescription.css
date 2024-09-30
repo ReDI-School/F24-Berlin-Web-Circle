@@ -1,3 +1,6 @@
+.product-description {
+  margin: 10px 0px 30px;
+}
 .product-description-text {
   width: 55%;
   display: flex;
