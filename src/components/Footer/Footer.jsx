@@ -1,13 +1,9 @@
-import './Footer.module.css'
-
 const Footer = () =>
 {
 	return (
-		<footer>
-			<div>
-				© 2024 Airbnb, Inc.
-			</div>
-		</footer>
+	<footer>
+		Dummy Footer
+	</footer>
 	)
 }
 
