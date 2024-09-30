@@ -95,3 +95,13 @@
     display: none;
 }
 }
+
+
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.destinationPopUp {
+    margin-top: 80px;
+}
