@@ -1,22 +1,66 @@
 .date-selection-container {
   display: flex;
-  gap: 12px; 
-  padding: 10px; 
+  column-gap: 10px; 
+  row-gap: 10px; 
 }
 
 .option {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff; 
-  padding: 8px 16px;
-  border: 1px solid #e0e0e0; 
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 14px;
-  color: hsl(0, 0%, 18%);
-  min-width: 50px; 
-  text-align: center;
+align-items: center;
+justify-content: center;
+background-color: rgb(255, 255, 255);
+border-bottom-color: rgb(221, 221, 221);
+border-bottom-left-radius: 16px;
+border-bottom-right-radius: 16px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-image-outset: 0;
+border-image-repeat: stretch;
+border-image-slice: 100%;
+border-image-source: none;
+border-image-width: 1;
+border-left-color: rgb(221, 221, 221);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgb(221, 221, 221);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgb(221, 221, 221);
+border-top-left-radius: 16px;
+border-top-right-radius: 16px;
+border-top-style: solid;
+border-top-width: 1px;
+box-sizing: border-box;
+color: rgb(34, 34, 34);
+cursor: pointer;
+font-family: "Airbnb Cereal VF", Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue", sans-serif;
+font-size: 12px;
+height: 32px;
+letter-spacing: normal;
+line-break: strict;
+line-height: 16px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+min-height: 32px;
+outline-color: rgb(34, 34, 34);
+outline-style: none;
+outline-width: 0px;
+padding-bottom: 4px;
+padding-left: 14px;
+padding-right: 14px;
+padding-top: 4px;
+pointer-events: auto;
+position: relative;
+text-align: center;
+text-size-adjust: 100%;
+text-wrap: nowrap;
+transition-duration: 0.15s;
+transition-property: transform, background-color, border-color;
+transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+white-space-collapse: collapse;
+width: 94.8594px;
+-webkit-font-smoothing: antialiased;
 }
 
 .option:hover {
