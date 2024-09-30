@@ -8,6 +8,7 @@ const Root = () =>
 	const themeStyles = {
 		"--primary": colors.primary,
 		"--palette-deco": colors.paletteDeco,
+		"--neutral": colors.neutral,
 	};
 
 	return (
