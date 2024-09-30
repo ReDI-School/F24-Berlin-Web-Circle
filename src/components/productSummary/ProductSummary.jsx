@@ -17,9 +17,21 @@ const ProductSummary = ({
         {accommodation} in {address}
       </h2>
       <div>
-        <span>{guests} guests</span> <span>&#183;</span>{" "}
-        <span>{bedrooms} bedrooms</span> <span>&#183;</span>
-        <span> {beds} beds</span> <span>&#183;</span> <span>{baths} baths</span>
+        <span>
+          {guests} {guests > 1 ? "guests " : "guest "}
+        </span>
+        <span>&#183;</span>
+        <span>
+          {bedrooms} {bedrooms > 1 ? "bedrooms " : "bedroom "}
+        </span>
+        <span>&#183;</span>
+        <span>
+          {beds} {beds > 1 ? "beds " : "bed "}
+        </span>
+        <span>&#183;</span>
+        <span>
+          {baths} {baths > 1 ? "baths " : "bath "}
+        </span>
       </div>
       <div className="reviews-container">
         <svg
@@ -36,8 +48,10 @@ const ProductSummary = ({
             d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
           ></path>
         </svg>
-        <span> {starGrade}</span> .{" "}
-        <span className="reviews">{reviews} reviews</span>
+        <span> {starGrade}</span> <span>&#183;</span>{" "}
+        <span className="reviews">
+          {reviews} {reviews > 1 ? "reviews " : "review "}
+        </span>
       </div>
     </div>
   );
