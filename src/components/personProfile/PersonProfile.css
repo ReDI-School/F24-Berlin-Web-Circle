@@ -19,7 +19,6 @@
   justify-content: center;
   box-sizing: border-box;
 }
-
 .leaf-side {
   width: 68%;
   height: 100%;
@@ -28,14 +27,12 @@
   justify-content: center;
   align-items: center;
 }
-
 .round-photo-component {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
-
 .person-img {
   width: 100px;
   height: 100px;
@@ -46,7 +43,7 @@
   display: flex;
   justify-content: center;
   border-radius: 100%;
-  margin-top: 40px;
+  margin-top: -10px;
   padding: 5px;
   background-color: rgb(206, 81, 106);
   position: absolute;
@@ -57,10 +54,9 @@
   height: 20px;
   fill: white;
 }
-
 .person-role-container {
   display: flex;
-  margin-top: 20px;
+  margin-top: 10px;
   gap: 0px;
   flex-direction: column;
   align-items: center;
@@ -71,7 +67,7 @@
   line-height: 0%;
 }
 .role-container {
-  margin-top: 14px;
+  margin-top: -10px;
 }
 .roleicon-svg {
   width: 12px;
@@ -81,7 +77,6 @@
   font-size: 13px;
   font-weight: bold;
 }
-
 .right-side {
   width: 32%;
   display: flex;
@@ -91,12 +86,10 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .reviews-container {
   display: flex;
   flex-direction: column;
   align-items: start;
-
   width: 100%;
 }
 .reviews-numbrs {
