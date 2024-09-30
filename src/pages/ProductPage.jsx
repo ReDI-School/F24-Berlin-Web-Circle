@@ -1,4 +1,3 @@
-import PersonProfile from "../components/personProfile/PersonProfile";
 import { useParams } from "react-router-dom";
 import ReservationCard from "../components/ReservationCard/ReservationCard";
 import HostSummary from "../components/HostSummary/HostSummary";
