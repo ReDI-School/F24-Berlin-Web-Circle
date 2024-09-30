@@ -9,7 +9,7 @@ import PersonProfile from "../components/personProfile/PersonProfile";
 
 const ProductPage = () => {
   const { productId } = useParams(); // Object Destructuring
-
+    
   return (
     <div>
       {`Dummy Product Page ${productId}`}
