@@ -15,14 +15,14 @@ const Header = () => {
                     <img src={airbnbLogo} className={styles.logoAirbnb} alt='The Logo of AirBnB' />
                 </a>
             </div>
-            {<ToggleButtonsStaysExperiences/> }
+            {/* {<ToggleButtonsStaysExperiences/> } */}
 
 
 
-            {/* {<div className={styles.toggleButtonsStaysExperiences}>
+            {<div className={styles.toggleButtonsStaysExperiences}>
                 <button className={styles.buttonStays}>Stays</button>
                 <button className={styles.buttonExperiences}>Experiences</button>
-            </div>} */}
+            </div>}
             <div className={styles.beAHostAndLanguageSelectorWrapper}>
                 <div className={styles.hostButtonDiv}>
                     <ButtonBeAHost />
