@@ -8,6 +8,7 @@ import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
+import ProductDescription from "../components/ProductDescription/ProductDescription";
 
 const ProductPage = () => {
   const highlights = [{type: "CHECK_IN", text: "Self check-in", subText: "Check yourself in with the lockbox."},
@@ -16,7 +17,7 @@ const ProductPage = () => {
     {type: "CANCELLATION", text: "Free cancellation", subText: "Get a full refund if you change your mind."}];
 
   const { productId } = useParams(); // Object Destructuring
-    
+
   return (
     <div>
       {`Dummy Product Page ${productId}`}
@@ -46,12 +47,16 @@ const ProductPage = () => {
         profilePicUrl={hostImage}
       />
       <ProductHighlight highlights={highlights}/>
+      <ProductDescription
+        descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
+        descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
+        guestAccess="You have access to all areas of the flat. The flat has its own entrance."
+        otherThings="Do not smoke in rooms!"
+      />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
-        address={"Königslutter am Elm, Niedersachsen, Germany"}
-        addressDescription={
-          "In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
-        }
+        address="Königslutter am Elm, Niedersachsen, Germany"
+        addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
       />
 
       <PersonProfile
