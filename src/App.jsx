@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
+import ProductCard from "./components/ProductCard/ProductCard";
 import SearchBar from "./components/searchBar/SearchBar";
-
 function App() {
   const [count, setCount] = useState(0);
   const places = [
@@ -46,6 +46,13 @@ function App() {
         rating={4.85}
         yearsHosting={1}
       />
+       <ProductCard 
+        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"} 
+        title={"Cozy Apartment in City Center"}
+        host={"Hosted by Wendy and Elisa"}
+        price={"Coming soon"}
+      
+      />
       {/* FOR TESTING */}
       {places.map((place) => {
         return (
@@ -55,6 +62,7 @@ function App() {
         );
       })}
     </>
+    
   );
 }
 
