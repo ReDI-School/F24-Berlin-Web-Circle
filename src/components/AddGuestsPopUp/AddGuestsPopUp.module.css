@@ -1,0 +1,11 @@
+.popup {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    max-height: 644px;
+    background-color: white;
+    border-radius: 32px;
+    padding: 32px;
+    color: black;
+    display: block;
+}
