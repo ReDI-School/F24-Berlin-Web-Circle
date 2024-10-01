@@ -10,7 +10,7 @@ const ToggleButtonsStaysExperiences = () => {
     };
 
     return (
-    <div className={styles.buttonContainer}>
+        <div className={styles.buttonContainer}>
             <button
                 className={`${styles.toggleButton} ${activeButton === "stays" ? styles.active : styles.inactive}`}
                 onClick={() => handleButtonClick("stays")}
@@ -18,10 +18,10 @@ const ToggleButtonsStaysExperiences = () => {
             </button>
             <button
                 className={`${styles.toggleButton} ${activeButton === "experiences" ? styles.active : styles.inactive}`}
-                onClick = {() => handleButtonClick("experiences")}
+                onClick={() => handleButtonClick("experiences")}
             > Experiences
             </button >
-    </div >
+        </div >
     )
 }
 
