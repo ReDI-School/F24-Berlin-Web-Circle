@@ -1,0 +1,27 @@
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 8.438rem;
+    flex-direction: row;
+    border-radius: 0.25rem;
+    color: black;
+}
+.buttonContainer:hover {
+    background-color: #7c7e7f;
+    border-radius: 0.5rem;
+}
+.buttonContainer img {
+    border-radius: 0.5rem;
+    width: 6.25rem;
+    height: 6.25rem;
+    border: 1px solid black;
+}
+.button {
+    padding: 0.5rem;
+}
+.buttonDescription {
+    display: flex;
+    font-size: small;
+    align-items: start;
+}

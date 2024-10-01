@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-top: 1px solid rgb(176, 176, 176);
+    min-height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.container:first-child { 
+    border-top: none; 
+}
+.detailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex: 3;
+    font-size: 14px;
+}
+.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.descriptionLink {
+    text-decoration: underline;
+    color: rgb(106, 106, 106);
+    cursor: pointer;
+}
+.descriptionLink:hover {
+    color: rgb(106, 106, 106);
+}
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.button {
+    border-radius: 100%;
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(176, 176, 176);
+    width: 25px;
+    height: 25px;
+    padding: 20px;
+    text-align: center;
+    display: inline-flex;
+    font-size: 16px; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(106, 106, 106);
+}
+.button:hover {
+    cursor: pointer;
+}
+.buttonDisable {
+    border-radius: 100%;
+    background-color: white;
+    color: rgb(235, 235, 235);
+    border: 1px solid rgb(235, 235, 235);
+    width: 25px;
+    height: 25px;
+    padding: 20px;
+    text-align: center;
+    display: inline-flex;
+    font-size: 16px; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(235, 235, 235);
+}
+.buttonDisable:hover {
+    cursor: not-allowed;
+}
+.count {
+    width: 15px;
+    padding: 10px;
+}

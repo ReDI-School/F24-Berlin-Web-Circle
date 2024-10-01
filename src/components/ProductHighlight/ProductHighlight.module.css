@@ -1,0 +1,32 @@
+.highlights {
+	list-style-type: none;
+	margin: 0;
+	padding: 1.5rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.5rem;
+	border-top: solid 1px var(--palette-deco);
+}
+
+.highlightItem {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem;
+}
+
+.highlightDes {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.highlightDes h3 {
+	margin: 0;
+	padding: 0;
+}
+
+.subText {
+	color: var(--neutral);
+	font-size: 0.875rem;
+}

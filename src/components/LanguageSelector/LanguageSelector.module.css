@@ -1,0 +1,23 @@
+.globe_icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 8px;
+}
+
+.languageSelector {
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.languageSelector:hover {
+    background: rgb(245, 243, 243);
+    box-sizing: border-box;
+    border-radius: 50%;
+    transition: background-color 0.3s ease
+}

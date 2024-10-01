@@ -1,0 +1,46 @@
+.hostInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0px;
+  text-align: left;
+}
+
+.profilePicContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.superhostIcon {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  height: 20px;
+  width: 20px;
+}
+
+.profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.hostDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hostedBy {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--primary);
+  margin: 0;
+}
+
+.hostingDuration {
+  color: var(--neutral);
+  font-size: 14px;
+  margin: 0;
+}
