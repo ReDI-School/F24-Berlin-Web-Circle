@@ -5,7 +5,7 @@ import ButtonBeAHost from '../ButtonBeAHost/ButtonBeAHost'
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
 import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
 import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
-
+import GuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 
 const Header = () => {
     const handelRegionClick = (item) => {
@@ -33,8 +33,10 @@ const Header = () => {
             <div className={styles.destinationPopUp}>
                 <DestinationPopUp title='Search by region' onClick={(e) => handelRegionClick(e)} />
             </div>
+            <div>
+                  <GuestsPopUp/>
+            </div>
         </div >
     )
 }
-
 export default Header
