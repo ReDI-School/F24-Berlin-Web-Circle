@@ -102,7 +102,6 @@ const ProductGallery = ({
           </div>
         </div>
       </div>
-      ProductGalleryPopup
       {showPopupProductGallery && (
         <ProductGalleryPopup
           showPopupHandler={showPopupHandler}
