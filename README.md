@@ -48,10 +48,6 @@ Currently, two official plugins are available:
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))
 - Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
-- Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
 - Gabriel Melhem ([@GabrielMelhem] (https://github.com/GabrielMelhem))
-<<<<<<< HEAD
-
-=======
 - Iman Bajalan ([@BajalanIman](https://github.com/BajalanIman))
->>>>>>> 371bf9591e977808aaf3acb14623e4dbd43ab1e4
+
