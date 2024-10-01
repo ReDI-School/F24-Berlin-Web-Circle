@@ -4,7 +4,7 @@ import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
 import ProductCard from "./components/ProductCard/ProductCard";
 import SearchBar from "./components/searchBar/SearchBar";
-import CategoryTabs from './CategoryTabs';
+import CategoryTabs from './components/CategoryTabs';
 
 function App() {
   const [count, setCount] = useState(0);
