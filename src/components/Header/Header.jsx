@@ -4,6 +4,7 @@ import airbnbLogo from "../../assets/logo_airbnb.svg"
 import ButtonBeAHost from '../ButtonBeAHost/ButtonBeAHost'
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
 import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
+import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
 
 
 const Header = () => {
@@ -19,10 +20,11 @@ const Header = () => {
                         <img src={airbnbLogo} className={styles.logoAirbnb} alt='The Logo of AirBnB' />
                     </a>
                 </div>
-                {<div className={styles.toggleButtonsStaysExperiences}>
+				<ToggleButtonsStaysExperiences />
+                {/* {<div className={styles.toggleButtonsStaysExperiences}>
                     <button className={styles.buttonStays}>Stays</button>
                     <button className={styles.buttonExperiences}>Experiences</button>
-                </div>}
+                </div>} */}
                 <div className={styles.beAHostAndLanguageSelectorWrapper}>
                     <div className={styles.hostButtonDiv}>
                         <ButtonBeAHost />
