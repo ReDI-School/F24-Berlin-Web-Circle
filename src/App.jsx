@@ -4,6 +4,7 @@ import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
 import ProductCard from "./components/ProductCard/ProductCard";
 import SearchBar from "./components/searchBar/SearchBar";
+import CategoryTabs from './CategoryTabs';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,7 +29,7 @@ function App() {
           onSearch={handleAirbnbSearch}
         />
       </div>
-
+      <CategoryTabs />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
