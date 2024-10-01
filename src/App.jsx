@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import PersonProfile from "./components/personProfile/PersonProfile";
-import SearchBar from "./components/searchBar/SearchBar";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,20 +13,11 @@ function App() {
     { id: "3", name: "Funen's best ocean view" },
   ];
 
-  const handleAirbnbSearch = ({ location, checkIn, checkOut, guests }) => {
-    // Logic for home search
-  };
+  
 
   return (
     <>
-      <div>
-        <SearchBar
-          checkIn=""
-          checkOut=""
-          guests=""
-          onSearch={handleAirbnbSearch}
-        />
-      </div>
+      
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
