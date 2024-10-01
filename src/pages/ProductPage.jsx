@@ -8,6 +8,7 @@ import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
+import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 
 const ProductPage = () => {
@@ -37,6 +38,16 @@ const ProductPage = () => {
         smallBottomRightImage={
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/2ca9c23e-85db-48f8-bd21-0718c286dcdf.jpeg"
         }
+      />
+      <ProductSummary
+        accommodation={"Entire rental unit"}
+        address={"Berlin, Germany"}
+        guests={{ key: "guest", value: 3 }}
+        bedrooms={{ key: "bedroom", value: 1 }}
+        beds={{ key: "bed", value: 3 }}
+        baths={{ key: "bath", value: 1 }}
+        starGrade={4.65}
+        reviews={23}
       />
       <ReservationCard />
       <FavoriteStay />
