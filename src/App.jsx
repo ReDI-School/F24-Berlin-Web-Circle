@@ -1,6 +1,7 @@
 import "./App.css";
 import { Link } from "react-router-dom";
 
+
 function App() {
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
