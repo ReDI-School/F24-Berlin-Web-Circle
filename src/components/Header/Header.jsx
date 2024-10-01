@@ -21,10 +21,6 @@ const Header = () => {
                     </a>
                 </div>
 				<ToggleButtonsStaysExperiences />
-                {/* {<div className={styles.toggleButtonsStaysExperiences}>
-                    <button className={styles.buttonStays}>Stays</button>
-                    <button className={styles.buttonExperiences}>Experiences</button>
-                </div>} */}
                 <div className={styles.beAHostAndLanguageSelectorWrapper}>
                     <div className={styles.hostButtonDiv}>
                         <ButtonBeAHost />
