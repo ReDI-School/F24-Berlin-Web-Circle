@@ -1,0 +1,32 @@
+.buttonContainer {
+    display: flex;
+}
+
+.toggleButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 24px;
+    transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+    margin-right: none;
+    font-size: 17px;
+}
+
+.active {
+    font-weight: 600;
+    color: black;
+}
+
+.active:hover {
+    background: none;
+    color: black;
+}
+
+.inactive {
+    color: grey
+}
+
+.inactive:hover {
+    background: rgb(245, 243, 243);
+    color: black;
+}
