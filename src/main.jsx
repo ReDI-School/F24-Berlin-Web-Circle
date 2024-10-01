@@ -8,7 +8,7 @@ import App from './App.jsx';
 import ErrorPage from "./error-page";
 import './index.css';
 import ProductPage from './pages/ProductPage.jsx';
-import Root from './pages/Root.jsx';
+import Root from './pages/RootLayout/Root.jsx';
 
 
 
