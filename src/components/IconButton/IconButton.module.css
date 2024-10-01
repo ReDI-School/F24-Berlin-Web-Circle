@@ -2,29 +2,24 @@
     background-color: transparent;
     border: none;
     padding: 8px;
-   }
-   
-   
-   .icon-button-content {
+}
+
+.icon-button-content {
     font-size: 0.875rem;
     text-decoration: underline;
-   }
-   
-   
-   span {
+}
+
+span {
     margin-right: 8px;
     font-weight: 400 !important;
-   }
-   
-   
-   .fa-icon {
+}
+
+.fa-icon {
     height: 16px;
     width: 16px;
-   }
-   
-   
-   .icon-button:hover {
+}
+
+.icon-button:hover {
     border: none;
     background-color: #f7f7f7;
-   }
-   
+}
