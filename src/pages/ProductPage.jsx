@@ -10,6 +10,7 @@ import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
+import IconButton from "../components/IconButton/IconButton";
 
 const ProductPage = () => {
   const highlights = [{type: "CHECK_IN", text: "Self check-in", subText: "Check yourself in with the lockbox."},
@@ -22,6 +23,7 @@ const ProductPage = () => {
   return (
     <div>
       {`Dummy Product Page ${productId}`}
+      
       <ProductGallery
         bigImage={
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg"
