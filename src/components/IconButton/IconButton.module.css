@@ -1,15 +1,15 @@
-.icon-button {
+.iconButton {
     background-color: transparent;
     border: none;
     padding: 8px;
 }
 
-.icon-button-content {
+.iconButtonContent {
     font-size: 0.875rem;
     text-decoration: underline;
 }
 
-span {
+.iconButtonContent span {
     margin-right: 8px;
     font-weight: 400 !important;
 }

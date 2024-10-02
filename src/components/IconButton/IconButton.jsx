@@ -1,11 +1,11 @@
-import "./IconButton.css";
+import styles from "./IconButton.module.css";
 
 export default function IconButton({ label, onClick, iconSrc }) {
  return (
-   <button className="icon-button" onClick={onClick}>
-     <div className="icon-button-content">
+   <button className={styles.iconButton} onClick={onClick}>
+     <div className={styles.iconButtonContent}>
        <span>
-        <img src={iconSrc} />
+
        </span>
        {label}
      </div>
