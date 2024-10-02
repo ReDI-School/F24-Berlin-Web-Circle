@@ -31,7 +31,7 @@ const ProductPage = () => {
   return (
     <div>
       {`Dummy Product Page ${productId}`}
-      <div className="share-save-buttons-container">
+      <div>
         <IconButton
           faIcon={faArrowUpFromBracket}
           label="Share"
