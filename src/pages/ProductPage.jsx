@@ -20,9 +20,23 @@ const ProductPage = () => {
 
   const { productId } = useParams(); // Object Destructuring
 
+  function handleShare() {
+    alert("Share this experience");
+  }
+  function handleSave() {
+    alert("Save this experience");
+  }
+
   return (
     <div>
       {`Dummy Product Page ${productId}`}
+      <div className="share-save-buttons-container">
+        <IconButton
+          label="Share"
+          onClick={handleShare}
+        />
+        <IconButton label="Save" onClick={handleSave} />
+      </div>
       
       <ProductGallery
         bigImage={

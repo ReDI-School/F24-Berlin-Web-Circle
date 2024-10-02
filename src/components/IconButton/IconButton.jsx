@@ -1,12 +1,11 @@
-import "./IconButton.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./IconButton.css";
 
-export default function IconButton({ faIcon, label, onClick }) {
+export default function IconButton({ label, onClick, iconSrc }) {
  return (
    <button className="icon-button" onClick={onClick}>
      <div className="icon-button-content">
        <span>
-         <FontAwesomeIcon icon={faIcon} className="fa-icon"/>
+        <img src={iconSrc} />
        </span>
        {label}
      </div>
