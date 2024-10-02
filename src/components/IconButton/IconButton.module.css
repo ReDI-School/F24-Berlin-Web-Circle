@@ -14,12 +14,12 @@
     font-weight: 400 !important;
 }
 
-.fa-icon {
+.faIcon {
     height: 16px;
     width: 16px;
 }
 
-.icon-button:hover {
+.iconButton:hover {
     border: none;
     background-color: #f7f7f7;
 }

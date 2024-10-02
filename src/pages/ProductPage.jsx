@@ -11,6 +11,7 @@ import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import IconButton from "../components/IconButton/IconButton";
+import { faArrowUpFromBracket, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProductPage = () => {
   const highlights = [{type: "CHECK_IN", text: "Self check-in", subText: "Check yourself in with the lockbox."},
@@ -32,10 +33,11 @@ const ProductPage = () => {
       {`Dummy Product Page ${productId}`}
       <div className="share-save-buttons-container">
         <IconButton
+          faIcon={faArrowUpFromBracket}
           label="Share"
           onClick={handleShare}
         />
-        <IconButton label="Save" onClick={handleSave} />
+        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} />
       </div>
       
       <ProductGallery
