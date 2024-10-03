@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
@@ -6,7 +5,6 @@ import PersonProfile from "./components/personProfile/PersonProfile";
 import PriceRangeFilter from "./components/priceRange/PriceRangeFilter";
 
 function App() {
-  const [count, setCount] = useState(0);
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
     { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
