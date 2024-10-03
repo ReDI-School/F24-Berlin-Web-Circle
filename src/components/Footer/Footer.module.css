@@ -1,11 +1,9 @@
 footer {
-	border-top: 1px solid var(--palette-deco);
-	font-size: 0.875rem;
-	color: var(--primary);
-	text-align: left;
-	display: flex;
-	width: 100%;
-	padding-top: 13px;
-	padding-bottom: 13px;
-	padding-left: 40px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between; /* Aligns content on either side */
+  align-items: center;
+  padding: 20px 50px; /* Adds padding inside the footer */
+  background-color: #f8f8f8; /* Light gray background color */
+  border-top: 1px solid #ddd; /* Top border for separation */
 }
