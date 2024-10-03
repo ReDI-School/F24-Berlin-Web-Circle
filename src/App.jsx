@@ -34,7 +34,6 @@ function App() {
   return (
     <>
       <PriceRangeFilter histogramData={histogramData}/>
-      
       <PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
