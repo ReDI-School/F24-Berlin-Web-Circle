@@ -5,5 +5,13 @@ footer {
   align-items: center;
   padding: 20px 50px; /* Adds padding inside the footer */
   background-color: #f8f8f8; /* Light gray background color */
-  border-top: 1px solid #ddd; /* Top border for separation */
+	border-top: 1px solid var(--palette-deco);
+	font-size: 0.875rem;
+	color: var(--primary);
+	text-align: left;
+	display: flex;
+	width: 100%;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	padding-left: 2.5rem;
 }
