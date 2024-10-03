@@ -1,12 +1,11 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PersonProfile from "./components/personProfile/PersonProfile";
 import SearchBar from "./components/searchBar/SearchBar";
 
 function App() {
-  const [count, setCount] = useState(0);
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
     { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
@@ -32,14 +31,7 @@ function App() {
         <CalendarToggle />
       </div>
 
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
+      
       <PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
@@ -49,6 +41,13 @@ function App() {
         reviews={74}
         rating={4.85}
         yearsHosting={1}
+        />
+       <ProductCard 
+        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"} 
+        title={"Cozy Apartment in City Center"}
+        host={"Hosted by Wendy and Elisa"}
+        price={"Coming soon"}
+      
       />
       {/* FOR TESTING */}
       {places.map((place) => {
@@ -59,6 +58,7 @@ function App() {
         );
       })}
     </>
+    
   );
 }
 
