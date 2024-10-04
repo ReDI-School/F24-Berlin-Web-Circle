@@ -1,0 +1,21 @@
+.ratingBarContainer {
+  margin: 10px 0;
+}
+
+.ratingBar {
+  background-color: #DDDDDD;
+  border-radius: 5px;
+  margin: 10px 0;
+  height: 4px;  
+  width: 124px;
+}
+
+.ratingBarFill {
+  height: 100%;
+  border-radius: 5px;
+  background-color: black; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}

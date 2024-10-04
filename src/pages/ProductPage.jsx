@@ -3,14 +3,15 @@ import ReservationCard from "../components/ReservationCard/ReservationCard";
 import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
 import hostImage from "../assets/images/host-raus.webp";
-import MapView from "../components/MapView/MapView";
+import MapView from "../components/mapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
-import ProductGallery from "../components/ProductGallery/ProductGallery";
+import ProductGallery from "../components/productGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
-import ProductSummary from "../components/ProductSummary/ProductSummary";
-import ProductDescription from "../components/ProductDescription/ProductDescription";
+import ProductSummary from "../components/productSummary/ProductSummary";
+import ProductDescription from "../components/productDescription/ProductDescription";
 import IconButton from "../components/IconButton/IconButton";
+import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import { faArrowUpFromBracket, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProductPage = () => {
@@ -86,6 +87,20 @@ const ProductPage = () => {
         mapViewSampleImg={mapViewSampleImg}
         address="Königslutter am Elm, Niedersachsen, Germany"
         addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
+      />
+
+      <ReviewSummary 
+        totalAvgRating={4.91} 
+        totalReviewsCount={200} 
+        ratings={{
+          cleanlinessAvgRating: 4.8,
+          accuracyAvgRating: 4.9,
+          checkInAvgRating: 5.0,
+          communicationAvgRating: 5.0,
+          locationAvgRating: 4.9,
+          valueAvgRating: 4.6,
+          starTotals: { fiveStar: 100, fourStar: 80, threeStar: 10, twoStar: 6, oneStar: 4 }
+        }}
       />
 
       <PersonProfile
