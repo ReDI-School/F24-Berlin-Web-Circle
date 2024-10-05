@@ -2,8 +2,17 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import SearchBar from "./components/searchBar/SearchBar";
+import ToggleButtonsStaysExperiences from './components/ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
+import { useState } from "react";
+
 
 function App() {
+
+  const [searchType, setSearchType] = useState("stays");
+  const toggleSearchType = (type) => {
+    setSearchType(type);
+  };
+
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
     { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
@@ -17,8 +26,12 @@ function App() {
 
   return (
     <>
+    <div>
+    <ToggleButtonsStaysExperiences toggleSearchType={toggleSearchType}/>
+    </div>
       <div>
         <SearchBar
+          searchType={searchType}
           checkIn=""
           checkOut=""
           guests=""
