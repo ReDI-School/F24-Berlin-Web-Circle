@@ -1,0 +1,25 @@
+.iconButton {
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+}
+
+.iconButtonContent {
+    font-size: 0.875rem;
+    text-decoration: underline;
+}
+
+.iconButtonContent span {
+    margin-right: 8px;
+    font-weight: 400 !important;
+}
+
+.faIcon {
+    height: 16px;
+    width: 16px;
+}
+
+.iconButton:hover {
+    border: none;
+    background-color: #f7f7f7;
+}
