@@ -1,47 +1,39 @@
-import styles from "./RatingBar.module.css";
+import styles from './RatingBar.module.css'
 
-const RatingBar = ({ starTotals }) => {
-  const totalStarsRange = starTotals.fiveStar + starTotals.fourStar + starTotals.threeStar + starTotals.twoStar + starTotals.oneStar;
+const RatingBar = ({ starTotals, title }) => {
+  const totalStarsRange = Object.values(starTotals).reduce(
+    (acc, val) => acc + val,
+    0
+  )
+  const calculatePercentage = (starCount) =>
+    Math.ceil((starCount / totalStarsRange) * 100)
 
-  const fiveStarPercentage = Math.round((starTotals.fiveStar / totalStarsRange) * 100);
-  const fourStarPercentage = Math.round((starTotals.fourStar / totalStarsRange) * 100);
-  const threeStarPercentage = Math.round((starTotals.threeStar / totalStarsRange) * 100);
-  const twoStarPercentage = Math.round((starTotals.twoStar / totalStarsRange) * 100);
-  const oneStarPercentage = Math.round((starTotals.oneStar / totalStarsRange) * 100);
-
-  console.log(fiveStarPercentage, fourStarPercentage, threeStarPercentage, twoStarPercentage, oneStarPercentage);
-
+  const starRatings = [
+    { star: 5, count: starTotals.fiveStar },
+    { star: 4, count: starTotals.fourStar },
+    { star: 3, count: starTotals.threeStar },
+    { star: 2, count: starTotals.twoStar },
+    { star: 1, count: starTotals.oneStar },
+  ]
+  
   return (
     <div className={styles.ratingBarContainer}>
-      <div className={styles.ratingBar}>
-        <div style={{ width: `${fiveStarPercentage}%` }} className={styles.ratingBarFill}>
-          5
-        </div>
-      </div>
-      <div className={styles.ratingBar}>
-        <div style={{ width: `${fourStarPercentage}%` }} className={styles.ratingBarFill}>
-          4
-        </div>
-      </div>
-      <div className={styles.ratingBar}>
-        <div style={{ width: `${threeStarPercentage}%` }} className={styles.ratingBarFill}>
-          3
-        </div>
-      </div>
-      <div className={styles.ratingBar}>
-        <div style={{ width: `${twoStarPercentage}%` }} className={styles.ratingBarFill}>
-          2
-        </div>
-      </div>
-      <div className={styles.ratingBar}>
-        <div style={{ width: `${oneStarPercentage}%` }} className={styles.ratingBarFill}>
-          1
-        </div>
-      </div>
+      <h3 className={styles.title}>{title}</h3>
+      <ul className={styles.ratingBarList}>
+        {starRatings.map(({ star, count }) => (
+          <li key={star} className={styles.ratingBarItem}>
+            <span className={styles.starLabel}>{star}</span>
+            <div className={styles.ratingBar}>
+              <div
+                style={{ width: `${calculatePercentage(count)}%` }}
+                className={styles.ratingBarFill}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
-  );
-};
+  )
+}
 
-export default RatingBar;
-
-
+export default RatingBar

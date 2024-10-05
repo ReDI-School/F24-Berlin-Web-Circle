@@ -4,7 +4,6 @@
   justify-content: start;
   align-items: flex-start;
   color: var(--primary);
-  gap: 10px;
 }
 .header {
   display: flex;
@@ -13,7 +12,6 @@
   margin-bottom: 40px;
 }
 .summary {
-  font-size: 26px;
   font-weight: 500;
   margin: 0;
 }
@@ -21,14 +19,14 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 115px;
+  height: 106px;
 }
 .main h3 {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
 }
-.main > *{
+.main > * {
   border-left: 1px solid var(--palette-deco);
   padding: 0 24px 4px;
 }
@@ -39,7 +37,7 @@
 .ratingItem{
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   width: 100%;
 }
