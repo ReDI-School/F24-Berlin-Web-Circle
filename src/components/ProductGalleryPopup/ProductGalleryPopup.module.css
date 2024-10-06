@@ -1,4 +1,4 @@
-.popup-main-container {
+.popupMainCntainer {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,7 +6,7 @@
   height: 100%;
   max-height: 100%;
   background: white;
-  z-index: 10;
+  z-index: 1000;
   overflow-y: auto;
 }
 .header {
@@ -14,19 +14,44 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-left: 15px;
+  margin-top: 20px;
   position: fixed;
 }
-.left-arrow {
-  width: 13px;
-  fill: black;
+.saveShareIconContainer {
+  margin-right: 50px;
+  display: flex;
+  gap: 5px;
 }
-.subheader-container {
+.shareContainer,
+.SaveContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.shareContainer:hover,
+.SaveContainer:hover {
+  background-color: rgb(242, 242, 242);
+}
+.shareSaveText {
+  text-decoration: underline;
+  padding-top: 3px;
+  font-weight: 700;
+}
+.SaveContainer {
+  gap: 5px;
+}
+.subheaderContainer {
   margin-top: 50px;
   display: flex;
   justify-content: center;
 }
-.small-top-imgs-container {
+.smallTopImgsContainer {
   width: 150vh;
   height: 160px;
   display: flex;
@@ -35,36 +60,36 @@
   padding-top: 10px;
   gap: 15px;
 }
-.photo-tour-text {
+.photoTourText {
   font-size: 20px;
   font-weight: 600;
 }
-.small-top-imgs-all-containers {
+.smallTopImgsAllContainers {
   display: flex;
   gap: 15px;
 }
-.small-top-imgs-main {
+.smallTopImgsMain {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: start;
   color: black;
 }
-.small-top-imgs-main:hover {
+.smallTopImgsMain:hover {
   color: black;
 }
-.small-top-imgs {
+.smallTopImgs {
   cursor: pointer;
   height: 90px;
   width: 130px;
   object-fit: cover;
   overflow: hidden;
 }
-.small-top-imgs-name {
+.smallTopImgsName {
   padding-top: 5px;
   font-size: 12px;
 }
-.bottom-images-container {
+.bottomImagesContainer {
   margin-top: 20px;
   padding-bottom: 15px;
   width: 100%;
@@ -73,13 +98,13 @@
   justify-content: space-between;
   color: black;
 }
-.bottom-images {
+.bottomImages {
   width: 60%;
   padding-right: 60px;
   overflow: hidden;
   object-fit: cover;
   cursor: pointer;
 }
-.bottom-images:hover {
+.bottomImages:hover {
   opacity: 0.9;
 }

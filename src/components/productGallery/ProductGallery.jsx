@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ProductGallery.module.css";
+import ProductGalleryPopup from "../ProductGalleryPopup/ProductGalleryPopup";
 
 const ProductGallery = ({
   bigImage,
