@@ -1,5 +1,5 @@
 import React from "react";
-import StarRating from "../StarRating/Starrating";
+import StarRating from "../StarRating/StarRating";
 import "./FavoriteStay.css"
 import Left from "../../assets/fav-badge-left.png";
 import Right from "../../assets/fav-badge-right.png";

@@ -6,7 +6,7 @@ import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
-import PersonProfile from "../components/personProfile/PersonProfile";
+import PersonProfile from "../components/PersonProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
