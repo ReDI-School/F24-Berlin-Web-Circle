@@ -19,4 +19,4 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Deploy frontend code
-        run: scp -r packages/frontend/dist/* redi@85.215.157.215:/var/www/html/
+        run: scp -r -o 'StrictHostKeyChecking no' packages/frontend/dist/* redi@85.215.157.215:/var/www/html/
