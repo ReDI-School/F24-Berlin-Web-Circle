@@ -2,21 +2,21 @@ name: Deploy
 on: [push]
 jobs:
   deploy:
-    runs-on:
-      steps:
-        - name: Check out repo
-          uses: actions/checkout@v4
-        - name: Setup node.js 
-          uses: actions/setup-node@v4
-          with:
-            node-version: 20
-        - name: Install dependencies
-          run: npm install  
-        - name: Build frontend
-          run: npm run build -w packages/frontend
-        - name: Setup ssh-agent
-          uses: webfactory/ssh-agent@v0.9.0
-          with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        - name: Deploy frontend code
-          run: scp -r packages/frontend/dist www-data@85.215.157.215/html
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+      - name: Setup node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install  
+      - name: Build frontend
+        run: npm run build -w packages/frontend
+      - name: Setup ssh-agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy frontend code
+        run: scp -r packages/frontend/dist www-data@85.215.157.215/html
