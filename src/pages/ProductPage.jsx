@@ -11,13 +11,35 @@ import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import IconButton from "../components/IconButton/IconButton";
-import { faArrowUpFromBracket, faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUpFromBracket,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
+import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
 
 const ProductPage = () => {
-  const highlights = [{type: "CHECK_IN", text: "Self check-in", subText: "Check yourself in with the lockbox."},
-    {type: "AWARD", text: "Superhost", subText: "Superhosts are experienced, highly rated Hosts." },
-    {type: "WIFI", text: "Free Wifi", subText: "Superhosts are experienced, highly rated Hosts." },
-    {type: "CANCELLATION", text: "Free cancellation", subText: "Get a full refund if you change your mind."}];
+  const highlights = [
+    {
+      type: "CHECK_IN",
+      text: "Self check-in",
+      subText: "Check yourself in with the lockbox.",
+    },
+    {
+      type: "AWARD",
+      text: "Superhost",
+      subText: "Superhosts are experienced, highly rated Hosts.",
+    },
+    {
+      type: "WIFI",
+      text: "Free Wifi",
+      subText: "Superhosts are experienced, highly rated Hosts.",
+    },
+    {
+      type: "CANCELLATION",
+      text: "Free cancellation",
+      subText: "Get a full refund if you change your mind.",
+    },
+  ];
 
   const { productId } = useParams(); // Object Destructuring
 
@@ -32,6 +54,9 @@ const ProductPage = () => {
     <div>
       {`Dummy Product Page ${productId}`}
       <div>
+        <AboveProductTitle
+          title={"Cabin in nature with panoramic view & sauna"}
+        />
         <IconButton
           faIcon={faArrowUpFromBracket}
           label="Share"
@@ -39,7 +64,6 @@ const ProductPage = () => {
         />
         <IconButton faIcon={faHeart} label="Save" onClick={handleSave} />
       </div>
-      
       <ProductGallery
         bigImage={
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg"
@@ -75,7 +99,7 @@ const ProductPage = () => {
         role="Superhost"
         profilePicUrl={hostImage}
       />
-      <ProductHighlight highlights={highlights}/>
+      <ProductHighlight highlights={highlights} />
       <ProductDescription
         descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
         descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
@@ -87,7 +111,6 @@ const ProductPage = () => {
         address="Königslutter am Elm, Niedersachsen, Germany"
         addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
       />
-
       <PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
@@ -101,5 +124,4 @@ const ProductPage = () => {
     </div>
   );
 };
-
 export default ProductPage;
