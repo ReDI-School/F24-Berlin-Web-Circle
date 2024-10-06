@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
-import SearchBar from "./components/searchBar/SearchBar";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
   const places = [
