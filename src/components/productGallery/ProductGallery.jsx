@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./ProductGallery.css";
-import ProductGalleryPopup from "../ProductGalleryPopup/ProductGalleryPopup";
+import styles from "./ProductGallery.module.css";
 
 const ProductGallery = ({
   bigImage,
@@ -49,49 +48,49 @@ const ProductGallery = ({
   };
 
   return (
-    <div className="product-gallery-main">
-      <div className="big-img-container">
+    <div className={styles.productGalleryMain}>
+      <div className={styles.bigImgContainer}>
         <img
           onClick={showPopupHandler}
           src={bigImage}
           alt="bigImage"
-          className="big-image"
+          className={styles.bigImage}
         />
       </div>
-      <div className="small-imgs-container">
+      <div className={styles.smallImgsContainer}>
         <img
           onClick={showPopupHandler}
           src={smallTopLeftImage}
           alt="small top left image"
-          className="small-img-left"
+          className={styles.smallImgLeft}
         />
         <img
           onClick={showPopupHandler}
           src={smallTopRightImage}
           alt="small top right image"
-          className="small-img-right-top"
+          className={styles.smallImgRightTop}
         />
         <img
           onClick={showPopupHandler}
           src={smallBottomLeftImage}
           alt="small bottom left image"
-          className="small-img-left"
+          className={styles.smallImgLeft}
         />
-        <div className="show-photos-btn-container">
+        <div className={styles.showPhotosBtnContainer}>
           <img
             onClick={showPopupHandler}
             src={smallBottomRightImage}
             alt="small bottom right image"
-            className="small-img-right-bottom"
+            className={styles.smallImgRightBottom}
           />
-          <div className="show-photos-btn" onClick={showPopupHandler}>
+          <div className={styles.showPhotosBtn} onClick={showPopupHandler}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               aria-hidden="true"
               role="presentation"
               focusable="false"
-              className="show-photos-btn-svg"
+              className={styles.showPhotosBtnSvg}
             >
               <path
                 fillRule="evenodd"
