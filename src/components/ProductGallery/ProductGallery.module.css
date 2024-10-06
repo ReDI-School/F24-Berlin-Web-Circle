@@ -1,0 +1,80 @@
+.productGalleryMain {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  gap: 7px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.bigImgContainer {
+  width: 50%;
+  height: 100%;
+}
+.bigImage {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.bigImage:hover {
+  opacity: 0.9;
+}
+.smallImgsContainer {
+  width: 50%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  box-sizing: border-box;
+}
+.smallImgLeft,
+.smallImgRightTop,
+.smallImgRightBottom {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+.smallImgRightTop {
+  border-top-right-radius: 10px;
+}
+.smallImgRightBottom {
+  border-bottom-right-radius: 10px;
+}
+.smallImgLeft:hover,
+.smallImgRightBottom:hover,
+.smallImgRightTop:hover {
+  opacity: 80%;
+}
+.showPhotosBtnContainer {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.showPhotosBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  border: 1px solid black;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  color: black;
+  background-color: white;
+  font-family: "arial";
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.showPhotosBtnSvg {
+  margin-right: 5px;
+  height: 15px;
+  width: 15px;
+}
