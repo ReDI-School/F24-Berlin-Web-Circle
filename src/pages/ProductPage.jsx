@@ -20,19 +20,6 @@ import Reviews from "../components/Reviews/Reviews";
 import HeaderUserMenu from "../components/HeaderUserMenu/HeaderUserMenu";
 
 const ProductPage = () => {
-  const { productId } = useParams(); // Object Destructuring
-
-  return (
-    <div>
-      {`Dummy Product Page ${productId}`}
-     
-      <HeaderUserMenu />
-     
-    </div>
-  );
-};
-
-const ProductPage = () => {
   const highlights = [
     {
       type: "CHECK_IN",
@@ -106,6 +93,7 @@ const ProductPage = () => {
         starGrade={4.65}
         reviews={23}
       />
+      <HeaderUserMenu />
       <ReservationCard />
       <FavoriteStay />
       <HostSummary
