@@ -16,6 +16,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
+import Amenities from "../components/Amenities/Amenities";
 
 const ProductPage = () => {
   const highlights = [
@@ -41,6 +42,19 @@ const ProductPage = () => {
     },
   ];
 
+  const amenities = [
+    { type: "kitchen", text: "Kitchen" },
+    { type: "workspace", text: "Dedicated workspace" },
+    { type: "sauna", text: "Sauna" },
+    { type: "balcony", text: "Patio or balcony" },
+    { type: "fireplace", text: "Indoor fireplace" },
+    { type: "wifi", text: "Wifi" },
+    { type: "parking", text: "Free parking on premises" },
+    { type: "pets", text: "Pets allowed" },
+    { type: "backyard", text: "Backyard" },
+    { type: "firepit", text: "Fire pit" },
+  ];
+
   const { productId } = useParams(); // Object Destructuring
 
   function handleShare() {
@@ -48,6 +62,10 @@ const ProductPage = () => {
   }
   function handleSave() {
     alert("Save this experience");
+  }
+
+  function handleShowAmenities() {
+    alert("Here is the list of all amenities!");
   }
 
   return (
@@ -100,6 +118,11 @@ const ProductPage = () => {
         profilePicUrl={hostImage}
       />
       <ProductHighlight highlights={highlights} />
+      <Amenities
+        amenities={amenities}
+        title="What this place offers"
+        onClick={handleShowAmenities}
+      />
       <ProductDescription
         descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
         descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
