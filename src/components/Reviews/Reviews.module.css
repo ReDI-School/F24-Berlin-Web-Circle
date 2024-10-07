@@ -1,0 +1,80 @@
+.reviewsContainer {
+    margin-bottom: 40px;
+    width: 465px;
+}
+
+.reviewerAndRatingContainer {
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-self: left;
+    gap: 12px;
+}
+
+.reviewerContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+.reviewerPicture img{
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.reviewerDetails {
+    line-height: 1.25rem;
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewerDetails p {
+    font-size: 0.9rem;
+}
+
+.reviewerDetails h3, p {
+    margin: 0;
+    text-align: left;
+}
+
+.ratingContainer {
+    display: flex;
+    align-items: center;
+}
+
+.reviewerDetails h3 {
+    font-weight: 500;
+}
+
+.ratingContainer span{
+    padding: 0 5px;
+}
+
+.ratingContainer h4{
+    margin: 0;
+    font-weight: 500;
+}
+
+.reviewText{
+    text-align: left;
+}
+
+.showMore {
+    margin-top: 8px;
+    padding: 0;
+}
+
+.reviewText button{
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.reviewText button:focus{
+    outline: none;
+}

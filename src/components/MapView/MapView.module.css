@@ -1,0 +1,53 @@
+.mapWiewContainer {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding-top: 15px;
+  padding-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.whereYouBe {
+  font-weight: 500;
+}
+.mapContainer {
+  width: 100%;
+  height: 480px;
+  background-color: rgb(199, 207, 207);
+  border-radius: 10px;
+}
+.mapImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.addressContainer {
+  margin-top: 10px;
+}
+.addressLocation {
+  font-weight: 600;
+}
+.addressDescription {
+  color: rgb(0, 0, 0);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.arrowRightContainer {
+  margin-top: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+.showMore {
+  margin-top: 5px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.arrowRight {
+  margin-top: 5px;
+}
