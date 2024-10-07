@@ -4,8 +4,6 @@ export { CalendarIcon } from "./CalendarIcon";
 export { PinIcon } from "./PinIcon";
 export { BackyardIcon } from "./BackyardIcon";
 export { BalconyIcon } from "./BalconyIcon";
-export { CalendarIcon } from "./CalendarIcon";
-export { DoorIcon } from "./DoorIcon";
 export { FirepitIcon } from "./FirepitIcon";
 export { FireplaceIcon } from "./FireplaceIcon";
 export { KitchenIcon } from "./KitchenIcon";
