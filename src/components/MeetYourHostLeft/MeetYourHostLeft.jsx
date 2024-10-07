@@ -1,8 +1,7 @@
-import React from "react";
-import styles from "./PersonProfile.module.css";
+import styles from "./MeetYourHostLeft.module.css";
+import { BusinessIcon, LanguageIcon } from "../../icons";
 
-const PersonProfile = ({
-  title,
+const MeetYourHostLeft = ({
   image,
   name,
   role,
@@ -10,10 +9,15 @@ const PersonProfile = ({
   reviews,
   rating,
   yearsHosting,
+  profileText,
 }) => {
+  const languagesAndBusinessData = [
+    { icon: LanguageIcon, text: "Speaks German and English" },
+    { icon: BusinessIcon, text: "Business" },
+  ];
+
   return (
     <div className={styles.hostInfoContainer}>
-      <h2 className={styles.header}>{title}</h2>
       <div className={styles.mainContainer}>
         <div className={styles.leafSide}>
           <div className={styles.roundPhotoComponent}>
@@ -84,13 +88,45 @@ const PersonProfile = ({
           </div>
           <hr className={styles.borders} />
           <div className={styles.reviewsContainer}>
-            <span className={styles.reviewsNumbrs}>{yearsHosting}</span>
+            <span className={styles.reviewsNumbers}>{yearsHosting}</span>
             <span className={styles.reviewsText}>Year hosting</span>
           </div>
+        </div>
+      </div>
+
+      <div className={styles.personTextContainer}>
+        <div className={styles.personText}>
+          <div className={styles.languagesAndBusiness}>
+            {languagesAndBusinessData.map((item, index) => (
+              <div key={index} className={styles.lgAndBsText}>
+                <div className={styles.lgIcon}>
+                  <item.icon />
+                </div>
+                <div className={styles.lgText}>{item.text}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.profileText}>{profileText}</div>
+        </div>
+
+        <div className={styles.arrowRightContainer}>
+          <span className={styles.showMore}>Show more</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="currentColor"
+            aria-label="arrow-right"
+            className={styles.arrowRight}
+          >
+            <path d="M9.29 15.88L13.17 12 9.29 8.12a.996.996 0 1 1 1.41-1.41l4.59 4.59a.996.996 0 0 1 0 1.41l-4.59 4.59a.996.996 0 1 1-1.41-1.41z" />
+          </svg>
         </div>
       </div>
     </div>
   );
 };
 
-export default PersonProfile;
+export default MeetYourHostLeft;

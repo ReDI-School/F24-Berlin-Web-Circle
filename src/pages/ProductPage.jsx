@@ -6,7 +6,7 @@ import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
-import PersonProfile from "../components/PersonProfile/PersonProfile";
+import PersonProfile from "../components/MeetYourHostLeft/MeetYourHostLeft";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
@@ -17,6 +17,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
 import Reviews from "../components/Reviews/Reviews";
+import MeetYourHost from "../components/MeetYourHostRight/MeetYourHostRight";
+import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 
 const ProductPage = () => {
   const highlights = [
@@ -119,16 +121,8 @@ const ProductPage = () => {
         address="Königslutter am Elm, Niedersachsen, Germany"
         addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
       />
-      <PersonProfile
-        title="Meet your host"
-        image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
-        name="Raus"
-        role="Superhost"
-        verified={true}
-        reviews={74}
-        rating={4.85}
-        yearsHosting={1}
-      />
+      <MeetYourHostSection />
+    
     </div>
   );
 };
