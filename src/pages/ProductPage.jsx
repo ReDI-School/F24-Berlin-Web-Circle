@@ -8,7 +8,7 @@ import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
-
+import HeaderUserMenu from "../components/HeaderUserMenu/HeaderUserMenu";
 
 const ProductPage = () => {
   const { productId } = useParams(); // Object Destructuring
@@ -33,6 +33,7 @@ const ProductPage = () => {
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/2ca9c23e-85db-48f8-bd21-0718c286dcdf.jpeg"
         }
       />
+      <HeaderUserMenu />
       <ReservationCard />
       <FavoriteStay />
       <HostSummary
