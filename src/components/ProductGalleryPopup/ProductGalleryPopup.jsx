@@ -4,19 +4,11 @@ import LeftArrowIcon from "../../icons/LeftArrowIcon";
 import ShareIcon from "../../icons/ShareIcon";
 import HeartIcon from "../../icons/HeartIcon";
 
-const ProductGalleryPopup = ({
-  showPopupHandler,
-  livingArea,
-  kitchen,
-  bathroom,
-  exterior,
-  Bedroom,
-}) => {
-  const galleryImgs = [livingArea, kitchen, bathroom, exterior, Bedroom];
-
+const ProductGalleryPopup = ({ showPopupHandler, rooms }) => {
   function handleShare() {
     alert("Share this experience");
   }
+
   function handleSave() {
     alert("Save this experience");
   }
@@ -26,57 +18,45 @@ const ProductGalleryPopup = ({
       <div className={styles.header}>
         <LeftArrowIcon showPopupHandler={showPopupHandler} />
         <div className={styles.saveShareIconContainer}>
-          <div
-            className={styles.shareContainer}
-            onClick={() => {
-              alert("At the moment, this button is not linked!");
-            }}
-          >
+          <div className={styles.shareContainer} onClick={handleShare}>
             <ShareIcon height={30} width={30} fill="black" />
             <span className={styles.shareSaveText}>Share</span>
           </div>
-          <div
-            className={styles.SaveContainer}
-            onClick={() => {
-              alert("At the moment, this button is not linked!");
-            }}
-          >
+          <div className={styles.SaveContainer} onClick={handleSave}>
             <HeartIcon height={20} width={20} fill="black" />
             <span className={styles.shareSaveText}>Save</span>
           </div>
         </div>
       </div>
-
       <div className={styles.subheaderContainer}>
         <div className={styles.smallTopImgsContainer}>
           <span className={styles.photoTourText}>Photo tour</span>
           <div className={styles.smallTopImgsAllContainers}>
-            {galleryImgs.map((el) => (
+            {rooms.map((room) => (
               <a
-                href={`#${el.name}`}
-                key={el.id}
+                href={`#${room.name}`}
+                key={room.id}
                 className={styles.smallTopImgsMain}
               >
                 <img
-                  src={el.image}
-                  alt={el.name}
+                  src={room.image}
+                  alt={room.name}
                   className={styles.smallTopImgs}
                 />
-                <span className={styles.smallTopImgsName}>{el.name}</span>
+                <span className={styles.smallTopImgsName}>{room.name}</span>
               </a>
             ))}
           </div>
-
-          {galleryImgs.map((el) => (
+          {rooms.map((room) => (
             <a
-              id={el.name}
-              key={el.id}
+              id={room.name}
+              key={room.id}
               className={styles.bottomImagesContainer}
             >
-              <span className={styles.photoTourText}>{el.name}</span>
+              <span className={styles.photoTourText}>{room.name}</span>
               <img
-                src={el.image}
-                alt={el.name}
+                src={room.image}
+                alt={room.name}
                 className={styles.bottomImages}
               />
             </a>
