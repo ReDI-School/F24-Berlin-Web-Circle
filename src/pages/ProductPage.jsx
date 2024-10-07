@@ -32,7 +32,6 @@ const ProductPage = () => {
   );
 };
 
-=======
 const ProductPage = () => {
   const highlights = [
     {
