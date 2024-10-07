@@ -8,6 +8,7 @@ import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
+import ReservationCard from "../components/ReservationCard/ReservationCard";q
 import HeaderUserMenu from "../components/HeaderUserMenu/HeaderUserMenu";
 
 const ProductPage = () => {
