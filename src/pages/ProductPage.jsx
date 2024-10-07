@@ -9,6 +9,7 @@ import ProductGallery from "../components/ProductGallery/ProductGallery";
 import PersonProfile from "../components/personProfile/PersonProfile";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 
+
 const ProductPage = () => {
   const { productId } = useParams(); // Object Destructuring
 
