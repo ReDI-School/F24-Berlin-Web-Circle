@@ -4,8 +4,7 @@ import airbnbLogo from "../../assets/logo_airbnb.svg"
 import ButtonBeAHost from '../ButtonBeAHost/ButtonBeAHost'
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
 import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
-/* import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
- */import GuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
+import GuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 
 const Header = () => {
     const handelRegionClick = (item) => {
@@ -20,7 +19,6 @@ const Header = () => {
                         <img src={airbnbLogo} className={styles.logoAirbnb} alt='The Logo of AirBnB' />
                     </a>
                 </div>
-				{/* <ToggleButtonsStaysExperiences /> */}
                 <div className={styles.beAHostAndLanguageSelectorWrapper}>
                     <div className={styles.hostButtonDiv}>
                         <ButtonBeAHost />
@@ -34,7 +32,7 @@ const Header = () => {
                 <DestinationPopUp title='Search by region' onClick={(e) => handelRegionClick(e)} />
             </div>
             <div>
-                  <GuestsPopUp/>
+                <GuestsPopUp />
             </div>
         </div >
     )

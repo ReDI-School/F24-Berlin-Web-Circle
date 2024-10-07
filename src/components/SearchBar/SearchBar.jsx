@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
 
-const SearchBar = ({ searchType, dates: initialDates, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
+const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
   const [checkIn, setCheckIn] = useState(initialCheckIn || "");
   const [checkOut, setCheckOut] = useState(initialCheckOut || "");
   const [guests, setGuests] = useState(initialGuests || "");
-  const [date, setDates] = useState(initialDates || "");
+  const [date, setDates] = useState(initialDate || "");
 
   const handleSearch = () => {
     //search logic here
