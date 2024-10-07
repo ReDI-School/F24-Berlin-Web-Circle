@@ -6,7 +6,7 @@ import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
-import PersonProfile from "../components/personProfile/PersonProfile";
+import PersonProfile from "../components/PersonProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
@@ -16,6 +16,8 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ProductPage.module.css";
+import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
+import Reviews from "../components/Reviews/Reviews";
 
 const ProductPage = () => {
   const highlights = [
@@ -55,8 +57,10 @@ const ProductPage = () => {
       <div className={styles.ProductPageContainer}>
         {`Dummy Product Page ${productId}`}
         <div className={styles.titlePage}>
-          <h2>Raus | Cabin in nature with panoramic view & sauna</h2>
-          <div>
+          <AboveProductTitle
+            title={"Cabin in nature with panoramic view & sauna"}
+          />
+          <div className={styles.IconButton}>
             <IconButton
               faIcon={faArrowUpFromBracket}
               label="Share"
@@ -103,6 +107,7 @@ const ProductPage = () => {
               profilePicUrl={hostImage}
             />
             <ProductHighlight highlights={highlights} />
+            <hr />
             <ProductDescription
               descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
               descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
@@ -114,6 +119,18 @@ const ProductPage = () => {
             <ReservationCard />
           </div>
         </div>
+        <hr className={styles.separator} />
+        <Reviews
+          name={"Julia"}
+          picture={
+            "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
+          }
+          rating={5}
+          reviewText={
+            "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."
+          }
+          date="2024-09-15"
+        />
         <MapView
           mapViewSampleImg={mapViewSampleImg}
           address="Königslutter am Elm, Niedersachsen, Germany"
@@ -134,5 +151,4 @@ const ProductPage = () => {
     </div>
   );
 };
-
 export default ProductPage;

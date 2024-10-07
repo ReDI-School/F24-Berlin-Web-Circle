@@ -1,6 +1,7 @@
 .MainProductPage {
   max-width: 100%;
   max-height: 100%;
+  margin-bottom: 100px;
 }
 .ProductPageContainer {
   text-align: center;
@@ -10,6 +11,9 @@
 .titlePage {
   display: flex;
   justify-content: space-between;
+}
+.IconButton {
+  margin-top: 40px;
 }
 .ProductDescriptionContainer {
   display: flex;
@@ -24,4 +28,8 @@
   justify-content: right;
   flex-basis: 30%;
   max-height: 600px;
+}
+.separator {
+  border-color: rgb(243, 241, 241);
+  border-width: 0.1px;
 }
