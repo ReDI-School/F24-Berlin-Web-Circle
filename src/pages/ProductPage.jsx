@@ -3,22 +3,45 @@ import ReservationCard from "../components/ReservationCard/ReservationCard";
 import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
 import hostImage from "../assets/images/host-raus.webp";
-import MapView from "../components/mapView/MapView";
+import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
-import ProductGallery from "../components/productGallery/ProductGallery";
-import PersonProfile from "../components/personProfile/PersonProfile";
+import ProductGallery from "../components/ProductGallery/ProductGallery";
+import PersonProfile from "../components/PersonProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
-import ProductSummary from "../components/productSummary/ProductSummary";
-import ProductDescription from "../components/productDescription/ProductDescription";
+import ProductSummary from "../components/ProductSummary/ProductSummary";
+import ProductDescription from "../components/ProductDescription/ProductDescription";
 import IconButton from "../components/IconButton/IconButton";
+import {
+  faArrowUpFromBracket,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
+import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
 import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
-import { faArrowUpFromBracket, faHeart } from "@fortawesome/free-solid-svg-icons";
+
 
 const ProductPage = () => {
-  const highlights = [{type: "CHECK_IN", text: "Self check-in", subText: "Check yourself in with the lockbox."},
-    {type: "AWARD", text: "Superhost", subText: "Superhosts are experienced, highly rated Hosts." },
-    {type: "WIFI", text: "Free Wifi", subText: "Superhosts are experienced, highly rated Hosts." },
-    {type: "CANCELLATION", text: "Free cancellation", subText: "Get a full refund if you change your mind."}];
+  const highlights = [
+    {
+      type: "CHECK_IN",
+      text: "Self check-in",
+      subText: "Check yourself in with the lockbox.",
+    },
+    {
+      type: "AWARD",
+      text: "Superhost",
+      subText: "Superhosts are experienced, highly rated Hosts.",
+    },
+    {
+      type: "WIFI",
+      text: "Free Wifi",
+      subText: "Superhosts are experienced, highly rated Hosts.",
+    },
+    {
+      type: "CANCELLATION",
+      text: "Free cancellation",
+      subText: "Get a full refund if you change your mind.",
+    },
+  ];
 
   const { productId } = useParams(); // Object Destructuring
 
@@ -33,6 +56,9 @@ const ProductPage = () => {
     <div>
       {`Dummy Product Page ${productId}`}
       <div>
+        <AboveProductTitle
+          title={"Cabin in nature with panoramic view & sauna"}
+        />
         <IconButton
           faIcon={faArrowUpFromBracket}
           label="Share"
@@ -40,7 +66,6 @@ const ProductPage = () => {
         />
         <IconButton faIcon={faHeart} label="Save" onClick={handleSave} />
       </div>
-      
       <ProductGallery
         bigImage={
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg"
@@ -76,7 +101,7 @@ const ProductPage = () => {
         role="Superhost"
         profilePicUrl={hostImage}
       />
-      <ProductHighlight highlights={highlights}/>
+      <ProductHighlight highlights={highlights} />
       <ProductDescription
         descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
         descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
@@ -114,5 +139,4 @@ const ProductPage = () => {
     </div>
   );
 };
-
 export default ProductPage;

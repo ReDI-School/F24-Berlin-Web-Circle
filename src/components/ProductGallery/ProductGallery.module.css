@@ -1,4 +1,4 @@
-.product-gallery-main {
+.productGalleryMain {
   height: 450px;
   width: 100%;
   display: flex;
@@ -6,11 +6,11 @@
   margin-top: 30px;
   margin-bottom: 50px;
 }
-.big-img-container {
+.bigImgContainer {
   width: 50%;
   height: 100%;
 }
-.big-image {
+.bigImage {
   cursor: pointer;
   width: 100%;
   height: 100%;
@@ -18,10 +18,10 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.big-image:hover {
+.bigImage:hover {
   opacity: 0.9;
 }
-.small-imgs-container {
+.smallImgsContainer {
   width: 50%;
   height: 100%;
   display: grid;
@@ -30,33 +30,32 @@
   grid-gap: 8px;
   box-sizing: border-box;
 }
-.small-img-left,
-.small-img-right-top,
-.small-img-right-bottom {
+.smallImgLeft,
+.smallImgRightTop,
+.smallImgRightBottom {
   cursor: pointer;
   width: 100%;
   height: 100%;
   object-fit: cover;
   overflow: hidden;
 }
-.small-img-right-top {
+.smallImgRightTop {
   border-top-right-radius: 10px;
 }
-.small-img-right-bottom {
+.smallImgRightBottom {
   border-bottom-right-radius: 10px;
 }
-.small-img-left:hover,
-.small-img-right-bottom:hover,
-.small-img-right-top:hover {
+.smallImgLeft:hover,
+.smallImgRightBottom:hover,
+.smallImgRightTop:hover {
   opacity: 80%;
 }
-
-.show-photos-btn-container {
+.showPhotosBtnContainer {
   cursor: pointer;
   overflow: hidden;
   position: relative;
 }
-.show-photos-btn {
+.showPhotosBtn {
   position: absolute;
   bottom: 20px;
   right: 30px;
@@ -74,7 +73,7 @@
   display: flex;
   align-items: center;
 }
-.show-photos-btn-svg {
+.showPhotosBtnSvg {
   margin-right: 5px;
   height: 15px;
   width: 15px;
