@@ -1,11 +1,10 @@
 import styles from "./ReservationCard.module.css";
 import CostsSummary from "../CostsSummary/CostsSummary";
 import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp"
-import { useState, useRef, useEffect } from "react";
+import { useState} from "react";
 import { DownArrow, UpArrow } from "../../icons";
 
 function ReservationCard() {
-  const ref = useRef();
   const [showGuests, setShowGuests] = useState(false);
   const checkInDate = new Date("2025-01-01");
   const checkOutDate = new Date("2025-01-16");
