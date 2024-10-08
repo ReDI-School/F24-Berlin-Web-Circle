@@ -16,6 +16,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
+import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import Reviews from "../components/Reviews/Reviews";
 import Amenities from "../components/Amenities/Amenities";
 
