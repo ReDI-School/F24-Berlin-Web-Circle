@@ -22,9 +22,9 @@ const Guest = ({title, description, descriptionType, onClick}) => {
                     }
             </div>
             <div className={Styles.buttonContainer}>
-                    <button className={count !== 0 ? Styles.button : Styles.buttonDisable} onClick={handelMinusCount}>-</button>
+                    <div className={count !== 0 ? Styles.button : Styles.buttonDisable} onClick={handelMinusCount}>-</div>
                     <div className={Styles.count}>{count}</div>
-                    <button className={Styles.button} onClick={handelPlusCount}>+</button>
+                    <div className={Styles.button} onClick={handelPlusCount}>+</div>
             </div>
 
         </div>

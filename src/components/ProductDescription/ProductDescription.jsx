@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ProductDescription.css";
+import styles from "./ProductDescription.module.css";
 import ProductDescriptionPopup from "./ProductDescriptionPopup";
 
 const ProductDescription = ({
@@ -25,14 +25,14 @@ const ProductDescription = ({
   };
 
   return (
-    <div className="product-description">
-      <div className="product-description-text">
+    <div className={styles.productDescription}>
+      <div className={styles.productDescriptionText}>
         <span>{descriptionSpace}</span>
-        <span className="space-title">The space</span>
+        <span className={styles.spaceTitle}>The space</span>
         <span>{limitedText}</span>
       </div>
-      <div className="arrow-right-container" onClick={showPopupHandler}>
-        <span className="show-more">
+      <div className={styles.arrowRightContainer} onClick={showPopupHandler}>
+        <span className={styles.showMore}>
           Show more
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ const ProductDescription = ({
             height="24"
             fill="currentColor"
             aria-label="arrow-right"
-            className="arrow-right"
+            className={styles.arrowRight}
           >
             <path d="M9.29 15.88L13.17 12 9.29 8.12a.996.996 0 1 1 1.41-1.41l4.59 4.59a.996.996 0 0 1 0 1.41l-4.59 4.59a.996.996 0 1 1-1.41-1.41z" />
           </svg>

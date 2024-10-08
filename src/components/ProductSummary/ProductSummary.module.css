@@ -1,4 +1,4 @@
-.product-summary-container {
+.productSummaryContainer {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -10,7 +10,7 @@
 .information {
   display: inline !important;
 }
-.reviews-container {
+.reviewsContainer {
   display: inline;
   padding-top: 5px;
   font-weight: bold;
