@@ -3,8 +3,7 @@
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-  max-width: 1120px;
-  width: 16.25rem !important;
+  width: 23rem;
 }
 
 .reservationSection {
@@ -85,13 +84,11 @@
   margin: 1rem 0;
   padding: 14px 24px;
   color: white;
-  background-image: radial-gradient(
-    circle,
-    rgb(255, 56, 92) 0%,
-    rgb(230, 30, 77) 27.5%,
-    rgb(227, 28, 95) 40%,
-    rgb(215, 4, 102) 57.5%,
-    rgb(189, 30, 89) 75%,
-    rgb(189, 30, 89) 100%
-  );
+  background-image: radial-gradient(circle,
+      rgb(255, 56, 92) 0%,
+      rgb(230, 30, 77) 27.5%,
+      rgb(227, 28, 95) 40%,
+      rgb(215, 4, 102) 57.5%,
+      rgb(189, 30, 89) 75%,
+      rgb(189, 30, 89) 100%);
 }
