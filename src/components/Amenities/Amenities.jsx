@@ -1,13 +1,15 @@
-import { WifiIcon } from "../../icons/WifiIcon";
-import { KitchenIcon } from "../../icons/KitchenIcon";
-import { BalconyIcon } from "../../icons/BalconyIcon";
-import { BackyardIcon } from "../../icons/BackyardIcon";
-import { FirepitIcon } from "../../icons/FirepitIcon";
-import { WorkspaceIcon } from "../../icons/WorkspaceIcon";
-import { SaunaIcon } from "../../icons/SaunaIcon";
-import { FireplaceIcon } from "../../icons/FireplaceIcon";
-import { ParkingIcon } from "../../icons/ParkingIcon";
-import { PetsIcon } from "../../icons/PetsIcon";
+import {
+  WifiIcon,
+  KitchenIcon,
+  BalconyIcon,
+  BackyardIcon,
+  FirepitIcon,
+  WorkspaceIcon,
+  SaunaIcon,
+  FireplaceIcon,
+  ParkingIcon,
+  PetsIcon,
+} from "../../icons";
 import styles from "./Amenities.module.css";
 
 function Amenities({ title, amenities, onClick }) {
