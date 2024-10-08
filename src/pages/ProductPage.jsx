@@ -15,8 +15,11 @@ import {
   faArrowUpFromBracket,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import styles from "./ProductPage.module.css";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
+import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
+import Amenities from "../components/Amenities/Amenities";
 
 const ProductPage = () => {
   const highlights = [
@@ -40,6 +43,19 @@ const ProductPage = () => {
       text: "Free cancellation",
       subText: "Get a full refund if you change your mind.",
     },
+  ];
+
+  const amenities = [
+    { type: "kitchen", text: "Kitchen" },
+    { type: "workspace", text: "Dedicated workspace" },
+    { type: "sauna", text: "Sauna" },
+    { type: "balcony", text: "Patio or balcony" },
+    { type: "fireplace", text: "Indoor fireplace" },
+    { type: "wifi", text: "Wifi" },
+    { type: "parking", text: "Free parking on premises" },
+    { type: "pets", text: "Pets allowed" },
+    { type: "backyard", text: "Backyard" },
+    { type: "firepit", text: "Fire pit" },
   ];
 
   const reviews = [{
@@ -72,6 +88,10 @@ const ProductPage = () => {
   }
   function handleSave() {
     alert("Save this experience");
+  }
+
+  function handleShowAmenities() {
+    alert("Here is the list of all amenities!");
   }
 
   return (
@@ -130,8 +150,12 @@ const ProductPage = () => {
         guestAccess="You have access to all areas of the flat. The flat has its own entrance."
         otherThings="Do not smoke in rooms!"
       />
-       <ReviewsSection 
-       reviews={reviews}
+      <Reviews 
+        name={"Julia"} 
+        picture={"https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"}
+        rating={5}
+        reviewText={"It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."} 
+        date = "2024-09-15"
        />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
