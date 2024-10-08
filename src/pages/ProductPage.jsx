@@ -16,7 +16,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
-import Reviews from "../components/Reviews/Reviews";
+import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 
 const ProductPage = () => {
   const highlights = [
@@ -41,6 +41,29 @@ const ProductPage = () => {
       subText: "Get a full refund if you change your mind.",
     },
   ];
+
+  const reviews = [{
+      name: "Julia",
+      picture: "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240",
+      rating: 5,
+      reviewText: "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.",
+      date: "2024-09-22"
+    },
+    {
+      name: "Eef",
+      picture: "https://a0.muscache.com/im/pictures/user/d1b646f8-16d9-4469-8d26-190b944ce662.jpg?im_w=240",
+      rating: 5,
+      reviewText: "It's a nice boat and beautiful surroundings! Lots of walking and cycling, all right from the place of stay",
+      date: "2024-09-05"
+    },
+    {
+      name: "Nicole",
+      picture: "https://a0.muscache.com/im/pictures/user/User-477216581/original/7daddddf-7c73-4aad-b631-69859d1f1622.jpeg?im_w=240",
+      rating: 5,
+      reviewText: "we liked the houseboat, surroundings and location very much. people were also very friendly and accommodating",
+      date: "2024-04-05"
+    },
+   ]
 
   const { productId } = useParams(); // Object Destructuring
 
@@ -107,12 +130,8 @@ const ProductPage = () => {
         guestAccess="You have access to all areas of the flat. The flat has its own entrance."
         otherThings="Do not smoke in rooms!"
       />
-      <Reviews 
-        name={"Julia"} 
-        picture={"https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"}
-        rating={5}
-        reviewText={"It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."} 
-        date = "2024-09-15"
+       <ReviewsSection 
+       reviews={reviews}
        />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
