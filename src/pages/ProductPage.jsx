@@ -150,13 +150,9 @@ const ProductPage = () => {
         guestAccess="You have access to all areas of the flat. The flat has its own entrance."
         otherThings="Do not smoke in rooms!"
       />
-      <Reviews 
-        name={"Julia"} 
-        picture={"https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"}
-        rating={5}
-        reviewText={"It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."} 
-        date = "2024-09-15"
-       />
+     <ReviewsSection 
+       reviews={reviews}
+      />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
         address="Königslutter am Elm, Niedersachsen, Germany"
