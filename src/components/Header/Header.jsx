@@ -7,6 +7,7 @@ import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
 import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
 import GuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 
+
 const Header = () => {
     const handelRegionClick = (item) => {
     }
