@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
+import { Link } from "react-router-dom"
 
-const ProductCard = ({ image, title, host, price }) => {
+const ProductCard = ({ image, title, host, price, place }) => {
   const handleShare = () => {
     alert(`Share this experience ${title}`);
   };
@@ -24,15 +25,19 @@ const ProductCard = ({ image, title, host, price }) => {
           </svg>
         </span>
       </button>
-      <img src={image} alt={title} className={styles.productImage} />
 
-      <div className={styles.cardContent}>
-        <div className={styles.cardHeader}>
-          <h2 className={styles.cardTitle}>{title}</h2>
+
+      <Link to={`/rooms/${place.id}`}>
+        <img src={image} alt={title} className={styles.productImage} />
+
+        <div className={styles.cardContent}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>{title}</h2>
+          </div>
         </div>
-      </div>
-      <p className={styles.cardHost}>{host}</p>
-      <p className={styles.cardPrice}>{price}</p>
+        <p className={styles.cardHost}>{host}</p>
+        <p className={styles.cardPrice}>{price}</p>
+      </Link>
     </div>
   );
 };

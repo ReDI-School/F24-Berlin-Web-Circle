@@ -30,6 +30,7 @@ function App() {
         title={"Cozy Apartment in City Center"}
         host={"Hosted by Wendy and Elisa"}
         price={"Coming soon"}
+        place={places}
       
       />
       {/* FOR TESTING */}
