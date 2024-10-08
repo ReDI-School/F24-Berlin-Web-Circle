@@ -16,6 +16,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
+import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import Reviews from "../components/Reviews/Reviews";
 
 const ProductPage = () => {
@@ -118,6 +119,19 @@ const ProductPage = () => {
         mapViewSampleImg={mapViewSampleImg}
         address="Königslutter am Elm, Niedersachsen, Germany"
         addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
+      />
+      <ReviewSummary 
+        totalAvgRating={4.91} 
+        totalReviewsCount={200} 
+        ratings={{
+          cleanlinessAvgRating: 4.8,
+          accuracyAvgRating: 4.9,
+          checkInAvgRating: 5.0,
+          communicationAvgRating: 5.0,
+          locationAvgRating: 4.9,
+          valueAvgRating: 4.6,
+          starTotals: { fiveStar: 130, fourStar: 50, threeStar: 10, twoStar: 6, oneStar: 4 }
+        }}
       />
       <PersonProfile
         title="Meet your host"
