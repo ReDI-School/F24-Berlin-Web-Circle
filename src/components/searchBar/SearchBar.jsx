@@ -1,6 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { useState } from "react";
 import "./SearchBar.css";
 
 const SearchBar = ({ checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
