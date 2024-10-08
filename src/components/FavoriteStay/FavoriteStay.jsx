@@ -51,7 +51,6 @@ const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
           </div>
         </div>
         <div></div>
-        <div className="fav-stay-seperator"></div>
       </div>
     </div>
   );
