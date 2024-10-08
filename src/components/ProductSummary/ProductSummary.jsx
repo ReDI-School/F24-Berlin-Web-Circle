@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductSummary.css";
+import styles from "./ProductSummary.module.css";
 
 const ProductSummary = ({
   accommodation,
@@ -13,13 +13,13 @@ const ProductSummary = ({
 }) => {
   const ProductSummaryInformation = [guests, bedrooms, beds, baths];
   return (
-    <div className="product-summary-container">
-      <h2 className="address">
+    <div className={styles.productSummaryContainer}>
+      <h2 className={styles.address}>
         {accommodation} in {address}
       </h2>
       <div>
         {ProductSummaryInformation.map((el, index) => (
-          <div className="information" key={index}>
+          <div className={styles.information} key={index}>
             <span>
               {el.value} {el.value > 1 ? el.key + "s" : el.key}
             </span>{" "}
@@ -29,7 +29,7 @@ const ProductSummary = ({
           </div>
         ))}
       </div>
-      <div className="reviews-container">
+      <div className={styles.reviewsContainer}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
@@ -45,7 +45,7 @@ const ProductSummary = ({
           ></path>
         </svg>
         <span> {starGrade}</span> <span>&#183;</span>{" "}
-        <span className="reviews">
+        <span className={styles.reviews}>
           {reviews} {reviews > 1 ? "reviews " : "review "}
         </span>
       </div>

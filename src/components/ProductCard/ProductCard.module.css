@@ -1,60 +1,47 @@
-.product-card {
+.productCard {
   width: 300px;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
   cursor: pointer;
   text-align: left;
-
 }
-
-.product-card:hover {
-  transform: scale(1.03); 
+.productCard:hover {
+  transform: scale(1.03);
 }
-
-.product-image {
+.productImage {
   width: 284px;
   height: 284px;
   object-fit: cover;
   border-bottom: 1px solid #ddd;
   border-radius: 12px;
-  margin: 8px; 
+  margin: 8px;
 }
-
-
-.card-content {
-   
+.cardContent {
   text-align: left;
 }
-
-
-.card-header {
+.cardHeader {
   text-align: left;
-
 }
-
-.card-title {
+.cardTitle {
   font-size: 18px;
   font-weight: bold;
   text-align: left;
   line-height: 90%;
   margin-left: 8px;
   color: #333;
-  
 }
-
-.card-host {
+.cardHost {
   font-size: 14px;
   color: #717171;
   line-height: 90%;
   margin-left: 8px;
   margin-bottom: 8px;
 }
-
-.card-price {
+.cardPrice {
   font-size: 16px;
   font-weight: bold;
   margin-left: 8px;
@@ -62,14 +49,12 @@
   line-height: 90%;
   color: #333;
 }
-
-
-.share-button {
+.shareButton {
   position: absolute;
   top: 20px;
   right: 20px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.5); 
+  background-color: rgba(255, 255, 255, 0.5);
   color: #333;
   border: none;
   cursor: pointer;
@@ -81,17 +66,15 @@
   height: 40px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-.share-icon {
-display: block;
-fill: none;
-height: 16px;
-width: 16px;
-stroke: #040404;
-stroke-width: 3; 
-overflow: visible;
+.shareIcon {
+  display: block;
+  fill: none;
+  height: 16px;
+  width: 16px;
+  stroke: #040404;
+  stroke-width: 3;
+  overflow: visible;
 }
-
-.share-button:hover {
+.shareButton:hover {
   background-color: rgba(245, 245, 245, 1);
 }
