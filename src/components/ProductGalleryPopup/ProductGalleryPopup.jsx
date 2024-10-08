@@ -14,7 +14,7 @@ const ProductGalleryPopup = ({ showPopupHandler, rooms }) => {
   }
 
   return (
-    <div className={styles.popupMainCntainer}>
+    <div className={styles.popupMainContainer}>
       <div className={styles.header}>
         <LeftArrowIcon showPopupHandler={showPopupHandler} />
         <div className={styles.saveShareIconContainer}>
@@ -23,7 +23,7 @@ const ProductGalleryPopup = ({ showPopupHandler, rooms }) => {
             <span className={styles.shareSaveText}>Share</span>
           </div>
           <div className={styles.SaveContainer} onClick={handleSave}>
-            <HeartIcon height={20} width={20} fill="black" />
+            <HeartIcon />
             <span className={styles.shareSaveText}>Save</span>
           </div>
         </div>
