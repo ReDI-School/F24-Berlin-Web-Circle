@@ -1,7 +1,12 @@
 import styles from "./ReservationCard.module.css";
 import CostsSummary from "../CostsSummary/CostsSummary";
+import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp"
+import { useState, useRef, useEffect } from "react";
+import { DownArrow, UpArrow } from "../../icons";
 
 function ReservationCard() {
+  const ref = useRef();
+  const [showGuests, setShowGuests] = useState(false);
   const checkInDate = new Date("2025-01-01");
   const checkOutDate = new Date("2025-01-16");
   const pricePerNight = 146;
@@ -9,6 +14,16 @@ function ReservationCard() {
   const airbnbServiceFee = 10;
   const longStayDiscount = 30;
   const nightsCountForDiscount = 5;
+
+  const toggleShowGuests = () => {
+    setShowGuests((prevState)=> (!prevState));
+  }
+
+  const addGuestPopUpStyles = {borderRadius: "4px",
+    width: "100% !important",
+    position: "absolute !important",
+    border: "1px solid var(--palette-deco)",
+    zIndex: "99 !important"};
 
   return (
     <div className={styles.reservationCard}>
@@ -32,12 +47,21 @@ function ReservationCard() {
               </div>
             </div>
           </button>
-          <button className={styles.guestsNumberPickerSection}>
+         
+          <button className={styles.guestsNumberPickerSection} onClick={toggleShowGuests}>
             <div className={styles.guestsPickerSectionContent}>
               <label>Guests</label>
-              <div>1 guest</div>
+              <div className={styles.guestCountWrapper}>
+                <div>1 guest</div>
+                <>
+                  {showGuests ? <UpArrow/> : <DownArrow/>}
+                </>
+              </div>
             </div>
           </button>
+          <div className={styles.guestDropdown}>
+            {showGuests && <AddGuestsPopUp style={addGuestPopUpStyles}/>}
+          </div>
         </div>
         <div className="buttonContainer">
           <button className={styles.reserveButton}>Reserve</button>
