@@ -4,5 +4,8 @@ footer {
 	color: var(--primary);
 	text-align: left;
 	display: flex;
-	align-items: center;
+	width: 100%;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	padding-left: 2.5rem;
 }
