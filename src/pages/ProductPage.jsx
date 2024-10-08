@@ -16,7 +16,9 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
+import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import Reviews from "../components/Reviews/Reviews";
+import Amenities from "../components/Amenities/Amenities";
 
 const ProductPage = () => {
   const highlights = [
@@ -42,6 +44,19 @@ const ProductPage = () => {
     },
   ];
 
+  const amenities = [
+    { type: "kitchen", text: "Kitchen" },
+    { type: "workspace", text: "Dedicated workspace" },
+    { type: "sauna", text: "Sauna" },
+    { type: "balcony", text: "Patio or balcony" },
+    { type: "fireplace", text: "Indoor fireplace" },
+    { type: "wifi", text: "Wifi" },
+    { type: "parking", text: "Free parking on premises" },
+    { type: "pets", text: "Pets allowed" },
+    { type: "backyard", text: "Backyard" },
+    { type: "firepit", text: "Fire pit" },
+  ];
+
   const { productId } = useParams(); // Object Destructuring
 
   function handleShare() {
@@ -49,6 +64,10 @@ const ProductPage = () => {
   }
   function handleSave() {
     alert("Save this experience");
+  }
+
+  function handleShowAmenities() {
+    alert("Here is the list of all amenities!");
   }
 
   return (
@@ -102,23 +121,51 @@ const ProductPage = () => {
         profilePicUrl={hostImage}
       />
       <ProductHighlight highlights={highlights} />
+      <Amenities
+        amenities={amenities}
+        title="What this place offers"
+        onClick={handleShowAmenities}
+      />
       <ProductDescription
         descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
         descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
         guestAccess="You have access to all areas of the flat. The flat has its own entrance."
         otherThings="Do not smoke in rooms!"
       />
-      <Reviews 
-        name={"Julia"} 
-        picture={"https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"}
+      <Reviews
+        name={"Julia"}
+        picture={
+          "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
+        }
         rating={5}
-        reviewText={"It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."} 
-        date = "2024-09-15"
-       />
+        reviewText={
+          "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."
+        }
+        date="2024-09-15"
+      />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
         address="Königslutter am Elm, Niedersachsen, Germany"
         addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
+      />
+      <ReviewSummary
+        totalAvgRating={4.91}
+        totalReviewsCount={200}
+        ratings={{
+          cleanlinessAvgRating: 4.8,
+          accuracyAvgRating: 4.9,
+          checkInAvgRating: 5.0,
+          communicationAvgRating: 5.0,
+          locationAvgRating: 4.9,
+          valueAvgRating: 4.6,
+          starTotals: {
+            fiveStar: 130,
+            fourStar: 50,
+            threeStar: 10,
+            twoStar: 6,
+            oneStar: 4,
+          },
+        }}
       />
       <PersonProfile
         title="Meet your host"
