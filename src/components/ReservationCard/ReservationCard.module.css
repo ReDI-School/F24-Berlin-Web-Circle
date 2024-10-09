@@ -25,6 +25,7 @@
 
 .reservationForm {
   text-align: left;
+  position: relative;
 }
 
 .reservationForm button {
@@ -59,7 +60,8 @@
 }
 
 .guestDropdown {
-  position: absolute !important;
+  position: absolute;
+  right: 0;
 }
 
 .checkinSection {

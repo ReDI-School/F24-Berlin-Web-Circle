@@ -20,7 +20,6 @@ function ReservationCard() {
 
   const addGuestPopUpStyles = {borderRadius: "4px",
     width: "100% !important",
-    maxWidth: "20rem",
     position: "absolute !important",
     border: "1px solid var(--palette-deco)",
     zIndex: "99 !important"};
@@ -53,9 +52,7 @@ function ReservationCard() {
               <label>Guests</label>
               <div className={styles.guestCountWrapper}>
                 <div>1 guest</div>
-                <>
-                  {showGuests ? <UpArrow/> : <DownArrow/>}
-                </>
+                <>{showGuests ? <UpArrow/> : <DownArrow/>}</>
               </div>
             </div>
           </button>
