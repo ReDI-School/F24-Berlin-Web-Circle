@@ -20,6 +20,7 @@ function ReservationCard() {
 
   const addGuestPopUpStyles = {borderRadius: "4px",
     width: "100% !important",
+    maxWidth: "20rem",
     position: "absolute !important",
     border: "1px solid var(--palette-deco)",
     zIndex: "99 !important"};
