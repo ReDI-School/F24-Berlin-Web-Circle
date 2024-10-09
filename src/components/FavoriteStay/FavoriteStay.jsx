@@ -1,4 +1,5 @@
 
+
 import StarRating from "../StarRating/StarRating";
 import "./FavoriteStay.css"
 import Left from "../../assets/fav-badge-left.png";
@@ -51,7 +52,6 @@ const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
           </div>
         </div>
         <div></div>
-        <div className="fav-stay-seperator"></div>
       </div>
     </div>
   );

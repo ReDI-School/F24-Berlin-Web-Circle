@@ -1,0 +1,38 @@
+.ratingBarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ratingBarList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ratingBarItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -1px;
+}
+.ratingBar {
+  background-color: var(--palette-deco);
+  border-radius: 2px;
+  height: 4px;
+  width: 124px;
+  margin-right: 32px;
+}
+.ratingBarFill {
+  height: 100%;
+  border-radius: 2px;
+  background-color: var(--primary);
+  z-index: 10;
+}
+.title {
+  text-align: left;
+  margin-bottom: 8px;
+}
+.starLabel {
+  font-size: 12px;
+}
