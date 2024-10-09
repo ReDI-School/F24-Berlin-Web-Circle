@@ -2,7 +2,7 @@
   margin: 10px 0px 30px;
 }
 .productDescriptionText {
-  width: 55%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: left;
