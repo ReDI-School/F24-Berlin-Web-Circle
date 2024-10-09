@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Styles from './AddGuestsPopUp.module.css';
 import Guest from './Guest/Guest';
 
-const AddGuestsPopUp = () => {
+const AddGuestsPopUp = ({style}) => {
     const [guestsList, setGuestsList] = useState({typeofGuest:0,numberOfGuests:0});
     const guests = [
         {index:1, title:'Adults', description:'Ages 13 or above', descriptionType:'string'},
@@ -14,7 +14,7 @@ const AddGuestsPopUp = () => {
         setGuestsList(guest);
     }
     return(
-        <div className={Styles.popup}>
+        <div className={Styles.popup} style={style}>
             {guests.map((guest)=> 
                     <Guest 
                         key = {guest.index} 
