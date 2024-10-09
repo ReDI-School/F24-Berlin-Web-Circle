@@ -23,6 +23,7 @@ const formattedReviewDate = (reviewedDateString) => {
 
 const Reviews = ({ name, picture, rating, reviewText, date }) => {
   let limit = 125; //to be edited (around 125)
+
   const isReviewTextLong = reviewText.length > limit;
   const displayedReviewText = isReviewTextLong
     ? reviewText.slice(0, limit) + "..."
