@@ -14,11 +14,11 @@ import {
   faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
 
-const SharePopup = () => {
+const SharePopup = ({ onClick }) => {
   return (
     <div className="share-modal">
       <div className="modal-header">
-        <CloseIcon />
+        <CloseIcon  onClick={onClick}/>
         <h2>Share this experience</h2>
       </div>
 

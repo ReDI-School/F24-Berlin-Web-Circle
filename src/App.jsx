@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import SearchBar from "./components/searchBar/SearchBar";
-import SharePopup from "./components/searchBar/SharePopup/SharePopup";
 
 function App() {
   const places = [
@@ -18,7 +17,6 @@ function App() {
 
   return (
     <>
-      
       <div>
         <SearchBar
           checkIn=""
