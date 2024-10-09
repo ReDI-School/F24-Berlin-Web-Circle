@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import ReservationCard from "../components/ReservationCard/ReservationCard";
 import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
@@ -58,7 +57,6 @@ const ProductPage = () => {
     { type: "firepit", text: "Fire pit" },
   ];
 
-  const { productId } = useParams(); // Object Destructuring
 
   function handleShare() {
     alert("Share this experience");
@@ -74,7 +72,6 @@ const ProductPage = () => {
   return (
     <div className={styles.MainProductPage}>
       <div className={styles.ProductPageContainer}>
-        {`Dummy Product Page ${productId}`}
         <div className={styles.titlePage}>
           <AboveProductTitle
             title={"Cabin in nature with panoramic view & sauna"}
