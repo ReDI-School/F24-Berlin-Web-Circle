@@ -25,6 +25,7 @@
 
 .reservationForm {
   text-align: left;
+  position: relative;
 }
 
 .reservationForm button {
@@ -51,6 +52,16 @@
 .guestsPickerSectionContent,
 .checkinSectionContent {
   margin: 12px 10px;
+}
+
+.guestCountWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.guestDropdown {
+  position: absolute;
+  right: 0;
 }
 
 .checkinSection {
