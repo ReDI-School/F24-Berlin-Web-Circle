@@ -1,4 +1,5 @@
-import React from "react";
+
+
 import StarRating from "../StarRating/StarRating";
 import "./FavoriteStay.css"
 import Left from "../../assets/fav-badge-left.png";
