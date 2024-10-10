@@ -1,0 +1,10 @@
+.searchBarContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.toggleButtonsContainer {
+    margin-top: 10px;
+}
