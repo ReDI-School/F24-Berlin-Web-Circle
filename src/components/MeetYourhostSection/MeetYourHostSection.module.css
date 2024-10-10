@@ -1,0 +1,28 @@
+.meetYourHostSection {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: 100%;
+}
+
+.meetYourHostSectionContainer {
+    text-align: left;   
+    max-width: 1100px;
+    margin: auto;
+    
+}
+
+.meetYourHostTitle {
+    margin-bottom: 24px;
+}
+
+.meetYourHostTitle h2 {
+    font-weight: 500;
+    margin: 0;
+}
+
+.meetYourHostSectionInnerContainer {
+    display: grid;
+    gap: 48px;
+    grid-template-columns: 380px 1fr;
+    max-width: 1120px;
+}
