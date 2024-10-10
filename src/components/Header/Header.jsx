@@ -5,27 +5,25 @@ import ButtonBeAHost from '../ButtonBeAHost/ButtonBeAHost'
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
 import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
 import GuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
+import SearchPanel from '../SearchPanel/SearchPanel';
+
 
 const Header = () => {
+
     const handelRegionClick = (item) => {
     }
 
     return (
-        <div className={styles.headerContainer}>
+        <div className={styles.headerSectionContainer}>
             <header className={styles.header}>
-                <div className={styles.logoDiv}>
-                    <a className={styles.airbnbHomeButton}
-                        href="/">
-                        <img src={airbnbLogo} className={styles.logoAirbnb} alt='The Logo of AirBnB' />
-                    </a>
-                </div>
+                <a className={styles.airbnbHomeButton}
+                    href="/">
+                    <img src={airbnbLogo} className={styles.logoAirbnb} alt='The Logo of AirBnB' />
+                </a>
+                <SearchPanel />
                 <div className={styles.beAHostAndLanguageSelectorWrapper}>
-                    <div className={styles.hostButtonDiv}>
-                        <ButtonBeAHost />
-                    </div>
-                    <div className={styles.languageSelectorDiv}>
-                        <LanguageSelector />
-                    </div>
+                    <ButtonBeAHost />
+                    <LanguageSelector />
                 </div>
             </header>
             <div className={styles.destinationPopUp}>

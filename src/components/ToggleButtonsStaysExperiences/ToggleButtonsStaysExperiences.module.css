@@ -1,7 +1,9 @@
 .buttonContainer {
     display: flex;
     justify-content: center;
-    margin-bottom: 15px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .toggleButton {

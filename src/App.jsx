@@ -1,19 +1,14 @@
 import { Link } from "react-router-dom";
 import "./App.css";
+
 import ProductCard from "./components/ProductCard/ProductCard";
-import SearchBar from "./components/searchBar/SearchBar";
-import ToggleButtonsStaysExperiences from './components/ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
-import { useState } from "react";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PersonProfile from "./components/personProfile/PersonProfile";
 
 
 function App() {
 
-  const [searchType, setSearchType] = useState("stays");
-  const toggleSearchType = (type) => {
-    setSearchType(type);
-  };
+
 
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
@@ -21,30 +16,18 @@ function App() {
     { id: "3", name: "Funen's best ocean view" },
   ];
 
-  const handleAirbnbSearch = ({ location, checkIn, checkOut, guests }) => {
-    // Logic for home search
-  };
+
 
   return (
     <>
-    <div>
-    <ToggleButtonsStaysExperiences toggleSearchType={toggleSearchType}/>
-    </div>
-      <div>
-        <SearchBar
-          searchType={searchType}
-          checkIn=""
-          checkOut=""
-          guests=""
-          onSearch={handleAirbnbSearch}
-        />
-      </div>
+
+      
 
       <div>
         <CalendarToggle />
       </div>
 
-      
+
       <PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
@@ -54,13 +37,13 @@ function App() {
         reviews={74}
         rating={4.85}
         yearsHosting={1}
-        />
-       <ProductCard 
-        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"} 
+      />
+      <ProductCard
+        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"}
         title={"Cozy Apartment in City Center"}
         host={"Hosted by Wendy and Elisa"}
         price={"Coming soon"}
-      
+
       />
       {/* FOR TESTING */}
       {places.map((place) => {
@@ -70,6 +53,7 @@ function App() {
           </Link>
         );
       })}
+
     </>
     
   );

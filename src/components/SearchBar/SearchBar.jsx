@@ -29,7 +29,6 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
         />
       </div>
       <div className={styles.separator}></div>
-
       {searchType === "stays" ? (
         <>
           <div className={styles.inputContainerCheckIn}>
