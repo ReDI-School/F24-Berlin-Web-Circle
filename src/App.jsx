@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import PersonProfile from "./components/personProfile/PersonProfile";
-import SearchBar from "./components/searchBar/SearchBar";
+import PersonProfile from "./components/PersonProfile/PersonProfile";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
   const places = [
@@ -31,7 +31,6 @@ function App() {
         <CalendarToggle />
       </div>
 
-      
       <PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
@@ -41,13 +40,17 @@ function App() {
         reviews={74}
         rating={4.85}
         yearsHosting={1}
-        />
-       <ProductCard 
-        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"} 
-        title={"Cozy Apartment in City Center"}
-        host={"Hosted by Wendy and Elisa"}
-        price={"Coming soon"}
-      
+      />
+
+      <ProductCard
+        images={[
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/a766e0e9-1e6f-4b88-b8d5-ce12375c6de8.png?im_w=1200&im_q=highq",
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/71d534a9-6699-4fe0-ad82-a9aaf0450b56.png?im_w=1200&im_q=highq",
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/3f7a34a4-0052-4d5d-8e81-a75667f48a70.png?im_w=1200&im_q=highq"
+        ]}
+        title="Cozy Apartment in City Center"
+        host="Hosted by Wendy and Elisa"
+        price="Coming soon"
       />
       {/* FOR TESTING */}
       {places.map((place) => {
@@ -58,7 +61,6 @@ function App() {
         );
       })}
     </>
-    
   );
 }
 
