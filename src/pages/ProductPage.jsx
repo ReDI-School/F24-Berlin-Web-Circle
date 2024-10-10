@@ -6,7 +6,6 @@ import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
-import PersonProfile from "../components/MeetYourHostLeft/MeetYourHostLeft";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
@@ -17,7 +16,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
 import Reviews from "../components/Reviews/Reviews";
-import MeetYourHost from "../components/MeetYourHostRight/MeetYourHostRight";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 
 const ProductPage = () => {

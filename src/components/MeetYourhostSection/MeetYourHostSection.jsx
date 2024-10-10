@@ -1,6 +1,6 @@
-import MeetYourHost from "../MeetYourHostRight/MeetYourHostRight";
-import PersonProfile from "../MeetYourHostLeft/MeetYourHostLeft";
+import MeetYourHostRight from "./MeetYourHostRight/MeetYourHostRight";
 import styles from "./MeetYourHostSection.module.css";
+import MeetYourHostLeft from "./MeetYourHostLeft/MeetYourHostLeft";
 
 const MeetYourHostSection = () => {
   return (
@@ -10,7 +10,7 @@ const MeetYourHostSection = () => {
             <h2>Meet your Host</h2>
         </div>
       <div className={styles.meetYourHostSectionInnerContainer}>
-        <PersonProfile
+        <MeetYourHostLeft
           image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
           name="Raus"
           role="Superhost"
@@ -22,7 +22,7 @@ const MeetYourHostSection = () => {
             "Find your nature retreat in Cabins in pristine places not far from your home."
           }
         />
-        <MeetYourHost name="Raus" responseRate="100%" responseTime="an hour" />
+        <MeetYourHostRight name="Raus" responseRate="100%" responseTime="an hour" />
       </div>
     </div>
     </div>

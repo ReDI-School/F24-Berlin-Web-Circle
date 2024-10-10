@@ -4,3 +4,6 @@ export {CalendarIcon} from './CalendarIcon';
 export {PinIcon} from "./PinIcon";
 export {LanguageIcon} from "./LanguageIcon";
 export {BusinessIcon} from "./BusinessIcon";
+export {ReviewsNumberIcon} from "./ReviewsNumberIcon";
+export {VerifiedIcon} from "./VerifiedIcon";
+export {RoleIcon} from "./RoleIcon";
