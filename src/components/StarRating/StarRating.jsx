@@ -1,6 +1,3 @@
-
-
-/* rating vlaue to be obtained from DB */
 const StarRating = ({ rating = 0 }) => {
   const StarIcon = () => (
     <svg
