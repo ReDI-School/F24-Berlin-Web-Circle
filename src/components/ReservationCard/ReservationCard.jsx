@@ -30,9 +30,6 @@ function ReservationCard({
     border: '1px solid var(--palette-deco)',
     zIndex: '99 !important',
   }
-  const formattedCheckInDate = checkInDate.toLocaleDateString()
-  const formattedCheckOutDate = checkOutDate.toLocaleDateString()
-  console.log('guestsList', guestsList)
 
   const adultsAndChildrenCount =
   (guestsList.find(guest => guest.typeofGuest === 'Adults')?.numberOfGuests || 0) +
@@ -41,25 +38,33 @@ function ReservationCard({
 const infantsCount = guestsList.find(guest => guest.typeofGuest === 'Infants')?.numberOfGuests || 0;
 const petsCount = guestsList.find(guest => guest.typeofGuest === 'Pets')?.numberOfGuests || 0;
 
+const checkInOut = checkInDate && checkOutDate;
+
   return (
     <div className={styles.reservationCard}>
       <div className={styles.reservationSection}>
         <div className={styles.pricingGuestSection}>
-          <span>{`€ ${pricePerNight} `}</span>
-          night
+          {checkInOut ? (
+            <>
+              <strong>{`€ ${pricePerNight} `}</strong>
+              night
+            </>
+          ) : (
+            <span>Add dates for prices</span>
+          )}
         </div>
         <div className={styles.reservationForm}>
           <button className={styles.datesPickerSection}>
             <div className={styles.checkinSection}>
               <div className={styles.checkinSectionContent}>
                 <label>Check-in</label>
-                <div>{formattedCheckInDate}</div>
+                <div>{checkInDate ? checkInDate : <span>Add date</span>}</div> 
               </div>
             </div>
             <div className={styles.checkoutSection}>
               <div className={styles.checkoutSectionContent}>
                 <label>Checkout</label>
-                <div>{formattedCheckOutDate}</div>
+                <div>{checkOutDate ? checkOutDate : <span>Add date</span>}</div>
               </div>
             </div>
           </button>
@@ -93,11 +98,14 @@ const petsCount = guestsList.find(guest => guest.typeofGuest === 'Pets')?.number
           </div>
         </div>
         <div className="buttonContainer">
-          <button className={styles.reserveButton}>Reserve</button>
+          <button className={styles.reserveButton}>{checkInOut ? 'Reserve' : 'Check availability'}</button> 
+        </div>
+        <div className={styles.noDatesMessage}>
+          {!checkInOut && <p>Enter your travel dates to see the total price per night.</p>}
         </div>
       </div>
 
-      {checkInDate && checkOutDate && (
+      {checkInOut && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
