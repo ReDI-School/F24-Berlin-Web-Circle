@@ -1,31 +1,24 @@
 import { Link } from "react-router-dom";
 import "./App.css";
+
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PersonProfile from "./components/PersonProfile/PersonProfile";
 import SearchBar from "./components/SearchBar/SearchBar";
 
+
 function App() {
+
   const places = [
     { id: "1", name: "Idyllic house by the sea" },
     { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
     { id: "3", name: "Funen's best ocean view" },
   ];
 
-  const handleAirbnbSearch = ({ location, checkIn, checkOut, guests }) => {
-    // Logic for home search
-  };
+
 
   return (
     <>
-      <div>
-        <SearchBar
-          checkIn=""
-          checkOut=""
-          guests=""
-          onSearch={handleAirbnbSearch}
-        />
-      </div>
 
       <div>
         <CalendarToggle />
@@ -51,8 +44,7 @@ function App() {
         title="Cozy Apartment in City Center"
         host="Hosted by Wendy and Elisa"
         price="Coming soon"
-      />
-      {/* FOR TESTING */}
+    
       {places.map((place) => {
         return (
           <Link to={`/rooms/${place.id}`} key={place.id}>
@@ -60,6 +52,7 @@ function App() {
           </Link>
         );
       })}
+
     </>
   );
 }
