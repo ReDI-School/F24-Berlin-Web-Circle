@@ -1,9 +1,16 @@
-import Styles from './AddGuestsPopUp.module.css';
-import Guest from './Guest/Guest';
+import styles from './AddGuestsPopUp.module.css'
+import Guest from './Guest/Guest'
 
-const AddGuestsPopUp = ({ guestsData, onGuestChange, style }) => {
+const AddGuestsPopUp = ({
+  guestsData,
+  onGuestChange,
+  style,
+  toggleShowGuests,
+  allowGuestsNumber = {peopleNumber: 0, petsNumber: 0},
+}) => {
+  const { peopleNumber, petsNumber } = allowGuestsNumber
   return (
-    <div className={Styles.popup} style={style}>
+    <div className={styles.popup} style={style}>
       {guestsData?.map((guest) => (
         <Guest
           key={guest.index}
@@ -13,8 +20,16 @@ const AddGuestsPopUp = ({ guestsData, onGuestChange, style }) => {
           onClick={onGuestChange}
         />
       ))}
+      <div className={styles.popupText}>
+        This place has a maximum of {peopleNumber} guests, not including
+        infants. If you&apos;re  bringing more than {petsNumber} pets, please let
+        your host know.
+      </div>
+      <div className={styles.closePopUp}>
+        <button onClick={toggleShowGuests}>Close</button>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default AddGuestsPopUp;
+export default AddGuestsPopUp

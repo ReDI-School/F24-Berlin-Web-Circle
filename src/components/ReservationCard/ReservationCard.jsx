@@ -15,6 +15,7 @@ function ReservationCard({
   guestsData,
   onGuestChange,
   guestsList,
+  allowGuestsNumber
 }) {
   const [showGuests, setShowGuests] = useState(false)
 
@@ -85,6 +86,8 @@ const petsCount = guestsList.find(guest => guest.typeofGuest === 'Pets')?.number
                 guestsData={guestsData}
                 onGuestChange={onGuestChange}
                 style={addGuestPopUpStyles}
+                allowGuestsNumber={allowGuestsNumber}
+                toggleShowGuests={toggleShowGuests}
               />
             )}
           </div>
