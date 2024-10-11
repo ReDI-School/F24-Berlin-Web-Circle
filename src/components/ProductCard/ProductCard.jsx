@@ -4,15 +4,15 @@ import { Link } from "react-router-dom"
 
 const ProductCard = ({ place }) => {
 
+  const placeId = place.id ? place.id : `dummy-${Date.now()}`;
 
   const handleShare = () => {
     alert(`Share this experience ${place.title}`);
   };
 
-
   console.log(place)
   return (
-    <Link to={`/rooms/${place.id}`}>
+    <Link to={`/rooms/${placeId}`}>
       <div className={styles.productCard}>
         <button onClick={handleShare} className={styles.shareButton}>
           <span className={styles.shareIcon}>
@@ -30,11 +30,7 @@ const ProductCard = ({ place }) => {
             </svg>
           </span>
         </button>
-
-
-
         <img src={place.image} alt={place.title} className={styles.productImage} />
-
         <div className={styles.cardContent}>
           <div className={styles.cardHeader}>
             <h2 className={styles.cardTitle}>{place.title}</h2>
@@ -44,7 +40,6 @@ const ProductCard = ({ place }) => {
         <p className={styles.cardPrice}>{place.price}</p>
       </div>
     </Link>
-
   );
 };
 
