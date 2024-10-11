@@ -44,6 +44,7 @@ Currently, two official plugins are available:
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Mohammad Salavati ([@Sci-mo](https://github.com/Sci-mo))
 - Dona Vidushani Nishshanka ([@dvnishshanka](https://github.com/dvnishshanka))
+- Iman Bajalan ([@BajalanIman](https://github.com/BajalanIman))
 - Samuel Konzi ([@Konzisam](https://github.com/Konzisam))
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))

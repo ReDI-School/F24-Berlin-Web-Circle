@@ -19,3 +19,5 @@ export { Value } from "./Value";
 export { Location } from "./Location";
 export { CheckInIcon } from "./CheckInIcon";
 export { AggregateRatingStarIcon } from "./AggregateRatingStarIcon";
+export {DownArrow} from "./DownArrow";
+export {UpArrow} from "./UpArrow";
