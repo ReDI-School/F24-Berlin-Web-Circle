@@ -3,7 +3,6 @@ import "./FavoriteStay.css"
 import Left from "../../assets/fav-badge-left.png";
 import Right from "../../assets/fav-badge-right.png";
 
-/* rating vlaue to be obtained from DB */
 const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
   return (
     <div className="fav-stay-container">
