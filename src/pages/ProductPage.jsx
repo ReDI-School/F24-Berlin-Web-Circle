@@ -23,8 +23,10 @@ import { useState } from "react";
 
 const ProductPage = () => {
   /* ============== Reservation card data ============== */
-  const checkInDate = new Date("2025-01-01");
-  const checkOutDate = new Date("2025-01-16");
+  // const checkInDate = new Date("2025-01-01").toLocaleDateString();
+  // const checkOutDate = new Date("2025-01-16").toLocaleDateString();
+  const checkInDate = '';
+  const checkOutDate = '';
   const pricePerNight = 146;
   const cleaningFee = 10;
   const airbnbServiceFee = 10;
