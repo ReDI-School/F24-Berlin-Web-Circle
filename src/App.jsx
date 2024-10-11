@@ -1,15 +1,12 @@
 import "./App.css";
+
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PersonProfile from "./components/personProfile/PersonProfile";
-import SearchBar from "./components/searchBar/SearchBar";
+
 
 function App() {
-  /* const places = [
-    { id: "1", name: "Idyllic house by the sea" },
-    { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
-    { id: "3", name: "Funen's best ocean view" },
-  ]; */
+
 
   const places = [
     { id: "1", 
@@ -22,32 +19,20 @@ function App() {
     { id: "4", title: "Cozy Apartment in City Center"} 
   ];
 
-  
-  
-  
-  
-
-
   const handleAirbnbSearch = ({ location, checkIn, checkOut, guests }) => {
     // Logic for home search
   };
 
   return (
     <>
-      <div>
-        <SearchBar
-          checkIn=""
-          checkOut=""
-          guests=""
-          onSearch={handleAirbnbSearch}
-        />
-      </div>
+
+      
 
       <div>
         <CalendarToggle />
       </div>
 
-      
+
       <PersonProfile
         title="Meet your host"
         image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
