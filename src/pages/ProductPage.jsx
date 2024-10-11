@@ -30,6 +30,10 @@ const ProductPage = () => {
   const airbnbServiceFee = 10;
   const longStayDiscount = 30;
   const nightsCountForDiscount = 5;
+  const allowGuestsNumber = {
+    peopleNumber: 6,
+    petsNumber: 2,
+  }
 
   const [guestsList, setGuestsList] = useState([
     { typeofGuest: 'Adults', numberOfGuests: 1 },
@@ -38,7 +42,7 @@ const ProductPage = () => {
     { typeofGuest: 'Pets', numberOfGuests: 0 },
   ]);
     const guestsData = [
-        {index:1, title:'Adults', description:'Ages 13 or above', descriptionType:'string'},
+        {index:1, title:'Adults', description:'Age 13+', descriptionType:'string'},
         {index:2, title:'Children', description:'Ages 2 - 12', descriptionType:'string'},
         {index:3, title:'Infants', description:'Under 2', descriptionType:'string'},
         {index:4, title:'Pets', description:'Bringing a service animal?', descriptionType:'link'}
@@ -181,7 +185,8 @@ const ProductPage = () => {
                nightsCountForDiscount={nightsCountForDiscount}
                guestsData={guestsData}     
                onGuestChange={handleGuestClick} 
-               guestsList={guestsList}  
+               guestsList={guestsList} 
+               allowGuestsNumber={allowGuestsNumber}
             />
           </div>
         </div>
