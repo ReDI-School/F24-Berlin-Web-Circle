@@ -51,4 +51,4 @@ Currently, two official plugins are available:
 - Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
 - Gabriel Melhem ([@GabrielMelhem] (https://github.com/GabrielMelhem))
 - Iman Bajalan ([@BajalanIman](https://github.com/BajalanIman))
-
+- Nataliya Rodionova ([@006080](https://github.com/006080))
