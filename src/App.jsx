@@ -3,7 +3,7 @@ import "./App.css";
 
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import PersonProfile from "./components/personProfile/PersonProfile";
+import PersonProfile from "./components/PersonProfile/PersonProfile";
 
 
 function App() {
