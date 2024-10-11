@@ -1,28 +1,44 @@
-import styles from "./ReservationCard.module.css";
-import CostsSummary from "../CostsSummary/CostsSummary";
-import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp"
-import { useState} from "react";
-import { DownArrow, UpArrow } from "../../icons";
+import styles from './ReservationCard.module.css'
+import CostsSummary from '../CostsSummary/CostsSummary'
+import AddGuestsPopUp from '../AddGuestsPopUp/AddGuestsPopUp'
+import { useState } from 'react'
+import { DownArrow, UpArrow } from '../../icons'
 
-function ReservationCard() {
-  const [showGuests, setShowGuests] = useState(false);
-  const checkInDate = new Date("2025-01-01");
-  const checkOutDate = new Date("2025-01-16");
-  const pricePerNight = 146;
-  const cleaningFee = 10;
-  const airbnbServiceFee = 10;
-  const longStayDiscount = 30;
-  const nightsCountForDiscount = 5;
+function ReservationCard({
+  checkInDate,
+  checkOutDate,
+  pricePerNight,
+  cleaningFee,
+  airbnbServiceFee,
+  longStayDiscount,
+  nightsCountForDiscount,
+  guestsData,
+  onGuestChange,
+  guestsList,
+}) {
+  const [showGuests, setShowGuests] = useState(false)
 
   const toggleShowGuests = () => {
-    setShowGuests((prevState)=> (!prevState));
+    setShowGuests((prevState) => !prevState)
   }
 
-  const addGuestPopUpStyles = {borderRadius: "4px",
-    width: "100% !important",
-    position: "absolute !important",
-    border: "1px solid var(--palette-deco)",
-    zIndex: "99 !important"};
+  const addGuestPopUpStyles = {
+    borderRadius: '4px',
+    width: '100% !important',
+    position: 'absolute !important',
+    border: '1px solid var(--palette-deco)',
+    zIndex: '99 !important',
+  }
+  const formattedCheckInDate = checkInDate.toLocaleDateString()
+  const formattedCheckOutDate = checkOutDate.toLocaleDateString()
+  console.log('guestsList', guestsList)
+
+  const adultsAndChildrenCount =
+  (guestsList.find(guest => guest.typeofGuest === 'Adults')?.numberOfGuests || 0) +
+  (guestsList.find(guest => guest.typeofGuest === 'Children')?.numberOfGuests || 0);
+
+const infantsCount = guestsList.find(guest => guest.typeofGuest === 'Infants')?.numberOfGuests || 0;
+const petsCount = guestsList.find(guest => guest.typeofGuest === 'Pets')?.numberOfGuests || 0;
 
   return (
     <div className={styles.reservationCard}>
@@ -36,28 +52,41 @@ function ReservationCard() {
             <div className={styles.checkinSection}>
               <div className={styles.checkinSectionContent}>
                 <label>Check-in</label>
-                <div>01/01/2024</div>
+                <div>{formattedCheckInDate}</div>
               </div>
             </div>
             <div className={styles.checkoutSection}>
               <div className={styles.checkoutSectionContent}>
                 <label>Checkout</label>
-                <div>10/12/2024</div>
+                <div>{formattedCheckOutDate}</div>
               </div>
             </div>
           </button>
-         
-          <button className={styles.guestsNumberPickerSection} onClick={toggleShowGuests}>
+
+          <button
+            className={styles.guestsNumberPickerSection}
+            onClick={toggleShowGuests}
+          >
             <div className={styles.guestsPickerSectionContent}>
               <label>Guests</label>
               <div className={styles.guestCountWrapper}>
-                <div>1 guest</div>
-                <>{showGuests ? <UpArrow/> : <DownArrow/>}</>
+                <div>
+                  {adultsAndChildrenCount ? `${adultsAndChildrenCount} guest${adultsAndChildrenCount !== 1 ? 's' : ''}` : ''} 
+                  {infantsCount ? `, ${infantsCount} infant${infantsCount !== 1 ? 's' : ''}` : ''}
+                  {petsCount ? `, ${petsCount} pet${petsCount !== 1 ? 's' : ''}` : ''}
+                </div>
+                <>{showGuests ? <UpArrow /> : <DownArrow />}</>
               </div>
             </div>
           </button>
           <div className={styles.guestDropdown}>
-            {showGuests && <AddGuestsPopUp style={addGuestPopUpStyles}/>}
+            {showGuests && (
+              <AddGuestsPopUp
+                guestsData={guestsData}
+                onGuestChange={onGuestChange}
+                style={addGuestPopUpStyles}
+              />
+            )}
           </div>
         </div>
         <div className="buttonContainer">
@@ -65,7 +94,7 @@ function ReservationCard() {
         </div>
       </div>
 
-      {checkInDate !== null && checkOutDate !== null && (
+      {checkInDate && checkOutDate && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
@@ -77,7 +106,7 @@ function ReservationCard() {
         />
       )}
     </div>
-  );
+  )
 }
 
-export default ReservationCard;
+export default ReservationCard

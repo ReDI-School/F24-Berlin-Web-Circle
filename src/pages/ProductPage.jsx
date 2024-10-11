@@ -19,8 +19,42 @@ import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle
 import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import Reviews from "../components/Reviews/Reviews";
 import Amenities from "../components/Amenities/Amenities";
+import { useState } from "react";
 
 const ProductPage = () => {
+  /* ============== Reservation card data ============== */
+  const checkInDate = new Date("2025-01-01");
+  const checkOutDate = new Date("2025-01-16");
+  const pricePerNight = 146;
+  const cleaningFee = 10;
+  const airbnbServiceFee = 10;
+  const longStayDiscount = 30;
+  const nightsCountForDiscount = 5;
+
+  const [guestsList, setGuestsList] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ]);
+    const guestsData = [
+        {index:1, title:'Adults', description:'Ages 13 or above', descriptionType:'string'},
+        {index:2, title:'Children', description:'Ages 2 - 12', descriptionType:'string'},
+        {index:3, title:'Infants', description:'Under 2', descriptionType:'string'},
+        {index:4, title:'Pets', description:'Bringing a service animal?', descriptionType:'link'}
+    ];
+
+    const handleGuestClick = (updatedGuest) => {
+      setGuestsList((prevList) =>
+        prevList.map((guest) =>
+          guest.typeofGuest === updatedGuest.typeofGuest
+            ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+            : guest
+        )
+      );
+    };
+ /* ============== End of Reservation card data ============== */
+
   const highlights = [
     {
       type: "CHECK_IN",
@@ -137,7 +171,18 @@ const ProductPage = () => {
             />
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard />
+            <ReservationCard 
+               checkInDate={checkInDate}
+               checkOutDate={checkOutDate}
+               pricePerNight={pricePerNight}
+               cleaningFee={cleaningFee}
+               airbnbServiceFee={airbnbServiceFee}
+               longStayDiscount={longStayDiscount}
+               nightsCountForDiscount={nightsCountForDiscount}
+               guestsData={guestsData}     
+               onGuestChange={handleGuestClick} 
+               guestsList={guestsList}  
+            />
           </div>
         </div>
         <hr className={styles.separator} />

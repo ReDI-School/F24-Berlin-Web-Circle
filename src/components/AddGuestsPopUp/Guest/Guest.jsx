@@ -2,14 +2,20 @@ import { useState } from 'react';
 import Styles from './Guest.module.css';
 
 const Guest = ({title, description, descriptionType, onClick}) => {
-    const[count, setCount] = useState(0);
+    const [count, setCount] = useState(title === 'Adults' ?  1 :  0);
+    
     const handelMinusCount = () => {
-       {count > 0 && setCount(count - 1)};
-       onClick({typeofGuest:title,numberOfGuests:count - 1}); 
+        if (title === 'Adults' && count > 1) {
+            setCount(count - 1);
+            onClick({ typeofGuest: title, numberOfGuests: count - 1 });
+          } else if (title !== 'Adults' && count > 0) {
+            setCount(count - 1);
+            onClick({ typeofGuest: title, numberOfGuests: count - 1 });
+          }
     };
     const handelPlusCount = () => {
         setCount(count + 1);
-        onClick({typeofGuest:title,numberOfGuests:count + 1}); 
+        onClick({typeofGuest:title, numberOfGuests:count + 1}); 
     };
 
     return(
