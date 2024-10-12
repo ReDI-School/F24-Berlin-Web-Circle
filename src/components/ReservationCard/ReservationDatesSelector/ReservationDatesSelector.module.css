@@ -1,0 +1,18 @@
+.selectorContainer {
+  display: inline-block;
+  position: absolute;
+  top: -24px;
+  right: -32px;
+  padding: 24px 32px 16px;
+  background-color: white;
+  z-index: 10;
+  min-height: 460px;
+  width: 100%;
+  width: 661px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+}
+.cancelButton{
+  display: flex;
+  justify-content: flex-end;
+}
