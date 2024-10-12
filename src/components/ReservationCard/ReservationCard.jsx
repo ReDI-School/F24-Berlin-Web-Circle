@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { DownArrow, UpArrow } from '../../icons'
 import axios from 'axios'
 import ReservationDatesSelector from './ReservationDatesSelector/ReservationDatesSelector'
+import DatePicker from './DatePicker/DatePicker'
+import useOutsideClick from '../../hooks/useOutsideClick'
 
 function ReservationCard({
   // checkInDate,
@@ -92,6 +94,13 @@ function ReservationCard({
       setError('')
     }
   }
+
+  const closeGuestsPopup = () => {
+    setShowGuests(false);
+  };
+
+  const guestsRef = useOutsideClick(closeGuestsPopup);
+
   return (
     <div className={styles.reservationCard}>
       <div className={styles.reservationSection}>
@@ -106,26 +115,12 @@ function ReservationCard({
               <span>Add dates for prices</span>
             )}
           </div>
-          <div className={styles.reservationForm}>
-            <button
-              className={styles.datesPickerSection}
-              onClick={() => toggleShowCalendar(true)}
-            >
-              <div className={styles.checkinSection}>
-                <div className={styles.checkinSectionContent}>
-                  <label>Check-in</label>
-                  <div>{checkInDate ? checkInDate : <span>Add date</span>}</div>
-                </div>
-              </div>
-              <div className={styles.checkoutSection}>
-                <div className={styles.checkoutSectionContent}>
-                  <label>Checkout</label>
-                  <div>
-                    {checkOutDate ? checkOutDate : <span>Add date</span>}
-                  </div>
-                </div>
-              </div>
-            </button>
+          <div className={styles.reservationForm} ref={guestsRef}>
+            <DatePicker 
+              checkInDate={checkInDate} 
+              checkOutDate={checkOutDate} 
+              onToggle={toggleShowCalendar} 
+            />
             {showCalendar && (
               <ReservationDatesSelector
                 setCheckInDate={setCheckInDate}
@@ -137,7 +132,12 @@ function ReservationCard({
             )}
             <button
               className={styles.guestsNumberPickerSection}
-              onClick={toggleShowGuests}
+              ref={guestsRef}
+              onClick={() => toggleShowGuests()}
+              // onClick={() => {
+              //   // event.stopPropagation(); 
+              //   toggleShowGuests(); 
+              // }}
             >
               <div className={styles.guestsPickerSectionContent}>
                 <label>Guests</label>

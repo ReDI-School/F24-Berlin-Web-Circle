@@ -21,3 +21,4 @@ export { CheckInIcon } from "./CheckInIcon";
 export { AggregateRatingStarIcon } from "./AggregateRatingStarIcon";
 export {DownArrow} from "./DownArrow";
 export {UpArrow} from "./UpArrow";
+export {KeyboardIcon} from "./KeyboardIcon";

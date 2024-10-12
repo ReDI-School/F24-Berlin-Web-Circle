@@ -1,4 +1,6 @@
 import useOutsideClick from '../../../hooks/useOutsideClick'
+import DatePicker from '../DatePicker/DatePicker'
+import { KeyboardIcon } from '../../../icons/KeyboardIcon'
 import styles from './ReservationDatesSelector.module.css'
 
 const ReservationDatesSelector = ({
@@ -8,11 +10,17 @@ const ReservationDatesSelector = ({
   checkOutDate,
   toggleShowCalendar,
 }) => {
-  
-  const calendarRef = useOutsideClick(() => toggleShowCalendar(false));
-  
+  const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
+
   return (
     <div className={styles.selectorContainer} ref={calendarRef}>
+      <div className={styles.datePickerWrapper}>
+        <div className={styles.selectorTitle}>
+          <h2>Select dates</h2>
+          <span>Add your travel dates for exact pricing</span>
+        </div>
+        <DatePicker />
+      </div>
       <div className={styles.inputsContainer}>
         <input
           type="date"
@@ -30,8 +38,18 @@ const ReservationDatesSelector = ({
           min={checkInDate}
         />
       </div>
-      <div>
-        <button onClick={() => toggleShowCalendar(false)} className={styles.cancelButton}>Close</button>
+      <div className={styles.buttonsContainer}>
+        <button className={styles.shortcutsPopupButton}>
+          <KeyboardIcon />
+        </button>
+        <div className={styles.clearToggleBtnWrapper}>
+          <div className={styles.clearDatesButton}>
+            <button className={styles.clearDatesButton}>Clear dates</button>
+          </div>
+          <div className={styles.cancelButton}>
+            <button onClick={() => toggleShowCalendar(false)}>Close</button>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -41,7 +41,7 @@
   font-weight: 700;
 }
 
-.datesPickerSection {
+/* .datesPickerSection {
   display: flex;
   position: relative;
   width: 100%;
@@ -50,7 +50,7 @@
   font-size: 0.875rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
+} */
 .datesPickerSection:hover,
 .guestsNumberPickerSection:hover {
   border-color: #b5b5b5;
@@ -64,11 +64,11 @@
   color: black;
 }
 
-.checkoutSectionContent span,
+/* .checkoutSectionContent span, 
 .checkinSectionContent span {
   line-height: 20px;
   color: var(--neutral);
-}
+} */
 
 .guestCountWrapper {
   display: flex;
@@ -80,7 +80,7 @@
   right: 0;
 }
 
-.checkinSection {
+/* .checkinSection {
   width: 100%;
   text-align: left;
   border-right: 1px solid #b5b5b5;
@@ -89,7 +89,7 @@
 .checkoutSection {
   width: 100%;
   text-align: left;
-}
+} */
 
 .guestsNumberPickerSection {
   width: 100%;
