@@ -1,0 +1,42 @@
+.calendertoggle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+
+.calendertoggle-container {
+    display: flex;
+    border-radius: 50px;
+    background-color: #f7f7f7;
+    padding: 5px;
+    width: fit-content;
+    border: 1px solid #ddd;
+    align-items: center;
+  }
+  
+  .calendertoggle-option {
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .calendertoggle-option.active {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendertoggle-option:not(.active) {
+    color: #757575;
+  }
+  
+  .calendertoggle-option:hover:not(.active) {
+    background-color: #eaeaea;
+  }
+  

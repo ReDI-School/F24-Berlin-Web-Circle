@@ -1,0 +1,11 @@
+footer {
+	border-top: 1px solid var(--palette-deco);
+	font-size: 0.875rem;
+	color: var(--primary);
+	text-align: left;
+	display: flex;
+	width: 100%;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	padding-left: 2.5rem;
+}
