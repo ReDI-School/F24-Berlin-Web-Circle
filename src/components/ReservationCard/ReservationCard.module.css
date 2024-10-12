@@ -43,6 +43,7 @@
 
 .datesPickerSection {
   display: flex;
+  position: relative;
   width: 100%;
   background-color: transparent !important;
   border: 1px solid #b5b5b5;

@@ -1,3 +1,4 @@
+import useOutsideClick from '../../hooks/useOutsideClick';
 import styles from './AddGuestsPopUp.module.css'
 import Guest from './Guest/Guest'
 
@@ -8,9 +9,12 @@ const AddGuestsPopUp = ({
   toggleShowGuests,
   allowGuestsNumber = {peopleNumber: 0, petsNumber: 0},
 }) => {
+  
   const { peopleNumber, petsNumber } = allowGuestsNumber
+  const guestsRef = useOutsideClick(toggleShowGuests);
+  
   return (
-    <div className={styles.popup} style={style}>
+    <div className={styles.popup} style={style} ref={guestsRef}>
       {guestsData?.map((guest) => (
         <Guest
           key={guest.index}
