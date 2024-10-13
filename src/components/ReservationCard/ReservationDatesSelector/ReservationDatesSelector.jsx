@@ -10,6 +10,7 @@ const ReservationDatesSelector = ({
   checkInDate,
   checkOutDate,
   toggleShowCalendar,
+  minStayNights,
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
 
@@ -50,17 +51,56 @@ const ReservationDatesSelector = ({
     setUserSelectedCheckIn(false)
     setUserSelectedCheckOut(false)
   }
-  console.log('checkInDate', checkInDate)
-  console.log('checkoutDate', checkOutDate)
-  console.log('userSelectedCheckIn', userSelectedCheckIn)
-  console.log('userSelectedCheckOut', userSelectedCheckOut)
+
+  const calculateNights = (checkIn, checkOut) => {
+    return (new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24)
+  }
+
+  const nightsCount =
+    checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
+
+  const formatDate = (date) => {
+    const options = { month: 'short', day: 'numeric', year: 'numeric' }
+    return new Date(date).toLocaleDateString('en-US', options)
+  }
+
+  const getStayPeriod = (checkIn, checkOut) => {
+    const checkInDate = new Date(checkIn)
+    const checkOutDate = new Date(checkOut)
+
+    if (isNaN(checkInDate) || isNaN(checkOutDate)) {
+      return ''
+    }
+
+    const formattedCheckIn = formatDate(checkInDate)
+    const formattedCheckOut = formatDate(checkOutDate)
+
+    return `${formattedCheckIn} - ${formattedCheckOut}`
+  }
+
+  const stayPeriod =
+    checkInDate && checkOutDate ? getStayPeriod(checkInDate, checkOutDate) : ''
 
   return (
     <div className={styles.selectorContainer} ref={calendarRef}>
       <div className={styles.datePickerWrapper}>
         <div className={styles.selectorTitle}>
-          <h2>Select dates</h2>
-          <span>Add your travel dates for exact pricing</span>
+          <h2>
+            {nightsCount > 0
+              ? `${nightsCount} ${nightsCount > 1 ? 'nights' : 'night'}`
+              : 'Select your dates'}
+          </h2>
+          <span>
+            {stayPeriod ? (
+              <span>{stayPeriod}</span>
+            ) : minStayNights ? (
+              `Minimum stay: ${minStayNights} ${
+                minStayNights > 1 ? 'nights' : 'night'
+              }`
+            ) : (
+              'Add your travel dates for exact pricing'
+            )}
+          </span>
         </div>
         <DatePicker
           checkInDate={checkInDate}
@@ -80,16 +120,15 @@ const ReservationDatesSelector = ({
           required
         />
         {checkInDate && (
-        <input
-          type="date"
-          className={styles.dateInput}
-          value={checkOutDate}
-          onChange={(e) => handleCheckOutChange(e.target.value)}
-          required
-          min={checkInDate}
-        />
-        )
-      }
+          <input
+            type="date"
+            className={styles.dateInput}
+            value={checkOutDate}
+            onChange={(e) => handleCheckOutChange(e.target.value)}
+            required
+            min={checkInDate}
+          />
+        )}
       </div>
       <div className={styles.buttonsContainer}>
         <button className={styles.shortcutsPopupButton}>

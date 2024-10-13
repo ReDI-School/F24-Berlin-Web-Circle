@@ -32,6 +32,7 @@ const ProductPage = () => {
   const airbnbServiceFee = 10;
   const longStayDiscount = 30;
   const nightsCountForDiscount = 5;
+  const minStayNights = 2;
   const allowGuestsNumber = {
     peopleNumber: 6,
     petsNumber: 2,
@@ -189,6 +190,7 @@ const ProductPage = () => {
                onGuestChange={handleGuestClick} 
                guestsList={guestsList} 
                allowGuestsNumber={allowGuestsNumber}
+               minStayNights={minStayNights}
             />
           </div>
         </div>
