@@ -1,7 +1,7 @@
 import styles from './ReservationCard.module.css'
 import CostsSummary from '../CostsSummary/CostsSummary'
 import AddGuestsPopUp from '../AddGuestsPopUp/AddGuestsPopUp'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { DownArrow, UpArrow } from '../../icons'
 import axios from 'axios'
 import ReservationDatesSelector from './ReservationDatesSelector/ReservationDatesSelector'
@@ -33,9 +33,9 @@ function ReservationCard({
     setShowGuests((prevState) => !prevState)
   }
 
-  const toggleShowCalendar = (show) => {
-    setShowCalendar(show)
-  }
+  const toggleShowCalendar = useCallback((show) => {
+    setShowCalendar(show);
+  }, []);
 
   const addGuestPopUpStyles = {
     borderRadius: '4px',
@@ -120,6 +120,9 @@ function ReservationCard({
               checkInDate={checkInDate} 
               checkOutDate={checkOutDate} 
               onToggle={toggleShowCalendar} 
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
+              renderAsButton={true}
             />
             {showCalendar && (
               <ReservationDatesSelector
@@ -134,10 +137,6 @@ function ReservationCard({
               className={styles.guestsNumberPickerSection}
               ref={guestsRef}
               onClick={() => toggleShowGuests()}
-              // onClick={() => {
-              //   // event.stopPropagation(); 
-              //   toggleShowGuests(); 
-              // }}
             >
               <div className={styles.guestsPickerSectionContent}>
                 <label>Guests</label>
