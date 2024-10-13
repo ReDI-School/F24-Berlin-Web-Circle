@@ -1,8 +1,10 @@
 import useOutsideClick from '../../../hooks/useOutsideClick'
+import useDebounce from '../../../hooks/useDebounce'
 import DatePicker from '../DatePicker/DatePicker'
 import { KeyboardIcon } from '../../../icons/KeyboardIcon'
 import styles from './ReservationDatesSelector.module.css'
 import { useEffect, useState } from 'react'
+import { WarningIcon } from '../../../icons/WarningIcon'
 
 const ReservationDatesSelector = ({
   setCheckInDate,
@@ -17,23 +19,31 @@ const ReservationDatesSelector = ({
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
   const [userSelectedCheckOut, setUserSelectedCheckOut] = useState(false)
 
-  const handleCheckInChange = (date) => {
-    setCheckInDate(date)
-    setUserSelectedCheckIn(true)
-  }
+  const [checkInError, setCheckInError] = useState('')
+  const [checkOutError, setCheckOutError] = useState('')
 
-  const handleCheckOutChange = (date) => {
-    setCheckOutDate(date)
-    setUserSelectedCheckOut(true)
-  }
+  const debouncedCheckInDate = useDebounce(checkInDate, 500)
+  const debouncedCheckOutDate = useDebounce(checkOutDate, 500)
+
+  // const handleCheckInChange = (date) => {
+  //   setCheckInDate(date)
+  //   setUserSelectedCheckIn(true)
+  // }
+
+  // const handleCheckOutChange = (date) => {
+  //   setCheckOutDate(date)
+  //   setUserSelectedCheckOut(true)
+  // }
 
   useEffect(() => {
     if (
       userSelectedCheckIn &&
       userSelectedCheckOut &&
+      debouncedCheckInDate &&
+      debouncedCheckOutDate &&
       checkInDate < checkOutDate
     ) {
-      if (checkInDate > checkOutDate) {
+      if (debouncedCheckInDate > debouncedCheckOutDate) {
         alert('Check-in date must be before check-out date')
       }
       toggleShowCalendar(false)
@@ -42,6 +52,8 @@ const ReservationDatesSelector = ({
   }, [
     checkInDate,
     checkOutDate,
+    debouncedCheckInDate,
+    debouncedCheckOutDate,
     toggleShowCalendar,
     userSelectedCheckIn,
     userSelectedCheckOut,
@@ -57,7 +69,9 @@ const ReservationDatesSelector = ({
   }
 
   const nightsCount =
-    checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
+    debouncedCheckInDate && debouncedCheckOutDate
+      ? calculateNights(debouncedCheckInDate, debouncedCheckOutDate)
+      : 0
 
   const formatDate = (date) => {
     const options = { month: 'short', day: 'numeric', year: 'numeric' }
@@ -79,7 +93,9 @@ const ReservationDatesSelector = ({
   }
 
   const stayPeriod =
-    checkInDate && checkOutDate ? getStayPeriod(checkInDate, checkOutDate) : ''
+    debouncedCheckInDate && debouncedCheckOutDate
+      ? getStayPeriod(debouncedCheckInDate, debouncedCheckOutDate)
+      : ''
 
   return (
     <div className={styles.selectorContainer} ref={calendarRef}>
@@ -102,16 +118,32 @@ const ReservationDatesSelector = ({
             )}
           </span>
         </div>
-        <DatePicker
-          checkInDate={checkInDate}
-          checkOutDate={checkOutDate}
-          setCheckInDate={setCheckInDate}
-          setCheckOutDate={setCheckOutDate}
-          setUserSelectedCheckIn={setUserSelectedCheckIn}
-          setUserSelectedCheckOut={setUserSelectedCheckOut}
-        />
+        <div className={styles.datePickerContainer}>
+          <DatePicker
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            setUserSelectedCheckIn={setUserSelectedCheckIn}
+            setUserSelectedCheckOut={setUserSelectedCheckOut}
+            setCheckInError={setCheckInError}
+            setCheckOutError={setCheckOutError}
+            checkInError={checkInError}
+            checkOutError={checkOutError}
+          />
+          <div className={styles.warningMessageContainer}>
+            {(checkInError || checkOutError) && (
+              <>
+                <WarningIcon />
+                <div className={styles.warningMessage}>
+                  {checkInError || checkOutError}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       </div>
-      <div className={styles.inputsContainer}>
+      {/* <div className={styles.inputsContainer}>
         <input
           type="date"
           className={styles.dateInput}
@@ -129,7 +161,7 @@ const ReservationDatesSelector = ({
             min={checkInDate}
           />
         )}
-      </div>
+      </div> */}
       <div className={styles.buttonsContainer}>
         <button className={styles.shortcutsPopupButton}>
           <KeyboardIcon />

@@ -16,7 +16,13 @@
 
 .checkoutSectionContent,
 .checkinSectionContent {
-  margin: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2px;
+  height: 56px;
+  padding: 12px 10px;
   font-weight: 400;
   color: black;
 }
@@ -27,13 +33,26 @@
   color: var(--neutral);
 }
 
-.checkinSection {
+.checkinSection,
+.checkoutSection {
   width: 100%;
+  height: 56px;
+  width: 158px;
   text-align: left;
+}
+.checkinSection {
+  position: relative;
   border-right: 1px solid #b5b5b5;
 }
 
-.checkoutSection {
-  width: 100%;
-  text-align: left;
+.checkinSection.checkInError label,
+.checkoutSection.checkOutError label {
+  color: var(--error);  
+}
+
+.dateField {
+  max-width: 100%;
+  border: none;
+  outline: none;
+  margin-left: -1px;
 }
