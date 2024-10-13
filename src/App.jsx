@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import PersonProfile from "./components/personProfile/PersonProfile";
 import axios from "axios";
 
 function App() {
@@ -47,17 +46,7 @@ function App() {
       <h1>{bakendMessage}</h1>
       <div>
         <CalendarToggle />
-      </div>
-      <PersonProfile
-        title="Meet your host"
-        image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
-        name="Raus"
-        role="Superhost"
-        verified={true}
-        reviews={74}
-        rating={4.85}
-        yearsHosting={1}
-      />
+      </div>    
       <div>
         {places.map((place, index) => (
           <ProductCard key={index} place={place} />
