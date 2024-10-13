@@ -2,16 +2,16 @@ import { useEffect } from 'react'
 import Styles from './ModalPopUp.module.css'
 import {CloseIcon} from '../../icons'
 
-const ModalPopUp = ({children , onCloseClick, isVisiable, popUpDimension}) => {
+const ModalPopUp = ({children , onCloseClick, isVisible, popUpDimension}) => {
 
     useEffect(() => {
-        isVisiable && (document.body.style.overflow = 'hidden');
-        !isVisiable && (document.body.style.overflow = 'unset');
-     }, [isVisiable]);
+        isVisible && (document.body.style.overflow = 'hidden');
+        !isVisible && (document.body.style.overflow = 'unset');
+     }, [isVisible]);
 
     return(
         <>
-            { isVisiable && 
+            { isVisible && 
                 <>
                     <div className={Styles.container} style={{width: popUpDimension.width, left:popUpDimension.left}}>
                         <div className={Styles.colseButtonContainer}>

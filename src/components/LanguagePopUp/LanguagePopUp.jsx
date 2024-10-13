@@ -2,7 +2,7 @@ import Styles from './LanguagePopUp.module.css'
 import ModalPopUp from '../ModalPopUp/ModalPopUp'
 import { useState } from 'react'
 
-const LanguagePopUp = ({languages = 'English', currency = 'Euro', onCloseClick, isVisiable}) => {
+const LanguagePopUp = ({languages = 'English', currency = 'Euro', onCloseClick, isVisible}) => {
     const[isLanguageSelected, setIsLanguageSelected] = useState(true);
     const popUpDimension = {width:'60%',left:'20%'};
     const handelLanguageClick = () => {
@@ -13,7 +13,7 @@ const LanguagePopUp = ({languages = 'English', currency = 'Euro', onCloseClick, 
     }
 
     return(
-        <ModalPopUp onCloseClick={onCloseClick} isVisiable={isVisiable} popUpDimension={popUpDimension}>
+        <ModalPopUp onCloseClick={onCloseClick} isVisible={isVisible} popUpDimension={popUpDimension}>
             <div className={Styles.container}>
                 <div className={Styles.tabContainer}>
                     <div className={isLanguageSelected ? Styles.languageButton : Styles.languageButtonDisabled} onClick={handelLanguageClick}>

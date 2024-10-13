@@ -5,16 +5,13 @@ import LanguagePopUp from '../LanguagePopUp/LanguagePopUp'
 import { useState, useEffect } from 'react'
 
 const LanguageSelector = () => {
-    const [isVisiable, setIsVisiable] = useState(false);
+    const [isVisible, setIsVisiable] = useState(false);
     const handelLanguageSelectionClick = () => {
         setIsVisiable(true);
     }
     const handelClose = () => {
         setIsVisiable(false);
     }
-    useEffect(()=>{
-        setIsVisiable(false);
-    },[])
 
     return (
         <>
@@ -22,7 +19,7 @@ const LanguageSelector = () => {
                 <img src={globe_icon} className={styles.globe_icon} alt="A globe icon as a link to select the language" />
             </div>
             <div className={styles.languagePopUp}>
-                <LanguagePopUp onCloseClick={handelClose} isVisiable={isVisiable}/>
+                <LanguagePopUp onCloseClick={handelClose} isVisible={isVisible}/>
             </div>
         </>
     )
