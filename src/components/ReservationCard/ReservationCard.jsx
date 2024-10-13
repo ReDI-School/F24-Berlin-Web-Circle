@@ -20,6 +20,7 @@ function ReservationCard({
   onGuestChange,
   guestsList,
   allowGuestsNumber,
+  minStayNights,
 }) {
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
@@ -131,6 +132,7 @@ function ReservationCard({
                 checkInDate={checkInDate}
                 checkOutDate={checkOutDate}
                 toggleShowCalendar={toggleShowCalendar}
+                minStayNights={minStayNights}
               />
             )}
             <button
