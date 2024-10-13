@@ -1,0 +1,54 @@
+.reviewsOuterContainer {
+    /* cover the whole width??*/
+}
+
+.reviewsContainer {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    width: 1120px;
+    margin: auto;
+   
+}
+
+.reviewsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    margin-bottom: 16px; 
+  }
+  
+  .emptyOddReviews {
+    visibility: hidden; 
+  }
+
+  .showMoreContainer {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+
+  }
+  
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    
+  }
+  
+  .showMoreButtonContainer button {
+    border: 1px solid #000000;
+    background-color: #ffffff;
+  }
+  
+  .showMoreButtonContainer button:hover {
+    background-color: #0056b3;
+    margin: 0;
+  }
+
+  .learnAboutReviews {
+    text-decoration: underline;
+    color: gray;
+    font-size: 0.75rem;
+    font-weight: 500;
+    position: relative;
+    padding-top: 12px;
+  }
+  
