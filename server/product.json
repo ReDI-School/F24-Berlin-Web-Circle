@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Santorini",
+    "location": "Greece",
+    "description": "A stunning island known for its whitewashed houses and incredible sunsets.",
+    "price": "$2000",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Santorini"
+  },
+  {
+    "id": 2,
+    "name": "Kyoto",
+    "location": "Japan",
+    "description": "Famous for its classical Buddhist temples, as well as gardens, imperial palaces, and traditional wooden houses.",
+    "price": "$1800",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Kyoto"
+  },
+  {
+    "id": 3,
+    "name": "Maui",
+    "location": "Hawaii, USA",
+    "description": "A tropical paradise offering beautiful beaches, volcanoes, and scenic road trips.",
+    "price": "$2200",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Maui"
+  },
+  {
+    "id": 4,
+    "name": "Paris",
+    "location": "France",
+    "description": "The City of Lights, known for its iconic landmarks like the Eiffel Tower and the Louvre.",
+    "price": "$2500",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Paris"
+  },
+  {
+    "id": 5,
+    "name": "Queenstown",
+    "location": "New Zealand",
+    "description": "The adventure capital of the world, perfect for thrill-seekers and nature lovers.",
+    "price": "$3000",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Queenstown"
+  },
+  {
+    "id": 6,
+    "name": "Cape Town",
+    "location": "South Africa",
+    "description": "A city with stunning landscapes, including Table Mountain and pristine beaches.",
+    "price": "$1700",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Cape+Town"
+  },
+  {
+    "id": 7,
+    "name": "Rome",
+    "location": "Italy",
+    "description": "The Eternal City, filled with history, art, and culture at every corner.",
+    "price": "$2300",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Rome"
+  },
+  {
+    "id": 8,
+    "name": "Maldives",
+    "location": "Indian Ocean",
+    "description": "An island paradise with crystal-clear waters, luxury resorts, and stunning coral reefs.",
+    "price": "$4000",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Maldives"
+  },
+  {
+    "id": 9,
+    "name": "Reykjavik",
+    "location": "Iceland",
+    "description": "A city famous for its proximity to natural wonders, including geysers and the Northern Lights.",
+    "price": "$2800",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Reykjavik"
+  },
+  {
+    "id": 10,
+    "name": "New York City",
+    "location": "USA",
+    "description": "The city that never sleeps, offering iconic landmarks like Times Square and Central Park.",
+    "price": "$3200",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=New+York+City"
+  },
+  {
+    "id": 11,
+    "name": "Barcelona",
+    "location": "Spain",
+    "description": "Known for its art and architecture, including the famous Sagrada Familia.",
+    "price": "$2100",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Barcelona"
+  },
+  {
+    "id": 12,
+    "name": "Sydney",
+    "location": "Australia",
+    "description": "A vibrant city famous for its Opera House, Harbor Bridge, and beautiful beaches.",
+    "price": "$2900",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Sydney"
+  },
+  {
+    "id": 13,
+    "name": "Dubai",
+    "location": "UAE",
+    "description": "A modern metropolis with luxurious shopping, ultramodern architecture, and lively nightlife.",
+    "price": "$2700",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Dubai"
+  },
+  {
+    "id": 14,
+    "name": "Rio de Janeiro",
+    "location": "Brazil",
+    "description": "Famous for its Copacabana beach, Sugarloaf Mountain, and the Christ the Redeemer statue.",
+    "price": "$2600",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Rio+de+Janeiro"
+  },
+  {
+    "id": 15,
+    "name": "Phuket",
+    "location": "Thailand",
+    "description": "An island destination known for its beautiful beaches, vibrant nightlife, and resorts.",
+    "price": "$1500",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Phuket"
+  },
+  {
+    "id": 16,
+    "name": "Banff",
+    "location": "Canada",
+    "description": "A resort town in the Canadian Rockies, known for its stunning mountain views and ski resorts.",
+    "price": "$2500",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Banff"
+  },
+  {
+    "id": 17,
+    "name": "Istanbul",
+    "location": "Turkey",
+    "description": "A city that straddles Europe and Asia, offering a rich history and vibrant culture.",
+    "price": "$1800",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Istanbul"
+  },
+  {
+    "id": 18,
+    "name": "Prague",
+    "location": "Czech Republic",
+    "description": "Known for its Old Town Square, colorful baroque buildings, and Gothic churches.",
+    "price": "$2000",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Prague"
+  },
+  {
+    "id": 19,
+    "name": "Bali",
+    "location": "Indonesia",
+    "description": "A tropical paradise known for its forested volcanic mountains, iconic rice paddies, beaches, and coral reefs.",
+    "price": "$1900",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Bali"
+  },
+  {
+    "id": 20,
+    "name": "Buenos Aires",
+    "location": "Argentina",
+    "description": "The capital of Argentina, known for its European-style architecture and rich cultural life.",
+    "price": "$2400",
+    "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Buenos+Aires"
+  }
+]
