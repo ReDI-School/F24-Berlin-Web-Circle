@@ -1,15 +1,19 @@
 const express = require("express");
+const products = require("./src/data/products.json");
 const cors = require("cors");
 
 const app = express();
-const port = 8800;
+const PORT = 8800;
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("This is from backend!");
+app.get("/products", (req, res) => {
+  res.json(products);
 });
 
-app.listen(port, () => {
-  console.log(`Port: http://localhost:${port}`);
+app.listen(PORT, (error) => {
+  if (error)
+    console.log("Error starting the server:", error);
+  else
+    console.log(`Server listening on PORT ${PORT}`);
 });
