@@ -3,12 +3,11 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  width: 380px;
+  gap: 32px;
 }
-.header {
-  font-weight: 500;
-}
+
 .mainContainer {
-  margin-top: 20px;
   width: 382px;
   height: 230px;
   border-radius: 25px;
@@ -19,6 +18,7 @@
   justify-content: center;
   box-sizing: border-box;
 }
+
 .leafSide {
   width: 68%;
   height: 100%;
@@ -27,18 +27,21 @@
   justify-content: center;
   align-items: center;
 }
+
 .roundPhotoComponent {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
+
 .personImg {
   width: 100px;
   height: 100px;
   border-radius: 100%;
   opacity: 0.9;
 }
+
 .verifiedContainer {
   display: flex;
   justify-content: center;
@@ -49,11 +52,7 @@
   position: absolute;
   margin-left: 70px;
 }
-.verifiediconSvg {
-  width: 20px;
-  height: 20px;
-  fill: white;
-}
+
 .personRoleContainer {
   display: flex;
   margin-top: 10px;
@@ -61,22 +60,22 @@
   flex-direction: column;
   align-items: center;
 }
+
 .personInfo {
   font-size: 30px;
   font-weight: 700;
   line-height: 0%;
 }
+
 .roleContainer {
   margin-top: -10px;
 }
-.roleiconSvg {
-  width: 12px;
-  height: 12px;
-}
+
 .role {
   font-size: 13px;
   font-weight: bold;
 }
+
 .rightSide {
   width: 32%;
   display: flex;
@@ -86,24 +85,72 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .reviewsContainer {
   display: flex;
   flex-direction: column;
   align-items: start;
   width: 100%;
 }
-.reviewsNumbrs {
+
+.reviewsAndStar {
+  display: flex;
+}
+
+.reviewsNumbers {
   font-size: 20px;
   font-weight: bold;
 }
+
 .reviewsText {
   font-size: 11px;
+  font-weight: 500;
 }
+
 .starSvg {
   width: 14px;
   height: 14px;
 }
+
 .borders {
   width: 100%;
   border-color: rgb(255, 254, 246);
+}
+
+.arrowRightContainer {
+  margin-top: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.showMore {
+  margin: 0;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.personTextContainer {
+  /* margin-bottom: 12px; */
+}
+
+.personText{
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+}
+
+.languagesAndBusiness {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lgAndBsText{
+  display: flex;
+  gap: 12px;
+}
+
+.profileText {
+  text-align: left;
 }

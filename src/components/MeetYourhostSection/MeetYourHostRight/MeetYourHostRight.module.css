@@ -1,0 +1,52 @@
+.rightContainer {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+    text-align: left;
+}
+
+.superHostTitle h3 {
+    margin: 0;
+}
+
+.hostDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hostDetails h3 {
+    margin: 0;
+}
+
+.messageHost button{
+    background-color: rgb(31, 30, 30);
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.messageHost button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.paymentInfo {
+    border-top: 1px solid #DDDDDD;
+    padding-top: 24px;
+    align-items: center;
+    display: flex;
+    gap: 12px;
+}
+
+.paymentWarningIcon img {
+    width: 24px;
+    height: 24px;
+    padding-top: 2px; 
+}
+
+.paymentInfoText {
+    font-size: 13px;
+}

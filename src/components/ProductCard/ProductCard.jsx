@@ -1,6 +1,7 @@
-import { useState } from "react";
 import "./ProductCard.css";
-import SharePopup from "../SharePopup/SharePopup"; // Correct import for SharePopup
+import SharePopup from "../SharePopup/SharePopup"; // Correct import for SharePopup;
+import styles from "./ProductCard.module.css";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ images, title, host, price }) => {
   // State to track the current image index
@@ -31,14 +32,24 @@ const ProductCard = ({ images, title, host, price }) => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
+
+
+const ProductCard = ({ place }) => {
+
+  const placeId = place.id ? place.id : `dummy-${Date.now()}`;
   };
 
+  console.log(place)
   return (
     <>
       <div className="product-card">
         {/* Button to trigger the share popup */}
         <button onClick={openModal} className="share-button">
           <span className="share-icon">
+
+      <div className={styles.productCard}>
+        <button onClick={handleShare} className={styles.shareButton}>
+          <span className={styles.shareIcon}>
             <svg
               viewBox="0 0 32 32"
               xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +64,7 @@ const ProductCard = ({ images, title, host, price }) => {
             </svg>
           </span>
         </button>
-
+  
         {/* Product image carousel */}
         <img
           src={images[currentImageIndex]}
@@ -71,7 +82,7 @@ const ProductCard = ({ images, title, host, price }) => {
           </button>
         </div>
 
-        {/* Card content */}
+    <Link to={`/rooms/${placeId}`}>
         <div className="card-content">
           <div className="card-header">
             <h2 className="card-title">{title}</h2>
@@ -80,8 +91,8 @@ const ProductCard = ({ images, title, host, price }) => {
         <p className="card-host">{host}</p>
         <p className="card-price">{price}</p>
       </div>
-
-      {/* Share modal popup */}
+          </Link>
+          
       {modalisVisible && <SharePopup onClick={closeModal} />}
     </>
   );
