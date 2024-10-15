@@ -5,9 +5,6 @@ import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PersonProfile from "./components/PersonProfile/PersonProfile";
 import SearchBar from "./components/SearchBar/SearchBar";
 
-
-function App() {
-
 import axios from "axios";
 
 function App() {
