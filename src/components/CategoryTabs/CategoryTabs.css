@@ -1,55 +1,47 @@
-/* Outer container */
 .category-tabs-container {
   position: relative;
-  max-width: 1000px;  /* Limit the max width */
-  margin: 0 auto;  /* Center the component */
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-/* Wrapper for tabs */
 .category-tabs-wrapper {
-  overflow: hidden; /* Ensures no overflow outside wrapper */
+  overflow: hidden;
   position: relative;
 }
 
-/* Tabs */
 .category-tabs {
   display: flex;
-  overflow-x: auto; /* Allows horizontal scrolling */
-  white-space: nowrap; /* Prevents wrapping */
+  overflow-x: auto;
+  white-space: nowrap;
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
   scroll-behavior: smooth;
 }
 
-/* Arrows (Scroll Buttons) */
 .scroll-button {
   position: absolute;
   top: 50%;
-  background-color: transparent;  /* Remove any color overlay */
+  background-color: transparent;
   border: none;
   cursor: pointer;
   z-index: 100;
   padding: 10px;
-  outline: none; /* Remove the blue focus outline */
-  transform: translateY(-50%); /* Center the button vertically */
+  outline: none;
+  transform: translateY(-50%);
 }
 
-/* Positioning the left arrow at the left edge */
 .scroll-button.left {
-  left: -40px; /* Positioned at the left edge outside of the wrapper */
+  left: -500px;
 }
 
-/* Positioning the right arrow at the right edge */
 .scroll-button.right {
-  right: -40px; /* Positioned at the right edge outside of the wrapper */
+  right: -500px;
 }
 
-/* Remove default browser outline when button is focused (clicked or keyboard) */
 .scroll-button:focus {
-  outline: none;  /* Ensure no outline appears on focus */
+  outline: none;
 }
 
-/* Tab styling */
 .tab-item {
   display: inline-flex;
   flex-direction: column;
@@ -63,8 +55,8 @@
 }
 
 .tab-item:hover {
-  color: #555; /* Change text color on hover */
-  border-bottom: 2px solid #555; /* Add underline effect on hover */
+  color: #555;
+  border-bottom: 2px solid #555;
 }
 
 .tab-icon {
@@ -82,7 +74,6 @@
   border-bottom: 2px solid #000;
 }
 
-/* Hide scrollbar */
 .category-tabs::-webkit-scrollbar {
   display: none;
 }
