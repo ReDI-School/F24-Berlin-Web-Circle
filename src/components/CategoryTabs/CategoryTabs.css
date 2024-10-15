@@ -3,6 +3,7 @@
   position: relative;
   max-width: 1000px;  /* Set the maximum width */
   margin: 0 auto;  /* Center the component */
+  overflow: hidden; /* Ensure the arrows stay within the wrapper */
 }
 
 .category-tabs {
@@ -12,26 +13,27 @@
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
   scroll-behavior: smooth;
+  position: relative;
 }
 
 /* Arrows */
 .scroll-button {
-  position: absolute;
+  position: relative;  /* Position relative to the .category-tabs-wrapper */
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
   border: none;
   cursor: pointer;
-  z-index: 1;
+  z-index: 100;  /* Ensure the arrows appear above everything */
   padding: 10px;
 }
 
 .scroll-button.left {
-  left: -30px; /* Position outside the category container */
+  left: 20px; /* Position on the left edge of the wrapper */
 }
 
 .scroll-button.right {
-  right: -30px; /* Position outside the category container */
+  right: 20px; /* Position on the right edge of the wrapper */
 }
 
 /* Tab styling */
