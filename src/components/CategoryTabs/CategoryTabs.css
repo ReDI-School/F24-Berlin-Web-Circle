@@ -31,11 +31,11 @@
 }
 
 .scroll-button.left {
-  left: -500px;
+  left: -470px;
 }
 
 .scroll-button.right {
-  right: -500px;
+  right: -470px;
 }
 
 .scroll-button:focus {
