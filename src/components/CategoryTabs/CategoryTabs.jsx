@@ -14,7 +14,9 @@ const categories = [
   { label: 'Castles', icon: <MdOutlineCastle size={32} /> },        
   { label: 'Camping', icon: <FaCampground size={32} /> },           
   { label: 'Luxe', icon: <GiDiamondHard size={32} /> },             
-  { label: 'Arctic', icon: <GiSnowflake2 size={32} /> },
+  { label: 'Arctic', icon: <GiSnowflake2 size={32} /> },  
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> }, // icon placeholders
   { label: 'Caravans', icon: <FaCaravan size={32} /> },
   { label: 'Caravans', icon: <FaCaravan size={32} /> },
   { label: 'Caravans', icon: <FaCaravan size={32} /> },
@@ -29,9 +31,7 @@ const categories = [
   { label: 'Caravans', icon: <FaCaravan size={32} /> },
   { label: 'Caravans', icon: <FaCaravan size={32} /> },
   { label: 'Caravans', icon: <FaCaravan size={32} /> },
-  { label: 'Caravans', icon: <FaCaravan size={32} /> },
-  { label: 'Caravans', icon: <FaCaravan size={32} /> },
-  { label: 'Caravans', icon: <FaCaravan size={32} /> }
+  { label: 'Caravans', icon: <FaCaravan size={32} /> }  // icon placeholders
  
 ];
 
