@@ -1,39 +1,52 @@
-/* Wrapper to limit the max width */
-.category-tabs-wrapper {
+/* Outer container */
+.category-tabs-container {
   position: relative;
-  max-width: 1000px;  /* Set the maximum width */
+  max-width: 1000px;  /* Limit the max width */
   margin: 0 auto;  /* Center the component */
-  overflow: hidden; /* Ensure the arrows stay within the wrapper */
 }
 
+/* Wrapper for tabs */
+.category-tabs-wrapper {
+  overflow: hidden; /* Ensures no overflow outside wrapper */
+  position: relative;
+}
+
+/* Tabs */
 .category-tabs {
   display: flex;
-  overflow-x: auto; /* Allows horizontal scrolling for smaller screens */
+  overflow-x: auto; /* Allows horizontal scrolling */
   white-space: nowrap; /* Prevents wrapping */
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
   scroll-behavior: smooth;
-  position: relative;
 }
 
-/* Arrows */
+/* Arrows (Scroll Buttons) */
 .scroll-button {
-  position: relative;  /* Position relative to the .category-tabs-wrapper */
+  position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: transparent;  /* Remove any color overlay */
   border: none;
   cursor: pointer;
-  z-index: 100;  /* Ensure the arrows appear above everything */
+  z-index: 100;
   padding: 10px;
+  outline: none; /* Remove the blue focus outline */
+  transform: translateY(-50%); /* Center the button vertically */
 }
 
+/* Positioning the left arrow at the left edge */
 .scroll-button.left {
-  left: 20px; /* Position on the left edge of the wrapper */
+  left: -40px; /* Positioned at the left edge outside of the wrapper */
 }
 
+/* Positioning the right arrow at the right edge */
 .scroll-button.right {
-  right: 20px; /* Position on the right edge of the wrapper */
+  right: -40px; /* Positioned at the right edge outside of the wrapper */
+}
+
+/* Remove default browser outline when button is focused (clicked or keyboard) */
+.scroll-button:focus {
+  outline: none;  /* Ensure no outline appears on focus */
 }
 
 /* Tab styling */
@@ -47,12 +60,11 @@
   cursor: pointer;
   font-size: 14px;
   color: #555;
-  transition: color 0.2s, transform 0.2s;
 }
 
 .tab-item:hover {
-  color: #000;
-  transform: translateY(-3px); /* Adds a subtle lift effect on hover */
+  color: #555; /* Change text color on hover */
+  border-bottom: 2px solid #555; /* Add underline effect on hover */
 }
 
 .tab-icon {
@@ -67,17 +79,10 @@
 .tab-item.active {
   color: #000;
   font-weight: bold;
-  border-bottom: 2px solid #000; /* Active state styling */
+  border-bottom: 2px solid #000;
 }
 
 /* Hide scrollbar */
 .category-tabs::-webkit-scrollbar {
-  display: none; /* Hide the scrollbar for a cleaner look */
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-  .category-tabs {
-    justify-content: space-between;
-  }
+  display: none;
 }
