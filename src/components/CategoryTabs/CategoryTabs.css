@@ -1,0 +1,52 @@
+.category-tabs {
+    display: flex;
+    overflow-x: auto; /* Allows horizontal scrolling for smaller screens */
+    white-space: nowrap; /* Prevents wrapping */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tab-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+    transition: color 0.2s, transform 0.2s;
+  }
+  
+  .tab-item:hover {
+    color: #000;
+    transform: translateY(-3px); /* Adds a subtle lift effect on hover */
+  }
+  
+  .tab-icon {
+    margin-bottom: 8px;
+  }
+  
+  .tab-label {
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .tab-item.active {
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #000; /* Active state styling */
+  }
+  
+  /* Make the tabs container scrollable */
+  .category-tabs::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for a cleaner look */
+  }
+  
+  @media (min-width: 768px) {
+    .category-tabs {
+      justify-content: space-between;
+    }
+  }
+  
