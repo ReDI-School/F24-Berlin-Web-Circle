@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
-import CalendarToggle from "./components/calendarToggle/CalendarToggle";
+import PersonProfile from "./components/PersonProfile/PersonProfile";
+
 import axios from "axios";
 
 function App() {
