@@ -3,6 +3,7 @@ import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
+import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 
 function App() {
   const [bakendMessage, setBakendMessage] = useState("");
@@ -46,7 +47,11 @@ function App() {
       <h1>{bakendMessage}</h1>
       <div>
         <CalendarToggle />
-      </div>    
+      </div>  
+      <div>
+        <CategoryTabs />  
+      </div>
+
       <div>
         {places.map((place, index) => (
           <ProductCard key={index} place={place} />
