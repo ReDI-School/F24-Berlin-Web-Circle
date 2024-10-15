@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 import './CategoryTabs.css';
 
-// Import icons from @airbnb/lunar-icons
-import BeachIcon from '@airbnb/lunar-icons/lib/interface/Beach';
-import PoolIcon from '@airbnb/lunar-icons/lib/interface/Swimming';
-import CastleIcon from '@airbnb/lunar-icons/lib/interface/Castle';
-import CabinIcon from '@airbnb/lunar-icons/lib/interface/Cabin';
-import LuxeIcon from '@airbnb/lunar-icons/lib/interface/Diamond';
-import ArcticIcon from '@airbnb/lunar-icons/lib/interface/Snowflake';
-import TinyHouseIcon from '@airbnb/lunar-icons/lib/interface/HomeTiny';
-import CampingIcon from '@airbnb/lunar-icons/lib/interface/Tent';
+// Import icons from react-icons
+import { FaSwimmingPool, FaUmbrellaBeach, FaCampground } from 'react-icons/fa'; // Font Awesome
+import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; // Material Icons
+import { GiSnowflake2, GiDiamondHard, GiHouse } from 'react-icons/gi'; // Game Icons
 
 const categories = [
-  { label: 'Amazing Pools', icon: <PoolIcon size="32" /> },
-  { label: 'Beachfront', icon: <BeachIcon size="32" /> },
-  { label: 'Cabins', icon: <CabinIcon size="32" /> },
-  { label: 'Tiny Homes', icon: <TinyHouseIcon size="32" /> },
-  { label: 'Castles', icon: <CastleIcon size="32" /> },
-  { label: 'Camping', icon: <CampingIcon size="32" /> },
-  { label: 'Luxe', icon: <LuxeIcon size="32" /> },
-  { label: 'Arctic', icon: <ArcticIcon size="32" /> },
+  { label: 'Amazing Pools', icon: <FaSwimmingPool size={32} /> },  
+  { label: 'Beachfront', icon: <FaUmbrellaBeach size={32} /> },     
+  { label: 'Cabins', icon: <MdOutlineCabin size={32} /> },          
+  { label: 'Tiny Homes', icon: <GiHouse size={32} /> },             
+  { label: 'Castles', icon: <MdOutlineCastle size={32} /> },        
+  { label: 'Camping', icon: <FaCampground size={32} /> },           
+  { label: 'Luxe', icon: <GiDiamondHard size={32} /> },             
+  { label: 'Arctic', icon: <GiSnowflake2 size={32} /> },            
 ];
 
 const CategoryTabs = () => {
