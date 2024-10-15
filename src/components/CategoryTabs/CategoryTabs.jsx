@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CategoryTabs.css';
 
 // Import icons from react-icons
-import { FaSwimmingPool, FaUmbrellaBeach, FaCampground } from 'react-icons/fa'; // Font Awesome
+import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan } from 'react-icons/fa'; // Font Awesome
 import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; // Material Icons
 import { GiSnowflake2, GiDiamondHard, GiHouse } from 'react-icons/gi'; // Game Icons
 
@@ -14,7 +14,25 @@ const categories = [
   { label: 'Castles', icon: <MdOutlineCastle size={32} /> },        
   { label: 'Camping', icon: <FaCampground size={32} /> },           
   { label: 'Luxe', icon: <GiDiamondHard size={32} /> },             
-  { label: 'Arctic', icon: <GiSnowflake2 size={32} /> },            
+  { label: 'Arctic', icon: <GiSnowflake2 size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> },
+  { label: 'Caravans', icon: <FaCaravan size={32} /> }
+ 
 ];
 
 const CategoryTabs = () => {
