@@ -4,6 +4,10 @@ import styles from './DatePicker.module.css'
 const DatePicker = ({
   checkInDate,
   checkOutDate,
+  inputCheckInDate,
+  inputCheckOutDate,
+  setInputCheckInDate,
+  setInputCheckOutDate,
   setCheckInDate,
   setCheckOutDate,
   onToggle,
@@ -16,24 +20,13 @@ const DatePicker = ({
   checkInError,
   checkOutError,
 }) => {
-  const [focus, setFocus] = useState(false)
-  const [inputCheckInDate, setInputCheckInDate] = useState('')
-  const [inputCheckOutDate, setInputCheckOutDate] = useState('')
+  const [checkInFocus, setCheckInFocus] = useState(false)
+  const [checkOutFocus, setCheckOutFocus] = useState(false)
 
-  let Container
-  if (renderAsForm) {
-    Container = 'form'
-  } else if (renderAsButton) {
-    Container = 'button'
-  } else {
-    Container = 'div'
-  }
-
-console.log('checkInDate!!!!!!!!', checkInDate)
+  const Container = renderAsForm ? 'form' : renderAsButton ? 'button' : 'div'
 
   const validateDate = (input) => {
-    const regex =
-      /^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/?|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:(?:0?2)(\/?|-|\.)(?:29)\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/?|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/
     return regex.test(input)
   }
 
@@ -45,63 +38,41 @@ console.log('checkInDate!!!!!!!!', checkInDate)
     setInputCheckOutDate(date)
   }
 
-  const handleCheckInBlur = (dataCkeckIn) => {
-    console.log('dataCkeckIn', dataCkeckIn)
-    if (validateDate(dataCkeckIn)) {
+  const handleCheckInBlur = (dataCheckIn) => {
+    if (validateDate(dataCheckIn)) {
+      const checkOutDateObj = new Date(checkOutDate)
+      const checkInDateObj = new Date(dataCheckIn)
+      if (checkOutDate && checkInDateObj >= checkOutDateObj) {
+        setCheckInError('Check-in date must be earlier than check-out date')
+      } else {
+        setCheckInError('')
+        setCheckInDate(dataCheckIn)
+        setUserSelectedCheckIn(true)
+      }
+    } else if (inputCheckInDate === '') {
       setCheckInError('')
-      setCheckInDate(dataCkeckIn)
-      setInputCheckInDate('')
-      setUserSelectedCheckIn(true)
-      alert(`Valid date: ${dataCkeckIn}`)
-    } else if(inputCheckInDate === '') {
-      setCheckInError('')
-    }
-    else {
+    } else {
       setCheckInError('This date is unavailable')
     }
   }
 
-  // const handleCheckInBlur = (dataCkeckIn) => {
-  //   console.log('dataCkeckIn', dataCkeckIn)
-  //   if (!validateDate(dataCkeckIn)) {
-  //     setCheckInError('This date is unavailable')
-  //   } else {
-  //     setCheckInError('')
-  //     setCheckInDate(dataCkeckIn)
-  //     setInputCheckInDate('')
-  //     setUserSelectedCheckIn(true)
-  //     alert(`Valid date: ${dataCkeckIn}`)
-  //   }
-  // }
-
-  const handleCheckOutBlur = (dataCkeckOut) => {
-    console.log('dataCkeckOut', dataCkeckOut)
-    if (validateDate(dataCkeckOut)) {
+  const handleCheckOutBlur = (dataCheckOut) => {
+    if (validateDate(dataCheckOut)) {
+      const checkInDateObj = new Date(checkInDate)
+      const checkOutDateObj = new Date(dataCheckOut)
+      if (checkInDate && checkOutDateObj <= checkInDateObj) {
+        setCheckOutError('Check-out date must be later than check-in date')
+      } else {
+        setCheckOutError('')
+        setCheckOutDate(dataCheckOut)
+        setUserSelectedCheckOut(true)
+      }
+    } else if (inputCheckOutDate === '') {
       setCheckOutError('')
-      setCheckOutDate(dataCkeckOut)
-      setInputCheckOutDate('')
-      setUserSelectedCheckOut(true)
-      alert(`Valid date: ${dataCkeckOut}`)
-    } else if(inputCheckOutDate === '') {
-      setCheckOutError('')
-    }
-    else {
+    } else {
       setCheckOutError('This date is unavailable')
     }
   }
-
-  // const handleCheckOutBlur = (dataCkeckOut) => {
-  //   console.log('dataCkeckOut', dataCkeckOut)
-  //   if (!validateDate(dataCkeckOut)) {
-  //     setCheckOutError('This date is unavailable')
-  //   } else {
-  //     setCheckOutError('')
-  //     setCheckOutDate(dataCkeckOut)
-  //     setInputCheckOutDate('')
-  //     setUserSelectedCheckOut(true)
-  //     alert(`Valid date: ${dataCkeckOut}`)
-  //   }
-  // }
 
   return (
     <Container
@@ -112,6 +83,8 @@ console.log('checkInDate!!!!!!!!', checkInDate)
       <div
         className={`${styles.checkinSection} ${
           checkInError ? styles.checkInError : ''
+        } ${!checkInDate && !renderAsButton ? styles.activeCheckIn : ''} ${
+          renderAsButton ? styles.buttonTypeActive : ''
         }`}
       >
         <div className={styles.checkinSectionContent}>
@@ -120,17 +93,33 @@ console.log('checkInDate!!!!!!!!', checkInDate)
             <input
               type="text"
               className={styles.dateField}
-              value={focus || inputCheckInDate ? inputCheckInDate : checkInDate}
-              placeholder={focus ? 'MM/DD/YYYY' : checkInDate ? '' : 'Add date'}
-              onFocus={() => setFocus(true)}
-              // onBlur={() => handleCheckInBlur(inputCheckInDate)}
-              onBlur={() => {
-                handleCheckInBlur(inputCheckInDate)
-                setFocus(false)}
+              value={
+                checkInFocus || checkInDate !== ''
+                  ? inputCheckInDate
+                  : checkInDate
               }
+              placeholder={
+                (!checkInDate && checkInFocus) ||
+                (checkInDate && inputCheckInDate === '')
+                  ? 'MM/DD/YYYY'
+                  : 'Add date'
+              }
+              onFocus={() => setCheckInFocus(true)}
+              onBlur={() => {
+                if (checkInDate !== inputCheckInDate) {
+                  handleCheckInBlur(inputCheckInDate)
+                  setCheckInFocus(false)
+                }
+              }}
+              onKeyDown={(e) => {
+                if (checkInDate !== inputCheckInDate && e.key === 'Enter') {
+                  handleCheckInBlur(inputCheckInDate)
+                  setCheckInFocus(false)
+                }
+              }}
               onChange={(e) => handleCheckInChange(e.target.value)}
               maxLength={10}
-              required
+              required={checkInFocus}
             />
           ) : (
             <div>{checkInDate ? checkInDate : <span>Add date</span>}</div>
@@ -140,31 +129,48 @@ console.log('checkInDate!!!!!!!!', checkInDate)
       <div
         className={`${styles.checkoutSection} ${
           checkOutError ? styles.checkOutError : ''
-        }`}
+        } ${checkInDate && !renderAsButton && !checkOutError ? styles.activeCheckOut : ''}`}
       >
-        <div className={styles.checkoutSectionContent}>
+        <div
+          className={`${styles.checkoutSectionContent} ${
+            !checkInDate && !renderAsButton ? styles.disabledcheckout : ''
+          }`}
+        >
           <label>Checkout</label>
           {renderAsForm || !renderAsButton ? (
-            checkInDate && (
+            checkInDate !== 0 && (
               <input
                 type="text"
                 className={styles.dateField}
-                // value={checkOutDate}
-                // value={inputCheckOutDate || checkOutDate}
-                value={focus || inputCheckInDate ? inputCheckInDate : checkInDate}
-                placeholder={
-                  focus ? 'MM/DD/YYYY' : checkOutDate ? '' : 'Add date'
+                value={
+                  checkOutFocus || checkOutDate !== ''
+                    ? inputCheckOutDate
+                    : checkOutDate
                 }
-                onFocus={() => setFocus(true)}
-                // onBlur={handleCheckOutBlur}
+                placeholder={
+                  (!checkOutDate && checkOutFocus) ||
+                  (checkInDate && inputCheckInDate === '')
+                    ? 'MM/DD/YYYY'
+                    : 'Add date'
+                }
+                onFocus={() => setCheckOutFocus(true)}
                 onBlur={() => {
-                  setFocus(false)
-                  handleCheckOutBlur(inputCheckOutDate)
+                  if (checkOutDate !== inputCheckOutDate) {
+                    handleCheckOutBlur(inputCheckOutDate)
+                    setCheckOutFocus(false)
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (checkOutDate !== inputCheckOutDate && e.key === 'Enter') {
+                    handleCheckOutBlur(inputCheckOutDate)
+                    setCheckOutFocus(false)
+                  }
                 }}
                 onChange={(e) => handleCheckOutChange(e.target.value)}
                 maxLength={10}
-                required
+                required={checkOutFocus}
                 min={inputCheckInDate}
+                disabled={!checkInDate}
               />
             )
           ) : (

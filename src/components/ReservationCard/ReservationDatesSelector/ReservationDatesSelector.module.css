@@ -19,16 +19,7 @@
   justify-content: space-between;
   align-items: center;
 }
-/* .datePickerWrapper:first-child {
-  align-items: center;
-} */
-/* .datePickerWrapper > form{
-  background-color: aqua;
-  margin: 0;
-} */
-/* .selectorTitle {
-  align-self: center;
-} */
+
 .selectorTitle h2{
   margin: 0;
   color: var(--primary);
@@ -114,12 +105,3 @@
   border-radius: 12px;
 }
 
-.warningMessageContainer {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  padding-top: 5px;
-  gap: 8px;
-  font-size: 12px;
-  color: #c13515;
-}
