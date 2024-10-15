@@ -1,52 +1,81 @@
+/* Wrapper to limit the max width */
+.category-tabs-wrapper {
+  position: relative;
+  max-width: 1000px;  /* Set the maximum width */
+  margin: 0 auto;  /* Center the component */
+}
+
 .category-tabs {
-    display: flex;
-    overflow-x: auto; /* Allows horizontal scrolling for smaller screens */
-    white-space: nowrap; /* Prevents wrapping */
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling for smaller screens */
+  white-space: nowrap; /* Prevents wrapping */
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  scroll-behavior: smooth;
+}
+
+/* Arrows */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px;
+}
+
+.scroll-button.left {
+  left: -30px; /* Position outside the category container */
+}
+
+.scroll-button.right {
+  right: -30px; /* Position outside the category container */
+}
+
+/* Tab styling */
+.tab-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.tab-item:hover {
+  color: #000;
+  transform: translateY(-3px); /* Adds a subtle lift effect on hover */
+}
+
+.tab-icon {
+  margin-bottom: 8px;
+}
+
+.tab-label {
+  font-size: 12px;
+  text-align: center;
+}
+
+.tab-item.active {
+  color: #000;
+  font-weight: bold;
+  border-bottom: 2px solid #000; /* Active state styling */
+}
+
+/* Hide scrollbar */
+.category-tabs::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar for a cleaner look */
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .category-tabs {
+    justify-content: space-between;
   }
-  
-  .tab-item {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    margin-right: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #555;
-    transition: color 0.2s, transform 0.2s;
-  }
-  
-  .tab-item:hover {
-    color: #000;
-    transform: translateY(-3px); /* Adds a subtle lift effect on hover */
-  }
-  
-  .tab-icon {
-    margin-bottom: 8px;
-  }
-  
-  .tab-label {
-    font-size: 12px;
-    text-align: center;
-  }
-  
-  .tab-item.active {
-    color: #000;
-    font-weight: bold;
-    border-bottom: 2px solid #000; /* Active state styling */
-  }
-  
-  /* Make the tabs container scrollable */
-  .category-tabs::-webkit-scrollbar {
-    display: none; /* Hide the scrollbar for a cleaner look */
-  }
-  
-  @media (min-width: 768px) {
-    .category-tabs {
-      justify-content: space-between;
-    }
-  }
-  
+}
