@@ -1,9 +1,16 @@
 import { useState } from 'react'
 import styles from './Guest.module.css'
 
-const Guest = ({ title, description, descriptionType, onClick }) => {
-  const [count, setCount] = useState(title === 'Adults' ? 1 : 0)
+const Guest = ({
+  title,
+  description,
+  descriptionType,
+  onClick,
+  count: initialCount,
+}) => {
+  const [count, setCount] = useState(initialCount)
 
+  console.log(title, description, descriptionType)
   const handelMinusCount = () => {
     if (title === 'Adults' && count > 1) {
       setCount(count - 1)

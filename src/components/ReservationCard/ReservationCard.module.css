@@ -26,6 +26,21 @@
   font-size: 1.375rem;
 }
 
+.soldOutGuestSection {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.soldOutButton {
+  background-color: #B0B0B0;
+  border: none;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 14px 24px;
+  color: white;
+}
+
 .reservationForm {
   text-align: left;
   position: relative;
@@ -41,55 +56,22 @@
   font-weight: 700;
 }
 
-/* .datesPickerSection {
-  display: flex;
-  position: relative;
-  width: 100%;
-  background-color: transparent !important;
-  border: 1px solid #b5b5b5;
-  font-size: 0.875rem;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-} */
 .datesPickerSection:hover,
 .guestsNumberPickerSection:hover {
   border-color: #b5b5b5;
 }
 
 .checkoutSectionContent,
-.guestsPickerSectionContent,
 .checkinSectionContent {
   margin: 12px 10px;
   font-weight: 400;
   color: black;
 }
 
-/* .checkoutSectionContent span, 
-.checkinSectionContent span {
-  line-height: 20px;
-  color: var(--neutral);
-} */
-
-.guestCountWrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
 .guestDropdown {
   position: absolute;
   right: 0;
 }
-
-/* .checkinSection {
-  width: 100%;
-  text-align: left;
-  border-right: 1px solid #b5b5b5;
-}
-
-.checkoutSection {
-  width: 100%;
-  text-align: left;
-} */
 
 .guestsNumberPickerSection {
   width: 100%;

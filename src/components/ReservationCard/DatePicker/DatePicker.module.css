@@ -40,8 +40,12 @@
   width: 158px;
   text-align: left;
 }
+
 .checkinSection {
   position: relative;
+}
+
+.checkinSection.buttonTypeActive {
   border-right: 1px solid #b5b5b5;
 }
 
@@ -56,3 +60,21 @@
   outline: none;
   margin-left: -1px;
 }
+
+.checkoutSectionContent.disabledcheckout{
+  background-color: #d5d5d5;
+  opacity: 0.2;
+}
+
+.checkoutSection.checkOutError{
+  border: 2px solid #c13515;
+  border-radius: 12px;
+}
+
+.checkinSection.activeCheckIn,
+.checkoutSection.activeCheckOut {
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+

@@ -33,6 +33,7 @@ const ProductPage = () => {
   const longStayDiscount = 30;
   const nightsCountForDiscount = 5;
   const minStayNights = 2;
+  const isBookingOpen = true;
   const allowGuestsNumber = {
     peopleNumber: 6,
     petsNumber: 2,
@@ -191,6 +192,7 @@ const ProductPage = () => {
                guestsList={guestsList} 
                allowGuestsNumber={allowGuestsNumber}
                minStayNights={minStayNights}
+               isBookingOpen={isBookingOpen}
             />
           </div>
         </div>
