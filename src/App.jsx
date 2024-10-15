@@ -8,9 +8,9 @@ import {BASE_URL} from "./constants/constants";
 function App() {
   const [places, setPlaces] = useState([]);
 
-// fetch products from the Backend
+// fetch places from the Backend
 useEffect(()=> {
-  axios.get(`${BASE_URL}products`)
+  axios.get(`${BASE_URL}places`)
   .then(response => setPlaces(response?.data))
   .catch(error => console.error(`Something went wrong. ${error.message}.`))
   }, [])
