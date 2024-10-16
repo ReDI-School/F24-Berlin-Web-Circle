@@ -4,7 +4,7 @@ export const CloseIcon = ({
   width = 36,
   height = 36,
   stroke = "black",
-  onClick: closeModal,
+  onClick, // No need to rename it as 'closeModal', keep it as onClick
   backgroundColor = "transparent",
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -36,7 +36,7 @@ export const CloseIcon = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <svg
-        onClick={closeModal}
+        onClick={onClick} // Use onClick directly here
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

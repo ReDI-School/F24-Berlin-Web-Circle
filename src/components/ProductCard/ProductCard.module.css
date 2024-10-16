@@ -1,0 +1,137 @@
+.productCard {
+  width: 300px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.productImage {
+  width: 100%;
+  height: 284px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  border-radius: 12px 12px;
+}
+
+.cardContent {
+  margin-top: 5px;
+  text-align: left;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cardHost {
+  font-size: 14px;
+  color: #717171;
+}
+
+.cardPrice {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.shareButton:hover {
+  background-color: #e4e4e4f5;
+}
+
+.shareButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #e4e4e4d8;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 6;
+}
+
+.shareIcon {
+  display: block;
+  fill: none;
+  height: 16px;
+  width: 16px;
+  stroke: #040404;
+  stroke-width: 3;
+  overflow: visible;
+}
+
+.imageNavigation {
+  position: absolute;
+  top: 30%; /* Center vertically */
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Space out the arrow buttons */
+  transform: translateY(-50%); /* Center the navigation buttons vertically */
+  z-index: 10; /* Ensure it's on top of other elements */
+}
+
+.arrowButton {
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  background: transparent;
+  color: #8b8b8b; /* Arrow color */
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.arrowButton:hover {
+  background-color: #e4e4e4f5;
+}
+
+.arrowButton:first-of-type {
+  left: 10px;
+}
+
+.arrowButton:last-of-type {
+  right: 10px;
+}
+
+.imageNavigation {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.arrowButton {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 21px;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.arrowButton:hover {
+  background: rgba(255, 255, 255, 1);
+}

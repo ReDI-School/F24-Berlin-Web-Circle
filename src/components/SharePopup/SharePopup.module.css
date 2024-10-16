@@ -1,5 +1,7 @@
-.share-modal {
+.shareModal {
+  flex-direction: column;
   position: fixed;
+  display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -11,40 +13,33 @@
   z-index: 1000;
 }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.text {
+  text-align: left;
 }
 
-.modal-header h2 {
+.modalHeader h2 {
   font-size: 20px;
-  margin: 0;
 }
 
-.modal-content {
-  margin-top: 20px;
-}
-
-.modal-info {
+.modalInfo {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.modal-thumbnail {
-  width: 50px;
-  height: 50px;
+.modalThumbnail {
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
   border-radius: 8px;
 }
 
-.modal-title p {
+.modalTitle p {
   margin: 0;
   font-size: 16px;
 }
 
-.modal-buttons {
+.modalButtons {
   display: flex;
   flex: 0 1 calc(50% - 20px);
   flex-wrap: wrap;
@@ -52,14 +47,26 @@
   justify-content: space-between;
 }
 
-button {
+.modalButtons button {
+  border: 1px solid lightgrey;
+  background-color: #ffffff;
   width: 220px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  border-color: 1px solid black;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+}
+
+.modalButtons button:hover {
+  border: 1px solid lightgrey;
+  background-color: rgb(243, 243, 243);
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
 }

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import PersonProfile from "./components/PersonProfile/PersonProfile";
 import SearchBar from "./components/SearchBar/SearchBar";
-
 import axios from "axios";
 
 function App() {
   const [bakendMessage, setBakendMessage] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,35 +40,15 @@ function App() {
     { title: "House at a beach" },
   ];
 
-  const handleAirbnbSearch = ({ location, checkIn, checkOut, guests }) => {
-    // Logic for home search
-  };
-
   return (
     <>
-
-
       <div>
         <CalendarToggle />
       </div>    
-      <div>
-        {places.map((place, index) => (
-          <ProductCard key={index} place={place} />
-        ))}
-      </div>
 
-      <SearchBar></SearchBar>
 
-      <PersonProfile
-        title="Meet your host"
-        image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
-        name="Raus"
-        role="Superhost"
-        verified={true}
-        reviews={74}
-        rating={4.85}
-        yearsHosting={1}
-      />
+      <SearchBar />
+
 
       <ProductCard
         images={[
@@ -78,15 +58,21 @@ function App() {
         ]}
         title="Cozy Apartment in City Center"
         host="Hosted by Wendy and Elisa"
-        price="Coming soon"/>
-    
-      {places.map((place) => {
-        return (
-          <Link to={`/rooms/${place.id}`} key={place.id}>
-            <div>{`${place.id} - ${place.name}`}</div>
-          </Link>
-        );
-      })}
+        price="Coming soon"
+      />
+
+      {/* Links to room details */}
+      <div>
+        {places.map((place) => {
+          // Ensure a valid link, skipping places without an id
+          if (!place.id) return null;
+          return (
+            <Link to={`/rooms/${place.id}`} key={place.id}>
+              <div>{`${place.id} - ${place.title}`}</div>
+            </Link>
+          );
+        })}
+      </div>
     </>
   );
 }

@@ -1,14 +1,15 @@
-import "./ProductCard.css";
-import SharePopup from "../SharePopup/SharePopup"; // Correct import for SharePopup;
+import { useState } from "react";
 import styles from "./ProductCard.module.css";
+import SharePopup from "../SharePopup/SharePopup"; // Correct import for SharePopup
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ images, title, host, price }) => {
+const ProductCard = ({ images = [], title, host, price, place }) => {
   // State to track the current image index
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  // State to control the visibility of the modal
+  // State to control the visibility of the share modal
   const [modalisVisible, setModalisVisible] = useState(false);
+  // State to track if the card is hovered
+  const [hovered, setHovered] = useState(false);
 
   // Function to open the share modal
   const openModal = () => {
@@ -32,23 +33,20 @@ const ProductCard = ({ images, title, host, price }) => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
-
-
-const ProductCard = ({ place }) => {
-
-  const placeId = place.id ? place.id : `dummy-${Date.now()}`;
   };
 
-  console.log(place)
+  // Ensure placeId is generated even if place.id is not provided
+  const placeId = place?.id ? place.id : `dummy-${Date.now()}`;
+
   return (
     <>
-      <div className="product-card">
+      <div
+        className={styles.productCard}
+        onMouseEnter={() => setHovered(true)} // Set hovered to true on mouse enter
+        onMouseLeave={() => setHovered(false)} // Set hovered to false on mouse leave
+      >
         {/* Button to trigger the share popup */}
-        <button onClick={openModal} className="share-button">
-          <span className="share-icon">
-
-      <div className={styles.productCard}>
-        <button onClick={handleShare} className={styles.shareButton}>
+        <button onClick={openModal} className={styles.shareButton}>
           <span className={styles.shareIcon}>
             <svg
               viewBox="0 0 32 32"
@@ -64,35 +62,37 @@ const ProductCard = ({ place }) => {
             </svg>
           </span>
         </button>
-  
+
         {/* Product image carousel */}
         <img
           src={images[currentImageIndex]}
           alt={title}
-          className="product-image"
+          className={styles.productImage}
         />
 
-        {/* Arrows to navigate the images */}
-        <div>
-          <button onClick={handlePreviousImage} className="arrow-button">
-            &lt;
-          </button>
-          <button onClick={handleNextImage} className="arrow-button">
-            &gt;
-          </button>
-        </div>
-
-    <Link to={`/rooms/${placeId}`}>
-        <div className="card-content">
-          <div className="card-header">
-            <h2 className="card-title">{title}</h2>
+        {/* Navigation buttons, which appear on hover */}
+        {hovered && (
+          <div className={styles.imageNavigation}>
+            <button onClick={handlePreviousImage} className={styles.arrowButton}>
+              &lt; {/* Left arrow */}
+            </button>
+            <button onClick={handleNextImage} className={styles.arrowButton}>
+              &gt; {/* Right arrow */}
+            </button>
           </div>
-        </div>
-        <p className="card-host">{host}</p>
-        <p className="card-price">{price}</p>
+        )}
+
+        {/* Product information */}
+        <Link to={`/rooms/${placeId}`} className={styles.cardLink}>
+          <div className={styles.cardContent}>
+            <h2 className={styles.cardTitle}>{title}</h2>
+            <p className={styles.cardHost}>{host}</p>
+            <p className={styles.cardPrice}>{price}</p>
+          </div>
+        </Link>
       </div>
-          </Link>
-          
+
+      {/* Share popup modal */}
       {modalisVisible && <SharePopup onClick={closeModal} />}
     </>
   );
