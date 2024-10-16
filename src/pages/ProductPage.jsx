@@ -5,7 +5,6 @@ import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
-import PersonProfile from "../components/PersonProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
@@ -18,7 +17,10 @@ import styles from "./ProductPage.module.css";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
 import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
+import Reviews from "../components/Reviews/Reviews";
+import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
+
 
 const ProductPage = () => {
   const highlights = [
@@ -188,6 +190,24 @@ const ProductPage = () => {
           onClick={handleShare}
         />
         <IconButton faIcon={faHeart} label="Save" onClick={handleSave} />
+        <div className={styles.reviews}>
+          <Reviews
+            name={"Julia"}
+            picture={
+              "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
+            }
+            rating={5}
+            reviewText={
+              "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."
+            }
+            date="2024-09-15"
+          />
+        </div>
+        <MapView
+          mapViewSampleImg={mapViewSampleImg}
+          address="Königslutter am Elm, Niedersachsen, Germany"
+          addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
+        />
       </div>
       <ProductGallery
         bigImage={
@@ -239,17 +259,9 @@ const ProductPage = () => {
         address="Königslutter am Elm, Niedersachsen, Germany"
         addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
       />
-      <PersonProfile
-        title="Meet your host"
-        image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
-        name="Raus"
-        role="Superhost"
-        verified={true}
-        reviews={74}
-        rating={4.85}
-        yearsHosting={1}
-      />
+      <MeetYourHostSection />
     </div>
   );
 };
+
 export default ProductPage;
