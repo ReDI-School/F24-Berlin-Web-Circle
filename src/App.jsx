@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import SearchBar from "./components/SearchBar/SearchBar";
 import axios from "axios";
 
 function App() {
@@ -45,8 +44,6 @@ function App() {
       <div>
         <CalendarToggle />
       </div>
-
-      <SearchBar />
 
       <ProductCard
         images={[
