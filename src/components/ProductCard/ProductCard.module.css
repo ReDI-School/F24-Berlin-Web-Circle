@@ -7,6 +7,7 @@
   transition: transform 0.3s ease;
   cursor: pointer;
   text-align: left;
+  margin: 20px;
 }
 
 .productImage {
@@ -134,4 +135,26 @@
 
 .arrowButton:hover {
   background: rgba(255, 255, 255, 1);
+}
+
+.dotsContainer {
+  top: 70%;
+  left: 40%;
+  position: absolute;
+  text-align: center;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.activeDot {
+  background-color: #ffffff;
+  height: 7px;
+  width: 7px;
 }
