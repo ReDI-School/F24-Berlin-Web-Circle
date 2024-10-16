@@ -1,4 +1,5 @@
 .productCard {
+  position: relative;
   width: 300px;
   position: relative;
   border-radius: 12px;
@@ -8,6 +9,21 @@
   cursor: pointer;
   text-align: left;
   margin: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  z-index: 1000;
+}
+
+.no-scroll {
+  overflow: hidden !important; /* Prevent scrolling */
+  height: 100%; /* Prevent content from extending out of the viewport */
 }
 
 .productImage {
