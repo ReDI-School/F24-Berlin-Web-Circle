@@ -33,3 +33,15 @@
     align-items: top;
     cursor: pointer;
 }
+
+.logoAirbnb {
+    height: 60px;
+    width: 80px;
+}
+
+.userMenusWrapper {
+    display: flex;
+    align-items: top;
+    margin-top: 10px;
+    margin-right: 20px;
+}
