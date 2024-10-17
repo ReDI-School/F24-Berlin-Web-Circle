@@ -6,6 +6,7 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector'
 import DestinationPopUp from '../DestinationPopUp/DestinationPopUp'
 import GuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 import SearchPanel from '../SearchPanel/SearchPanel';
+import HeaderUserMenu from "../HeaderUserMenu/HeaderUserMenu"
 
 
 const Header = () => {
@@ -24,6 +25,7 @@ const Header = () => {
                 <div className={styles.beAHostAndLanguageSelectorWrapper}>
                     <ButtonBeAHost />
                     <LanguageSelector />
+                    <HeaderUserMenu />
                 </div>
             </header>
             <div className={styles.destinationPopUp}>
