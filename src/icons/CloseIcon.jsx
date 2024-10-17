@@ -1,20 +1,50 @@
-export const CloseIcon = ({ width = 16, height = 16 }) => {
-    const iconStyle = {
-      display: 'block',
-      height: `${height}px`,
-      width: `${width}px`,
-      stroke: 'currentcolor',
-      overflow: 'visible',
-    }
-    return (
+import { useState } from "react";
+
+export const CloseIcon = ({
+  width = 36,
+  height = 36,
+  stroke = "black",
+  onClick, // No need to rename it as 'closeModal', keep it as onClick
+  backgroundColor = "transparent",
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const iconStyle = {
+    display: "block",
+    height: `${height}px`,
+    width: `${width}px`,
+    cursor: "pointer", // Change cursor to pointer on hover
+    transition: "background-color 0.3s ease", // Smooth transition for background color
+  };
+
+  const containerStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: `${height}px`,
+    width: `${width}px`,
+    borderRadius: "50%",
+    backgroundColor: isHovered ? "#F5F5F5" : backgroundColor,
+    transition: "background-color 0.3s ease, border-radius 0.3s ease",
+    padding: "7px", // Smooth transition for background color and border radius
+  };
+
+  return (
+    <div
+      style={containerStyle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <svg
+        onClick={onClick} // Use onClick directly here
         xmlns="http://www.w3.org/2000/svg"
+        fill="none"
         viewBox="0 0 24 24"
-        fill="Black"
-        aria-label="close-button"
+        stroke={stroke}
         style={iconStyle}
       >
-        <path d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59 7.12 5.71a.996.996 0 1 0-1.41 1.41L10.59 12l-4.88 4.88a.996.996 0 1 0 1.41 1.41L12 13.41l4.88 4.88a.996.996 0 1 0 1.41-1.41L13.41 12l4.88-4.88a.996.996 0 0 0 0-1.41z"/>
+        <path strokeWidth={1} d="M6 18L18 6M6 6l12 12" />
       </svg>
-    )
-}
+    </div>
+  );
+};
