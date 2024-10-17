@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './CategoryTabs.css';
-import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree, FaArrowLeft, FaArrowRight } from 'react-icons/fa'; 
+import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree } from 'react-icons/fa'; 
 import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; 
-import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi'; 
+import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi';
+import { HiOutlineArrowRightCircle } from "react-icons/hi2";
+import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
+
 
 const categories = [
   { label: 'Amazing Pools', icon: <FaSwimmingPool size={32} /> },
@@ -69,7 +72,7 @@ const CategoryTabs = () => {
       <div className="category-tabs-wrapper">
         {showLeftArrow && (
           <button className="scroll-button left" onClick={() => handleScroll('left')}>
-            <FaArrowLeft size={24} />
+            <HiOutlineArrowLeftCircle size={32} />
           </button>
         )}
         
@@ -87,7 +90,7 @@ const CategoryTabs = () => {
         </div>
         
         <button className="scroll-button right" onClick={() => handleScroll('right')}>
-          <FaArrowRight size={24} />
+          <HiOutlineArrowRightCircle size={32} />
         </button>
       </div>
     </div>
