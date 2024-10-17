@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "name": "Santorini",
+      "location": "Greece",
+      "description": "A stunning island known for its whitewashed houses and incredible sunsets.",
+      "price": "$2000",
+      "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Santorini"
+    },
+    {
+      "id": 2,
+      "name": "Kyoto",
+      "location": "Japan",
+      "description": "Famous for its classical Buddhist temples, as well as gardens, imperial palaces, and traditional wooden houses.",
+      "price": "$1800",
+      "imageUrl": "https://dummyimage.com/600x400/000/fff&text=Kyoto"
+    }
+]
