@@ -1,11 +1,11 @@
 .category-tabs-container {
   position: relative;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 60 auto;
 }
 
 .category-tabs-wrapper {
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
 
@@ -13,8 +13,8 @@
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 40 px 0;
+  border-bottom: 1px solid #555;
   scroll-behavior: smooth;
 }
 
@@ -31,11 +31,11 @@
 }
 
 .scroll-button.left {
-  left: -470px;
+  left: -530px;
 }
 
 .scroll-button.right {
-  right: -470px;
+  right: -530px;
 }
 
 .scroll-button:focus {
