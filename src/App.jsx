@@ -4,6 +4,7 @@ import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
+import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import {BASE_URL} from "./constants/constants";
 
 function App() {
@@ -20,6 +21,9 @@ useEffect(()=> {
     <>
       <div>
         <CalendarToggle />
+      </div>  
+      <div>
+        <CategoryTabs />  
       </div>
 
       <ProductCard

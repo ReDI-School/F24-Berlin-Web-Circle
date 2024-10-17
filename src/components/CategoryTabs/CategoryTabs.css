@@ -1,0 +1,78 @@
+.category-tabs-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 60 auto;
+}
+
+.category-tabs-wrapper {
+  overflow: visible;
+  position: relative;
+}
+
+.category-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 40 px 0;
+  scroll-behavior: smooth;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  padding: 10px;
+  outline: none;
+  transform: translateY(-50%);
+}
+
+.scroll-button.left {
+  left: -530px;
+}
+
+.scroll-button.right {
+  right: -530px;
+}
+
+.scroll-button:focus {
+  outline: none;
+}
+
+.tab-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+}
+
+.tab-item:hover {
+  color: #555;
+  border-bottom: 2px solid #555;
+}
+
+.tab-icon {
+  margin-bottom: 8px;
+}
+
+.tab-label {
+  font-size: 12px;
+  text-align: center;
+}
+
+.tab-item.active {
+  color: #000;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
+}
