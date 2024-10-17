@@ -1,4 +1,5 @@
 import ReservationCard from "../components/ReservationCard/ReservationCard";
+import DateIncrementsButtonForTheCalendar from "../components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
 import hostImage from "../assets/images/host-raus.webp";
@@ -71,6 +72,12 @@ const ProductPage = () => {
   }
 
   return (
+    <div>
+      {`Dummy Product Page ${productId}`}
+      <DateIncrementsButtonForTheCalendar />
+      <div>
+        <AboveProductTitle
+          title={"Cabin in nature with panoramic view & sauna"}
     <div className={styles.MainProductPage}>
       <div className={styles.ProductPageContainer}>
         <div className={styles.titlePage}>
