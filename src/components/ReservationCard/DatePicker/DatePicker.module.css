@@ -5,9 +5,14 @@
   max-width: 318px;
   background-color: transparent;
   border: 1px solid #b5b5b5;
+  border-radius: 6px;
   font-size: 0.875rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.checkOutBackground {
+  background-color: #f7f6f6;
 }
 
 .datesPickerSection:hover {
@@ -61,20 +66,38 @@
   margin-left: -1px;
 }
 
-.checkoutSectionContent.disabledcheckout{
-  background-color: #d5d5d5;
+.checkoutSectionContent.disabledCheckout{
   opacity: 0.2;
 }
 
-.checkoutSection.checkOutError{
-  border: 2px solid #c13515;
-  border-radius: 12px;
+.checkinSection.activeCheckIn,
+.checkoutSection.activeCheckOut,
+.checkoutSection.checkOutError {
+  position: relative;
 }
 
-.checkinSection.activeCheckIn,
-.checkoutSection.activeCheckOut {
+.checkinSection.activeCheckIn {
+  background-color: #fff;
+}
+
+.checkinSection.activeCheckIn::before,
+.checkoutSection.activeCheckOut::before,
+.checkoutSection.checkOutError::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: 6px;
+  pointer-events: none; 
+}
+.checkinSection.activeCheckIn::before,
+.checkoutSection.activeCheckOut::before{
   border: 2px solid black;
-  border-radius: 12px;
+}
+.checkoutSection.checkOutError::before {
+  border: 2px solid #c13515;
 }
 
 

@@ -54,7 +54,7 @@ const ReservationDatesSelector = ({
           <h2>
             {nightsCount > 0
               ? `${nightsCount} ${nightsCount > 1 ? 'nights' : 'night'}`
-              : 'Select your dates'}
+              : 'Select dates'}
           </h2>
           <span>
             {stayPeriod ? (
