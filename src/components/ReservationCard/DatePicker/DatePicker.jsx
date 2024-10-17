@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './DatePicker.module.css'
 
 const DatePicker = ({
@@ -22,6 +22,20 @@ const DatePicker = ({
 }) => {
   const [checkInFocus, setCheckInFocus] = useState(false)
   const [checkOutFocus, setCheckOutFocus] = useState(false)
+
+  const checkInInputRef = useRef(null);
+  const checkOutInputRef = useRef(null);
+
+  useEffect(() => {
+    if (!checkInDate || checkInError) {
+      checkInInputRef?.current?.focus();
+      setCheckInFocus(true);
+    } else if (checkInDate && !checkInError) {
+      checkOutInputRef?.current?.focus();
+      setCheckOutFocus(true);
+    }
+  }, [checkInDate, checkInError]);
+
 
   const Container = renderAsForm ? 'form' : renderAsButton ? 'button' : 'div'
 
@@ -76,7 +90,7 @@ const DatePicker = ({
 
   return (
     <Container
-      className={styles.datesPickerSection}
+      className={`${styles.datesPickerSection} ${!checkInDate && !renderAsButton ? styles.checkOutBackground : ''}`}
       onClick={!renderAsForm && renderAsButton ? onToggle : undefined}
       onSubmit={renderAsForm ? (e) => e.preventDefault() : undefined}
     >
@@ -92,25 +106,39 @@ const DatePicker = ({
           {renderAsForm || !renderAsButton ? (
             <input
               type="text"
+              ref={checkInInputRef}
               className={styles.dateField}
               value={
-                checkInFocus || checkInDate !== ''
-                  ? inputCheckInDate
+                (checkInFocus || checkInDate !== '' || checkInError)
+                  ? inputCheckInDate 
                   : checkInDate
               }
               placeholder={
                 (!checkInDate && checkInFocus) ||
-                (checkInDate && inputCheckInDate === '')
+                (checkInDate && inputCheckInDate === '') ||
+                (checkInFocus === true && inputCheckInDate !== '')
                   ? 'MM/DD/YYYY'
                   : 'Add date'
               }
               onFocus={() => setCheckInFocus(true)}
+              // onBlur={() => {
+              //   if (checkInDate !== inputCheckInDate) {
+              //     handleCheckInBlur(inputCheckInDate)
+              //     setCheckInFocus(false)
+              //   }
+              // }}
               onBlur={() => {
-                if (checkInDate !== inputCheckInDate) {
-                  handleCheckInBlur(inputCheckInDate)
-                  setCheckInFocus(false)
+                if (inputCheckInDate === '' && !checkInFocus) {
+                  setCheckInFocus(false);
+                  setInputCheckInDate('');
+                } else if (checkInDate !== inputCheckInDate) {
+                  handleCheckInBlur(inputCheckInDate);
+                  setCheckInFocus(false);
+                } else {
+                  setCheckInFocus(false);
                 }
               }}
+              
               onKeyDown={(e) => {
                 if (checkInDate !== inputCheckInDate && e.key === 'Enter') {
                   handleCheckInBlur(inputCheckInDate)
@@ -133,7 +161,7 @@ const DatePicker = ({
       >
         <div
           className={`${styles.checkoutSectionContent} ${
-            !checkInDate && !renderAsButton ? styles.disabledcheckout : ''
+            !checkInDate && !renderAsButton ? styles.disabledCheckout : ''
           }`}
         >
           <label>Checkout</label>
@@ -141,25 +169,40 @@ const DatePicker = ({
             checkInDate !== 0 && (
               <input
                 type="text"
+                ref={checkOutInputRef}
                 className={styles.dateField}
                 value={
-                  checkOutFocus || checkOutDate !== ''
+                  (checkOutFocus || checkOutDate !== '' || checkOutError)
                     ? inputCheckOutDate
                     : checkOutDate
                 }
                 placeholder={
-                  (!checkOutDate && checkOutFocus) ||
-                  (checkInDate && inputCheckInDate === '')
+                  (!checkOutDate && checkOutFocus) || 
+                  // (checkInDate && inputCheckInDate === '') ||
+                  (checkOutDate && inputCheckOutDate === '') ||
+                  (checkOutFocus === true && inputCheckOutDate !== '')
                     ? 'MM/DD/YYYY'
                     : 'Add date'
                 }
                 onFocus={() => setCheckOutFocus(true)}
+                // onBlur={() => {
+                //   if (checkOutDate !== inputCheckOutDate) {
+                //     handleCheckOutBlur(inputCheckOutDate)
+                //     setCheckOutFocus(false)
+                //   }
+                // }}
                 onBlur={() => {
-                  if (checkOutDate !== inputCheckOutDate) {
-                    handleCheckOutBlur(inputCheckOutDate)
-                    setCheckOutFocus(false)
+                  if (inputCheckOutDate === '' && !checkOutFocus) {
+                    setCheckOutFocus(false);
+                    setInputCheckOutDate('');
+                  } else if (checkOutDate !== inputCheckOutDate) {
+                    handleCheckOutBlur(inputCheckOutDate);
+                    setCheckOutFocus(false);
+                  } else {
+                    setCheckOutFocus(false);
                   }
                 }}
+
                 onKeyDown={(e) => {
                   if (checkOutDate !== inputCheckOutDate && e.key === 'Enter') {
                     handleCheckOutBlur(inputCheckOutDate)

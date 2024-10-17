@@ -102,6 +102,6 @@
   text-decoration: underline;
 }
 .datePickerWrapper .datePickerContainer > * {
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
