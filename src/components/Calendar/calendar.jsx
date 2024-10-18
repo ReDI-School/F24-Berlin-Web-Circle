@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Calendar.module.css"; 
+import styles from "./Calendar.module.css"
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -13,15 +13,15 @@ const Calendar = () => {
     if (newMonth >= new Date()) setCurrentMonth(newMonth);
   };
 
-  const renderDaysOfWeek = () => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => <div key={index} className={styles.day-header}>{day}</div>);
+  const renderDaysOfWeek = () => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => <div key={index} className={styles.dayHeader}>{day}</div>);
 
   const renderDates = (year, month) => {
     const daysInMonth = getDaysInMonth(year, month);
     const firstDay = getFirstDayOfMonth(year, month);
     const daysArray = [];
 
-    for (let i = 0; i < firstDay; i++) daysArray.push(<div key={`empty-${i}`} className={styles.empty-slot}></div>);
-    for (let day = 1; day <= daysInMonth; day++) daysArray.push(<div key={day} className={styles.date}>{day}</div>);
+    for (let i = 0; i < firstDay; i++) daysArray.push(<div key={`empty-${i}`} className={styles.emptySlot}></div>);
+    for (let day = 1; day <= daysInMonth; day++) daysArray.push(<div key={day} className={styles.Date}>{day}</div>);
 
     return daysArray;
   };
@@ -32,9 +32,9 @@ const Calendar = () => {
     const monthName = date.toLocaleString("default", { month: "long" });
 
     return (
-      <div className={styles.month-container}>
+      <div className={styles.monthContainer}>
         <h3>{`${monthName} ${year}`}</h3>
-        <div className={styles.calendar-grid}>
+        <div className={styles.calendarGrid}>
           {renderDaysOfWeek()}
           {renderDates(year, month)}
         </div>
@@ -46,13 +46,13 @@ const Calendar = () => {
 
   return (
     <div className={styles.calendar}>
-      <div className={styles.calendar-header}>
+      <div className={styles.calendarHeader}>
         <button onClick={handlePrevMonth} disabled={currentMonth <= new Date()}>←</button>
         <button onClick={handleNextMonth}>→</button>
       </div>
       
     
-      <div className={styles.calendar-row}>
+      <div className={styles.calendarRow}>
         {renderCalendarForMonth(currentMonth)}
         {renderCalendarForMonth(getNextMonth())}
       </div>

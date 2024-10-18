@@ -2,6 +2,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
+import Calendar from "../Calendar/calendar";
 
 const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
@@ -10,13 +11,18 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
   const [guests, setGuests] = useState(initialGuests || "");
   const [date, setDates] = useState(initialDate || "");
 
+  const [showCalendar, setShowCalendar] = useState(false);
+  const toggleCalendar = () => {
+    setShowCalendar(!showCalendar);
+  }
+
   const handleSearch = () => {
     //search logic here
     onSearch({ location, checkIn, checkOut, date, guests });
   };
 
   return (
-
+<>
     <div className={styles.searchBar}>
       <div className={styles.inputContainerWhere}>
         <span className={styles.label}>Where</span>
@@ -26,6 +32,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           placeholder="Search destinations"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
+
         />
       </div>
       <div className={styles.separator}></div>
@@ -38,7 +45,9 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
               placeholder="Add dates"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
+              onFocus={toggleCalendar}
             />
+            
           </div>
           <div className={styles.separator}></div>
           <div className={styles.inputContainerCheckOut}>
@@ -50,6 +59,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
               onChange={(e) => setCheckOut(e.target.value)}
             />
           </div>
+
         </>
       ) : (
         <>
@@ -80,6 +90,8 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
         </button>
       </div>
     </div>
+    {showCalendar && <Calendar />}
+    </>
   );
 };
 

@@ -4,38 +4,38 @@
     align-items: center;
   }
   
-  .calendar-header {
+  .calendarHeader {
     display: flex;
     justify-content: space-between;
     width: 300px;
     margin-bottom: 20px;
   }
   
-  .calendar-row {
+  .calendarRow {
     display: flex;
     justify-content: center; 
     gap: 20px; 
   }
   
-  .month-container {
+  .monthContainer {
     width: 250px; 
     margin: 0 10px; 
   }
   
-  .calendar-grid {
+  .calendarGrid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
   }
   
-  .day-header,
+  .dayHeader,
   .date,
-  .empty-slot {
+  .emptySlot {
     padding: 5px; 
     border: 1px solid #ddd;
     text-align: center;
     font-size: 12px; 
-  
+  }
   h3 {
     font-size: 16px; 
   }
