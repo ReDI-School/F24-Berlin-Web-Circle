@@ -51,6 +51,7 @@
 }
 
 .reservationForm label {
+  margin-bottom: 2px;
   font-size: 0.625rem;
   text-transform: uppercase;
   font-weight: 700;

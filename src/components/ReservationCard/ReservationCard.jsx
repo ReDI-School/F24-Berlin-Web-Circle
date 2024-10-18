@@ -10,6 +10,8 @@ import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
 
 function ReservationCard({
+  defaultCheckInDate,
+  defaultCheckOutDate,
   pricePerNight,
   cleaningFee,
   airbnbServiceFee,
@@ -24,9 +26,9 @@ function ReservationCard({
 }) {
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
-  const [checkInDate, setCheckInDate] = useState('')
-  const [checkOutDate, setCheckOutDate] = useState('')
-  const [calculatedCosts, setCalculatedCosts] = useState(null)
+  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
+  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
+  // const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -59,7 +61,7 @@ function ReservationCard({
           infants: infantsCount,
           pets: petsCount,
         },
-        setCalculatedCosts,
+        // setCalculatedCosts,
         setLoading,
         setError
       )
@@ -179,7 +181,7 @@ function ReservationCard({
         )}
       </div>
 
-      {checkInOut && calculatedCosts && !loading && (
+      {checkInOut && !loading && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}

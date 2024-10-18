@@ -23,16 +23,16 @@ import { useState } from "react";
 
 const ProductPage = () => {
   /* ============== Reservation card data ============== */
-  const checkInDate = new Date("2025-01-01").toLocaleDateString();
-  const checkOutDate = new Date("2025-01-16").toLocaleDateString();
-  // const checkInDate = '';
-  // const checkOutDate = '';
+  // const defaultCheckInDate = new Date("2025-01-01").toLocaleDateString();
+  // const defaultCheckOutDate = new Date("2025-01-06").toLocaleDateString();
+  const defaultCheckInDate = '10/20/2024'; 
+  const defaultCheckOutDate = '10/25/2024';
   const pricePerNight = 146;
   const cleaningFee = 10;
   const airbnbServiceFee = 10;
   const longStayDiscount = 30;
   const nightsCountForDiscount = 5;
-  const minStayNights = 2;
+  const minStayNights = 3;
   const isBookingOpen = true;
   const allowGuestsNumber = {
     peopleNumber: 6,
@@ -180,8 +180,8 @@ const ProductPage = () => {
           </div>
           <div className={styles.ReservationCard}>
             <ReservationCard 
-               checkInDate={checkInDate}
-               checkOutDate={checkOutDate}
+               defaultCheckInDate={defaultCheckInDate}
+               defaultCheckOutDate={defaultCheckOutDate}
                pricePerNight={pricePerNight}
                cleaningFee={cleaningFee}
                airbnbServiceFee={airbnbServiceFee}
