@@ -28,9 +28,17 @@ function ReservationCard({
   const [showCalendar, setShowCalendar] = useState(false)
   const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
   const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
+  const [guestCounts, setGuestCounts] = useState({
+    adults: 1,  
+    children: 0, 
+    infants: 0,  
+    pets: 0  
+  });
   // const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+
+  const currentTotalPeople = guestCounts.adults + guestCounts.children;
 
   const toggleShowGuests = () => {
     setShowGuests((prevState) => !prevState)
@@ -144,6 +152,8 @@ function ReservationCard({
                     childrenCount={childrenCount}
                     infantsCount={infantsCount}
                     petsCount={petsCount}
+                    setGuestCounts={setGuestCounts}
+                    currentTotalPeople={currentTotalPeople}
                   />
                 )}
               </div>

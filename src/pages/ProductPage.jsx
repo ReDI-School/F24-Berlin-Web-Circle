@@ -35,7 +35,7 @@ const ProductPage = () => {
   const minStayNights = 3;
   const isBookingOpen = true;
   const allowGuestsNumber = {
-    peopleNumber: 6,
+    peopleNumber: 5,
     petsNumber: 2,
   }
 

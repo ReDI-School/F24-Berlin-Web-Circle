@@ -7,23 +7,56 @@ const Guest = ({
   descriptionType,
   onClick,
   count: initialCount,
+  allowGuestsNumber,
+  setGuestCounts,
+  currentTotalPeople,
 }) => {
   const [count, setCount] = useState(initialCount)
+  const { peopleNumber, petsNumber } = allowGuestsNumber
+ 
 
-  console.log(title, description, descriptionType)
-  const handelMinusCount = () => {
-    if (title === 'Adults' && count > 1) {
-      setCount(count - 1)
-      onClick({ typeofGuest: title, numberOfGuests: count - 1 })
-    } else if (title !== 'Adults' && count > 0) {
-      setCount(count - 1)
-      onClick({ typeofGuest: title, numberOfGuests: count - 1 })
+  const handleMinusCount = () => {
+    if ((title === 'Adults' && count > 1) || (title !== 'Adults' && count > 0)) {
+      const newCount = count - 1;
+      setCount(newCount);
+      onClick({ typeofGuest: title, numberOfGuests: newCount });
+      setGuestCounts((prevCounts) => ({
+        ...prevCounts,
+        [title.toLowerCase()]: newCount,
+      }));
     }
-  }
-  const handelPlusCount = () => {
-    setCount(count + 1)
-    onClick({ typeofGuest: title, numberOfGuests: count + 1 })
-  }
+  };
+
+  const handlePlusCount = () => {
+    if (
+      (title === 'Adults' || title === 'Children') &&
+      currentTotalPeople < peopleNumber
+    ) {
+      const newCount = count + 1;
+      setCount(newCount);
+      onClick({ typeofGuest: title, numberOfGuests: newCount });
+      setGuestCounts((prevCounts) => ({
+        ...prevCounts,
+        [title.toLowerCase()]: newCount,
+      }));
+    } else if (title === 'Pets' && count < petsNumber) {
+      const newCount = count + 1;
+      setCount(newCount);
+      onClick({ typeofGuest: title, numberOfGuests: newCount });
+      setGuestCounts((prevCounts) => ({
+        ...prevCounts,
+        pets: newCount,
+      }));
+    } else if (title === 'Infants' && count < 5) {
+      const newCount = count + 1;
+      setCount(newCount);
+      onClick({ typeofGuest: title, numberOfGuests: newCount });
+      setGuestCounts((prevCounts) => ({
+        ...prevCounts,
+        infants: newCount,
+      }));
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -38,19 +71,28 @@ const Guest = ({
       <div className={styles.buttonContainer}>
         <div
           className={
-            (count !== 0 && title !== 'Adults') ||
-            (count > 1 && title === 'Adults')
+            (count !== 0 && title !== 'Adults') || (count > 1 && title === 'Adults')
               ? styles.button
               : styles.buttonDisable
           }
-          onClick={handelMinusCount}
+          onClick={handleMinusCount}
         >
           -
         </div>
         <div className={styles.count}>{count}</div>
-        <div className={styles.button} onClick={handelPlusCount}>
+        <div
+          className={
+            ((title === 'Adults' || title === 'Children') && currentTotalPeople < peopleNumber) ||
+            (title === 'Pets' && count < petsNumber) ||
+            (title === 'Infants' && count < 5)
+              ? styles.button
+              : styles.buttonDisable
+          }
+          onClick={handlePlusCount}
+        >
           +
         </div>
+
       </div>
     </div>
   )
