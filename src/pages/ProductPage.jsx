@@ -5,6 +5,7 @@ import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
+// import PersonProfile from "../components/PersonProfile/PersonProfile";
 import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
 import ProductSummary from "../components/ProductSummary/ProductSummary";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
@@ -16,31 +17,11 @@ import {
 import styles from "./ProductPage.module.css";
 import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
 import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
-import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
-import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
+import Reviews from "../components/Reviews/Reviews";
 import Amenities from "../components/Amenities/Amenities";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const ProductPage = () => {
-  const [error, setError] = useState(null);
-  const [place, setPlace] = useState(null);
-  const { productId } = useParams();
-  console.log(productId);
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8800/places/${productId}`)
-      .then((response) => setPlace(response.data))
-
-      .catch((err) =>
-        setError(err.response?.data?.error || "Something went wrong")
-      );
-  }, [productId]);
-
-  // console.log(place);
-
-
   /* ============== Reservation card data ============== */
   // const defaultCheckInDate = new Date("2025-01-01").toLocaleDateString();
   // const defaultCheckOutDate = new Date("2025-01-06").toLocaleDateString();
@@ -51,7 +32,7 @@ const ProductPage = () => {
   const airbnbServiceFee = 10;
   const longStayDiscount = 30;
   const nightsCountForDiscount = 5;
-  const minStayNights = 2;
+  const minStayNights = 3;
   const isBookingOpen = true;
   const allowGuestsNumber = {
     peopleNumber: 6,
@@ -118,35 +99,6 @@ const ProductPage = () => {
     { type: "firepit", text: "Fire pit" },
   ];
 
-  const reviews = [
-    {
-      name: "Julia",
-      picture:
-        "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240",
-      rating: 5,
-      reviewText:
-        "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.",
-      date: "2024-09-22",
-    },
-    {
-      name: "Eef",
-      picture:
-        "https://a0.muscache.com/im/pictures/user/d1b646f8-16d9-4469-8d26-190b944ce662.jpg?im_w=240",
-      rating: 5,
-      reviewText:
-        "It's a nice boat and beautiful surroundings! Lots of walking and cycling, all right from the place of stay",
-      date: "2024-09-05",
-    },
-    {
-      name: "Nicole",
-      picture:
-        "https://a0.muscache.com/im/pictures/user/User-477216581/original/7daddddf-7c73-4aad-b631-69859d1f1622.jpeg?im_w=240",
-      rating: 5,
-      reviewText:
-        "we liked the houseboat, surroundings and location very much. people were also very friendly and accommodating",
-      date: "2024-04-05",
-    },
-  ];
 
   function handleShare() {
     alert("Share this experience");
@@ -163,9 +115,9 @@ const ProductPage = () => {
     <div className={styles.MainProductPage}>
       <div className={styles.ProductPageContainer}>
         <div className={styles.titlePage}>
-          {!!place && !!place.title && <AboveProductTitle
-            title={place.title}
-          />}
+          <AboveProductTitle
+            title={"Cabin in nature with panoramic view & sauna"}
+          />
           <div className={styles.IconButton}>
             <IconButton
               faIcon={faArrowUpFromBracket}
@@ -175,13 +127,23 @@ const ProductPage = () => {
             <IconButton faIcon={faHeart} label="Save" onClick={handleSave} />
           </div>
         </div>
-        {!!place && <ProductGallery
-          bigImage={place.images[0]}
-          smallTopLeftImage={place.images[1]}
-          smallTopRightImage={place.images[2]}
-          smallBottomLeftImage={place.images[3]}
-          smallBottomRightImage={place.images[4]}
-        />}
+        <ProductGallery
+          bigImage={
+            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg"
+          }
+          smallTopLeftImage={
+            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/253a0690-2a1e-4c34-ae7f-968b869be4b5.jpeg"
+          }
+          smallTopRightImage={
+            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/78ed3027-a197-4043-9b7e-8fc79a5425fc.jpeg"
+          }
+          smallBottomLeftImage={
+            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/182abee3-f7f8-4652-8c2a-f845e990d9c5.jpeg"
+          }
+          smallBottomRightImage={
+            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/2ca9c23e-85db-48f8-bd21-0718c286dcdf.jpeg"
+          }
+        />
         <div className={styles.ProductDescriptionContainer}>
           <div className={styles.ProductDescription}>
             <ProductSummary
@@ -229,6 +191,8 @@ const ProductPage = () => {
                onGuestChange={handleGuestClick} 
                guestsList={guestsList} 
                allowGuestsNumber={allowGuestsNumber}
+               minStayNights={minStayNights}
+               isBookingOpen={isBookingOpen}
             />
           </div>
         </div>
@@ -252,24 +216,37 @@ const ProductPage = () => {
             },
           }}
         />
-        {/* <IconButton
-          faIcon={faArrowUpFromBracket}
-          label="Share"
-          onClick={handleShare}
-        />
-        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} /> */}
         <div className={styles.reviews}>
-          <ReviewsSection reviews={reviews} />
+          <Reviews
+            name={"Julia"}
+            picture={
+              "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
+            }
+            rating={5}
+            reviewText={
+              "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."
+            }
+            date="2024-09-15"
+          />
         </div>
         <MapView
           mapViewSampleImg={mapViewSampleImg}
           address="Königslutter am Elm, Niedersachsen, Germany"
           addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
         />
+
+        {/* <PersonProfile
+          title="Meet your host"
+          image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
+          name="Raus"
+          role="Superhost"
+          verified={true}
+          reviews={74}
+          rating={4.85}
+          yearsHosting={1}
+        /> */}
       </div>
-      <MeetYourHostSection />
     </div>
   );
 };
-
 export default ProductPage;
