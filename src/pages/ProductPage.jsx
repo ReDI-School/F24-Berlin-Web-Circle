@@ -1,40 +1,49 @@
-import ReservationCard from "../components/ReservationCard/ReservationCard";
-import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
-import HostSummary from "../components/HostSummary/HostSummary";
-import hostImage from "../assets/images/host-raus.webp";
-import MapView from "../components/MapView/MapView";
-import mapViewSampleImg from "./../assets/map-view-sample.png";
-import ProductGallery from "../components/ProductGallery/ProductGallery";
-import ProductHighlight from "../components/ProductHighlight/ProductHighlight";
-import ProductSummary from "../components/ProductSummary/ProductSummary";
-import ProductDescription from "../components/ProductDescription/ProductDescription";
-import IconButton from "../components/IconButton/IconButton";
+import ReservationCard from '../components/ReservationCard/ReservationCard'
+import FavoriteStay from '../components/FavoriteStay/FavoriteStay'
+import HostSummary from '../components/HostSummary/HostSummary'
+import hostImage from '../assets/images/host-raus.webp'
+import MapView from '../components/MapView/MapView'
+import mapViewSampleImg from './../assets/map-view-sample.png'
+import ProductGallery from '../components/ProductGallery/ProductGallery'
+import ProductHighlight from '../components/ProductHighlight/ProductHighlight'
+import ProductSummary from '../components/ProductSummary/ProductSummary'
+import ProductDescription from '../components/ProductDescription/ProductDescription'
+import IconButton from '../components/IconButton/IconButton'
 import {
   faArrowUpFromBracket,
   faHeart,
-} from "@fortawesome/free-solid-svg-icons";
-import styles from "./ProductPage.module.css";
-import AboveProductTitle from "../components/AboveProductTitle/AboveProductTitle";
-import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
-import Reviews from "../components/Reviews/Reviews";
-import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
-import Amenities from "../components/Amenities/Amenities";
-import { useState } from "react";
-
+} from '@fortawesome/free-solid-svg-icons'
+import styles from './ProductPage.module.css'
+import AboveProductTitle from '../components/AboveProductTitle/AboveProductTitle'
+import ReviewSummary from '../components/ReviewSummary/ReviewSummary'
+import Reviews from '../components/Reviews/Reviews'
+import MeetYourHostSection from '../components/MeetYourhostSection/MeetYourHostSection'
+import Amenities from '../components/Amenities/Amenities'
+import { useState } from 'react'
+import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
 
 const ProductPage = () => {
   /* ============== Reservation card data ============== */
+  const [isPopupVisible, setIsPopupVisible] = useState(false)
+
+  const handleOpenPopup = () => {
+    setIsPopupVisible(true)
+  }
+
+  const handleClosePopup = () => {
+    setIsPopupVisible(false)
+  }
   // const defaultCheckInDate = new Date("2025-01-01").toLocaleDateString();
   // const defaultCheckOutDate = new Date("2025-01-06").toLocaleDateString();
-  const defaultCheckInDate = '10/20/2024'; 
-  const defaultCheckOutDate = '10/25/2024';
-  const pricePerNight = 146;
-  const cleaningFee = 10;
-  const airbnbServiceFee = 10;
-  const longStayDiscount = 30;
-  const nightsCountForDiscount = 5;
-  const minStayNights = 3;
-  const isBookingOpen = true;
+  const defaultCheckInDate = '10/20/2024'
+  const defaultCheckOutDate = '10/25/2024'
+  const pricePerNight = 146
+  const cleaningFee = 10
+  const airbnbServiceFee = 10
+  const longStayDiscount = 30
+  const nightsCountForDiscount = 5
+  const minStayNights = 3
+  const isBookingOpen = true
   const allowGuestsNumber = {
     peopleNumber: 5,
     petsNumber: 2,
@@ -45,71 +54,90 @@ const ProductPage = () => {
     { typeofGuest: 'Children', numberOfGuests: 0 },
     { typeofGuest: 'Infants', numberOfGuests: 0 },
     { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ]);
-    const guestsData = [
-        {index:1, title:'Adults', description:'Age 13+', descriptionType:'string'},
-        {index:2, title:'Children', description:'Ages 2 - 12', descriptionType:'string'},
-        {index:3, title:'Infants', description:'Under 2', descriptionType:'string'},
-        {index:4, title:'Pets', description:'Bringing a service animal?', descriptionType:'link'}
-    ];
+  ])
+  const guestsData = [
+    {
+      index: 1,
+      title: 'Adults',
+      description: 'Age 13+',
+      descriptionType: 'string',
+    },
+    {
+      index: 2,
+      title: 'Children',
+      description: 'Ages 2 - 12',
+      descriptionType: 'string',
+    },
+    {
+      index: 3,
+      title: 'Infants',
+      description: 'Under 2',
+      descriptionType: 'string',
+    },
+    {
+      index: 4,
+      title: 'Pets',
+      description: 'Bringing a service animal?',
+      descriptionType: 'link',
+    },
+  ]
 
-    const handleGuestClick = (updatedGuest) => {
-      setGuestsList((prevList) =>
-        prevList.map((guest) =>
-          guest.typeofGuest === updatedGuest.typeofGuest
-            ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-            : guest
-        )
-      );
-    };
- /* ============== End of Reservation card data ============== */
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
+  /* ============== End of Reservation card data ============== */
 
   const highlights = [
     {
-      type: "CHECK_IN",
-      text: "Self check-in",
-      subText: "Check yourself in with the lockbox.",
+      type: 'CHECK_IN',
+      text: 'Self check-in',
+      subText: 'Check yourself in with the lockbox.',
     },
     {
-      type: "AWARD",
-      text: "Superhost",
-      subText: "Superhosts are experienced, highly rated Hosts.",
+      type: 'AWARD',
+      text: 'Superhost',
+      subText: 'Superhosts are experienced, highly rated Hosts.',
     },
     {
-      type: "WIFI",
-      text: "Free Wifi",
-      subText: "Superhosts are experienced, highly rated Hosts.",
+      type: 'WIFI',
+      text: 'Free Wifi',
+      subText: 'Superhosts are experienced, highly rated Hosts.',
     },
     {
-      type: "CANCELLATION",
-      text: "Free cancellation",
-      subText: "Get a full refund if you change your mind.",
+      type: 'CANCELLATION',
+      text: 'Free cancellation',
+      subText: 'Get a full refund if you change your mind.',
     },
-  ];
+  ]
 
   const amenities = [
-    { type: "kitchen", text: "Kitchen" },
-    { type: "workspace", text: "Dedicated workspace" },
-    { type: "sauna", text: "Sauna" },
-    { type: "balcony", text: "Patio or balcony" },
-    { type: "fireplace", text: "Indoor fireplace" },
-    { type: "wifi", text: "Wifi" },
-    { type: "parking", text: "Free parking on premises" },
-    { type: "pets", text: "Pets allowed" },
-    { type: "backyard", text: "Backyard" },
-    { type: "firepit", text: "Fire pit" },
-  ];
-
+    { type: 'kitchen', text: 'Kitchen' },
+    { type: 'workspace', text: 'Dedicated workspace' },
+    { type: 'sauna', text: 'Sauna' },
+    { type: 'balcony', text: 'Patio or balcony' },
+    { type: 'fireplace', text: 'Indoor fireplace' },
+    { type: 'wifi', text: 'Wifi' },
+    { type: 'parking', text: 'Free parking on premises' },
+    { type: 'pets', text: 'Pets allowed' },
+    { type: 'backyard', text: 'Backyard' },
+    { type: 'firepit', text: 'Fire pit' },
+  ]
 
   function handleShare() {
-    alert("Share this experience");
+    alert('Share this experience')
   }
   function handleSave() {
-    alert("Save this experience");
+    alert('Save this experience')
   }
 
   function handleShowAmenities() {
-    alert("Here is the list of all amenities!");
+    alert('Here is the list of all amenities!')
   }
 
   return (
@@ -117,7 +145,7 @@ const ProductPage = () => {
       <div className={styles.ProductPageContainer}>
         <div className={styles.titlePage}>
           <AboveProductTitle
-            title={"Cabin in nature with panoramic view & sauna"}
+            title={'Cabin in nature with panoramic view & sauna'}
           />
           <div className={styles.IconButton}>
             <IconButton
@@ -130,30 +158,30 @@ const ProductPage = () => {
         </div>
         <ProductGallery
           bigImage={
-            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg"
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg'
           }
           smallTopLeftImage={
-            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/253a0690-2a1e-4c34-ae7f-968b869be4b5.jpeg"
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/253a0690-2a1e-4c34-ae7f-968b869be4b5.jpeg'
           }
           smallTopRightImage={
-            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/78ed3027-a197-4043-9b7e-8fc79a5425fc.jpeg"
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/78ed3027-a197-4043-9b7e-8fc79a5425fc.jpeg'
           }
           smallBottomLeftImage={
-            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/182abee3-f7f8-4652-8c2a-f845e990d9c5.jpeg"
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/182abee3-f7f8-4652-8c2a-f845e990d9c5.jpeg'
           }
           smallBottomRightImage={
-            "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/2ca9c23e-85db-48f8-bd21-0718c286dcdf.jpeg"
+            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/2ca9c23e-85db-48f8-bd21-0718c286dcdf.jpeg'
           }
         />
         <div className={styles.ProductDescriptionContainer}>
           <div className={styles.ProductDescription}>
             <ProductSummary
-              accommodation={"Entire rental unit"}
-              address={"Berlin, Germany"}
-              guests={{ key: "guest", value: 3 }}
-              bedrooms={{ key: "bedroom", value: 1 }}
-              beds={{ key: "bed", value: 3 }}
-              baths={{ key: "bath", value: 1 }}
+              accommodation={'Entire rental unit'}
+              address={'Berlin, Germany'}
+              guests={{ key: 'guest', value: 3 }}
+              bedrooms={{ key: 'bedroom', value: 1 }}
+              beds={{ key: 'bed', value: 3 }}
+              baths={{ key: 'bath', value: 1 }}
               starGrade={4.65}
               reviews={23}
             />
@@ -171,7 +199,7 @@ const ProductPage = () => {
               descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
               guestAccess="You have access to all areas of the flat. The flat has its own entrance."
               otherThings="Do not smoke in rooms!"
-            />{" "}
+            />{' '}
             <hr className={styles.separator} />
             <Amenities
               amenities={amenities}
@@ -180,22 +208,29 @@ const ProductPage = () => {
             />
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard 
-               defaultCheckInDate={defaultCheckInDate}
-               defaultCheckOutDate={defaultCheckOutDate}
-               pricePerNight={pricePerNight}
-               cleaningFee={cleaningFee}
-               airbnbServiceFee={airbnbServiceFee}
-               longStayDiscount={longStayDiscount}
-               nightsCountForDiscount={nightsCountForDiscount}
-               guestsData={guestsData}     
-               onGuestChange={handleGuestClick} 
-               guestsList={guestsList} 
-               allowGuestsNumber={allowGuestsNumber}
-               minStayNights={minStayNights}
-               isBookingOpen={isBookingOpen}
+            <ReservationCard
+              defaultCheckInDate={defaultCheckInDate}
+              defaultCheckOutDate={defaultCheckOutDate}
+              pricePerNight={pricePerNight}
+              cleaningFee={cleaningFee}
+              airbnbServiceFee={airbnbServiceFee}
+              longStayDiscount={longStayDiscount}
+              nightsCountForDiscount={nightsCountForDiscount}
+              guestsData={guestsData}
+              onGuestChange={handleGuestClick}
+              guestsList={guestsList}
+              allowGuestsNumber={allowGuestsNumber}
+              minStayNights={minStayNights}
+              isBookingOpen={isBookingOpen}
+              handleOpenPopup={handleOpenPopup}
             />
           </div>
+          {isPopupVisible && (
+              <ShortcutsPopUp
+                isVisible={isPopupVisible}
+                onClose={handleClosePopup}
+              />
+            )}
         </div>
         <hr className={styles.separator} />
         <ReviewSummary
@@ -219,13 +254,13 @@ const ProductPage = () => {
         />
         <div className={styles.reviews}>
           <Reviews
-            name={"Julia"}
+            name={'Julia'}
             picture={
-              "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
+              'https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240'
             }
             rating={5}
             reviewText={
-              "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house."
+              'It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.'
             }
             date="2024-09-15"
           />
@@ -239,7 +274,7 @@ const ProductPage = () => {
         <MeetYourHostSection />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductPage;
+export default ProductPage

@@ -4,8 +4,7 @@ import { KeyboardIcon } from '../../../icons/KeyboardIcon'
 import styles from './ReservationDatesSelector.module.css'
 import { useEffect, useState } from 'react'
 import WarningMessage from '../WarningMessage/WarningMessage'
-import { calculateNights, getStayPeriod } from '../../../utils/dateUtils';
-
+import { calculateNights, getStayPeriod } from '../../../utils/dateUtils'
 
 const ReservationDatesSelector = ({
   setCheckInDate,
@@ -14,6 +13,7 @@ const ReservationDatesSelector = ({
   checkOutDate,
   toggleShowCalendar,
   minStayNights,
+  handleOpenPopup,
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
 
@@ -29,10 +29,12 @@ const ReservationDatesSelector = ({
   const [checkOutError, setCheckOutError] = useState('')
 
   useEffect(() => {
-    if (userSelectedCheckOut &&
+    if (
+      userSelectedCheckOut &&
       checkInDate &&
       checkOutDate &&
-      checkInDate < checkOutDate) {
+      checkInDate < checkOutDate
+    ) {
       toggleShowCalendar(false)
     }
   }, [
@@ -43,9 +45,11 @@ const ReservationDatesSelector = ({
     userSelectedCheckOut,
   ])
 
-  const nightsCount = checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0;
+  const nightsCount =
+    checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
 
-  const stayPeriod = checkInDate && checkOutDate ? getStayPeriod(checkInDate, checkOutDate) : '';
+  const stayPeriod =
+    checkInDate && checkOutDate ? getStayPeriod(checkInDate, checkOutDate) : ''
 
   return (
     <div className={styles.selectorContainer} ref={calendarRef}>
@@ -86,7 +90,7 @@ const ReservationDatesSelector = ({
             setInputCheckOutDate={setInputCheckOutDate}
             minStayNights={minStayNights}
           />
-          <WarningMessage message={checkInError || checkOutError}/>
+          <WarningMessage message={checkInError || checkOutError} />
         </div>
       </div>
       <div
@@ -101,7 +105,10 @@ const ReservationDatesSelector = ({
         A Calendar will appear here soon!
       </div>
       <div className={styles.buttonsContainer}>
-        <button className={styles.shortcutsPopupButton}>
+        <button
+          className={styles.shortcutsPopupButton}
+          onClick={handleOpenPopup}
+        >
           <KeyboardIcon />
         </button>
         <div className={styles.clearToggleBtnWrapper}>
