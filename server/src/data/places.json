@@ -1,0 +1,36 @@
+[
+    {
+      "id": 1,
+      "title": "Idyllic house by the sea",
+      "host": "Hosted by Wendy and Elisa",
+      "price": "Coming soon",
+      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+    },
+    {
+      "id": 2,
+      "title": "Studio Zempow / ecological wooden house / photo studio",
+	  "host": "Hosted by Wendy and Elisa",
+      "price": "Coming soon",
+      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+    },
+    {
+	"id": 3,
+	"title": "Funen's best ocean view",
+	"host": "Hosted by Wendy and Elisa",
+	"price": "Coming soon",
+	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+	},
+    {
+	"id": 4,
+	"title": "Cozy Apartment in City Center",
+	"host": "Hosted by Wendy and Elisa",
+	"price": "Coming soon",
+	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+	},
+    {
+	"title": "House at a beach" ,
+	"host": "Hosted by Wendy and Elisa",
+	"price": "Coming soon",
+	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+	}
+  ]
