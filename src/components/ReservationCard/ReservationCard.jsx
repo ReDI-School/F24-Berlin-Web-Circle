@@ -181,7 +181,7 @@ function ReservationCard({
         )}
       </div>
 
-      {checkInOut && !loading && (
+      {checkInOut && !loading && isBookingOpen && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
