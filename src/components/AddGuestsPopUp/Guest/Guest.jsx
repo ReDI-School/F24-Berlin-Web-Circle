@@ -10,7 +10,7 @@ const Guest = ({
   allowGuestsNumber,
   setGuestCounts,
   currentTotalPeople,
-  toggleGuestCountPopup={toggleGuestCountPopup}
+  toggleGuestCountPopup,
 }) => {
   const [count, setCount] = useState(initialCount)
   const { peopleNumber, petsNumber } = allowGuestsNumber

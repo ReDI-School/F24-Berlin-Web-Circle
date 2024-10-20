@@ -3,7 +3,12 @@ import { CloseIcon } from '../../../icons'
 import AnimalServiceImg from '../../../assets/images/service-images/animal-service.jpg'
 import styles from './GuestCountPopUp.module.css'
 
-const GuestCountPopUp = ({ isVisible, onClose }) => {
+const GuestCountPopUp = ({ isVisible, onClose, showGuests, setShowGuests }) => {
+
+  if (!showGuests) {
+    setShowGuests(true)
+  } 
+
   return (
     <Popup isVisible={isVisible} onClose={onClose}>
       <div className={styles.header}>

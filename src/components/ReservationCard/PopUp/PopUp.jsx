@@ -17,7 +17,9 @@ const Popup = ({ isVisible, onClose, children, popupStyles }) => {
     }
   }, [isVisible])
 
-  if (!isVisible) return null
+  if (!isVisible) {
+    return null
+  } 
 
   return (
     <div className={styles.overlay}>
