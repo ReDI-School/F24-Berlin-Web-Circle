@@ -25,9 +25,11 @@ function ReservationCard({
   isBookingOpen,
   toggleShortcutsPopup,
   toggleGuestCountPopup,
+  setShowGuests,
+  showGuests,
+  showCalendar,
+  setShowCalendar,
 }) {
-  const [showGuests, setShowGuests] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
   const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
   const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
   const [guestCounts, setGuestCounts] = useState({
@@ -46,8 +48,8 @@ function ReservationCard({
     setShowGuests((prevState) => !prevState)
   }
 
-  const toggleShowCalendar = (show) => {
-    setShowCalendar(show)
+  const toggleShowCalendar = () => {
+    setShowCalendar((prevState) => !prevState)
   }
 
   const {
@@ -118,7 +120,6 @@ function ReservationCard({
                 setCheckInDate={setCheckInDate}
                 setCheckOutDate={setCheckOutDate}
                 renderAsButton={true}
-                toggleShowCalendar={toggleShowCalendar}
               />
               {showCalendar && (
                 <ReservationDatesSelector
@@ -169,7 +170,7 @@ function ReservationCard({
                 type={checkInOut && !loading ? 'submit' : 'button'}
                 onClick={
                   !checkInOut && !loading
-                    ? () => toggleShowCalendar(true)
+                    ? () => toggleShowCalendar()
                     : undefined
                 }
                 className={styles.reserveButton}

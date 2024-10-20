@@ -27,6 +27,10 @@ const ProductPage = () => {
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+  const [showGuests, setShowGuests] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
+
+
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -227,18 +231,26 @@ const ProductPage = () => {
               isBookingOpen={isBookingOpen}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
+              setShowGuests={setShowGuests}
+              showGuests={showGuests}
+              showCalendar={showCalendar}
+              setShowCalendar={setShowCalendar}
             />
           </div>
           {isShortcutsPopupVisible && (
               <ShortcutsPopUp
                 isVisible={isShortcutsPopupVisible}
                 onClose={toggleShortcutsPopup}
+                showCalendar={showCalendar}
+                setShowCalendar={setShowCalendar}
               />
             )}
           {isGuestCountPopupVisible && (
               <GuestCountPopUp
                 isVisible={isGuestCountPopupVisible}
                 onClose={toggleGuestCountPopup}
+                showGuests={showGuests}
+                setShowGuests={setShowGuests}
               />
             )}
         </div>

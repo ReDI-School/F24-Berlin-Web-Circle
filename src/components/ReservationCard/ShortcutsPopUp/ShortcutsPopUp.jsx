@@ -2,7 +2,12 @@ import Popup from '../PopUp/PopUp'
 import ShortcutItem from './ShortcutItem/ShortcutItem'
 import styles from './ShortcutsPopUp.module.css'
 
-const ShortcutsPopUp = ({ isVisible, onClose }) => {
+const ShortcutsPopUp = ({ isVisible, onClose, showCalendar, setShowCalendar }) => {
+
+if (!showCalendar) {
+  setShowCalendar(true)
+}
+
   return (
     <Popup isVisible={isVisible} onClose={onClose}>
       <div className={styles.contentContainer}>
