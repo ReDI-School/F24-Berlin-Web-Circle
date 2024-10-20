@@ -23,7 +23,8 @@ function ReservationCard({
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
-  handleOpenPopup,
+  toggleShortcutsPopup,
+  toggleGuestCountPopup,
 }) {
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
@@ -127,7 +128,7 @@ function ReservationCard({
                   checkOutDate={checkOutDate}
                   toggleShowCalendar={toggleShowCalendar}
                   minStayNights={minStayNights}
-                  handleOpenPopup={handleOpenPopup}
+                  toggleShortcutsPopup={toggleShortcutsPopup}
                 />
               )}
               <button
@@ -156,6 +157,7 @@ function ReservationCard({
                     petsCount={petsCount}
                     setGuestCounts={setGuestCounts}
                     currentTotalPeople={currentTotalPeople}
+                    toggleGuestCountPopup={toggleGuestCountPopup}
                   />
                 )}
               </div>

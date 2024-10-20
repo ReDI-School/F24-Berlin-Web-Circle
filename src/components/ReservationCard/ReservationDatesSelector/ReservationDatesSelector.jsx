@@ -13,7 +13,7 @@ const ReservationDatesSelector = ({
   checkOutDate,
   toggleShowCalendar,
   minStayNights,
-  handleOpenPopup,
+  toggleShortcutsPopup,
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
 
@@ -107,7 +107,7 @@ const ReservationDatesSelector = ({
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}
-          onClick={handleOpenPopup}
+          onClick={toggleShortcutsPopup}
         >
           <KeyboardIcon />
         </button>

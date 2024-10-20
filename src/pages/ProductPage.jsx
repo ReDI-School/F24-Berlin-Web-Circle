@@ -21,18 +21,21 @@ import MeetYourHostSection from '../components/MeetYourhostSection/MeetYourHostS
 import Amenities from '../components/Amenities/Amenities'
 import { useState } from 'react'
 import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
+import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 
 const ProductPage = () => {
   /* ============== Reservation card data ============== */
-  const [isPopupVisible, setIsPopupVisible] = useState(false)
+  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
+  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
 
-  const handleOpenPopup = () => {
-    setIsPopupVisible(true)
+  const toggleShortcutsPopup = () => {
+    setIsShortcutsPopupVisible((prevState) => !prevState)
   }
 
-  const handleClosePopup = () => {
-    setIsPopupVisible(false)
+  const toggleGuestCountPopup = () => {
+    setIsGuestCountPopupVisible((prevState) => !prevState)
   }
+
   // const defaultCheckInDate = new Date("2025-01-01").toLocaleDateString();
   // const defaultCheckOutDate = new Date("2025-01-06").toLocaleDateString();
   const defaultCheckInDate = '10/20/2024'
@@ -222,13 +225,20 @@ const ProductPage = () => {
               allowGuestsNumber={allowGuestsNumber}
               minStayNights={minStayNights}
               isBookingOpen={isBookingOpen}
-              handleOpenPopup={handleOpenPopup}
+              toggleShortcutsPopup={toggleShortcutsPopup}
+              toggleGuestCountPopup={toggleGuestCountPopup}
             />
           </div>
-          {isPopupVisible && (
+          {isShortcutsPopupVisible && (
               <ShortcutsPopUp
-                isVisible={isPopupVisible}
-                onClose={handleClosePopup}
+                isVisible={isShortcutsPopupVisible}
+                onClose={toggleShortcutsPopup}
+              />
+            )}
+          {isGuestCountPopupVisible && (
+              <GuestCountPopUp
+                isVisible={isGuestCountPopupVisible}
+                onClose={toggleGuestCountPopup}
               />
             )}
         </div>

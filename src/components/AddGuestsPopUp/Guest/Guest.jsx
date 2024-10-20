@@ -10,6 +10,7 @@ const Guest = ({
   allowGuestsNumber,
   setGuestCounts,
   currentTotalPeople,
+  toggleGuestCountPopup={toggleGuestCountPopup}
 }) => {
   const [count, setCount] = useState(initialCount)
   const { peopleNumber, petsNumber } = allowGuestsNumber
@@ -65,7 +66,7 @@ const Guest = ({
         {descriptionType === 'string' ? (
           <div>{description}</div>
         ) : (
-          <div className={styles.descriptionLink}>{description}</div>
+          <div className={styles.descriptionLink} onClick={toggleGuestCountPopup}>{description}</div>
         )}
       </div>
       <div className={styles.buttonContainer}>
