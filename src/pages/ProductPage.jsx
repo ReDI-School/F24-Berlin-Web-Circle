@@ -20,6 +20,8 @@ import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
 import { useEffect, useState } from "react";
+import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
+import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -42,15 +44,28 @@ const ProductPage = () => {
 
 
   /* ============== Reservation card data ============== */
-  const checkInDate = new Date("2025-01-01").toLocaleDateString();
-  const checkOutDate = new Date("2025-01-16").toLocaleDateString();
-  // const checkInDate = '';
-  // const checkOutDate = '';
-  const pricePerNight = 146;
-  const cleaningFee = 10;
-  const airbnbServiceFee = 10;
-  const longStayDiscount = 30;
-  const nightsCountForDiscount = 5;
+  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
+  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+
+  const toggleShortcutsPopup = () => {
+    setIsShortcutsPopupVisible((prevState) => !prevState)
+  }
+
+  const toggleGuestCountPopup = () => {
+    setIsGuestCountPopupVisible((prevState) => !prevState)
+  }
+
+  // const defaultCheckInDate = new Date("2025-01-01").toLocaleDateString();
+  // const defaultCheckOutDate = new Date("2025-01-06").toLocaleDateString();
+  const defaultCheckInDate = '10/20/2024'
+  const defaultCheckOutDate = '10/25/2024'
+  const pricePerNight = 146
+  const cleaningFee = 10
+  const airbnbServiceFee = 10
+  const longStayDiscount = 30
+  const nightsCountForDiscount = 5
+  const minStayNights = 3
+  const isBookingOpen = true
   const allowGuestsNumber = {
     peopleNumber: 6,
     petsNumber: 2,
@@ -215,20 +230,36 @@ const ProductPage = () => {
             />
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard 
-               checkInDate={checkInDate}
-               checkOutDate={checkOutDate}
-               pricePerNight={pricePerNight}
-               cleaningFee={cleaningFee}
-               airbnbServiceFee={airbnbServiceFee}
-               longStayDiscount={longStayDiscount}
-               nightsCountForDiscount={nightsCountForDiscount}
-               guestsData={guestsData}     
-               onGuestChange={handleGuestClick} 
-               guestsList={guestsList} 
-               allowGuestsNumber={allowGuestsNumber}
+            <ReservationCard
+              defaultCheckInDate={defaultCheckInDate}
+              defaultCheckOutDate={defaultCheckOutDate}
+              pricePerNight={pricePerNight}
+              cleaningFee={cleaningFee}
+              airbnbServiceFee={airbnbServiceFee}
+              longStayDiscount={longStayDiscount}
+              nightsCountForDiscount={nightsCountForDiscount}
+              guestsData={guestsData}
+              onGuestChange={handleGuestClick}
+              guestsList={guestsList}
+              allowGuestsNumber={allowGuestsNumber}
+              minStayNights={minStayNights}
+              isBookingOpen={isBookingOpen}
+              toggleShortcutsPopup={toggleShortcutsPopup}
+              toggleGuestCountPopup={toggleGuestCountPopup}
             />
           </div>
+          {isShortcutsPopupVisible && (
+              <ShortcutsPopUp
+                isVisible={isShortcutsPopupVisible}
+                onClose={toggleShortcutsPopup}
+              />
+            )}
+          {isGuestCountPopupVisible && (
+              <GuestCountPopUp
+                isVisible={isGuestCountPopupVisible}
+                onClose={toggleGuestCountPopup}
+              />
+            )}
         </div>
         <hr className={styles.separator} />
         <ReviewSummary
