@@ -23,14 +23,19 @@ import { useState } from 'react'
 import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 
+
 const ProductPage = () => {
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
-
-
+  const [guestsList, setGuestsList] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ])
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -40,8 +45,17 @@ const ProductPage = () => {
     setIsGuestCountPopupVisible((prevState) => !prevState)
   }
 
-  // const defaultCheckInDate = new Date("2025-01-01").toLocaleDateString();
-  // const defaultCheckOutDate = new Date("2025-01-06").toLocaleDateString();
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
+
+
   const defaultCheckInDate = '10/20/2024'
   const defaultCheckOutDate = '10/25/2024'
   const pricePerNight = 146
@@ -55,49 +69,7 @@ const ProductPage = () => {
     peopleNumber: 5,
     petsNumber: 2,
   }
-
-  const [guestsList, setGuestsList] = useState([
-    { typeofGuest: 'Adults', numberOfGuests: 1 },
-    { typeofGuest: 'Children', numberOfGuests: 0 },
-    { typeofGuest: 'Infants', numberOfGuests: 0 },
-    { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ])
-  const guestsData = [
-    {
-      index: 1,
-      title: 'Adults',
-      description: 'Age 13+',
-      descriptionType: 'string',
-    },
-    {
-      index: 2,
-      title: 'Children',
-      description: 'Ages 2 - 12',
-      descriptionType: 'string',
-    },
-    {
-      index: 3,
-      title: 'Infants',
-      description: 'Under 2',
-      descriptionType: 'string',
-    },
-    {
-      index: 4,
-      title: 'Pets',
-      description: 'Bringing a service animal?',
-      descriptionType: 'link',
-    },
-  ]
-
-  const handleGuestClick = (updatedGuest) => {
-    setGuestsList((prevList) =>
-      prevList.map((guest) =>
-        guest.typeofGuest === updatedGuest.typeofGuest
-          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-          : guest
-      )
-    )
-  }
+  
   /* ============== End of Reservation card data ============== */
 
   const highlights = [
@@ -223,7 +195,6 @@ const ProductPage = () => {
               airbnbServiceFee={airbnbServiceFee}
               longStayDiscount={longStayDiscount}
               nightsCountForDiscount={nightsCountForDiscount}
-              guestsData={guestsData}
               onGuestChange={handleGuestClick}
               guestsList={guestsList}
               allowGuestsNumber={allowGuestsNumber}

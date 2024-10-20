@@ -167,7 +167,7 @@ const DatePicker = ({
                   if (checkInDate !== inputCheckInDate && e.key === 'Enter') {
                     handleCheckInBlur(inputCheckInDate)
                   }
-                }}
+                }}                
                 onChange={(e) => handleCheckInChange(e.target.value)}
                 maxLength={10}
                 required={checkInFocus}
@@ -252,7 +252,7 @@ const DatePicker = ({
                     ) {
                       handleCheckOutBlur(inputCheckOutDate)
                     }
-                  }}
+                  }}                  
                   onChange={(e) => handleCheckOutChange(e.target.value)}
                   maxLength={10}
                   required={checkOutFocus}

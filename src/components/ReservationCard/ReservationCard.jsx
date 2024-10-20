@@ -5,7 +5,7 @@ import ReservationDatesSelector from './ReservationDatesSelector/ReservationDate
 import DatePicker from './DatePicker/DatePicker'
 import GuestCountDisplay from './GuestCountDisplay/GuestCountDisplay'
 import useOutsideClick from '../../hooks/useOutsideClick'
-import { fetchCalculatedCosts } from '../../utils/fetchCalculatedCosts'
+import { fetchCalculatedCosts } from '../../api/pricingApi'
 import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
 
@@ -17,7 +17,6 @@ function ReservationCard({
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  guestsData,
   onGuestChange,
   guestsList,
   allowGuestsNumber,
@@ -38,7 +37,7 @@ function ReservationCard({
     infants: 0,  
     pets: 0  
   });
-  // const [calculatedCosts, setCalculatedCosts] = useState(null)
+  const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -48,8 +47,8 @@ function ReservationCard({
     setShowGuests((prevState) => !prevState)
   }
 
-  const toggleShowCalendar = () => {
-    setShowCalendar((prevState) => !prevState)
+  const toggleShowCalendar = (show) => {
+    setShowCalendar(show)
   }
 
   const {
@@ -70,15 +69,16 @@ function ReservationCard({
         checkOutDate,
         {
           adults: adultsAndChildrenCount,
+          children: childrenCount,
           infants: infantsCount,
           pets: petsCount,
         },
-        // setCalculatedCosts,
+        setCalculatedCosts,
         setLoading,
         setError
       )
     } else {
-      // setError('Please select valid dates and guests.');
+      setError('Please select valid dates and guests.');
     }
   }
 
@@ -92,6 +92,8 @@ function ReservationCard({
     border: '1px solid var(--palette-deco)',
     zIndex: '99 !important',
   }
+
+console.log('calculatedCosts', calculatedCosts)
 
   return (
     <div className={styles.reservationCard}>
@@ -147,7 +149,6 @@ function ReservationCard({
               <div className={styles.guestDropdown}>
                 {showGuests && (
                   <AddGuestsPopUp
-                    guestsData={guestsData}
                     onGuestChange={onGuestChange}
                     style={addGuestPopUpStyles}
                     allowGuestsNumber={allowGuestsNumber}
@@ -170,7 +171,7 @@ function ReservationCard({
                 type={checkInOut && !loading ? 'submit' : 'button'}
                 onClick={
                   !checkInOut && !loading
-                    ? () => toggleShowCalendar()
+                    ? () => toggleShowCalendar(true)
                     : undefined
                 }
                 className={styles.reserveButton}
