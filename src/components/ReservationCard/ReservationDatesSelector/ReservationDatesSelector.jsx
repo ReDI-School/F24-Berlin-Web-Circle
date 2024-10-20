@@ -15,7 +15,8 @@ const ReservationDatesSelector = ({
   minStayNights,
   toggleShortcutsPopup,
 }) => {
-  const calendarRef = useOutsideClick(toggleShowCalendar)
+  const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
+
 
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
@@ -36,7 +37,7 @@ const ReservationDatesSelector = ({
       checkOutDate &&
       checkInDate < checkOutDate
     ) {
-      toggleShowCalendar()
+      toggleShowCalendar(false)
     }
   }, [
     checkInDate,
@@ -129,7 +130,7 @@ const ReservationDatesSelector = ({
             </button>
           </div>
           <div className={styles.cancelButton}>
-            <button onClick={toggleShowCalendar}>Close</button>
+            <button onClick={() => toggleShowCalendar(false)}>Close</button>
           </div>
         </div>
       </div>
