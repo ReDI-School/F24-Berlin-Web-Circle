@@ -84,12 +84,12 @@
 	  {
 		  "reservationId": 1,
 		  "customerId": 7,
-		  "dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+		  "dates": ["Tue Dec 01 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
 	  },
 	  {
 		  "reservationId": 2,
 		  "customerId": 8,
-		  "dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+		  "dates": ["Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 06 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
 	  }
 	]
 	}
