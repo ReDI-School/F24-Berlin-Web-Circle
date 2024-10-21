@@ -20,9 +20,27 @@ import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import Reviews from "../components/Reviews/Reviews";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const ProductPage = () => {
+  const [error, setError] = useState(null);
+  const [place, setPlace] = useState(null);
+  const { productId } = useParams();
+  console.log(productId);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8800/places/${productId}`)
+      .then((response) => setPlace(response.data))
+
+      .catch((err) =>
+        setError(err.response?.data?.error || "Something went wrong")
+      );
+  }, [productId]);
+
+  console.log(place);
+
   const highlights = [
     {
       type: "CHECK_IN",
@@ -59,28 +77,35 @@ const ProductPage = () => {
     { type: "firepit", text: "Fire pit" },
   ];
 
-  const reviews = [{
+  const reviews = [
+    {
       name: "Julia",
-      picture: "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240",
+      picture:
+        "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240",
       rating: 5,
-      reviewText: "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.",
-      date: "2024-09-22"
+      reviewText:
+        "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.",
+      date: "2024-09-22",
     },
     {
       name: "Eef",
-      picture: "https://a0.muscache.com/im/pictures/user/d1b646f8-16d9-4469-8d26-190b944ce662.jpg?im_w=240",
+      picture:
+        "https://a0.muscache.com/im/pictures/user/d1b646f8-16d9-4469-8d26-190b944ce662.jpg?im_w=240",
       rating: 5,
-      reviewText: "It's a nice boat and beautiful surroundings! Lots of walking and cycling, all right from the place of stay",
-      date: "2024-09-05"
+      reviewText:
+        "It's a nice boat and beautiful surroundings! Lots of walking and cycling, all right from the place of stay",
+      date: "2024-09-05",
     },
     {
       name: "Nicole",
-      picture: "https://a0.muscache.com/im/pictures/user/User-477216581/original/7daddddf-7c73-4aad-b631-69859d1f1622.jpeg?im_w=240",
+      picture:
+        "https://a0.muscache.com/im/pictures/user/User-477216581/original/7daddddf-7c73-4aad-b631-69859d1f1622.jpeg?im_w=240",
       rating: 5,
-      reviewText: "we liked the houseboat, surroundings and location very much. people were also very friendly and accommodating",
-      date: "2024-04-05"
+      reviewText:
+        "we liked the houseboat, surroundings and location very much. people were also very friendly and accommodating",
+      date: "2024-04-05",
     },
-   ]
+  ];
 
   function handleShare() {
     alert("Share this experience");
@@ -251,9 +276,7 @@ const ProductPage = () => {
         guestAccess="You have access to all areas of the flat. The flat has its own entrance."
         otherThings="Do not smoke in rooms!"
       />
-     <ReviewsSection 
-       reviews={reviews}
-      />
+      <ReviewsSection reviews={reviews} />
       <MapView
         mapViewSampleImg={mapViewSampleImg}
         address="Königslutter am Elm, Niedersachsen, Germany"

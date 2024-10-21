@@ -4,17 +4,33 @@ import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
-import {BASE_URL} from "./constants/constants";
+import { BASE_URL } from "./constants/constants";
 
 function App() {
   const [places, setPlaces] = useState([]);
+  const [selectPlaceId, setSelectPlaceId] = useState(null);
 
-// fetch places from the Backend
-useEffect(()=> {
-  axios.get(`${BASE_URL}places`)
-  .then(response => setPlaces(response?.data))
-  .catch(error => console.error(`Something went wrong. ${error.message}.`))
-  }, [])
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}places`)
+      .then((response) => setPlaces(response?.data))
+      .catch((error) =>
+        console.error(`Something went wrong. ${error.message}.`)
+      );
+  }, []);
+  const handlePlaceClick = (placeId) => {
+    setSelectPlaceId(placeId);
+    console.log(placeId);
+
+    axios
+      .post(`${BASE_URL}savePlace`, { placeId })
+      .then((response) => {
+        console.log("Place id sent successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending place ID:", error.message);
+      });
+  };
 
   return (
     <>
@@ -35,15 +51,21 @@ useEffect(()=> {
         price="Coming soon"
       />
 
-      {/* Links to room details */}
       <div>
         {places.map((place) => {
-          // Ensure a valid link, skipping places without an id
           if (!place.id) return null;
           return (
-            <Link to={`/rooms/${place.id}`} key={place.id}>
-              <div>{`${place.id} - ${place.title}`}</div>
-            </Link>
+            <div key={place.id} onClick={() => handlePlaceClick(place.id)}>
+              <Link to={`/rooms/${place.id}`} key={place.id}>
+                <div>{`${place.id} - ${place.title}`}</div>
+                {/* <ProductCard
+                  images={place.images}
+                  title={place.title}
+                  host={place.host}
+                  price={place.price}
+                /> */}
+              </Link>
+            </div>
           );
         })}
       </div>
