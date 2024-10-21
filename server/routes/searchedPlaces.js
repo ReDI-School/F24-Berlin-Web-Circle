@@ -9,13 +9,11 @@ router.get("/:destination/homes", (req, res) => {
 	const filteredResult = [];
 
 	const filteredDestinations = destination ? places.filter(place => place.destination === destination && place.guests >= guests) : places;
-	console.log(checkIn);
 	if (filteredDestinations.length)
 	{
 		filteredDestinations.forEach(destination => {
 			let isPlaceNotAvailable = destination.reservations.some((reservation)=> {
 				const [reservationCheckIn, reservationCheckOut] = reservation.dates;
-				console.log(reservationCheckIn === checkIn ? "true" : "false");
 				return ((reservationCheckIn <= checkIn && reservationCheckOut > checkIn) ||
 					(reservationCheckIn < checkOut && reservationCheckOut >= checkOut) ||
 					reservationCheckIn === checkIn ||
