@@ -1,5 +1,4 @@
 const express = require("express");
-const products = require("./src/data/places.json");
 const cors = require("cors");
 
 const app = express();
@@ -28,9 +27,13 @@ app.post("/savePlace", (req, res) => {
   });
 });
 
-app.get("/places", (req, res) => {
-  res.json(products);
-});
+// import Routes
+const placesRoutes = require('./routes/places');
+const destinationsRoutes = require('./routes/destinations');
+
+// Use Routes
+app.use('/places', placesRoutes); 
+app.use('/destinations', destinationsRoutes); 
 
 app.listen(PORT, (error) => {
   if (error) console.log("Error starting the server:", error);
