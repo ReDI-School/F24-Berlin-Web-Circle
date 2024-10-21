@@ -4,33 +4,93 @@
       "title": "Idyllic house by the sea",
       "host": "Hosted by Wendy and Elisa",
       "price": "Coming soon",
-      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
+	  "destination": "US",
+	  "guests": 1,
+	  "reservations": [
+		{
+			"reservationId": 1,
+			"customerId": 1,
+			"dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+		},
+		{
+			"reservationId": 2,
+			"customerId": 2,
+			"dates": ["Tue Dec 06 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 07 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+		}
+	  ]
     },
     {
       "id": 2,
       "title": "Studio Zempow / ecological wooden house / photo studio",
 	  "host": "Hosted by Wendy and Elisa",
       "price": "Coming soon",
-      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
+	  "destination": "US",
+	  "guests": 2,
+	  "reservations": [
+		{
+			"reservationId": 1,
+			"customerId": 3,
+			"dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+		},
+		{
+			"reservationId": 2,
+			"customerId": 4,
+			"dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+		}
+	  ]
     },
     {
 	"id": 3,
 	"title": "Funen's best ocean view",
 	"host": "Hosted by Wendy and Elisa",
 	"price": "Coming soon",
-	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
+	"destination": "Spain",
+	"guests": 3,
+	"reservations": [
+	  {
+		  "reservationId": 1,
+		  "customerId": 5,
+		  "dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 15 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+	  }
+	]
 	},
     {
 	"id": 4,
 	"title": "Cozy Apartment in City Center",
 	"host": "Hosted by Wendy and Elisa",
 	"price": "Coming soon",
-	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
+	"destination": "Italy",
+	"guests": 1,
+	"reservations": [
+	  {
+		  "reservationId": 1,
+		  "customerId": 6,
+		  "dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+	  }
+	]
 	},
     {
 	"title": "House at a beach" ,
 	"host": "Hosted by Wendy and Elisa",
 	"price": "Coming soon",
-	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720"
+	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
+	"destination": "US",
+	"guests": 3,
+	"reservations": [
+	  {
+		  "reservationId": 1,
+		  "customerId": 7,
+		  "dates": ["Tue Dec 01 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+	  },
+	  {
+		  "reservationId": 2,
+		  "customerId": 8,
+		  "dates": ["Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 06 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
+	  }
+	]
 	}
   ]
