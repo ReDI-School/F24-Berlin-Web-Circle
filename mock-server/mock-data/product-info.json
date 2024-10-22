@@ -1,0 +1,166 @@
+[
+  {
+    "productId": "dummy-1729441567109",
+    "description": {
+      "place": "The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase",
+      "space": "The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell.",
+      "guestAccess": "You have access to all areas of the flat. The flat has its own entrance.",
+      "otherThings": "Do not smoke in rooms!"
+    },
+    "productSummary": {
+      "productTitle": "Cabin in nature with panoramic view & sauna",
+      "accommodationType": "Tiny home in",
+      "address": "Königslutter am Elm, Germany",
+      "locationDescription": "In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes...",
+      "bedrooms": 1,
+      "beds": 3,
+      "baths": 1
+    },
+    "host": {
+      "hostName": "Raus",
+      "hostingDuration": 1,
+      "role": "Superhost",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg?im_w=240",
+      "verified": true,
+      "responseRate": "100%",
+      "responseTime": "an hour",
+      "profileText": "Find your nature retreat in Cabins in pristine places not far from your home."
+    },
+    "reviewsSummary": {
+      "totalAvgRating": 4.91,
+      "totalReviewsCount": 200,
+      "ratings": {
+        "cleanlinessAvgRating": 4.8,
+        "accuracyAvgRating": 4.9,
+        "checkInAvgRating": 5.0,
+        "communicationAvgRating": 5.0,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.6,
+        "starTotals": {
+          "fiveStar": 130,
+          "fourStar": 50,
+          "threeStar": 10,
+          "twoStar": 6,
+          "oneStar": 4
+        }
+      }
+    },
+    "highlights": [
+      {
+        "type": "CHECK_IN",
+        "text": "Self check-in",
+        "subText": "Check yourself in with the lockbox."
+      },
+      {
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Superhosts are experienced, highly rated Hosts."
+      },
+      {
+        "type": "WIFI",
+        "text": "Free Wifi",
+        "subText": "Enjoy complimentary internet access."
+      },
+      {
+        "type": "CANCELLATION",
+        "text": "Free cancellation",
+        "subText": "Get a full refund if you change your mind."
+      }
+    ],
+    "amenities": [
+      { "type": "kitchen", "text": "Kitchen" },
+      { "type": "workspace", "text": "Dedicated workspace" },
+      { "type": "sauna", "text": "Sauna" },
+      { "type": "balcony", "text": "Patio or balcony" },
+      { "type": "fireplace", "text": "Indoor fireplace" },
+      { "type": "wifi", "text": "Wifi" },
+      { "type": "parking", "text": "Free parking on premises" },
+      { "type": "pets", "text": "Pets allowed" },
+      { "type": "backyard", "text": "Backyard" },
+      { "type": "firepit", "text": "Fire pit" }
+    ]
+  },
+  {
+    "productId": "2",
+    "product": {
+      "title": "Modern apartment with city view",
+      "location": {
+        "accommodationType": "Entire apartment",
+        "address": "Berlin, Germany",
+        "mapView": {
+          "image": "path/to/another-map-view-sample.png",
+          "description": "Located in the heart of the city with stunning skyline views."
+        }
+      }
+    },
+    "description": {
+      "place": "This modern apartment features a spacious living room and kitchen.",
+      "space": "Stylish decor with all necessary amenities for a comfortable stay.",
+      "guestAccess": "You have full access to the apartment.",
+      "otherThings": "No pets allowed."
+    },
+    "productSummary": {
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1
+    },
+    "host": {
+      "name": "Anna",
+      "hostingDuration": 2,
+      "role": "",
+      "profilePicUrl": "path/to/host-image.webp",
+      "verified": true,
+      "reviews": 100,
+      "rating": 4.9,
+      "yearsHosting": 2
+    },
+    "reviewsSummary": {
+      "totalAvgRating": 4.85,
+      "totalReviewsCount": 1500,
+      "ratings": {
+        "cleanlinessAvgRating": 4.7,
+        "accuracyAvgRating": 4.8,
+        "checkInAvgRating": 4.9,
+        "communicationAvgRating": 4.9,
+        "locationAvgRating": 4.8,
+        "valueAvgRating": 4.5,
+        "starTotals": {
+          "fiveStar": 90,
+          "fourStar": 40,
+          "threeStar": 10,
+          "twoStar": 5,
+          "oneStar": 5
+        }
+      }
+    },
+    "highlights": [
+      {
+        "type": "CHECK_IN",
+        "text": "Self check-in",
+        "subText": "Easy check-in process."
+      },
+      {
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Highly rated and trusted host."
+      },
+      {
+        "type": "WIFI",
+        "text": "High-speed Wifi",
+        "subText": "Stay connected with fast internet."
+      },
+      {
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 24 hours in advance for a full refund."
+      }
+    ],
+    "amenities": [
+      { "type": "kitchen", "text": "Fully equipped kitchen" },
+      { "type": "workspace", "text": "Dedicated workspace" },
+      { "type": "wifi", "text": "Free high-speed Wifi" },
+      { "type": "elevator", "text": "Elevator access" },
+      { "type": "parking", "text": "On-street parking available" }
+    ]
+  }
+]

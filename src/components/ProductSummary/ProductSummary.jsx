@@ -11,7 +11,14 @@ const ProductSummary = ({
   starGrade,
   reviews,
 }) => {
-  const ProductSummaryInformation = [guests, bedrooms, beds, baths];
+
+  const ProductSummaryInformation = [
+    {key: "guest", value: guests.peopleNumber},
+    {key: "bedroom", value: bedrooms},
+    {key: "bed", value: beds},
+    {key: "bath", value: baths}
+  ]
+
   return (
     <div className={styles.productSummaryContainer}>
       <h2 className={styles.address}>

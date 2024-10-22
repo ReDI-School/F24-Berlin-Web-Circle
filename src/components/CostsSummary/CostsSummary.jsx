@@ -1,3 +1,4 @@
+import { calculateNights } from '../../utils/dateUtils'
 import styles from './CostsSummary.module.css'
 
 const CostsSummary = ({
@@ -9,9 +10,6 @@ const CostsSummary = ({
   longStayDiscount,
   nightsCountForDiscount,
 }) => {
-  const calculateNights = (checkIn, checkOut) => {
-    return (new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24)
-  }
 
   const nights =
     checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0

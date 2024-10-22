@@ -12,7 +12,7 @@ import {
 } from "../../icons";
 import styles from "./Amenities.module.css";
 
-function Amenities({ title, amenities, onClick }) {
+function Amenities({ amenities, onClick }) {
   const renderIcon = (type) => {
     switch (type) {
       case "kitchen":
@@ -41,7 +41,7 @@ function Amenities({ title, amenities, onClick }) {
   };
   return (
     <div className={styles.amenitiesSection}>
-      <h2 className={styles.amenitiesSectionTitle}>{title}</h2>
+      <h2 className={styles.amenitiesSectionTitle}>What this place offers</h2>
       <ul className={styles.amenitiesContainer}>
         {amenities.map((amenitie, index) => (
           <li key={index} className={styles.amenitiesList}>

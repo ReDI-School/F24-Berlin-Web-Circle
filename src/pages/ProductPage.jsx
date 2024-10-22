@@ -1,41 +1,148 @@
-import ReservationCard from '../components/ReservationCard/ReservationCard'
-import FavoriteStay from '../components/FavoriteStay/FavoriteStay'
-import HostSummary from '../components/HostSummary/HostSummary'
-import hostImage from '../assets/images/host-raus.webp'
-import MapView from '../components/MapView/MapView'
-import mapViewSampleImg from './../assets/map-view-sample.png'
-import ProductGallery from '../components/ProductGallery/ProductGallery'
-import ProductHighlight from '../components/ProductHighlight/ProductHighlight'
-import ProductSummary from '../components/ProductSummary/ProductSummary'
-import ProductDescription from '../components/ProductDescription/ProductDescription'
-import IconButton from '../components/IconButton/IconButton'
 import {
   faArrowUpFromBracket,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons'
-import styles from './ProductPage.module.css'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import AboveProductTitle from '../components/AboveProductTitle/AboveProductTitle'
+import Amenities from '../components/Amenities/Amenities'
+import FavoriteStay from '../components/FavoriteStay/FavoriteStay'
+import HostSummary from '../components/HostSummary/HostSummary'
+import IconButton from '../components/IconButton/IconButton'
+import MapView from '../components/MapView/MapView'
+import MeetYourHostSection from '../components/MeetYourhostSection/MeetYourHostSection'
+import ProductDescription from '../components/ProductDescription/ProductDescription'
+import ProductGallery from '../components/ProductGallery/ProductGallery'
+import ProductHighlight from '../components/ProductHighlight/ProductHighlight'
+import ProductSummary from '../components/ProductSummary/ProductSummary'
+import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
+import ReservationCard from '../components/ReservationCard/ReservationCard'
+import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
 import ReviewSummary from '../components/ReviewSummary/ReviewSummary'
 import Reviews from '../components/Reviews/Reviews'
-import MeetYourHostSection from '../components/MeetYourhostSection/MeetYourHostSection'
-import Amenities from '../components/Amenities/Amenities'
-import { useState } from 'react'
-import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
-import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
-
+import mapViewSampleImg from './../assets/map-view-sample.png'
+import styles from './ProductPage.module.css'
 
 const ProductPage = () => {
-  /* ============== Reservation card data ============== */
+  const [description, setDescription] = useState({})
+  const [productSummary, setProductSummary] = useState({})
+  const [host, setHost] = useState({})
+  const [reviewsSummary, setReviewsSummary] = useState({})
+  const [highlights, setHighlights] = useState([])
+  const [amenities, setAmenities] = useState([])
+  const [bigImage, setBigImage] = useState('')
+  const [smallImages, setSmallImages] = useState([])
+  const [reviewsList, setReviewsList] = useState([])
+  // const [totalReviews, setTotalReviews] = useState(0)
+  const [checkInDate, setCheckInDate] = useState('')
+  const [checkOutDate, setCheckOutDate] = useState('')
+  const [guestCounts, setGuestCounts] = useState({})
+  // const [totalPrice, setTotalPrice] = useState(0)
+  const [bookingData, setBookingData] = useState({})
+
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
-  const [guestsList, setGuestsList] = useState([
-    { typeofGuest: 'Adults', numberOfGuests: 1 },
-    { typeofGuest: 'Children', numberOfGuests: 0 },
-    { typeofGuest: 'Infants', numberOfGuests: 0 },
-    { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ])
+
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  const { productId } = useParams()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        setError('')
+
+        const productInfoResponse = await axios.get(
+          `http://localhost:4000/product-info/${productId}`
+        )
+        const {
+          description,
+          productSummary,
+          host,
+          reviewsSummary,
+          highlights,
+          amenities,
+        } = productInfoResponse.data
+
+        setDescription(description)
+        setProductSummary(productSummary)
+        setHost(host)
+        setReviewsSummary(reviewsSummary)
+        setHighlights(highlights)
+        setAmenities(amenities)
+
+        const galleryResponse = await axios.get(
+          `http://localhost:4000/gallery/${productId}`
+        )
+        setBigImage(galleryResponse.data.gallery.bigImage)
+        setSmallImages(galleryResponse.data.gallery.smallImages)
+
+        const reviewsResponse = await axios.get(
+          `http://localhost:4000/reviews/${productId}`
+        )
+        setReviewsList(reviewsResponse.data.reviewsList)
+        // setTotalReviews(reviewsResponse.data.totalReviews)
+
+        const bookingStatusResponse = await axios.get(
+          `http://localhost:4000/booking-status/${productId}`
+        )
+        setCheckInDate(bookingStatusResponse.data.checkInDate)
+        setCheckOutDate(bookingStatusResponse.data.checkOutDate)
+        setGuestCounts(bookingStatusResponse.data.guestCounts)
+        // setTotalPrice(bookingStatusResponse.data.totalPrice)
+        setBookingData(bookingStatusResponse.data.bookingData)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+        setError('Failed to load data. Please try again.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [productId])
+
+  const {
+    pricePerNight,
+    cleaningFee,
+    airbnbServiceFee,
+    longStayDiscount,
+    nightsCountForDiscount,
+    minStayNights,
+    isBookingOpen,
+    allowGuestsNumber,
+  } = bookingData
+
+  const { totalAvgRating, totalReviewsCount, ratings } = reviewsSummary
+
+  const {
+    productTitle,
+    accommodationType,
+    address,
+    locationDescription,
+    bedrooms,
+    beds,
+    baths,
+  } = productSummary
+
+  const {
+    hostName,
+    hostingDuration,
+    role,
+    profilePicUrl,
+    verified,
+    responseRate,
+    responseTime,
+    profileText,
+  } = host
+
+  const { place, space, guestAccess, otherThings } = description
+
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -45,87 +152,25 @@ const ProductPage = () => {
     setIsGuestCountPopupVisible((prevState) => !prevState)
   }
 
-  const handleGuestClick = (updatedGuest) => {
-    setGuestsList((prevList) =>
-      prevList.map((guest) =>
-        guest.typeofGuest === updatedGuest.typeofGuest
-          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-          : guest
-      )
-    )
-  }
-
-
-  const defaultCheckInDate = '10/20/2024'
-  const defaultCheckOutDate = '10/25/2024'
-  const pricePerNight = 146
-  const cleaningFee = 10
-  const airbnbServiceFee = 10
-  const longStayDiscount = 30
-  const nightsCountForDiscount = 5
-  const minStayNights = 3
-  const isBookingOpen = true
-  const allowGuestsNumber = {
-    peopleNumber: 5,
-    petsNumber: 2,
-  }
-  
-  /* ============== End of Reservation card data ============== */
-
-  const highlights = [
-    {
-      type: 'CHECK_IN',
-      text: 'Self check-in',
-      subText: 'Check yourself in with the lockbox.',
-    },
-    {
-      type: 'AWARD',
-      text: 'Superhost',
-      subText: 'Superhosts are experienced, highly rated Hosts.',
-    },
-    {
-      type: 'WIFI',
-      text: 'Free Wifi',
-      subText: 'Superhosts are experienced, highly rated Hosts.',
-    },
-    {
-      type: 'CANCELLATION',
-      text: 'Free cancellation',
-      subText: 'Get a full refund if you change your mind.',
-    },
-  ]
-
-  const amenities = [
-    { type: 'kitchen', text: 'Kitchen' },
-    { type: 'workspace', text: 'Dedicated workspace' },
-    { type: 'sauna', text: 'Sauna' },
-    { type: 'balcony', text: 'Patio or balcony' },
-    { type: 'fireplace', text: 'Indoor fireplace' },
-    { type: 'wifi', text: 'Wifi' },
-    { type: 'parking', text: 'Free parking on premises' },
-    { type: 'pets', text: 'Pets allowed' },
-    { type: 'backyard', text: 'Backyard' },
-    { type: 'firepit', text: 'Fire pit' },
-  ]
-
   function handleShare() {
     alert('Share this experience')
   }
   function handleSave() {
     alert('Save this experience')
   }
-
   function handleShowAmenities() {
     alert('Here is the list of all amenities!')
+  }
+
+  if (loading) {
+    return <div>Loading data, please wait...</div>
   }
 
   return (
     <div className={styles.MainProductPage}>
       <div className={styles.ProductPageContainer}>
         <div className={styles.titlePage}>
-          <AboveProductTitle
-            title={'Cabin in nature with panoramic view & sauna'}
-          />
+          <AboveProductTitle title={productTitle} />
           <div className={styles.IconButton}>
             <IconButton
               faIcon={faArrowUpFromBracket}
@@ -136,67 +181,55 @@ const ProductPage = () => {
           </div>
         </div>
         <ProductGallery
-          bigImage={
-            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/5ad7780d-76b5-428f-9219-432243a83a03.jpeg'
-          }
-          smallTopLeftImage={
-            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/253a0690-2a1e-4c34-ae7f-968b869be4b5.jpeg'
-          }
-          smallTopRightImage={
-            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/78ed3027-a197-4043-9b7e-8fc79a5425fc.jpeg'
-          }
-          smallBottomLeftImage={
-            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/182abee3-f7f8-4652-8c2a-f845e990d9c5.jpeg'
-          }
-          smallBottomRightImage={
-            'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzNDc1NzYxMjc3MDc0NzgxMg%3D%3D/original/2ca9c23e-85db-48f8-bd21-0718c286dcdf.jpeg'
-          }
+          bigImage={bigImage}
+          smallTopLeftImage={smallImages[0]}
+          smallTopRightImage={smallImages[1]}
+          smallBottomLeftImage={smallImages[2]}
+          smallBottomRightImage={smallImages[3]}
         />
         <div className={styles.ProductDescriptionContainer}>
           <div className={styles.ProductDescription}>
             <ProductSummary
-              accommodation={'Entire rental unit'}
-              address={'Berlin, Germany'}
-              guests={{ key: 'guest', value: 3 }}
-              bedrooms={{ key: 'bedroom', value: 1 }}
-              beds={{ key: 'bed', value: 3 }}
-              baths={{ key: 'bath', value: 1 }}
-              starGrade={4.65}
-              reviews={23}
+              accommodation={accommodationType}
+              address={address}
+              guests={allowGuestsNumber}
+              bedrooms={bedrooms}
+              beds={beds}
+              baths={baths}
+              starGrade={totalAvgRating}
+              reviews={totalReviewsCount}
             />
-            <FavoriteStay />
+            <FavoriteStay rating={totalAvgRating} reviews={totalReviewsCount} />
             <HostSummary
-              hostName="Raus"
-              hostingDuration={1}
-              role="Superhost"
-              profilePicUrl={hostImage}
+              hostName={hostName}
+              hostingDuration={hostingDuration}
+              role={role}
+              profilePicUrl={profilePicUrl}
             />
             <ProductHighlight highlights={highlights} />
             <hr className={styles.separator} />
             <ProductDescription
-              descriptionPlace="The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.accessed by a staircase"
-              descriptionSpace="The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell."
-              guestAccess="You have access to all areas of the flat. The flat has its own entrance."
-              otherThings="Do not smoke in rooms!"
+              descriptionPlace={place}
+              descriptionSpace={space}
+              guestAccess={guestAccess}
+              otherThings={otherThings}
             />{' '}
             <hr className={styles.separator} />
-            <Amenities
-              amenities={amenities}
-              title="What this place offers"
-              onClick={handleShowAmenities}
-            />
+            <Amenities amenities={amenities} onClick={handleShowAmenities} />
           </div>
           <div className={styles.ReservationCard}>
             <ReservationCard
-              defaultCheckInDate={defaultCheckInDate}
-              defaultCheckOutDate={defaultCheckOutDate}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
               pricePerNight={pricePerNight}
               cleaningFee={cleaningFee}
               airbnbServiceFee={airbnbServiceFee}
               longStayDiscount={longStayDiscount}
               nightsCountForDiscount={nightsCountForDiscount}
-              onGuestChange={handleGuestClick}
-              guestsList={guestsList}
+              guestCounts={guestCounts}
+              setGuestCounts={setGuestCounts}
               allowGuestsNumber={allowGuestsNumber}
               minStayNights={minStayNights}
               isBookingOpen={isBookingOpen}
@@ -209,62 +242,57 @@ const ProductPage = () => {
             />
           </div>
           {isShortcutsPopupVisible && (
-              <ShortcutsPopUp
-                isVisible={isShortcutsPopupVisible}
-                onClose={toggleShortcutsPopup}
-                showCalendar={showCalendar}
-                setShowCalendar={setShowCalendar}
-              />
-            )}
+            <ShortcutsPopUp
+              isVisible={isShortcutsPopupVisible}
+              onClose={toggleShortcutsPopup}
+              showCalendar={showCalendar}
+              setShowCalendar={setShowCalendar}
+            />
+          )}
           {isGuestCountPopupVisible && (
-              <GuestCountPopUp
-                isVisible={isGuestCountPopupVisible}
-                onClose={toggleGuestCountPopup}
-                showGuests={showGuests}
-                setShowGuests={setShowGuests}
-              />
-            )}
+            <GuestCountPopUp
+              isVisible={isGuestCountPopupVisible}
+              onClose={toggleGuestCountPopup}
+              showGuests={showGuests}
+              setShowGuests={setShowGuests}
+            />
+          )}
         </div>
         <hr className={styles.separator} />
         <ReviewSummary
-          totalAvgRating={4.91}
-          totalReviewsCount={200}
-          ratings={{
-            cleanlinessAvgRating: 4.8,
-            accuracyAvgRating: 4.9,
-            checkInAvgRating: 5.0,
-            communicationAvgRating: 5.0,
-            locationAvgRating: 4.9,
-            valueAvgRating: 4.6,
-            starTotals: {
-              fiveStar: 130,
-              fourStar: 50,
-              threeStar: 10,
-              twoStar: 6,
-              oneStar: 4,
-            },
-          }}
+          totalAvgRating={totalAvgRating}
+          totalReviewsCount={totalReviewsCount}
+          ratings={ratings}
         />
         <div className={styles.reviews}>
-          <Reviews
-            name={'Julia'}
-            picture={
-              'https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240'
-            }
-            rating={5}
-            reviewText={
-              'It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.'
-            }
-            date="2024-09-15"
-          />
+          {reviewsList.map((review) => (
+            <Reviews
+              key={review.id} 
+              name={review.name}
+              picture={review.picture}
+              rating={review.rating}
+              reviewText={review.reviewText}
+              date={review.date}
+            />
+          ))}
         </div>
         <MapView
           mapViewSampleImg={mapViewSampleImg}
-          address="Königslutter am Elm, Niedersachsen, Germany"
-          addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
+          address={address}
+          addressDescription={locationDescription}
         />
-
-        <MeetYourHostSection />
+        <MeetYourHostSection
+          name={hostName}
+          image={profilePicUrl}
+          role={role}
+          verified={verified}
+          reviews={totalReviewsCount}
+          rating={totalAvgRating}
+          yearsHosting={hostingDuration}
+          profileText={profileText}
+          responseRate={responseRate}
+          responseTime={responseTime}
+        />
       </div>
     </div>
   )

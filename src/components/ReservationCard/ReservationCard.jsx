@@ -10,15 +10,17 @@ import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
 
 function ReservationCard({
-  defaultCheckInDate,
-  defaultCheckOutDate,
+  checkInDate,
+  checkOutDate,
+  setCheckInDate,
+  setCheckOutDate,
   pricePerNight,
   cleaningFee,
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  onGuestChange,
-  guestsList,
+  guestCounts,
+  setGuestCounts,
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
@@ -29,19 +31,18 @@ function ReservationCard({
   showCalendar,
   setShowCalendar,
 }) {
-  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
-  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
-  const [guestCounts, setGuestCounts] = useState({
-    adults: 1,  
-    children: 0, 
-    infants: 0,  
-    pets: 0  
-  });
+
+  const [guestsList, setGuestsList] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: guestCounts.adults },
+    { typeofGuest: 'Children', numberOfGuests: guestCounts.children },
+    { typeofGuest: 'Infants', numberOfGuests: guestCounts.infants },
+    { typeofGuest: 'Pets', numberOfGuests: guestCounts.pets },
+  ])
   const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const currentTotalPeople = guestCounts.adults + guestCounts.children;
+  const currentTotalPeople = guestCounts.adults + guestCounts.children
 
   const toggleShowGuests = () => {
     setShowGuests((prevState) => !prevState)
@@ -58,6 +59,16 @@ function ReservationCard({
     petsCount,
     adultsAndChildrenCount,
   } = calculateGuestCounts(guestsList)
+
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
 
   const checkInOut = checkInDate && checkOutDate
 
@@ -78,7 +89,7 @@ function ReservationCard({
         setError
       )
     } else {
-      setError('Please select valid dates and guests.');
+      setError('Please select valid dates and guests.')
     }
   }
 
@@ -93,7 +104,7 @@ function ReservationCard({
     zIndex: '99 !important',
   }
 
-console.log('calculatedCosts', calculatedCosts)
+  console.log('calculatedCosts', calculatedCosts)
 
   return (
     <div className={styles.reservationCard}>
@@ -149,7 +160,7 @@ console.log('calculatedCosts', calculatedCosts)
               <div className={styles.guestDropdown}>
                 {showGuests && (
                   <AddGuestsPopUp
-                    onGuestChange={onGuestChange}
+                    onGuestChange={handleGuestClick}
                     style={addGuestPopUpStyles}
                     allowGuestsNumber={allowGuestsNumber}
                     toggleShowGuests={toggleShowGuests}

@@ -3,7 +3,7 @@ import "./FavoriteStay.css"
 import Left from "../../assets/fav-badge-left.png";
 import Right from "../../assets/fav-badge-right.png";
 
-const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
+const FavoriteStay = ({ rating, reviews }) => {
   return (
     <div className="fav-stay-container">
       <div className="fav-stay-grid-container">
@@ -30,7 +30,7 @@ const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
         <div></div>
         <div className="ratings-container">
           <span className="space-above"></span>
-          <div className="rating-value">{rating.toFixed(1)}</div>
+          <div className="rating-value">{rating}</div>
           <div className="rating-stars">
             <StarRating rating={rating} />
           </div>

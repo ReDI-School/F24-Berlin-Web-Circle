@@ -1,0 +1,38 @@
+[
+  {
+    "productId": "dummy-1729441567109",
+    "reviewsList": [
+      {
+        "id": "1",
+        "name": "Julia",
+        "picture": "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.",
+        "date": "2024-09-15"
+      },
+      {
+        "id": "2",
+        "name": "Mark",
+        "picture": "https://a0.muscache.com/im/pictures/user/098b5f0a-128b-4d1e-a54e-70884146c37a.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Absolutely loved it! Perfect getaway spot. Nice place but could use some updates. So if you need a little break, I can definitely recommend the tiny house.",
+        "date": "2024-01-20"
+      }
+    ],
+    "totalReviews": 2
+  },
+  {
+    "productId": "2",
+    "reviewsList": [
+      {
+        "id": "1",
+        "name": "Emily",
+        "picture": "https://a0.muscache.com/im/pictures/user/7917a7b8-67f9-408b-b5ca-49c663cfcddf.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Absolutely loved it! Perfect getaway spot.",
+        "date": "2024-02-12"
+      }
+    ],
+    "totalReviews": 1
+  }
+]
