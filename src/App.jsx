@@ -5,6 +5,7 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
 import {BASE_URL} from "./constants/constants";
+import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -21,7 +22,7 @@ useEffect(()=> {
       <div>
         <CalendarToggle />
       </div>
-
+<DataIncrementsButtonForTheCalendar />
       <ProductCard
         images={[
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/a766e0e9-1e6f-4b88-b8d5-ce12375c6de8.png?im_w=1200&im_q=highq",
