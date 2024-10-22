@@ -121,9 +121,9 @@ const ProductPage = () => {
     <div className={styles.MainProductPage}>
       <div className={styles.ProductPageContainer}>
         <div className={styles.titlePage}>
-          <AboveProductTitle
-            title={"Cabin in nature with panoramic view & sauna"}
-          />
+          {!!place && !!place.title && <AboveProductTitle
+            title={place.title}
+          />}
           <div className={styles.IconButton}>
             <IconButton
               faIcon={faArrowUpFromBracket}
