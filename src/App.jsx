@@ -38,7 +38,7 @@ function App() {
         <CalendarToggle />
       </div>
 
-      <ProductCard
+      {/* <ProductCard
         images={[
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/a766e0e9-1e6f-4b88-b8d5-ce12375c6de8.png?im_w=1200&im_q=highq",
           "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/71d534a9-6699-4fe0-ad82-a9aaf0450b56.png?im_w=1200&im_q=highq",
@@ -49,7 +49,7 @@ function App() {
         title="Cozy Apartment in City Center"
         host="Hosted by Wendy and Elisa"
         price="Coming soon"
-      />
+      /> */}
 
       <div>
         {places.map((place) => {
@@ -57,13 +57,12 @@ function App() {
           return (
             <div key={place.id} onClick={() => handlePlaceClick(place.id)}>
               <Link to={`/rooms/${place.id}`} key={place.id}>
-                <div>{`${place.id} - ${place.title}`}</div>
-                {/* <ProductCard
+                <ProductCard
                   images={place.images}
                   title={place.title}
                   host={place.host}
                   price={place.price}
-                /> */}
+                />
               </Link>
             </div>
           );

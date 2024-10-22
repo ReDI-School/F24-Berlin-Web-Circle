@@ -252,7 +252,25 @@
       "lat": 52.50494850601838,
       "address": "Zempow, Brandenburg, Germany",
       "addressDescription": "Situated in a serene forest area, perfect for hiking and relaxation. Enjoy the beauty of nature while being just a short drive from local attractions."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 1,
+        "customerId": 3,
+        "dates": [
+          "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Tue Dec 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 2,
+        "customerId": 4,
+        "dates": [
+          "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Tue Dec 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 3,
@@ -260,7 +278,7 @@
     "host": "Hosted by John and Sarah",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/c3f7983b-96bc-49b0-ae04-9e9d93f88d23.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/f3790e15-52f4-4cb1-8d21-9fc032d50666.jpeg",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/8c3fdfd7-2ff3-4e1f-90f4-d5b82d1b2296.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/567e8b6d-0083-45e2-b76c-2eb43a8f05f3.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/c9e1e1f5-b1a3-4c36-b9f6-4530e04592e4.jpeg?im_w=720",
@@ -369,7 +387,25 @@
       "lat": 52.50035561297163,
       "address": "Swan Lake, New York, USA",
       "addressDescription": "Nestled by the lake, the cottage offers both tranquility and adventure. Explore local hiking trails or enjoy a boat ride on the lake."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 4,
@@ -377,7 +413,7 @@
     "host": "Hosted by Mike and Laura",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/bd5f6b99-4936-4a7a-a75d-1dc5cbd1f8a7.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/6c55974d-63f7-4afc-9c24-5f649674bea3.jpeg",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/08d66a86-1c85-4c6d-8185-77a7e0052b1c.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/11eb7f94-d7e2-4bb8-83fc-c1e481d81da7.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/9dff3e2b-6bc4-4705-a017-103acaba7a8b.jpeg?im_w=720",
@@ -482,7 +518,25 @@
       "lat": 52.530533117386106,
       "address": "Downtown, San Francisco, California, USA",
       "addressDescription": "Located in a bustling area with shops, restaurants, and cultural attractions within walking distance."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 5,
@@ -490,7 +544,7 @@
     "host": "Hosted by Emma and Jack",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/9d8d32b1-bd58-4c67-b432-cd9f1c705d40.jpeg?im_w=720",
+      "https://a0.muscache.com/im/ml/photo_enhancement/pictures/1c5d7c15-c62a-433b-9c8e-6019e8e5bc24.jpg?im_w=1200",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/3133b5f4-bcb9-41e5-bd72-c6c6e68f5ed0.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/4e2cd689-7f86-4e91-a02c-3d77e88c78ef.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/4fdff23e-5252-4631-b123-91d8dc9f49e5.jpeg?im_w=720",
@@ -599,7 +653,25 @@
       "lat": 52.572703710445744,
       "address": "Big Bear Lake, California, USA",
       "addressDescription": "Secluded in the woods, the cabin offers tranquility and access to outdoor activities."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 6,
@@ -607,7 +679,7 @@
     "host": "Hosted by Anna",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/c39b672e-8d8e-40bb-bbbb-7db01f92568d.jpeg?im_w=720",
+      "https://a0.muscache.com/im/ml/photo_enhancement/pictures/miso/Hosting-43386371/original/fb9c702a-b7d9-4e32-b9b4-803ec044e08c.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/d9c6eae4-e7c1-46b8-b9d7-501d473f2b2d.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/3c6b28f0-e282-43bc-9368-77602a65bc67.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/43be95c5-2363-47cf-96cb-ecff8f68b375.jpeg?im_w=720",
@@ -716,7 +788,25 @@
       "lat": 52.470594210731385,
       "address": "Miami Beach, Florida, USA",
       "addressDescription": "Enjoy stunning ocean views and easy access to local attractions."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 7,
@@ -724,7 +814,7 @@
     "host": "Hosted by Sarah",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/e15ae01c-6016-4cf7-9d9e-3655ca62ee41.jpeg?im_w=720",
+      "https://a0.muscache.com/im/ml/photo_enhancement/pictures/c65f8e17-4866-4033-b837-0f34e5f1ee42.jpg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/22e238b3-b924-458e-8e5a-b21c50081376.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/c99a98d0-2bcb-4ed9-878e-81664a30e2ec.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/28dc68e7-8d36-43dc-84d6-71e9f63773ae.jpeg?im_w=720",
@@ -829,7 +919,25 @@
       "lat": 52.50411704137263,
       "address": "New York City, New York, USA",
       "addressDescription": "Centrally located, ideal for exploring the city."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 8,
@@ -837,7 +945,7 @@
     "host": "Hosted by Lisa",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/0cd7b132-d3bc-4741-b256-d93de6cb96f5.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/63546733/61c16351_original.jpg?im_w=1200",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/12a4d1dc-c5f5-45b7-9c69-6cc5a8720a60.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/b1a20a5d-b90f-41c9-a869-0b29c59ee4fa.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/a67d0369-e4a7-44c0-b7e6-160648b3efb9.jpeg?im_w=720",
@@ -946,7 +1054,25 @@
       "lat": 52.437529182378114,
       "address": "Beverly Hills, California, USA",
       "addressDescription": "A prime location in the heart of Beverly Hills."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 5,
+        "customerId": 2,
+        "dates": [
+          "Wed Feb 07 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Sat Feb 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 6,
+        "customerId": 10,
+        "dates": [
+          "Mon Feb 12 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Feb 16 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 9,
@@ -954,7 +1080,7 @@
     "host": "Hosted by John",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/ed50c167-9d5f-4e54-8433-b59d46eb5541.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/63547750/1a87aaef_original.jpg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/f9178c3c-e02c-48b6-b8ab-78aeea250e5c.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/55a08826-5b1d-48de-913f-196d8f8e8379.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/6f64ee98-06b3-4c61-bc45-90f00af46c7a.jpeg?im_w=720",
@@ -1063,7 +1189,25 @@
       "lat": 52.49215719366196,
       "address": "Napa Valley, California, USA",
       "addressDescription": "A peaceful retreat surrounded by vineyards."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 7,
+        "customerId": 5,
+        "dates": [
+          "Sat Mar 23 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Wed Mar 27 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 8,
+        "customerId": 6,
+        "dates": [
+          "Fri Mar 22 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Mar 28 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   },
   {
     "id": 10,
@@ -1071,7 +1215,7 @@
     "host": "Hosted by Eric",
     "price": "Coming soon",
     "images": [
-      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/9a93e06a-df84-4b41-bf91-c7b2bb74818f.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/63550086/29407dad_original.jpg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/7d46f57a-d33b-426e-ae4e-907194bf8d4f.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/9b13e429-8b2e-4f7b-b56b-1f3f2944ec58.jpeg?im_w=720",
       "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/5a5b1e83-64bb-46c2-8653-c46c9cdbedd9.jpeg?im_w=720",
@@ -1175,6 +1319,24 @@
       "lat": 52.51297020838586,
       "address": "San Francisco, California, USA",
       "addressDescription": "Located near the waterfront with great access to attractions."
-    }
+    },
+    "reservations": [
+      {
+        "reservationId": 9,
+        "customerId": 12,
+        "dates": [
+          "Thu Apr 04 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Mon Apr 08 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 10,
+        "customerId": 13,
+        "dates": [
+          "Tue Apr 09 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Apr 12 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
   }
 ]

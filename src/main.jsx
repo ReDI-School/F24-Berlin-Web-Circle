@@ -6,6 +6,7 @@ import ErrorPage from "./error-page";
 import "./index.css";
 import ProductPage from "./pages/ProductPage.jsx";
 import Root from "./pages/RootLayout/Root.jsx";
+import FilteredPlacesPage from "./pages/FilteredPlacesPage/FilteredPlacesPage.jsx";
 
 // Root is used to render the basic layout, header and footer for all children elements.
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "rooms/:productId",
         element: <ProductPage />,
+      },
+      {
+        path: "s/:destination/homes",
+        element: <FilteredPlacesPage />,
       },
     ],
   },
