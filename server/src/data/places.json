@@ -1,96 +1,1342 @@
 [
-    {
-      "id": 1,
-      "title": "Idyllic house by the sea",
-      "host": "Hosted by Wendy and Elisa",
-      "price": "Coming soon",
-      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
-	  "destination": "US",
-	  "guests": 1,
-	  "reservations": [
-		{
-			"reservationId": 1,
-			"customerId": 1,
-			"dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-		},
-		{
-			"reservationId": 2,
-			"customerId": 2,
-			"dates": ["Tue Dec 06 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 07 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-		}
-	  ]
+  {
+    "id": 1,
+    "title": "Cozy Apartment in City Center",
+    "host": "Hosted by Wendy and Elisa",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/a766e0e9-1e6f-4b88-b8d5-ce12375c6de8.png?im_w=1200&im_q=highq",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/71d534a9-6699-4fe0-ad82-a9aaf0450b56.png?im_w=1200&im_q=highq",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/3f7a34a4-0052-4d5d-8e81-a75667f48a70.png?im_w=1200&im_q=highq",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/ebbcf8a7-a619-4284-bf02-c8dc208c2670.png?im_w=1200&im_q=highq",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/81d2ee4c-7056-4334-a2e7-3a0e4e3d63ca.png?im_w=1200&im_q=highq"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Berlin, Germany",
+      "guests": { "key": "guest", "value": 3 },
+      "bedrooms": { "key": "bedroom", "value": 1 },
+      "beds": { "key": "bed", "value": 3 },
+      "baths": { "key": "bath", "value": 1 },
+      "starGrade": 4.65,
+      "reviews": 23
     },
-    {
-      "id": 2,
-      "title": "Studio Zempow / ecological wooden house / photo studio",
-	  "host": "Hosted by Wendy and Elisa",
-      "price": "Coming soon",
-      "image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
-	  "destination": "US",
-	  "guests": 2,
-	  "reservations": [
-		{
-			"reservationId": 1,
-			"customerId": 3,
-			"dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-		},
-		{
-			"reservationId": 2,
-			"customerId": 4,
-			"dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-		}
-	  ]
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "CHECK_IN",
+        "text": "Self check-in",
+        "subText": "Check yourself in with the lockbox."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Superhosts are experienced, highly rated Hosts."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free Wifi",
+        "subText": "Superhosts are experienced, highly rated Hosts."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Free cancellation",
+        "subText": "Get a full refund if you change your mind."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Dedicated workspace" },
+      { "amenitiesID": 3, "type": "sauna", "text": "Sauna" },
+      { "amenitiesID": 4, "type": "balcony", "text": "Patio or balcony" },
+      { "amenitiesID": 5, "type": "fireplace", "text": "Indoor fireplace" },
+      { "amenitiesID": 6, "type": "wifi", "text": "Wifi" },
+      {
+        "amenitiesID": 7,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 8, "type": "pets", "text": "Pets allowed" },
+      { "amenitiesID": 9, "type": "backyard", "text": "Backyard" },
+      { "amenitiesID": 10, "type": "firepit", "text": "Fire pit" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Julia",
+        "picture": "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "It was really super relaxing days with lots of peace and quiet. So if you need a little break, I can definitely recommend the tiny house.",
+        "date": "2024-09-22"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Eef",
+        "picture": "https://a0.muscache.com/im/pictures/user/d1b646f8-16d9-4469-8d26-190b944ce662.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "It's a nice boat and beautiful surroundings! Lots of walking and cycling, all right from the place of stay.",
+        "date": "2024-09-05"
+      },
+      {
+        "reviewsId": 3,
+        "name": "Nicole",
+        "picture": "https://a0.muscache.com/im/pictures/user/User-477216581/original/7daddddf-7c73-4aad-b631-69859d1f1622.jpeg?im_w=240",
+        "rating": 5,
+        "reviewText": "We liked the houseboat, surroundings, and location very much. People were also very friendly and accommodating.",
+        "date": "2024-04-05"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Raus",
+      "hostingDuration": 1,
+      "role": "Superhost",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
     },
-    {
-	"id": 3,
-	"title": "Funen's best ocean view",
-	"host": "Hosted by Wendy and Elisa",
-	"price": "Coming soon",
-	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
-	"destination": "Spain",
-	"guests": 3,
-	"reservations": [
-	  {
-		  "reservationId": 1,
-		  "customerId": 5,
-		  "dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 15 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-	  }
-	]
-	},
-    {
-	"id": 4,
-	"title": "Cozy Apartment in City Center",
-	"host": "Hosted by Wendy and Elisa",
-	"price": "Coming soon",
-	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
-	"destination": "Italy",
-	"guests": 1,
-	"reservations": [
-	  {
-		  "reservationId": 1,
-		  "customerId": 6,
-		  "dates": ["Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-	  }
-	]
-	},
-    {
-	"title": "House at a beach" ,
-	"host": "Hosted by Wendy and Elisa",
-	"price": "Coming soon",
-	"image": "https://a0.muscache.com/im/pictures/miso/Hosting-44280804/original/8de614aa-28b4-45af-8b4b-266c917f0efd.jpeg?im_w=720",
-	"destination": "US",
-	"guests": 3,
-	"reservations": [
-	  {
-		  "reservationId": 1,
-		  "customerId": 7,
-		  "dates": ["Tue Dec 01 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-	  },
-	  {
-		  "reservationId": 2,
-		  "customerId": 8,
-		  "dates": ["Tue Dec 04 2024 00:00:00 GMT+0100 (Central European Standard Time)", "Tue Dec 06 2024 00:00:00 GMT+0100 (Central European Standard Time)"]
-	  }
-	]
-	}
-  ]
+    "productDescription": {
+      "descriptionPlace": "The apartment consists of a large living room, a private, large bathroom with a bathtub and a high space, which is suitable for the storage of luggage and is accessed by a staircase.",
+      "descriptionSpace": "The apartment starts from a quiet courtyard and has its own entrance, which does not depart from the general stairwell.",
+      "guestAccess": "You have access to all areas of the flat. The flat has its own entrance.",
+      "otherThings": "Do not smoke in rooms!"
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.91,
+      "totalReviewsCount": 200,
+      "ratings": {
+        "cleanlinessAvgRating": 4.8,
+        "accuracyAvgRating": 4.9,
+        "checkInAvgRating": 5.0,
+        "communicationAvgRating": 5.0,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.6,
+        "starTotals": {
+          "fiveStar": 130,
+          "fourStar": 50,
+          "threeStar": 10,
+          "twoStar": 6,
+          "oneStar": 4
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.418727606497178,
+      "lat": 52.53549571269938,
+      "address": "Königslutter am Elm, Niedersachsen, Germany",
+      "addressDescription": "In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking the area."
+    }
+  },
+  {
+    "id": 2,
+    "title": "Fabulous Flat in great Location",
+    "host": "Hosted by Wendy and Elisa",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/df8ddc39-ebed-4094-a69b-ee26985bb700.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-54121553/original/96f55ea6-e290-413a-8266-8c54aa3e5764.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/f3790e15-52f4-4cb1-8d21-9fc032d50666.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/6c55974d-63f7-4afc-9c24-5f649674bea3.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/42718f14-77ed-43ff-9e2a-d41da7b3dd98.jpeg"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Zempow, Germany",
+      "guests": { "key": "guest", "value": 2 },
+      "bedrooms": { "key": "bedroom", "value": 1 },
+      "beds": { "key": "bed", "value": 1 },
+      "baths": { "key": "bath", "value": 1 },
+      "starGrade": 4.8,
+      "reviews": 12
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "CHECK_IN",
+        "text": "Self check-in",
+        "subText": "Easy access with smart lock."
+      },
+      {
+        "highlightsId": 2,
+        "type": "NATURE",
+        "text": "Surrounded by nature",
+        "subText": "Enjoy the tranquility of the woods."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "High-speed Wifi",
+        "subText": "Perfect for remote work."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 24 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Fully equipped kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Designated workspace" },
+      { "amenitiesID": 3, "type": "sauna", "text": "Outdoor sauna" },
+      { "amenitiesID": 4, "type": "garden", "text": "Private garden" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      {
+        "amenitiesID": 6,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 7, "type": "pets", "text": "Pets allowed" },
+      { "amenitiesID": 8, "type": "backyard", "text": "Large backyard" },
+      { "amenitiesID": 9, "type": "firepit", "text": "Fire pit area" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Mark",
+        "picture": "https://a0.muscache.com/im/pictures/user/46d7e5be-44c8-43e8-9ab2-080905f33da8.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "A wonderful retreat in nature! The house is well-equipped and the surroundings are stunning.",
+        "date": "2024-08-15"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Anna",
+        "picture": "https://a0.muscache.com/im/pictures/user/5e33af16-800c-42ed-b6a7-5c87d209204e.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Lovely place, very peaceful. Just what I needed for a relaxing weekend.",
+        "date": "2024-07-29"
+      },
+      {
+        "reviewsId": 3,
+        "name": "John",
+        "picture": "https://a0.muscache.com/im/pictures/user/89b5a3d4-26b4-4c45-b76b-7cd8ae11c12a.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Great location and amazing host! Will definitely come back.",
+        "date": "2024-06-10"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Wendy and Elisa",
+      "hostingDuration": 3,
+      "role": "Superhosts",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/5c7af12d-86a7-48f9-a58b-2dfcb88399b7.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "This eco-friendly wooden house serves as a cozy studio and a perfect retreat for photographers.",
+      "descriptionSpace": "Nestled in nature, it features large windows, allowing for plenty of natural light.",
+      "guestAccess": "Guests have access to the entire house and garden.",
+      "otherThings": "No smoking allowed indoors."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.75,
+      "totalReviewsCount": 12,
+      "ratings": {
+        "cleanlinessAvgRating": 4.9,
+        "accuracyAvgRating": 4.8,
+        "checkInAvgRating": 4.9,
+        "communicationAvgRating": 5.0,
+        "locationAvgRating": 4.7,
+        "valueAvgRating": 4.8,
+        "starTotals": {
+          "fiveStar": 8,
+          "fourStar": 3,
+          "threeStar": 1,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.435814739439822,
+      "lat": 52.50494850601838,
+      "address": "Zempow, Brandenburg, Germany",
+      "addressDescription": "Situated in a serene forest area, perfect for hiking and relaxation. Enjoy the beauty of nature while being just a short drive from local attractions."
+    },
+    "reservations": [
+      {
+        "reservationId": 1,
+        "customerId": 3,
+        "dates": [
+          "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Tue Dec 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 2,
+        "customerId": 4,
+        "dates": [
+          "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Tue Dec 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "In the Heart of Berlin - Kreuzberg",
+    "host": "Hosted by John and Sarah",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/f3790e15-52f4-4cb1-8d21-9fc032d50666.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/8c3fdfd7-2ff3-4e1f-90f4-d5b82d1b2296.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/567e8b6d-0083-45e2-b76c-2eb43a8f05f3.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/c9e1e1f5-b1a3-4c36-b9f6-4530e04592e4.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280805/original/ea5d8a1d-0afc-418f-9b60-bb95cfca0ae8.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Swan Lake, USA",
+      "guests": { "key": "guest", "value": 4 },
+      "bedrooms": { "key": "bedroom", "value": 2 },
+      "beds": { "key": "bed", "value": 3 },
+      "baths": { "key": "bath", "value": 2 },
+      "starGrade": 4.9,
+      "reviews": 45
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "NATURE",
+        "text": "Lake view",
+        "subText": "Beautiful views of Swan Lake from the porch."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Experienced and highly rated hosts."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free Wifi",
+        "subText": "Stay connected during your stay."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Free cancellation up to 48 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Fully equipped kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Designated workspace" },
+      { "amenitiesID": 3, "type": "fireplace", "text": "Indoor fireplace" },
+      { "amenitiesID": 4, "type": "garden", "text": "Private garden" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      {
+        "amenitiesID": 6,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 7, "type": "pets", "text": "Pets allowed" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Emily",
+        "picture": "https://a0.muscache.com/im/pictures/user/efc6b4ed-8f2f-4d3d-8470-41a87c47efed.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "This cottage was the perfect getaway. The views were breathtaking!",
+        "date": "2024-08-10"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Michael",
+        "picture": "https://a0.muscache.com/im/pictures/user/3f1c1d44-2f9f-43d6-b3de-1b5ab614c487.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Great place to relax, but the Wi-Fi was spotty.",
+        "date": "2024-08-20"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "John and Sarah",
+      "hostingDuration": 2,
+      "role": "Superhosts",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/efc6b4ed-8f2f-4d3d-8470-41a87c47efed.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A charming lakeside cottage perfect for families or groups.",
+      "descriptionSpace": "The cozy living room opens to a spacious porch with lake views.",
+      "guestAccess": "Guests have full access to the property and private beach area.",
+      "otherThings": "No smoking indoors."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.85,
+      "totalReviewsCount": 45,
+      "ratings": {
+        "cleanlinessAvgRating": 4.9,
+        "accuracyAvgRating": 4.8,
+        "checkInAvgRating": 4.9,
+        "communicationAvgRating": 5.0,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.7,
+        "starTotals": {
+          "fiveStar": 30,
+          "fourStar": 10,
+          "threeStar": 3,
+          "twoStar": 2,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.346990144269132,
+      "lat": 52.50035561297163,
+      "address": "Swan Lake, New York, USA",
+      "addressDescription": "Nestled by the lake, the cottage offers both tranquility and adventure. Explore local hiking trails or enjoy a boat ride on the lake."
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Penthouse-Loft  Berlin-Schöneberg",
+    "host": "Hosted by Mike and Laura",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-54105603/original/6c55974d-63f7-4afc-9c24-5f649674bea3.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/08d66a86-1c85-4c6d-8185-77a7e0052b1c.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/11eb7f94-d7e2-4bb8-83fc-c1e481d81da7.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/9dff3e2b-6bc4-4705-a017-103acaba7a8b.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280806/original/a99c4de3-99b0-4d31-84e5-9d9f26c3d2c0.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "San Francisco, USA",
+      "guests": { "key": "guest", "value": 2 },
+      "bedrooms": { "key": "bedroom", "value": 1 },
+      "beds": { "key": "bed", "value": 1 },
+      "baths": { "key": "bath", "value": 1 },
+      "starGrade": 4.7,
+      "reviews": 35
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "CITY",
+        "text": "City Center",
+        "subText": "Steps away from major attractions."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Highly rated and experienced hosts."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "High-speed Wifi",
+        "subText": "Ideal for business travelers."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 24 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Modern kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Dedicated workspace" },
+      { "amenitiesID": 3, "type": "balcony", "text": "Private balcony" },
+      { "amenitiesID": 4, "type": "elevator", "text": "Elevator access" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      { "amenitiesID": 6, "type": "parking", "text": "Paid parking nearby" },
+      { "amenitiesID": 7, "type": "gym", "text": "Access to gym facilities" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Laura",
+        "picture": "https://a0.muscache.com/im/pictures/user/b7b4fc9e-dc5c-4df9-a0bc-2b007b295d8d.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Amazing place! The location was perfect for exploring the city.",
+        "date": "2024-09-12"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Chris",
+        "picture": "https://a0.muscache.com/im/pictures/user/40800fd7-dc3e-40ae-9035-017f5c62e66b.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Very comfortable stay, just a bit noisy at night.",
+        "date": "2024-09-20"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Mike and Laura",
+      "hostingDuration": 1,
+      "role": "Superhosts",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/b7b4fc9e-dc5c-4df9-a0bc-2b007b295d8d.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A sleek and modern loft in the heart of San Francisco.",
+      "descriptionSpace": "Bright and airy space with contemporary decor and city views.",
+      "guestAccess": "Guests have full access to the loft and building amenities.",
+      "otherThings": "No pets allowed."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.65,
+      "totalReviewsCount": 35,
+      "ratings": {
+        "cleanlinessAvgRating": 4.8,
+        "accuracyAvgRating": 4.7,
+        "checkInAvgRating": 4.6,
+        "communicationAvgRating": 4.8,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.5,
+        "starTotals": {
+          "fiveStar": 20,
+          "fourStar": 12,
+          "threeStar": 3,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.405743442175709,
+      "lat": 52.530533117386106,
+      "address": "Downtown, San Francisco, California, USA",
+      "addressDescription": "Located in a bustling area with shops, restaurants, and cultural attractions within walking distance."
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Nähe KaDeWe & Kurfürstendamm",
+    "host": "Hosted by Emma and Jack",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/ml/photo_enhancement/pictures/1c5d7c15-c62a-433b-9c8e-6019e8e5bc24.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/3133b5f4-bcb9-41e5-bd72-c6c6e68f5ed0.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/4e2cd689-7f86-4e91-a02c-3d77e88c78ef.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/4fdff23e-5252-4631-b123-91d8dc9f49e5.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280807/original/5a134e08-5b46-46a7-86f0-39b6ac8d186f.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Big Bear Lake, USA",
+      "guests": { "key": "guest", "value": 6 },
+      "bedrooms": { "key": "bedroom", "value": 3 },
+      "beds": { "key": "bed", "value": 4 },
+      "baths": { "key": "bath", "value": 2 },
+      "starGrade": 4.8,
+      "reviews": 60
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "NATURE",
+        "text": "Secluded location",
+        "subText": "Perfect for nature lovers."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Experienced and dedicated hosts."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free Wifi",
+        "subText": "Stay connected while enjoying nature."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 48 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Fully equipped kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Cozy workspace" },
+      { "amenitiesID": 3, "type": "fireplace", "text": "Indoor fireplace" },
+      { "amenitiesID": 4, "type": "garden", "text": "Large outdoor deck" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      {
+        "amenitiesID": 6,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 7, "type": "hot_tub", "text": "Hot tub" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Daniel",
+        "picture": "https://a0.muscache.com/im/pictures/user/f94f165b-bc9b-45d2-81b0-8eb8b2d0c18b.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "The cabin was beautiful and perfect for our family getaway!",
+        "date": "2024-09-05"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Sophia",
+        "picture": "https://a0.muscache.com/im/pictures/user/e849f0a3-88b5-4870-b6bc-4b484d75e0a7.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Lovely cabin, but could use some updates.",
+        "date": "2024-09-15"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Emma and Jack",
+      "hostingDuration": 3,
+      "role": "Superhosts",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/f94f165b-bc9b-45d2-81b0-8eb8b2d0c18b.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A rustic cabin nestled in the woods, ideal for families or groups.",
+      "descriptionSpace": "Spacious living areas and cozy bedrooms with rustic decor.",
+      "guestAccess": "Guests have access to the entire cabin and surrounding area.",
+      "otherThings": "No smoking allowed indoors."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.7,
+      "totalReviewsCount": 60,
+      "ratings": {
+        "cleanlinessAvgRating": 4.7,
+        "accuracyAvgRating": 4.6,
+        "checkInAvgRating": 4.8,
+        "communicationAvgRating": 4.8,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.6,
+        "starTotals": {
+          "fiveStar": 38,
+          "fourStar": 17,
+          "threeStar": 5,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.350123166340774,
+      "lat": 52.572703710445744,
+      "address": "Big Bear Lake, California, USA",
+      "addressDescription": "Secluded in the woods, the cabin offers tranquility and access to outdoor activities."
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Beautiful flat 95m² in Berlin Mitte",
+    "host": "Hosted by Anna",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/ml/photo_enhancement/pictures/miso/Hosting-43386371/original/fb9c702a-b7d9-4e32-b9b4-803ec044e08c.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/d9c6eae4-e7c1-46b8-b9d7-501d473f2b2d.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/3c6b28f0-e282-43bc-9368-77602a65bc67.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/43be95c5-2363-47cf-96cb-ecff8f68b375.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280808/original/cdb23f08-0a7e-45cd-9a5a-31a82c4f1b7d.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Miami Beach, USA",
+      "guests": { "key": "guest", "value": 4 },
+      "bedrooms": { "key": "bedroom", "value": 2 },
+      "beds": { "key": "bed", "value": 3 },
+      "baths": { "key": "bath", "value": 2 },
+      "starGrade": 4.9,
+      "reviews": 50
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "BEACH",
+        "text": "Beachfront property",
+        "subText": "Step right onto the beach from your patio."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Well-reviewed and experienced host."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free high-speed Wifi",
+        "subText": "Perfect for streaming and working remotely."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 48 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Gourmet kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Dedicated workspace" },
+      { "amenitiesID": 3, "type": "balcony", "text": "Ocean view balcony" },
+      { "amenitiesID": 4, "type": "pool", "text": "Access to pool" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      {
+        "amenitiesID": 6,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 7, "type": "gym", "text": "Gym access" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Liam",
+        "picture": "https://a0.muscache.com/im/pictures/user/a1d73f04-c2b2-4a4a-babc-c9e527754fa0.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "What a fantastic place! The beach is just a few steps away.",
+        "date": "2024-07-10"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Olivia",
+        "picture": "https://a0.muscache.com/im/pictures/user/8ae589b0-6dc5-4a67-96a0-3352c94fc371.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "The ocean view from the balcony was incredible.",
+        "date": "2024-07-15"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Anna",
+      "hostingDuration": 4,
+      "role": "Superhost",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/a1d73f04-c2b2-4a4a-babc-c9e527754fa0.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A beautiful beachfront property with stunning ocean views.",
+      "descriptionSpace": "Stylish and modern interior with plenty of natural light.",
+      "guestAccess": "Guests have full access to the property and beach.",
+      "otherThings": "No parties or events allowed."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.85,
+      "totalReviewsCount": 50,
+      "ratings": {
+        "cleanlinessAvgRating": 4.9,
+        "accuracyAvgRating": 4.8,
+        "checkInAvgRating": 4.9,
+        "communicationAvgRating": 5.0,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.7,
+        "starTotals": {
+          "fiveStar": 35,
+          "fourStar": 12,
+          "threeStar": 3,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.335657730330263,
+      "lat": 52.470594210731385,
+      "address": "Miami Beach, Florida, USA",
+      "addressDescription": "Enjoy stunning ocean views and easy access to local attractions."
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Quiet room direct to metro station",
+    "host": "Hosted by Sarah",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/ml/photo_enhancement/pictures/c65f8e17-4866-4033-b837-0f34e5f1ee42.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/22e238b3-b924-458e-8e5a-b21c50081376.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/c99a98d0-2bcb-4ed9-878e-81664a30e2ec.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/28dc68e7-8d36-43dc-84d6-71e9f63773ae.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280809/original/724073d0-b169-4db1-8d39-49fa7b3a3a8f.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "New York City, USA",
+      "guests": { "key": "guest", "value": 4 },
+      "bedrooms": { "key": "bedroom", "value": 2 },
+      "beds": { "key": "bed", "value": 3 },
+      "baths": { "key": "bath", "value": 1 },
+      "starGrade": 4.6,
+      "reviews": 40
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "CITY",
+        "text": "Central location",
+        "subText": "Close to all major attractions."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "High ratings from previous guests."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free Wifi",
+        "subText": "Stay connected during your trip."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 48 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Fully equipped kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Designated workspace" },
+      { "amenitiesID": 3, "type": "balcony", "text": "Private balcony" },
+      { "amenitiesID": 4, "type": "elevator", "text": "Elevator access" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      { "amenitiesID": 6, "type": "parking", "text": "Paid parking nearby" },
+      { "amenitiesID": 7, "type": "gym", "text": "Access to gym facilities" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Sophia",
+        "picture": "https://a0.muscache.com/im/pictures/user/e849f0a3-88b5-4870-b6bc-4b484d75e0a7.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Lovely apartment! Perfect for our NYC trip.",
+        "date": "2024-09-18"
+      },
+      {
+        "reviewsId": 2,
+        "name": "James",
+        "picture": "https://a0.muscache.com/im/pictures/user/75a8e0e6-9c91-4f5e-8701-8b0a78d7b98a.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Great location, but a bit noisy at night.",
+        "date": "2024-09-25"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Sarah",
+      "hostingDuration": 2,
+      "role": "Superhost",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/e849f0a3-88b5-4870-b6bc-4b484d75e0a7.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A cozy apartment located in the bustling city center.",
+      "descriptionSpace": "Stylish and modern decor with plenty of natural light.",
+      "guestAccess": "Guests have access to the entire apartment.",
+      "otherThings": "No pets allowed."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.65,
+      "totalReviewsCount": 40,
+      "ratings": {
+        "cleanlinessAvgRating": 4.7,
+        "accuracyAvgRating": 4.6,
+        "checkInAvgRating": 4.7,
+        "communicationAvgRating": 4.8,
+        "locationAvgRating": 4.8,
+        "valueAvgRating": 4.5,
+        "starTotals": {
+          "fiveStar": 20,
+          "fourStar": 15,
+          "threeStar": 5,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.38867806406207,
+      "lat": 52.50411704137263,
+      "address": "New York City, New York, USA",
+      "addressDescription": "Centrally located, ideal for exploring the city."
+    },
+    "reservations": [
+      {
+        "reservationId": 3,
+        "customerId": 7,
+        "dates": [
+          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 4,
+        "customerId": 8,
+        "dates": [
+          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Nice room with ensuite bathroom",
+    "host": "Hosted by Lisa",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/63546733/61c16351_original.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/12a4d1dc-c5f5-45b7-9c69-6cc5a8720a60.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/b1a20a5d-b90f-41c9-a869-0b29c59ee4fa.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/a67d0369-e4a7-44c0-b7e6-160648b3efb9.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280810/original/b8165310-6571-413f-9256-df2d8ee1b693.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Beverly Hills, USA",
+      "guests": { "key": "guest", "value": 8 },
+      "bedrooms": { "key": "bedroom", "value": 4 },
+      "beds": { "key": "bed", "value": 5 },
+      "baths": { "key": "bath", "value": 5 },
+      "starGrade": 4.9,
+      "reviews": 70
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "LUXURY",
+        "text": "Private pool",
+        "subText": "Enjoy a luxurious experience with a private pool."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Highly rated host with excellent service."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free high-speed Wifi",
+        "subText": "Perfect for remote work and leisure."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 72 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Gourmet kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Designated workspace" },
+      { "amenitiesID": 3, "type": "balcony", "text": "Large terrace" },
+      { "amenitiesID": 4, "type": "pool", "text": "Private pool" },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      {
+        "amenitiesID": 6,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 7, "type": "gym", "text": "Access to gym facilities" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Matthew",
+        "picture": "https://a0.muscache.com/im/pictures/user/9e1d8c57-54f3-46a3-a0f2-86cb64b2b11a.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "The villa was stunning! Perfect for our family vacation.",
+        "date": "2024-08-20"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Emily",
+        "picture": "https://a0.muscache.com/im/pictures/user/f1c4e8de-c4ef-4312-a4ab-76eab26eb62a.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Amazing experience, would definitely recommend!",
+        "date": "2024-08-25"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Lisa",
+      "hostingDuration": 5,
+      "role": "Superhosts",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/9e1d8c57-54f3-46a3-a0f2-86cb64b2b11a.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A luxurious villa with all the amenities for a perfect getaway.",
+      "descriptionSpace": "Spacious living areas and beautiful decor throughout.",
+      "guestAccess": "Guests have exclusive access to the villa and all its amenities.",
+      "otherThings": "No loud parties allowed."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.85,
+      "totalReviewsCount": 70,
+      "ratings": {
+        "cleanlinessAvgRating": 4.9,
+        "accuracyAvgRating": 4.9,
+        "checkInAvgRating": 4.8,
+        "communicationAvgRating": 4.8,
+        "locationAvgRating": 4.9,
+        "valueAvgRating": 4.6,
+        "starTotals": {
+          "fiveStar": 55,
+          "fourStar": 12,
+          "threeStar": 3,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.24118749634843,
+      "lat": 52.437529182378114,
+      "address": "Beverly Hills, California, USA",
+      "addressDescription": "A prime location in the heart of Beverly Hills."
+    },
+    "reservations": [
+      {
+        "reservationId": 5,
+        "customerId": 2,
+        "dates": [
+          "Wed Feb 07 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Sat Feb 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 6,
+        "customerId": 10,
+        "dates": [
+          "Mon Feb 12 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Feb 16 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Quiet room 32 min from TXL/SXF @Central Berlin",
+    "host": "Hosted by John",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/63547750/1a87aaef_original.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/f9178c3c-e02c-48b6-b8ab-78aeea250e5c.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/55a08826-5b1d-48de-913f-196d8f8e8379.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/6f64ee98-06b3-4c61-bc45-90f00af46c7a.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280811/original/8f56702c-3fd4-433e-8982-b251607a8bba.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "Napa Valley, USA",
+      "guests": { "key": "guest", "value": 6 },
+      "bedrooms": { "key": "bedroom", "value": 3 },
+      "beds": { "key": "bed", "value": 4 },
+      "baths": { "key": "bath", "value": 2 },
+      "starGrade": 4.7,
+      "reviews": 45
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "COUNTRYSIDE",
+        "text": "Serene location",
+        "subText": "Surrounded by vineyards and nature."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Experienced host with great reviews."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free high-speed Wifi",
+        "subText": "Stay connected while enjoying the countryside."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 72 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Full kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Dedicated workspace" },
+      { "amenitiesID": 3, "type": "balcony", "text": "Outdoor seating area" },
+      {
+        "amenitiesID": 4,
+        "type": "parking",
+        "text": "Free parking on premises"
+      },
+      { "amenitiesID": 5, "type": "wifi", "text": "Free Wifi" },
+      { "amenitiesID": 6, "type": "fireplace", "text": "Cozy fireplace" },
+      { "amenitiesID": 7, "type": "garden", "text": "Beautiful garden" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Noah",
+        "picture": "https://a0.muscache.com/im/pictures/user/3a504583-6178-48bc-9235-d1b589e15e9a.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Perfect escape from the city! We loved it.",
+        "date": "2024-09-01"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Isabella",
+        "picture": "https://a0.muscache.com/im/pictures/user/7bb68f04-bb70-4572-9745-d0f582eafedd.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Charming cottage with beautiful surroundings.",
+        "date": "2024-09-10"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "John",
+      "hostingDuration": 3,
+      "role": "Superhost",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/3a504583-6178-48bc-9235-d1b589e15e9a.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A charming cottage nestled in the beautiful Napa Valley.",
+      "descriptionSpace": "Cozy interiors with rustic decor and modern amenities.",
+      "guestAccess": "Guests have full access to the cottage and grounds.",
+      "otherThings": "No loud parties allowed."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.75,
+      "totalReviewsCount": 45,
+      "ratings": {
+        "cleanlinessAvgRating": 4.8,
+        "accuracyAvgRating": 4.7,
+        "checkInAvgRating": 4.7,
+        "communicationAvgRating": 4.8,
+        "locationAvgRating": 4.8,
+        "valueAvgRating": 4.6,
+        "starTotals": {
+          "fiveStar": 25,
+          "fourStar": 15,
+          "threeStar": 5,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.418006315035646,
+      "lat": 52.49215719366196,
+      "address": "Napa Valley, California, USA",
+      "addressDescription": "A peaceful retreat surrounded by vineyards."
+    },
+    "reservations": [
+      {
+        "reservationId": 7,
+        "customerId": 5,
+        "dates": [
+          "Sat Mar 23 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Wed Mar 27 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 8,
+        "customerId": 6,
+        "dates": [
+          "Fri Mar 22 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Thu Mar 28 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Germany, Berlin, Südliche Friedrichstadt",
+    "host": "Hosted by Eric",
+    "price": "Coming soon",
+    "images": [
+      "https://a0.muscache.com/im/pictures/63550086/29407dad_original.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/7d46f57a-d33b-426e-ae4e-907194bf8d4f.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/9b13e429-8b2e-4f7b-b56b-1f3f2944ec58.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/5a5b1e83-64bb-46c2-8653-c46c9cdbedd9.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-44280812/original/530fe134-3b7f-45c4-96c8-542a5e37c2f8.jpeg?im_w=720"
+    ],
+    "productSummary": {
+      "accommodation": "Entire rental unit",
+      "address": "San Francisco, USA",
+      "guests": { "key": "guest", "value": 4 },
+      "bedrooms": { "key": "bedroom", "value": 2 },
+      "beds": { "key": "bed", "value": 3 },
+      "baths": { "key": "bath", "value": 2 },
+      "starGrade": 4.8,
+      "reviews": 30
+    },
+    "highlights": [
+      {
+        "highlightsId": 1,
+        "type": "CITY",
+        "text": "Stunning city views",
+        "subText": "Enjoy panoramic views of the city skyline."
+      },
+      {
+        "highlightsId": 2,
+        "type": "AWARD",
+        "text": "Superhost",
+        "subText": "Top-rated host with excellent service."
+      },
+      {
+        "highlightsId": 3,
+        "type": "WIFI",
+        "text": "Free high-speed Wifi",
+        "subText": "Stay connected during your stay."
+      },
+      {
+        "highlightsId": 4,
+        "type": "CANCELLATION",
+        "text": "Flexible cancellation",
+        "subText": "Cancel up to 48 hours before check-in."
+      }
+    ],
+    "amenities": [
+      { "amenitiesID": 1, "type": "kitchen", "text": "Modern kitchen" },
+      { "amenitiesID": 2, "type": "workspace", "text": "Dedicated workspace" },
+      { "amenitiesID": 3, "type": "balcony", "text": "Private balcony" },
+      { "amenitiesID": 4, "type": "wifi", "text": "Free Wifi" },
+      { "amenitiesID": 5, "type": "parking", "text": "Paid parking nearby" },
+      { "amenitiesID": 6, "type": "gym", "text": "Access to gym facilities" }
+    ],
+    "reviews": [
+      {
+        "reviewsId": 1,
+        "name": "Liam",
+        "picture": "https://a0.muscache.com/im/pictures/user/8f9ed7ed-9b90-40b2-b6f4-c9f50d5b42ff.jpg?im_w=240",
+        "rating": 5,
+        "reviewText": "Incredible views! The apartment was perfect for our stay.",
+        "date": "2024-09-10"
+      },
+      {
+        "reviewsId": 2,
+        "name": "Ava",
+        "picture": "https://a0.muscache.com/im/pictures/user/0e47a77b-7613-4b81-b022-6eae8f1e52d4.jpg?im_w=240",
+        "rating": 4,
+        "reviewText": "Great place, but a bit far from downtown.",
+        "date": "2024-09-15"
+      }
+    ],
+    "hostSummary": {
+      "hostName": "Eric",
+      "hostingDuration": 1,
+      "role": "Superhost",
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/8f9ed7ed-9b90-40b2-b6f4-c9f50d5b42ff.jpg?im_w=240"
+    },
+    "productDescription": {
+      "descriptionPlace": "A modern loft with breathtaking views of San Francisco.",
+      "descriptionSpace": "Stylish decor and spacious layout.",
+      "guestAccess": "Guests have full access to the loft.",
+      "otherThings": "No pets allowed."
+    },
+    "reviewSummary": {
+      "totalAvgRating": 4.75,
+      "totalReviewsCount": 30,
+      "ratings": {
+        "cleanlinessAvgRating": 4.8,
+        "accuracyAvgRating": 4.7,
+        "checkInAvgRating": 4.8,
+        "communicationAvgRating": 4.7,
+        "locationAvgRating": 4.6,
+        "valueAvgRating": 4.5,
+        "starTotals": {
+          "fiveStar": 16,
+          "fourStar": 10,
+          "threeStar": 4,
+          "twoStar": 0,
+          "oneStar": 0
+        }
+      }
+    },
+    "mapView": {
+      "lon": 13.451137984545161,
+      "lat": 52.51297020838586,
+      "address": "San Francisco, California, USA",
+      "addressDescription": "Located near the waterfront with great access to attractions."
+    },
+    "reservations": [
+      {
+        "reservationId": 9,
+        "customerId": 12,
+        "dates": [
+          "Thu Apr 04 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Mon Apr 08 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      },
+      {
+        "reservationId": 10,
+        "customerId": 13,
+        "dates": [
+          "Tue Apr 09 2024 00:00:00 GMT+0100 (Central European Standard Time)",
+          "Fri Apr 12 2024 00:00:00 GMT+0100 (Central European Standard Time)"
+        ]
+      }
+    ]
+  }
+]

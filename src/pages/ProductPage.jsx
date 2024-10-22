@@ -19,8 +19,27 @@ import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const ProductPage = () => {
+  const [error, setError] = useState(null);
+  const [place, setPlace] = useState(null);
+  const { productId } = useParams();
+  console.log(productId);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8800/places/${productId}`)
+      .then((response) => setPlace(response.data))
+
+      .catch((err) =>
+        setError(err.response?.data?.error || "Something went wrong")
+      );
+  }, [productId]);
+
+  // console.log(place);
+
   const highlights = [
     {
       type: "CHECK_IN",
