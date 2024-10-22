@@ -26,7 +26,7 @@ const ICONS_MAP = {
   firepit: <FirepitIcon />,
 };
 
-function Amenities({ title, amenities, onClick }) {
+function Amenities({ title, amenities }) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const renderIcon = (type) => {
