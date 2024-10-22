@@ -38,9 +38,7 @@
 }
 
 .modalOverlay {
-  z-index: 4;
-  position: fixed;
-  top: 0;
+  top: 20%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -48,6 +46,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7;
+  position: fixed;
 }
 
 .modalContent {
@@ -63,13 +63,13 @@
 
 .closeButton {
   position: relative;
-  top: 10px;
-  left: 10px;
   background: none;
   border: none;
   font-size: 18px;
   cursor: pointer;
+  padding: 0;
 }
+
 
 .modalTitle {
   margin-top: 1rem;
