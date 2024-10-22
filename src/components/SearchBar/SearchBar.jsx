@@ -2,7 +2,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
-import Calendar from "../Calendar/calendar";
+import Calendar from "../Calendar/Calendar";
 import ModalPopUp from "../ModalPopUp/ModalPopUp";
 
 const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
@@ -92,13 +92,14 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           </button>
         </div>
       </div>
+      <div className={styles.calendarWrapper}>
       <ModalPopUp
         isVisible={showCalendar}
         onCloseClick={() => setShowCalendar(false)}
-        popUpDimension={{ width: "600px", left: "30%" }}
+        popUpDimension={{ width: "800px", left: "30%" }}
       >
         <Calendar />
-      </ModalPopUp>
+      </ModalPopUp></div>
     </>
   );
 };

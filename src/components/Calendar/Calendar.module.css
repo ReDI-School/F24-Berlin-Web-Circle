@@ -1,25 +1,40 @@
+.calendarPopUp {
+  position: absolute;
+  top: 40px;
+}
+
 .calendar {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* overflow: hidden; */
   }
   
-  .calendarHeader {
+  /* .calendarHeader {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    width: 300px;
+    width: 100%;
+    max-width: 600px;
     margin-bottom: 20px;
-  }
+  } */
   
   .calendarRow {
     display: flex;
     justify-content: center; 
-    gap: 20px; 
+    /* gap: 0; */
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+    gap: 50px;
+  
   }
   
   .monthContainer {
     width: 250px; 
-    margin: 0 10px; 
+    position: relative;
+    /* margin: 0 50px; */ 
+    /* margin-top: 0; */
   }
   
   .calendarGrid {
@@ -32,16 +47,31 @@
   .date,
   .emptySlot {
     padding: 5px; 
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     text-align: center;
     font-size: 12px; 
   }
   h3 {
-    font-size: 16px; 
-  }
-  
-  button {
-    padding: 5px 10px;
     font-size: 16px;
   }
   
+  button {
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    margin-top: 8px;
+  }
+  button:hover {
+    background-color: rgb(247, 242, 242);
+    border-radius: 40px;
+    outline: none;
+  }
+  .prevButton {
+    margin-right: -60px;
+  }
+  .nextButton {
+    margin-left: -60px;
+  }

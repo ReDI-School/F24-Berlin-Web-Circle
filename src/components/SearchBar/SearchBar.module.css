@@ -100,3 +100,8 @@
   width: 16px;
   height: 16px;
 }
+
+.calendarWrapper {
+  position: relative;
+  width: 100%;
+}

@@ -7,22 +7,33 @@ const Calendar = () => {
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
 
-  const handleNextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
-  const handlePrevMonth = () => {
-    const newMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1);
-    if (newMonth >= new Date()) setCurrentMonth(newMonth);
-  };
+  const goToNextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
+  const goToPrevMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1));
 
-  const renderDaysOfWeek = () => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => <div key={index} className={styles.dayHeader}>{day}</div>);
 
-  const renderDates = (year, month) => {
+  const renderDaysOfWeek = () => {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    return days.map((day, index) => (
+      <div key={index} className={styles.dayHeader}>
+        {day}
+      </div>
+    ));
+  }
+  const renderDays = () => {
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
     const daysInMonth = getDaysInMonth(year, month);
-    const firstDay = getFirstDayOfMonth(year, month);
+    const firstDayOfMonth = getFirstDayOfMonth(year, month);
     const daysArray = [];
 
-    for (let i = 0; i < firstDay; i++) daysArray.push(<div key={`empty-${i}`} className={styles.emptySlot}></div>);
-    for (let day = 1; day <= daysInMonth; day++) daysArray.push(<div key={day} className={styles.Date}>{day}</div>);
-
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      daysArray.push(<div key={`empty-${i}`} className={styles.emptySlot}></div>);
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      daysArray.push(<div key={day} className={styles.date}>
+        {day}
+      </div>);
+    }
     return daysArray;
   };
 
@@ -33,10 +44,11 @@ const Calendar = () => {
 
     return (
       <div className={styles.monthContainer}>
+
         <h3>{`${monthName} ${year}`}</h3>
         <div className={styles.calendarGrid}>
           {renderDaysOfWeek()}
-          {renderDates(year, month)}
+          {renderDays(year, month)}
         </div>
       </div>
     );
@@ -45,19 +57,56 @@ const Calendar = () => {
   const getNextMonth = () => new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1);
 
   return (
-    <div className={styles.calendar}>
-      <div className={styles.calendarHeader}>
-        <button onClick={handlePrevMonth} disabled={currentMonth <= new Date()}>←</button>
-        <button onClick={handleNextMonth}>→</button>
-      </div>
-      
-    
-      <div className={styles.calendarRow}>
-        {renderCalendarForMonth(currentMonth)}
-        {renderCalendarForMonth(getNextMonth())}
+    <div className={styles.calendarPopUp}>
+      <div className={styles.calendar}>
+        <div className={styles.calendarRow}>
+
+          {/* <div className={styles.calendarHeader}> */}
+          <button
+            className={styles.prevButton}
+            onClick={goToPrevMonth}
+            disabled={currentMonth <= new Date()}>
+            &lt;
+          </button>
+
+
+          {renderCalendarForMonth(currentMonth)}
+          {renderCalendarForMonth(getNextMonth())}
+
+          <button
+            className={styles.nextButton}
+            onClick={goToNextMonth}>
+            &gt;
+          </button>
+        </div>
       </div>
     </div>
   );
+
+
+
+  /* return (
+    <div className={styles.calendar}>
+      <div className={styles.calendarHeader}>
+        <button
+        className={styles.prevButton}
+          onClick={goToPrevMonth}
+          disabled={currentMonth <= new Date()}>
+          &lt;
+        </button>
+
+        <div className={styles.calendarRow}>
+          {renderCalendarForMonth(currentMonth)}
+          {renderCalendarForMonth(getNextMonth())}
+        </div>
+        <button
+        className={nextButton}
+          onClick={goToNextMonth}>
+          &gt;
+        </button>
+      </div>
+    </div>
+  ); */
 };
 
 export default Calendar;
