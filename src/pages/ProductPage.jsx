@@ -189,12 +189,12 @@ const ProductPage = () => {
             },
           }}
         />
-        <IconButton
+        {/* <IconButton
           faIcon={faArrowUpFromBracket}
           label="Share"
           onClick={handleShare}
         />
-        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} />
+        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} /> */}
         <div className={styles.reviews}>
           <ReviewsSection reviews={reviews} />
         </div>
