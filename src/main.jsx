@@ -9,6 +9,7 @@ import ErrorPage from "./error-page";
 import './index.css';
 import ProductPage from './pages/ProductPage.jsx';
 import Root from './pages/RootLayout/Root.jsx';
+import FilteredPlacesPage from './pages/FilteredPlacesPage/FilteredPlacesPage.jsx';
 
 
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "rooms/:productId",
         element: <ProductPage/>,
+      },
+      {
+        path: "s/:destination/homes",
+        element: <FilteredPlacesPage/>,
       },
     ]
   },
