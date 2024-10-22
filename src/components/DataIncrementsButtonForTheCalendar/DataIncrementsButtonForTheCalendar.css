@@ -1,0 +1,41 @@
+.date-selection-container {
+  display: flex;
+  gap: 10px; 
+}
+
+.option {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: rgb(34, 34, 34);
+  cursor: pointer;
+  font-family: "Airbnb Cereal VF", Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  height: 32px;
+  line-height: 16px; 
+  margin: 0;
+  min-height: 32px;
+  outline: none;
+  padding: 0 14px; 
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-size-adjust: 100%;
+  white-space: nowrap;
+  width: 94.8594px;
+  -webkit-font-smoothing: antialiased;
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), background-color 0.15s cubic-bezier(0.2, 0, 0, 1), border-color 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.option:hover {
+  border-color: #302f2f;  
+}
+
+.option.selected {
+  border-color: black;
+  border-width: 2px; 
+}
