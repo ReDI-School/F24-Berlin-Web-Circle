@@ -10,6 +10,7 @@ import DestinationButton from './DestinationButton/DestinationButton';
 const DestinationPopUp = ({
     title,
     onClick,
+    isVisible
 }) => {
 const destinations = [
     {image:World, description:"I'm flexible"},
@@ -29,7 +30,7 @@ const arrayChunk = (arr, n) => {
     return chunks;
   };
     return(
-        <div className={Styles.popup}>
+        <div className={Styles.popup} display={isVisible}>
             <div className={Styles.title}>
                 {title}
             </div>

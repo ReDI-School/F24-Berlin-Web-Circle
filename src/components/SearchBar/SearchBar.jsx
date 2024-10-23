@@ -2,6 +2,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
+import DestinationPopUp from "../DestinationPopUp/DestinationPopUp";
 
 const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
@@ -15,8 +16,10 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
     onSearch({ location, checkIn, checkOut, date, guests });
   };
 
-  return (
+  const [destinationPopUpIsVisible, setDestinationPopUpIsVisible] = useState(false);
 
+  return (
+<>
     <div className={styles.searchBar}>
       <div className={styles.inputContainerWhere}>
         <span className={styles.label}>Where</span>
@@ -26,7 +29,14 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           placeholder="Search destinations"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
+          onFocus={() => setDestinationPopUpIsVisible(true)}
+          onBlur={() => setTimeout(() => setDestinationPopUpIsVisible(false), 200)}
         />
+        {destinationPopUpIsVisible && (
+        <div className= {styles.popupContainer}>
+          <DestinationPopUp setLocation={setLocation} isVisible={destinationPopUpIsVisible} />
+        </div>
+        )}
       </div>
       <div className={styles.separator}></div>
       {searchType === "stays" ? (
@@ -79,7 +89,8 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
-    </div>
+    </div>    
+    </>
   );
 };
 

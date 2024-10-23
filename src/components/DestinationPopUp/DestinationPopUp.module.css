@@ -5,14 +5,15 @@
     max-height: 47.175rem;
     max-width: 23.75rem;
     border-radius: 2rem;
-    z-index: 1;
+    z-index: 14;
     background-color: white;
     flex-direction: column;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     padding-bottom: 1.5rem;
-    overflow: scroll;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
+
 .title {
     display: flex;
     align-items: flex-start;
