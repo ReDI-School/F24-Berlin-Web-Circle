@@ -1,0 +1,27 @@
+.shortcutItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.symbolContainer {
+  margin-top: 6px;
+  font-size: 12px;
+  width: 30%;
+}
+
+.symbol {
+  color: var(--primary);
+  padding: 4px 8px;
+  background-color: #f7f7f7;
+}
+
+.description {
+  width: 70%;
+}
+
+.slash {
+  font-size: 10px;
+  margin: 0 2px; 
+}
