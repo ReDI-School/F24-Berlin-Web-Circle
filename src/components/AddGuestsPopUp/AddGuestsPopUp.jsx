@@ -1,8 +1,8 @@
 import styles from './AddGuestsPopUp.module.css'
 import Guest from './Guest/Guest'
+import { guestsData } from '../../utils/guestData'
 
 const AddGuestsPopUp = ({
-  guestsData,
   onGuestChange,
   style,
   toggleShowGuests,
@@ -13,6 +13,7 @@ const AddGuestsPopUp = ({
   allowGuestsNumber = { peopleNumber: 0, petsNumber: 0 },
   setGuestCounts,
   currentTotalPeople,
+  toggleGuestCountPopup,
 }) => {
   const { peopleNumber, petsNumber } = allowGuestsNumber
 
@@ -40,6 +41,7 @@ const AddGuestsPopUp = ({
             allowGuestsNumber={allowGuestsNumber}
             setGuestCounts={setGuestCounts}
             currentTotalPeople={currentTotalPeople}
+            toggleGuestCountPopup={toggleGuestCountPopup}
           />
         )
       })}

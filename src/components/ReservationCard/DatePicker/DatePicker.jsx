@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import { CloseButtonIcon } from '../../../icons/CloseButtonIcon'
 import styles from './DatePicker.module.css'
 
 const DatePicker = ({
   checkInDate,
   checkOutDate,
+  minStayNights = 1,
   inputCheckInDate,
   inputCheckOutDate,
   setInputCheckInDate,
@@ -23,19 +25,18 @@ const DatePicker = ({
   const [checkInFocus, setCheckInFocus] = useState(false)
   const [checkOutFocus, setCheckOutFocus] = useState(false)
 
-  const checkInInputRef = useRef(null);
-  const checkOutInputRef = useRef(null);
+  const checkInInputRef = useRef(null)
+  const checkOutInputRef = useRef(null)
 
   useEffect(() => {
     if (!checkInDate || checkInError) {
-      checkInInputRef?.current?.focus();
-      setCheckInFocus(true);
+      checkInInputRef?.current?.focus()
+      setCheckInFocus(true)
     } else if (checkInDate && !checkInError) {
-      checkOutInputRef?.current?.focus();
-      setCheckOutFocus(true);
+      checkOutInputRef?.current?.focus()
+      setCheckOutFocus(true)
     }
-  }, [checkInDate, checkInError]);
-
+  }, [checkInDate, checkInError])
 
   const Container = renderAsForm ? 'form' : renderAsButton ? 'button' : 'div'
 
@@ -52,12 +53,29 @@ const DatePicker = ({
     setInputCheckOutDate(date)
   }
 
+  const handleCheckInFocus = () => {
+    setCheckInFocus(true)
+    setCheckOutFocus(false)
+  }
+
+  const handleCheckOutFocus = () => {
+    setCheckOutFocus(true)
+    setCheckInFocus(false)
+  }
+
+  const checkInDateObj = new Date(checkInDate)
+  const checkOutDateObj = new Date(checkOutDate)
+  const MS_PER_DAY = 1000 * 60 * 60 * 24
+
   const handleCheckInBlur = (dataCheckIn) => {
     if (validateDate(dataCheckIn)) {
-      const checkOutDateObj = new Date(checkOutDate)
       const checkInDateObj = new Date(dataCheckIn)
+      const chekInOutDiff = (checkOutDateObj - checkInDateObj) / MS_PER_DAY
+
       if (checkOutDate && checkInDateObj >= checkOutDateObj) {
         setCheckInError('Check-in date must be earlier than check-out date')
+      } else if (checkOutDate && chekInOutDiff < Number(minStayNights)) {
+        setCheckInError(`Minimum stay: ${minStayNights} nights`)
       } else {
         setCheckInError('')
         setCheckInDate(dataCheckIn)
@@ -72,10 +90,13 @@ const DatePicker = ({
 
   const handleCheckOutBlur = (dataCheckOut) => {
     if (validateDate(dataCheckOut)) {
-      const checkInDateObj = new Date(checkInDate)
       const checkOutDateObj = new Date(dataCheckOut)
+      const chekInOutDiff = (checkOutDateObj - checkInDateObj) / MS_PER_DAY
+
       if (checkInDate && checkOutDateObj <= checkInDateObj) {
         setCheckOutError('Check-out date must be later than check-in date')
+      } else if (chekInOutDiff < minStayNights) {
+        setCheckOutError(`Minimum stay: ${minStayNights} nights`)
       } else {
         setCheckOutError('')
         setCheckOutDate(dataCheckOut)
@@ -90,7 +111,9 @@ const DatePicker = ({
 
   return (
     <Container
-      className={`${styles.datesPickerSection} ${!checkInDate && !renderAsButton ? styles.checkOutBackground : ''}`}
+      className={`${styles.datesPickerSection} ${
+        !checkInDate && !renderAsButton ? styles.checkOutBackground : ''
+      }`}
       onClick={!renderAsForm && renderAsButton ? onToggle : undefined}
       onSubmit={renderAsForm ? (e) => e.preventDefault() : undefined}
     >
@@ -99,126 +122,161 @@ const DatePicker = ({
           checkInError ? styles.checkInError : ''
         } ${!checkInDate && !renderAsButton ? styles.activeCheckIn : ''} ${
           renderAsButton ? styles.buttonTypeActive : ''
-        }`}
+        } ${checkInFocus && !renderAsButton ? styles.activeCheckIn : ''}
+        ${
+          checkInFocus && !renderAsButton && !checkInError
+            ? styles.activeCheckIn
+            : ''
+        }
+        `}
+        onClick={() => checkInInputRef.current?.focus()}
       >
         <div className={styles.checkinSectionContent}>
-          <label>Check-in</label>
-          {renderAsForm || !renderAsButton ? (
-            <input
-              type="text"
-              ref={checkInInputRef}
-              className={styles.dateField}
-              value={
-                (checkInFocus || checkInDate !== '' || checkInError)
-                  ? inputCheckInDate 
-                  : checkInDate
-              }
-              placeholder={
-                (!checkInDate && checkInFocus) ||
-                (checkInDate && inputCheckInDate === '') ||
-                (checkInFocus === true && inputCheckInDate !== '')
-                  ? 'MM/DD/YYYY'
-                  : 'Add date'
-              }
-              onFocus={() => setCheckInFocus(true)}
-              // onBlur={() => {
-              //   if (checkInDate !== inputCheckInDate) {
-              //     handleCheckInBlur(inputCheckInDate)
-              //     setCheckInFocus(false)
-              //   }
-              // }}
-              onBlur={() => {
-                if (inputCheckInDate === '' && !checkInFocus) {
-                  setCheckInFocus(false);
-                  setInputCheckInDate('');
-                } else if (checkInDate !== inputCheckInDate) {
-                  handleCheckInBlur(inputCheckInDate);
-                  setCheckInFocus(false);
-                } else {
-                  setCheckInFocus(false);
+          <div className={styles.checkinInputWrapper}>
+            <label>Check-in</label>
+            {renderAsForm || !renderAsButton ? (
+              <input
+                type="text"
+                ref={checkInInputRef}
+                className={styles.dateField}
+                value={
+                  checkInFocus || checkInDate !== '' || checkInError
+                    ? inputCheckInDate
+                    : checkInDate
                 }
-              }}
-              
-              onKeyDown={(e) => {
-                if (checkInDate !== inputCheckInDate && e.key === 'Enter') {
-                  handleCheckInBlur(inputCheckInDate)
-                  setCheckInFocus(false)
+                placeholder={
+                  (!checkInDate && checkInFocus) ||
+                  (checkInDate && inputCheckInDate === '') ||
+                  (checkInFocus === true && inputCheckInDate !== '')
+                    ? 'MM/DD/YYYY'
+                    : 'Add date'
                 }
-              }}
-              onChange={(e) => handleCheckInChange(e.target.value)}
-              maxLength={10}
-              required={checkInFocus}
-            />
-          ) : (
-            <div>{checkInDate ? checkInDate : <span>Add date</span>}</div>
-          )}
+                onFocus={handleCheckInFocus}
+                onBlur={() => {
+                  if (inputCheckInDate === '' && !checkInFocus) {
+                    setInputCheckInDate('')
+                  } else if (checkInDate !== inputCheckInDate) {
+                    handleCheckInBlur(inputCheckInDate)
+                  } else {
+                    if (checkInInputRef.current) {
+                      checkInInputRef.current.blur()
+                    }
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (checkInDate !== inputCheckInDate && e.key === 'Enter') {
+                    handleCheckInBlur(inputCheckInDate)
+                  }
+                }}                
+                onChange={(e) => handleCheckInChange(e.target.value)}
+                maxLength={10}
+                required={checkInFocus}
+              />
+            ) : (
+              <div>{checkInDate ? checkInDate : <span>Add date</span>}</div>
+            )}
+          </div>
+          {renderAsForm ||
+            (!renderAsButton && checkInDate && (
+              <button
+                className={styles.clearInputDateBtn}
+                onClick={() => {
+                  setCheckInDate('')
+                  setCheckOutDate('')
+                  setInputCheckInDate('')
+                  setInputCheckOutDate('')
+                  setCheckInError('')
+                  setCheckOutError('')
+                }}
+              >
+                <CloseButtonIcon />
+              </button>
+            ))}
         </div>
       </div>
       <div
         className={`${styles.checkoutSection} ${
-          checkOutError ? styles.checkOutError : ''
-        } ${checkInDate && !renderAsButton && !checkOutError ? styles.activeCheckOut : ''}`}
+          checkOutError && !checkInFocus ? styles.checkOutError : ''
+        } ${
+          checkOutFocus && !renderAsButton && !checkOutError
+            ? styles.activeCheckOut
+            : ''
+        }`}
+        onClick={() => checkOutInputRef.current?.focus()}
       >
         <div
           className={`${styles.checkoutSectionContent} ${
             !checkInDate && !renderAsButton ? styles.disabledCheckout : ''
-          }`}
+          } ${checkOutError && checkInFocus ? styles.checkOutErrorLabel : ''}`}
         >
-          <label>Checkout</label>
-          {renderAsForm || !renderAsButton ? (
-            checkInDate !== 0 && (
-              <input
-                type="text"
-                ref={checkOutInputRef}
-                className={styles.dateField}
-                value={
-                  (checkOutFocus || checkOutDate !== '' || checkOutError)
-                    ? inputCheckOutDate
-                    : checkOutDate
-                }
-                placeholder={
-                  (!checkOutDate && checkOutFocus) || 
-                  // (checkInDate && inputCheckInDate === '') ||
-                  (checkOutDate && inputCheckOutDate === '') ||
-                  (checkOutFocus === true && inputCheckOutDate !== '')
-                    ? 'MM/DD/YYYY'
-                    : 'Add date'
-                }
-                onFocus={() => setCheckOutFocus(true)}
-                // onBlur={() => {
-                //   if (checkOutDate !== inputCheckOutDate) {
-                //     handleCheckOutBlur(inputCheckOutDate)
-                //     setCheckOutFocus(false)
-                //   }
-                // }}
-                onBlur={() => {
-                  if (inputCheckOutDate === '' && !checkOutFocus) {
-                    setCheckOutFocus(false);
-                    setInputCheckOutDate('');
-                  } else if (checkOutDate !== inputCheckOutDate) {
-                    handleCheckOutBlur(inputCheckOutDate);
-                    setCheckOutFocus(false);
-                  } else {
-                    setCheckOutFocus(false);
+          <div className={styles.checkoutInputWrapper}>
+            <label>Checkout</label>
+            {renderAsForm || !renderAsButton ? (
+              checkInDate !== 0 && (
+                <input
+                  type="text"
+                  ref={checkOutInputRef}
+                  className={`${styles.dateField} ${
+                    checkOutError && checkInFocus
+                      ? styles.checkOutErrorBackground
+                      : ''
+                  }`}
+                  value={
+                    checkOutFocus || checkOutDate !== '' || checkOutError
+                      ? inputCheckOutDate
+                      : checkOutDate
                   }
-                }}
-
-                onKeyDown={(e) => {
-                  if (checkOutDate !== inputCheckOutDate && e.key === 'Enter') {
-                    handleCheckOutBlur(inputCheckOutDate)
-                    setCheckOutFocus(false)
+                  placeholder={
+                    (!checkOutDate && checkOutFocus) ||
+                    (checkOutDate && inputCheckOutDate === '') ||
+                    (checkOutFocus === true && inputCheckOutDate !== '')
+                      ? 'MM/DD/YYYY'
+                      : 'Add date'
                   }
+                  onFocus={handleCheckOutFocus}
+                  onBlur={() => {
+                    if (inputCheckOutDate === '' && !checkOutFocus) {
+                      setInputCheckOutDate('')
+                    } else if (checkOutDate !== inputCheckOutDate) {
+                      handleCheckOutBlur(inputCheckOutDate)
+                    } else {
+                      if (checkOutInputRef.current) {
+                        checkOutInputRef.current.blur()
+                      }
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      checkOutDate !== inputCheckOutDate &&
+                      e.key === 'Enter'
+                    ) {
+                      handleCheckOutBlur(inputCheckOutDate)
+                    }
+                  }}                  
+                  onChange={(e) => handleCheckOutChange(e.target.value)}
+                  maxLength={10}
+                  required={checkOutFocus}
+                  min={inputCheckInDate}
+                  disabled={!checkInDate}
+                />
+              )
+            ) : (
+              <div>{checkOutDate ? checkOutDate : <span>Add date</span>}</div>
+            )}
+          </div>
+          {renderAsForm ||
+            (!renderAsButton && checkOutDate && (
+              <button
+                className={styles.clearInputDateBtn}
+                onClick={() => {
+                  setCheckOutDate('')
+                  setInputCheckOutDate('')
+                  setCheckOutError('')
                 }}
-                onChange={(e) => handleCheckOutChange(e.target.value)}
-                maxLength={10}
-                required={checkOutFocus}
-                min={inputCheckInDate}
-                disabled={!checkInDate}
-              />
-            )
-          ) : (
-            <div>{checkOutDate ? checkOutDate : <span>Add date</span>}</div>
-          )}
+              >
+                <CloseButtonIcon />
+              </button>
+            ))}
         </div>
       </div>
     </Container>

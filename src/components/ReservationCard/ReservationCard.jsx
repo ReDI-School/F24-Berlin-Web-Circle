@@ -5,38 +5,51 @@ import ReservationDatesSelector from './ReservationDatesSelector/ReservationDate
 import DatePicker from './DatePicker/DatePicker'
 import GuestCountDisplay from './GuestCountDisplay/GuestCountDisplay'
 import useOutsideClick from '../../hooks/useOutsideClick'
-import { fetchCalculatedCosts } from '../../utils/fetchCalculatedCosts'
+import { fetchCalculatedCosts } from '../../api/pricingApi'
 import { calculateGuestCounts } from '../../utils/guestCounts'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 function ReservationCard({
+  defaultCheckInDate,
+  defaultCheckOutDate,
   pricePerNight,
   cleaningFee,
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  guestsData,
   onGuestChange,
   guestsList,
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
+  toggleShortcutsPopup,
+  toggleGuestCountPopup,
+  setShowGuests,
+  showGuests,
+  showCalendar,
+  setShowCalendar,
 }) {
-  const [showGuests, setShowGuests] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
-  const [checkInDate, setCheckInDate] = useState('')
-  const [checkOutDate, setCheckOutDate] = useState('')
+  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
+  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
+  const [guestCounts, setGuestCounts] = useState({
+    adults: 1,  
+    children: 0, 
+    infants: 0,  
+    pets: 0  
+  });
   const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  const currentTotalPeople = guestCounts.adults + guestCounts.children;
+
   const toggleShowGuests = () => {
-    setShowGuests((prevState)=> (!prevState));
+    setShowGuests((prevState) => !prevState)
   }
 
-  const toggleShowCalendar = (show) => {
-    setShowCalendar(show)
-  }
+  const toggleShowCalendar = useCallback((show) => {
+    setShowCalendar(show);
+  }, []);
 
   const {
     adultsCount,
@@ -56,6 +69,7 @@ function ReservationCard({
         checkOutDate,
         {
           adults: adultsAndChildrenCount,
+          children: childrenCount,
           infants: infantsCount,
           pets: petsCount,
         },
@@ -78,6 +92,8 @@ function ReservationCard({
     border: '1px solid var(--palette-deco)',
     zIndex: '99 !important',
   }
+
+console.log('calculatedCosts', calculatedCosts)
 
   return (
     <div className={styles.reservationCard}>
@@ -106,7 +122,6 @@ function ReservationCard({
                 setCheckInDate={setCheckInDate}
                 setCheckOutDate={setCheckOutDate}
                 renderAsButton={true}
-                toggleShowCalendar={toggleShowCalendar}
               />
               {showCalendar && (
                 <ReservationDatesSelector
@@ -116,6 +131,7 @@ function ReservationCard({
                   checkOutDate={checkOutDate}
                   toggleShowCalendar={toggleShowCalendar}
                   minStayNights={minStayNights}
+                  toggleShortcutsPopup={toggleShortcutsPopup}
                 />
               )}
               <button
@@ -133,7 +149,6 @@ function ReservationCard({
               <div className={styles.guestDropdown}>
                 {showGuests && (
                   <AddGuestsPopUp
-                    guestsData={guestsData}
                     onGuestChange={onGuestChange}
                     style={addGuestPopUpStyles}
                     allowGuestsNumber={allowGuestsNumber}
@@ -142,6 +157,9 @@ function ReservationCard({
                     childrenCount={childrenCount}
                     infantsCount={infantsCount}
                     petsCount={petsCount}
+                    setGuestCounts={setGuestCounts}
+                    currentTotalPeople={currentTotalPeople}
+                    toggleGuestCountPopup={toggleGuestCountPopup}
                   />
                 )}
               </div>
@@ -179,7 +197,7 @@ function ReservationCard({
         )}
       </div>
 
-      {checkInDate !== null && checkOutDate !== null && (
+      {checkInOut && !loading && isBookingOpen && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
@@ -188,10 +206,11 @@ function ReservationCard({
           airbnbServiceFee={airbnbServiceFee}
           longStayDiscount={longStayDiscount}
           nightsCountForDiscount={nightsCountForDiscount}
+          // calculatedCosts={calculatedCosts}
         />
       )}
     </div>
-  );
+  )
 }
 
-export default ReservationCard;
+export default ReservationCard

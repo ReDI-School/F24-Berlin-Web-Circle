@@ -5,7 +5,6 @@
   max-width: 318px;
   background-color: transparent;
   border: 1px solid #b5b5b5;
-  border-radius: 6px;
   font-size: 0.875rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -19,12 +18,19 @@
   border-color: #b5b5b5;
 }
 
-.checkoutSectionContent,
-.checkinSectionContent {
+.checkinInputWrapper,
+.checkoutInputWrapper{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  width: 100px;
+  gap: 2px;
+}
+
+.checkoutSectionContent,
+.checkinSectionContent {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
   gap: 2px;
   height: 56px;
   padding: 12px 10px;
@@ -55,7 +61,8 @@
 }
 
 .checkinSection.checkInError label,
-.checkoutSection.checkOutError label {
+.checkoutSection.checkOutError label,
+.checkOutErrorLabel label {
   color: var(--error);  
 }
 
@@ -64,6 +71,8 @@
   border: none;
   outline: none;
   margin-left: -1px;
+  margin-top: -3px;
+  font-size: 14px;
 }
 
 .checkoutSectionContent.disabledCheckout{
@@ -90,14 +99,34 @@
   bottom: -1px;
   left: -1px;
   border-radius: 6px;
-  pointer-events: none; 
+  pointer-events: none;
 }
 .checkinSection.activeCheckIn::before,
 .checkoutSection.activeCheckOut::before{
   border: 2px solid black;
 }
-.checkoutSection.checkOutError::before {
+.checkoutSection.checkOutError::before,
+.checkinSection.checkInError::before  {
   border: 2px solid #c13515;
 }
 
+.clearInputDateBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  outline: none;
+}
 
+.clearInputDateBtn:hover {
+  background-color: #f7f7f7;
+}
+
+.clearInputDateBtn:focus,
+.clearInputDateBtn:focus-visible {
+  outline: none;
+}
