@@ -7,7 +7,7 @@ import GuestCountDisplay from './GuestCountDisplay/GuestCountDisplay'
 import useOutsideClick from '../../hooks/useOutsideClick'
 import { fetchCalculatedCosts } from '../../api/pricingApi'
 import { calculateGuestCounts } from '../../utils/guestCounts'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 
 function ReservationCard({
   defaultCheckInDate,
@@ -47,9 +47,9 @@ function ReservationCard({
     setShowGuests((prevState) => !prevState)
   }
 
-  const toggleShowCalendar = useCallback((show) => {
-    setShowCalendar(show);
-  }, []);
+  const toggleShowCalendar = (show) => {
+    setShowCalendar(show)
+  }
 
   const {
     adultsCount,
