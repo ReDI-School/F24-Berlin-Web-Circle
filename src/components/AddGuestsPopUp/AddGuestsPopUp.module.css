@@ -4,8 +4,31 @@
     max-width: 25rem;
     max-height: 40.25rem;
     background-color: white;
-    border-radius: 2rem;
-    padding: 2rem;
-    color: black;
+    border-radius: 3rem;
+    padding: 1rem;
+    color:var(--primary);
     display: block;
+}
+.popupText {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 12px 0;
+}
+.closePopUp {
+    display: flex;
+    justify-content: flex-end;
+} 
+ 
+.closePopUp button {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    text-decoration: underline;
+} 
+.closePopUp button:hover{   
+    background-color: #f7f7f7
+}
+.closePopUp button:focus,
+.closePopUp button:focus-visible {
+  outline: none;
 }
