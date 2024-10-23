@@ -33,12 +33,12 @@ function App() {
       });
   };
 
-  return (
-    <>
-      <div>
-        <CalendarToggle />
-      </div>
-
+return (
+  <>
+    <div>
+      <CalendarToggle />
+    </div>
+  
       <div className="grid">
         {places.map((place) => {
           if (!place.id) return null;
