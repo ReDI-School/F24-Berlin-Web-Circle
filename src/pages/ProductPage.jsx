@@ -41,7 +41,6 @@ const ProductPage = () => {
   // console.log(place);
 
 
-
   /* ============== Reservation card data ============== */
   const checkInDate = new Date("2025-01-01");
   const checkOutDate = new Date("2025-01-16");
