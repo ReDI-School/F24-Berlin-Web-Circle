@@ -30,7 +30,7 @@
   outline: none;
   transform: translateY(-50%);
   z-index: 1005;
-  box-shadow: 0 0 15px 0px #fcfcfc9a ;
+  box-shadow: 0 0 5px 0px #fcfcfc9a ;
   background-color: #fcfcfc9a;
 }
 .scroll-button-left-container {
@@ -42,7 +42,7 @@
   display: flex;
   justify-content: center;
   width: 20px;
-  left: 0px;
+  left: -50px;
 }
 .scroll-button-right-container {
   width: 30px;
@@ -53,8 +53,8 @@
   display: flex;
   justify-content: center;
   width: 20px;
-  right: 0px;
-  box-shadow: 0 0 15px 0px #fcfcfc9a ;
+  right: -50px;
+  box-shadow: 0 0 5px 0px #fcfcfc9a ;
   background-color: #fcfcfc9a;
 }
 
