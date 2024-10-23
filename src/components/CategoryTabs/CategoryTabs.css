@@ -30,8 +30,8 @@
   outline: none;
   transform: translateY(-50%);
   z-index: 1005;
-  box-shadow: 0 0 15px 5px rgba(90, 90, 90, 1);
-  background-color: #fcfcfc;
+  box-shadow: 0 0 15px 0px #fcfcfc9a ;
+  background-color: #fcfcfc9a;
 }
 .scroll-button-left-container {
   width: 30px;
@@ -54,7 +54,8 @@
   justify-content: center;
   width: 20px;
   right: 0px;
-  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px 0px #fcfcfc9a ;
+  background-color: #fcfcfc9a;
 }
 
 .scroll-button:focus {
@@ -102,8 +103,6 @@
   justify-content: center;
   padding-top: 10px;
   width: auto;
-  border-radius: 100%;
-  border: 1px solid #000;
 }
 
 .left-arrow {
