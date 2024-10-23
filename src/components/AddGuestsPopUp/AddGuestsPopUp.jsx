@@ -1,3 +1,4 @@
+import useOutsideClick from '../../hooks/useOutsideClick';
 import styles from './AddGuestsPopUp.module.css'
 import Guest from './Guest/Guest'
 
@@ -6,12 +7,14 @@ const AddGuestsPopUp = ({
   onGuestChange,
   style,
   toggleShowGuests,
-  allowGuestsNumber = { peopleNumber: 0, petsNumber: 0 },
+  allowGuestsNumber = {peopleNumber: 0, petsNumber: 0},
 }) => {
+  
   const { peopleNumber, petsNumber } = allowGuestsNumber
-
+  const guestsRef = useOutsideClick(toggleShowGuests);
+  
   return (
-    <div className={styles.popup} style={style}>
+    <div className={styles.popup} style={style} ref={guestsRef}>
       {guestsData?.map((guest) => (
         <Guest
           key={guest.index}
@@ -23,7 +26,7 @@ const AddGuestsPopUp = ({
       ))}
       <div className={styles.popupText}>
         This place has a maximum of {peopleNumber} guests, not including
-        infants. If you&apos;re bringing more than {petsNumber} pets, please let
+        infants. If you&apos;re  bringing more than {petsNumber} pets, please let
         your host know.
       </div>
       <div className={styles.closePopUp}>

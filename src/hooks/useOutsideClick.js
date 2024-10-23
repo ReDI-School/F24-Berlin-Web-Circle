@@ -1,15 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-const useOutsideClick = (closeFunction) => {
+const useOutsideClick = (callback) => {
   const ref = useRef(null);
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
-      if (typeof closeFunction === 'function') {
-        closeFunction(); 
-      } else {
-        console.error('closeFunction is not a function:', closeFunction);
-      }
+      callback(); 
     }
   };
 
