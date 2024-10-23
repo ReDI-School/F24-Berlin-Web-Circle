@@ -78,7 +78,7 @@ function ReservationCard({
         setError
       )
     } else {
-      setError('Please select valid dates and guests.');
+      // setError('Please select valid dates and guests.');
     }
   }
 
