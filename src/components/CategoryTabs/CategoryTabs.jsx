@@ -4,8 +4,6 @@ import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree } from
 import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; 
 import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi';
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
-import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
-
 
 const categories = [
   { label: 'Amazing Pools', icon: <FaSwimmingPool size={32} /> },
@@ -29,6 +27,7 @@ const categories = [
 const CategoryTabs = () => {
   const [activeTab, setActiveTab] = useState(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
   const scrollContainerRef = useRef(null);
 
   const handleTabClick = (label) => {
@@ -37,7 +36,7 @@ const CategoryTabs = () => {
 
   const handleScroll = (direction) => {
     const scrollContainer = scrollContainerRef.current;
-    const scrollAmount = window.innerWidth * 0.9;
+    const scrollAmount = window.innerWidth * 0.1;
     
     if (direction === 'left') {
       scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -55,6 +54,7 @@ const CategoryTabs = () => {
     
     // Update visibility of the left arrow
     setShowLeftArrow(scrollContainer.scrollLeft > 0);
+    setShowRightArrow(scrollContainer.scrollLeft == maxScrollLeft)
   };
 
   useEffect(() => {
@@ -68,32 +68,43 @@ const CategoryTabs = () => {
   }, []);
 
   return (
-    <div className="category-tabs-container">
-      <div className="category-tabs-wrapper">
-        {showLeftArrow && (
-          <button className="scroll-button left" onClick={() => handleScroll('left')}>
-            <HiOutlineArrowLeftCircle size={32} />
-          </button>
-        )}
-        
-        <div className="category-tabs" ref={scrollContainerRef}>
-          {categories.map((category) => (
-            <div
-              key={category.label}
-              className={`tab-item ${activeTab === category.label ? 'active' : ''}`}
-              onClick={() => handleTabClick(category.label)}
-            >
-              <div className="tab-icon">{category.icon}</div>
-              <span className="tab-label">{category.label}</span>
+    <>
+        <div className="category-tabs-container">
+          {showLeftArrow && 
+            <div className="scroll-button-left-container">
+              <div className="scroll-button left" onClick={() => handleScroll('left')}>
+                <div className='button left-arrow'>
+                  <HiOutlineArrowRightCircle />
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-        
-        <button className="scroll-button right" onClick={() => handleScroll('right')}>
-          <HiOutlineArrowRightCircle size={32} />
-        </button>
+          }
+          <div className="category-tabs-wrapper">
+            <div className="category-tabs" ref={scrollContainerRef}>
+              {categories.map((category) => (
+                <div
+                  key={category.label}
+                  className={`tab-item ${activeTab === category.label ? 'active' : ''}`}
+                  onClick={() => handleTabClick(category.label)}
+                >
+                  <div className="tab-icon">{category.icon}</div>
+                  <span className="tab-label">{category.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {!showRightArrow &&
+            <div className="scroll-button-right-container">
+              <div className="scroll-button right" onClick={() => handleScroll('right')}>
+                  <div className='button'>
+                    <HiOutlineArrowRightCircle />
+                  </div>
+              </div>
+            </div>
+          }
       </div>
-    </div>
+    </>
+
   );
 };
 
