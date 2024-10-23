@@ -10,6 +10,7 @@ const Root = () =>
 		"--primary": colors.primary,
 		"--palette-deco": colors.paletteDeco,
 		"--neutral": colors.neutral,
+		"--error" : colors.error,
 	};
 
 	return (

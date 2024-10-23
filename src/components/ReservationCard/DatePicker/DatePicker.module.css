@@ -1,0 +1,58 @@
+.datesPickerSection {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 318px;
+  background-color: transparent;
+  border: 1px solid #b5b5b5;
+  font-size: 0.875rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.datesPickerSection:hover {
+  border-color: #b5b5b5;
+}
+
+.checkoutSectionContent,
+.checkinSectionContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2px;
+  height: 56px;
+  padding: 12px 10px;
+  font-weight: 400;
+  color: black;
+}
+
+.checkoutSectionContent span, 
+.checkinSectionContent span {
+  line-height: 20px;
+  color: var(--neutral);
+}
+
+.checkinSection,
+.checkoutSection {
+  width: 100%;
+  height: 56px;
+  width: 158px;
+  text-align: left;
+}
+.checkinSection {
+  position: relative;
+  border-right: 1px solid #b5b5b5;
+}
+
+.checkinSection.checkInError label,
+.checkoutSection.checkOutError label {
+  color: var(--error);  
+}
+
+.dateField {
+  max-width: 100%;
+  border: none;
+  outline: none;
+  margin-left: -1px;
+}
