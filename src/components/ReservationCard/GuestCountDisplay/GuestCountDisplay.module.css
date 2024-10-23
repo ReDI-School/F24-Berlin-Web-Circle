@@ -1,0 +1,10 @@
+.guestsPickerSectionContent {
+  margin: 12px 10px;
+  font-weight: 400;
+  color: black;
+}
+
+.guestCountWrapper {
+  display: flex;
+  justify-content: space-between;
+}

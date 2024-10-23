@@ -10,13 +10,30 @@
   border-bottom-right-radius: 0;
 }
 
+.checkOutBackground {
+  background-color: #f7f6f6;
+}
+
 .datesPickerSection:hover {
   border-color: #b5b5b5;
 }
 
+.checkinInputWrapper,
+.checkoutInputWrapper{
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  gap: 2px;
+}
+
 .checkoutSectionContent,
 .checkinSectionContent {
-  margin: 12px 10px;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 2px;
+  height: 56px;
+  padding: 12px 10px;
   font-weight: 400;
   color: black;
 }
@@ -27,13 +44,89 @@
   color: var(--neutral);
 }
 
-.checkinSection {
+.checkinSection,
+.checkoutSection {
   width: 100%;
+  height: 56px;
+  width: 158px;
   text-align: left;
+}
+
+.checkinSection {
+  position: relative;
+}
+
+.checkinSection.buttonTypeActive {
   border-right: 1px solid #b5b5b5;
 }
 
-.checkoutSection {
-  width: 100%;
-  text-align: left;
+.checkinSection.checkInError label,
+.checkoutSection.checkOutError label,
+.checkOutErrorLabel label {
+  color: var(--error);  
+}
+
+.dateField {
+  max-width: 100%;
+  border: none;
+  outline: none;
+  margin-left: -1px;
+  margin-top: -3px;
+  font-size: 14px;
+}
+
+.checkoutSectionContent.disabledCheckout{
+  opacity: 0.2;
+}
+
+.checkinSection.activeCheckIn,
+.checkoutSection.activeCheckOut,
+.checkoutSection.checkOutError {
+  position: relative;
+}
+
+.checkinSection.activeCheckIn {
+  background-color: #fff;
+}
+
+.checkinSection.activeCheckIn::before,
+.checkoutSection.activeCheckOut::before,
+.checkoutSection.checkOutError::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.checkinSection.activeCheckIn::before,
+.checkoutSection.activeCheckOut::before{
+  border: 2px solid black;
+}
+.checkoutSection.checkOutError::before,
+.checkinSection.checkInError::before  {
+  border: 2px solid #c13515;
+}
+
+.clearInputDateBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+
+.clearInputDateBtn:hover {
+  background-color: #f7f7f7;
+}
+
+.clearInputDateBtn:focus,
+.clearInputDateBtn:focus-visible {
+  outline: none;
 }

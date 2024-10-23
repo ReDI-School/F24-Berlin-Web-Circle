@@ -3,7 +3,7 @@ export const KeyboardIcon = ({ width = 24, height = 24 }) => {
     display: 'block',
     height: `${height}px`,
     width: `${width}px`,
-    fill: 'currentcolor',
+    fill: 'currentColor',
     margin: '12px',
   }
 
