@@ -1,33 +1,51 @@
-import { useState } from 'react';
-import Styles from './Guest.module.css';
+import { useState } from 'react'
+import styles from './Guest.module.css'
 
-const Guest = ({title, description, descriptionType, onClick}) => {
-    const[count, setCount] = useState(0);
-    const handelMinusCount = () => {
-       {count > 0 && setCount(count - 1)};
-       onClick({typeofGuest:title,numberOfGuests:count - 1}); 
-    };
-    const handelPlusCount = () => {
-        setCount(count + 1);
-        onClick({typeofGuest:title,numberOfGuests:count + 1}); 
-    };
+const Guest = ({ title, description, descriptionType, onClick }) => {
+  const [count, setCount] = useState(title === 'Adults' ? 1 : 0)
 
-    return(
-        <div className={Styles.container}>
-            <div className={Styles.detailContainer}>
-                <div className={Styles.title}>{title}</div>
-                    {descriptionType === 'string' ? 
-                        <div>{description}</div> :
-                        <div className={Styles.descriptionLink}>{description}</div>
-                    }
-            </div>
-            <div className={Styles.buttonContainer}>
-                    <div className={count !== 0 ? Styles.button : Styles.buttonDisable} onClick={handelMinusCount}>-</div>
-                    <div className={Styles.count}>{count}</div>
-                    <div className={Styles.button} onClick={handelPlusCount}>+</div>
-            </div>
+  const handelMinusCount = () => {
+    if (title === 'Adults' && count > 1) {
+      setCount(count - 1)
+      onClick({ typeofGuest: title, numberOfGuests: count - 1 })
+    } else if (title !== 'Adults' && count > 0) {
+      setCount(count - 1)
+      onClick({ typeofGuest: title, numberOfGuests: count - 1 })
+    }
+  }
+  const handelPlusCount = () => {
+    setCount(count + 1)
+    onClick({ typeofGuest: title, numberOfGuests: count + 1 })
+  }
 
+  return (
+    <div className={styles.container}>
+      <div className={styles.detailContainer}>
+        <div className={styles.title}>{title}</div>
+        {descriptionType === 'string' ? (
+          <div>{description}</div>
+        ) : (
+          <div className={styles.descriptionLink}>{description}</div>
+        )}
+      </div>
+      <div className={styles.buttonContainer}>
+        <div
+          className={
+            (count !== 0 && title !== 'Adults') ||
+            (count > 1 && title === 'Adults')
+              ? styles.button
+              : styles.buttonDisable
+          }
+          onClick={handelMinusCount}
+        >
+          -
         </div>
-    )
+        <div className={styles.count}>{count}</div>
+        <div className={styles.button} onClick={handelPlusCount}>
+          +
+        </div>
+      </div>
+    </div>
+  )
 }
-export default Guest;
+export default Guest
