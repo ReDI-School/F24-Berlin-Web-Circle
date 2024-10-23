@@ -74,7 +74,7 @@ const CategoryTabs = () => {
             <div className="scroll-button-left-container">
               <div className="scroll-button left" onClick={() => handleScroll('left')}>
                 <div className='button left-arrow'>
-                  <HiOutlineArrowRightCircle />
+                  <HiOutlineArrowRightCircle size={32}/>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const CategoryTabs = () => {
             <div className="scroll-button-right-container">
               <div className="scroll-button right" onClick={() => handleScroll('right')}>
                   <div className='button'>
-                    <HiOutlineArrowRightCircle />
+                    <HiOutlineArrowRightCircle size={32}/>
                   </div>
               </div>
             </div>
