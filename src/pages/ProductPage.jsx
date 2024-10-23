@@ -20,8 +20,11 @@ import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
 import { useEffect, useState } from "react";
+import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
+import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
 
 const ProductPage = () => {
   const [error, setError] = useState(null);
@@ -42,43 +45,51 @@ const ProductPage = () => {
 
 
   /* ============== Reservation card data ============== */
-  const checkInDate = new Date("2025-01-01").toLocaleDateString();
-  const checkOutDate = new Date("2025-01-16").toLocaleDateString();
-  // const checkInDate = '';
-  // const checkOutDate = '';
-  const pricePerNight = 146;
-  const cleaningFee = 10;
-  const airbnbServiceFee = 10;
-  const longStayDiscount = 30;
-  const nightsCountForDiscount = 5;
-  const allowGuestsNumber = {
-    peopleNumber: 6,
-    petsNumber: 2,
-  }
-
+  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
+  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+  const [showGuests, setShowGuests] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
   const [guestsList, setGuestsList] = useState([
     { typeofGuest: 'Adults', numberOfGuests: 1 },
     { typeofGuest: 'Children', numberOfGuests: 0 },
     { typeofGuest: 'Infants', numberOfGuests: 0 },
     { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ]);
-    const guestsData = [
-        {index:1, title:'Adults', description:'Age 13+', descriptionType:'string'},
-        {index:2, title:'Children', description:'Ages 2 - 12', descriptionType:'string'},
-        {index:3, title:'Infants', description:'Under 2', descriptionType:'string'},
-        {index:4, title:'Pets', description:'Bringing a service animal?', descriptionType:'link'}
-    ];
+  ])
 
-    const handleGuestClick = (updatedGuest) => {
-      setGuestsList((prevList) =>
-        prevList.map((guest) =>
-          guest.typeofGuest === updatedGuest.typeofGuest
-            ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-            : guest
-        )
-      );
-    };
- /* ============== End of Reservation card data ============== */
+  const toggleShortcutsPopup = () => {
+    setIsShortcutsPopupVisible((prevState) => !prevState)
+  }
+
+  const toggleGuestCountPopup = () => {
+    setIsGuestCountPopupVisible((prevState) => !prevState)
+  }
+
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
+
+
+  const defaultCheckInDate = '10/20/2024'
+  const defaultCheckOutDate = '10/25/2024'
+  const pricePerNight = 146
+  const cleaningFee = 10
+  const airbnbServiceFee = 10
+  const longStayDiscount = 30
+  const nightsCountForDiscount = 5
+  const minStayNights = 3
+  const isBookingOpen = true
+  const allowGuestsNumber = {
+    peopleNumber: 6,
+    petsNumber: 2,
+  }
+  
+  /* ============== End of Reservation card data ============== */
 
   function handleShare() {
     alert("Share this experience");
@@ -152,20 +163,43 @@ const ProductPage = () => {
             }
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard 
-               checkInDate={checkInDate}
-               checkOutDate={checkOutDate}
-               pricePerNight={pricePerNight}
-               cleaningFee={cleaningFee}
-               airbnbServiceFee={airbnbServiceFee}
-               longStayDiscount={longStayDiscount}
-               nightsCountForDiscount={nightsCountForDiscount}
-               guestsData={guestsData}     
-               onGuestChange={handleGuestClick} 
-               guestsList={guestsList} 
-               allowGuestsNumber={allowGuestsNumber}
+            <ReservationCard
+              defaultCheckInDate={defaultCheckInDate}
+              defaultCheckOutDate={defaultCheckOutDate}
+              pricePerNight={pricePerNight}
+              cleaningFee={cleaningFee}
+              airbnbServiceFee={airbnbServiceFee}
+              longStayDiscount={longStayDiscount}
+              nightsCountForDiscount={nightsCountForDiscount}
+              onGuestChange={handleGuestClick}
+              guestsList={guestsList}
+              allowGuestsNumber={allowGuestsNumber}
+              minStayNights={minStayNights}
+              isBookingOpen={isBookingOpen}
+              toggleShortcutsPopup={toggleShortcutsPopup}
+              toggleGuestCountPopup={toggleGuestCountPopup}
+              setShowGuests={setShowGuests}
+              showGuests={showGuests}
+              showCalendar={showCalendar}
+              setShowCalendar={setShowCalendar}
             />
           </div>
+          {isShortcutsPopupVisible && (
+              <ShortcutsPopUp
+                isVisible={isShortcutsPopupVisible}
+                onClose={toggleShortcutsPopup}
+                showCalendar={showCalendar}
+                setShowCalendar={setShowCalendar}
+              />
+            )}
+          {isGuestCountPopupVisible && (
+              <GuestCountPopUp
+                isVisible={isGuestCountPopupVisible}
+                onClose={toggleGuestCountPopup}
+                showGuests={showGuests}
+                setShowGuests={setShowGuests}
+              />
+            )}
         </div>
         <hr className={styles.separator} />
         <ReviewSummary
