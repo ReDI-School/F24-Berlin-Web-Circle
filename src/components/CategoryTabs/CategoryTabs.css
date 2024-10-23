@@ -1,11 +1,14 @@
 .category-tabs-container {
   position: relative;
   max-width: 1000px;
-  margin: 60 auto;
+  max-height: 120px;
+  margin: 0 auto;
+  background-color: white;
+  z-index: 1000;
 }
 
 .category-tabs-wrapper {
-  overflow: visible;
+  overflow: hidden;
   position: relative;
 }
 
@@ -13,28 +16,45 @@
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 40 px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
   scroll-behavior: smooth;
 }
 
 .scroll-button {
   position: absolute;
   top: 50%;
-  background-color: transparent;
   border: none;
   cursor: pointer;
-  z-index: 100;
-  padding: 10px;
+  padding: 30px;
   outline: none;
   transform: translateY(-50%);
+  z-index: 1005;
+  box-shadow: 0 0 15px 5px rgba(90, 90, 90, 1);
+  background-color: #fcfcfc;
 }
-
+.scroll-button-left-container {
+  width: 30px;
+  left: 0px;
+  z-index: 1010;
+}
 .scroll-button.left {
-  left: -530px;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  left: 0px;
 }
-
+.scroll-button-right-container {
+  width: 30px;
+  left: 0px;
+  z-index: 1010;
+}
 .scroll-button.right {
-  right: -530px;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  right: 0px;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
 }
 
 .scroll-button:focus {
@@ -75,4 +95,17 @@
 
 .category-tabs::-webkit-scrollbar {
   display: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: auto;
+  border-radius: 100%;
+  border: 1px solid #000;
+}
+
+.left-arrow {
+  transform: rotate(180deg);
 }
