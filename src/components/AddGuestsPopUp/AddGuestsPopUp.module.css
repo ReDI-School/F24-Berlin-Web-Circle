@@ -18,7 +18,6 @@
     display: flex;
     justify-content: flex-end;
 } 
- 
 .closePopUp button {
     background-color: transparent;
     border: none;
