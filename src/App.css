@@ -15,4 +15,5 @@
   flex-wrap: wrap;
   width: 95vw;
   overflow: hidden;
+  justify-content: center;
 }
