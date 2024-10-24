@@ -1,17 +1,17 @@
 import styles from "./MeetYourHostRight.module.css";
 import paymentWarningIcon from "../../../assets/PaymentWarningIcon.png";
 
-const MeetYourHostRight = ({ name, responseRate, responseTime }) => {
+const MeetYourHostRight = ({ name, responseRate, responseTime, role }) => {
   return (
     <div className={styles.rightContainer}>
       <div className={styles.superHost}>
         <div className={styles.superHostTitle}>
-          <h3>{`${name} is a Superhost`}</h3>
+          {role && <h3>{`${name} is a Superhost`}</h3>}
         </div>
-        <div className={styles.superHostText}>
+        {role && <div className={styles.superHostText}>
           Superhosts are experienced, highly rated hosts who are committed to
           providing great stays for guests.
-        </div>
+        </div>}
       </div>
       <div className={styles.hostDetails}>
         <div className={styles.hostDetailsTitle}>
