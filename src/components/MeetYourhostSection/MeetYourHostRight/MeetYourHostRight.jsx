@@ -6,7 +6,7 @@ const MeetYourHostRight = ({ name, responseRate, responseTime, role }) => {
     <div className={styles.rightContainer}>
       <div className={styles.superHost}>
         <div className={styles.superHostTitle}>
-          {role && <h3>{`${name} is a Superhost`}</h3>}
+          {role && <h3>{`${name} is a Superhost`}</h3>} {/*make role boolean */}
         </div>
         {role && <div className={styles.superHostText}>
           Superhosts are experienced, highly rated hosts who are committed to
