@@ -40,6 +40,7 @@ const ProductPage = () => {
       );
   }, [productId]);
 
+<<<<<<< HEAD
   //TODO add this into the places.json
   const meetyourHost = {
     "isVerified": "true",
@@ -48,6 +49,8 @@ const ProductPage = () => {
     "responseTime": "an hour"
   }
 
+=======
+>>>>>>> 6fd6e67f1c5849ac566a76928150a784d836d7b7
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false);
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] =
@@ -79,6 +82,7 @@ const ProductPage = () => {
     );
   };
 
+<<<<<<< HEAD
   const defaultCheckInDate = "10/20/2024";
   const defaultCheckOutDate = "10/25/2024";
   const pricePerNight = 146;
@@ -88,6 +92,17 @@ const ProductPage = () => {
   const nightsCountForDiscount = 5;
   const minStayNights = 3;
   const isBookingOpen = true;
+=======
+  const defaultCheckInDate = '10/20/2024'
+  const defaultCheckOutDate = '10/25/2024'
+  const pricePerNight = 146
+  const cleaningFee = 10
+  const airbnbServiceFee = 10
+  const longStayDiscount = 30
+  const nightsCountForDiscount = 5
+  const minStayNights = 3
+  const isBookingOpen = true
+>>>>>>> 6fd6e67f1c5849ac566a76928150a784d836d7b7
   const allowGuestsNumber = {
     peopleNumber: 6,
     petsNumber: 2,
@@ -135,6 +150,7 @@ const ProductPage = () => {
                 smallBottomRightImage={place.images[4]}
               />
             )}
+<<<<<<< HEAD
             <div className={styles.ProductDescriptionContainer}>
               <div className={styles.ProductDescription}>
                 <ProductSummary
@@ -233,6 +249,38 @@ const ProductPage = () => {
               }}
             />
             {/* <IconButton
+=======
+          {isGuestCountPopupVisible && (
+              <GuestCountPopUp
+                isVisible={isGuestCountPopupVisible}
+                onClose={toggleGuestCountPopup}
+                showGuests={showGuests}
+                setShowGuests={setShowGuests}
+              />
+            )}
+        </div>
+        <hr className={styles.separator} />
+        {!!place.reviewSummary && <ReviewSummary
+          totalAvgRating={place.reviewSummary.valueAvgRating}
+          totalReviewsCount={place.reviewSummary.totalReviewsCount}
+          ratings={{
+            cleanlinessAvgRating: place.reviewSummary.ratings.cleanlinessAvgRating,
+            accuracyAvgRating: place.reviewSummary.ratings.accuracyAvgRating,
+            checkInAvgRating: place.reviewSummary.ratings.checkInAvgRating,
+            communicationAvgRating: place.reviewSummary.ratings.communicationAvgRating,
+            locationAvgRating: place.reviewSummary.ratings.locationAvgRating,
+            valueAvgRating: place.reviewSummary.ratings.valueAvgRating,
+            starTotals: {
+              fiveStar: place.reviewSummary.ratings.starTotals.fiveStar,
+              fourStar: place.reviewSummary.ratings.starTotals.fourStar,
+              threeStar: place.reviewSummary.ratings.starTotals.threeStar,
+              twoStar: place.reviewSummary.ratings.starTotals.twoStar,
+              oneStar: place.reviewSummary.ratings.starTotals.oneStar,
+            },
+          }}
+        />}
+        {/* <IconButton
+>>>>>>> 6fd6e67f1c5849ac566a76928150a784d836d7b7
           faIcon={faArrowUpFromBracket}
           label="Share"
           onClick={handleShare}
