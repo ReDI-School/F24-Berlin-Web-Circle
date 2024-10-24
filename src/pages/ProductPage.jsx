@@ -41,9 +41,6 @@ const ProductPage = () => {
       );
   }, [productId]);
 
-  // console.log(place);
-
-
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
@@ -73,7 +70,6 @@ const ProductPage = () => {
       )
     )
   }
-
 
   const defaultCheckInDate = '10/20/2024'
   const defaultCheckOutDate = '10/25/2024'
@@ -202,25 +198,25 @@ const ProductPage = () => {
             )}
         </div>
         <hr className={styles.separator} />
-        <ReviewSummary
-          totalAvgRating={4.91}
-          totalReviewsCount={200}
+        {!!place.reviewSummary && <ReviewSummary
+          totalAvgRating={place.reviewSummary.valueAvgRating}
+          totalReviewsCount={place.reviewSummary.totalReviewsCount}
           ratings={{
-            cleanlinessAvgRating: 4.8,
-            accuracyAvgRating: 4.9,
-            checkInAvgRating: 5.0,
-            communicationAvgRating: 5.0,
-            locationAvgRating: 4.9,
-            valueAvgRating: 4.6,
+            cleanlinessAvgRating: place.reviewSummary.ratings.cleanlinessAvgRating,
+            accuracyAvgRating: place.reviewSummary.ratings.accuracyAvgRating,
+            checkInAvgRating: place.reviewSummary.ratings.checkInAvgRating,
+            communicationAvgRating: place.reviewSummary.ratings.communicationAvgRating,
+            locationAvgRating: place.reviewSummary.ratings.locationAvgRating,
+            valueAvgRating: place.reviewSummary.ratings.valueAvgRating,
             starTotals: {
-              fiveStar: 130,
-              fourStar: 50,
-              threeStar: 10,
-              twoStar: 6,
-              oneStar: 4,
+              fiveStar: place.reviewSummary.ratings.starTotals.fiveStar,
+              fourStar: place.reviewSummary.ratings.starTotals.fourStar,
+              threeStar: place.reviewSummary.ratings.starTotals.threeStar,
+              twoStar: place.reviewSummary.ratings.starTotals.twoStar,
+              oneStar: place.reviewSummary.ratings.starTotals.oneStar,
             },
           }}
-        />
+        />}
         {/* <IconButton
           faIcon={faArrowUpFromBracket}
           label="Share"
