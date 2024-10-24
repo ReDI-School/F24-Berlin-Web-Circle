@@ -38,7 +38,7 @@ const MeetYourHostLeft = ({
           <div className={styles.personRoleContainer}>
             <h2 className={styles.personInfo}>{name}</h2>
             <div className={styles.roleContainer}>
-              {role === "Superhost" ? <RoleIcon /> : ""}
+              {role === "Superhost" ? <RoleIcon /> : ""} {/** change role to boolean so that it includes "Superhosts"  */}
               <span className={styles.role}>{role}</span>
             </div>
           </div>
