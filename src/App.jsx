@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
+import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import axios from "axios";
-import { BASE_URL } from "./constants/constants";
-
 function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
@@ -22,23 +21,14 @@ function App() {
   const handlePlaceClick = (placeId) => {
     setSelectPlaceId(placeId);
     console.log(placeId);
-
-    axios
-      .post(`${BASE_URL}savePlace`, { placeId })
-      .then((response) => {
-        console.log("Place id sent successfully:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error sending place ID:", error.message);
-      });
-  };
-
 return (
   <>
     <div>
       <CalendarToggle />
     </div>
-  
+   <div>
+        <CategoryTabs />  
+      </div>
       <div className="grid">
         {places.map((place) => {
           if (!place.id) return null;
