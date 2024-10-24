@@ -40,6 +40,7 @@ const ProductPage = () => {
       );
   }, [productId]);
 
+  //TODO add this into the places.json
   const meetyourHost = {
     "isVerified": "true",
     "profileText": "Hi, we are Smiling Host, we enjoy giving other people a pleasant time. That's the reason we start",
