@@ -27,6 +27,7 @@ import { useParams } from "react-router-dom";
 
 
 const ProductPage = () => {
+  
   const [error, setError] = useState(null);
   const [place, setPlace] = useState(null);
 
