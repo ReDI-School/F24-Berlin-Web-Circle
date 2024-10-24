@@ -1,31 +1,47 @@
 import styles from './ReservationCard.module.css'
 import CostsSummary from '../CostsSummary/CostsSummary'
 import AddGuestsPopUp from '../AddGuestsPopUp/AddGuestsPopUp'
-import { useState } from 'react'
-import { DownArrow, UpArrow } from '../../icons'
-import axios from 'axios'
 import ReservationDatesSelector from './ReservationDatesSelector/ReservationDatesSelector'
+import DatePicker from './DatePicker/DatePicker'
+import GuestCountDisplay from './GuestCountDisplay/GuestCountDisplay'
+import useOutsideClick from '../../hooks/useOutsideClick'
+import { fetchCalculatedCosts } from '../../api/pricingApi'
+import { calculateGuestCounts } from '../../utils/guestCounts'
+import { useState } from 'react'
 
 function ReservationCard({
-  // checkInDate,
-  // checkOutDate,
+  defaultCheckInDate,
+  defaultCheckOutDate,
   pricePerNight,
   cleaningFee,
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  guestsData,
   onGuestChange,
   guestsList,
   allowGuestsNumber,
+  minStayNights,
+  isBookingOpen,
+  toggleShortcutsPopup,
+  toggleGuestCountPopup,
+  setShowGuests,
+  showGuests,
+  showCalendar,
+  setShowCalendar,
 }) {
-  const [showGuests, setShowGuests] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
-  const [checkInDate, setCheckInDate] = useState('')
-  const [checkOutDate, setCheckOutDate] = useState('')
+  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
+  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
+  const [guestCounts, setGuestCounts] = useState({
+    adults: 1,  
+    children: 0, 
+    infants: 0,  
+    pets: 0  
+  });
   const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+
+  const currentTotalPeople = guestCounts.adults + guestCounts.children;
 
   const toggleShowGuests = () => {
     setShowGuests((prevState) => !prevState)
@@ -35,6 +51,40 @@ function ReservationCard({
     setShowCalendar(show)
   }
 
+  const {
+    adultsCount,
+    childrenCount,
+    infantsCount,
+    petsCount,
+    adultsAndChildrenCount,
+  } = calculateGuestCounts(guestsList)
+
+  const checkInOut = checkInDate && checkOutDate
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    if (checkInOut && adultsAndChildrenCount > 0) {
+      fetchCalculatedCosts(
+        checkInDate,
+        checkOutDate,
+        {
+          adults: adultsAndChildrenCount,
+          children: childrenCount,
+          infants: infantsCount,
+          pets: petsCount,
+        },
+        setCalculatedCosts,
+        setLoading,
+        setError
+      )
+    } else {
+      // setError('Please select valid dates and guests.');
+    }
+  }
+
+  const closeGuestsPopup = () => setShowGuests(false)
+  const guestsRef = useOutsideClick(closeGuestsPopup)
+
   const addGuestPopUpStyles = {
     borderRadius: '4px',
     width: '100% !important',
@@ -43,159 +93,111 @@ function ReservationCard({
     zIndex: '99 !important',
   }
 
-  const adultsAndChildrenCount =
-    (guestsList.find((guest) => guest.typeofGuest === 'Adults')
-      ?.numberOfGuests || 0) +
-    (guestsList.find((guest) => guest.typeofGuest === 'Children')
-      ?.numberOfGuests || 0)
+console.log('calculatedCosts', calculatedCosts)
 
-  const infantsCount =
-    guestsList.find((guest) => guest.typeofGuest === 'Infants')
-      ?.numberOfGuests || 0
-  const petsCount =
-    guestsList.find((guest) => guest.typeofGuest === 'Pets')?.numberOfGuests ||
-    0
-  const checkInOut = checkInDate && checkOutDate
-
-  const fetchCalculatedCosts = async () => {
-    if (checkInOut) {
-      setLoading(true)
-      try {
-        const response = await axios.post(
-          'http://localhost:4000/api/calculate-pricing',
-          {
-            checkInDate: checkInDate,
-            checkOutDate: checkOutDate,
-            numberOfGuests: {
-              adults: adultsAndChildrenCount,
-              infants: infantsCount,
-              pets: petsCount,
-            },
-          }
-        )
-        setCalculatedCosts(response.data)
-        setError('')
-      } catch (error) {
-        console.error('Error calculating pricing:', error)
-        setError('Error calculating pricing. Please try again.')
-      } finally {
-        setLoading(false)
-      }
-    }
-  }
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault()
-    if (checkInOut && adultsAndChildrenCount > 0) {
-      fetchCalculatedCosts()
-    } else {
-      setError('')
-    }
-  }
   return (
     <div className={styles.reservationCard}>
       <div className={styles.reservationSection}>
         <form onSubmit={handleFormSubmit}>
-          <div className={styles.pricingGuestSection}>
-            {checkInOut && !loading ? (
-              <>
-                <strong>{`€ ${pricePerNight} `}</strong>
-                night
-              </>
-            ) : (
-              <span>Add dates for prices</span>
-            )}
-          </div>
-          <div className={styles.reservationForm}>
-            <button
-              className={styles.datesPickerSection}
-              onClick={() => toggleShowCalendar(true)}
-            >
-              <div className={styles.checkinSection}>
-                <div className={styles.checkinSectionContent}>
-                  <label>Check-in</label>
-                  <div>{checkInDate ? checkInDate : <span>Add date</span>}</div>
-                </div>
-              </div>
-              <div className={styles.checkoutSection}>
-                <div className={styles.checkoutSectionContent}>
-                  <label>Checkout</label>
-                  <div>
-                    {checkOutDate ? checkOutDate : <span>Add date</span>}
-                  </div>
-                </div>
-              </div>
-            </button>
-            {showCalendar && (
-              <ReservationDatesSelector
-                setCheckInDate={setCheckInDate}
-                setCheckOutDate={setCheckOutDate}
-                checkInDate={checkInDate}
-                checkOutDate={checkOutDate}
-                toggleShowCalendar={toggleShowCalendar}
-              />
-            )}
-            <button
-              className={styles.guestsNumberPickerSection}
-              onClick={toggleShowGuests}
-            >
-              <div className={styles.guestsPickerSectionContent}>
-                <label>Guests</label>
-                <div className={styles.guestCountWrapper}>
-                  <div>
-                    {adultsAndChildrenCount
-                      ? `${adultsAndChildrenCount} guest${
-                          adultsAndChildrenCount !== 1 ? 's' : ''
-                        }`
-                      : ''}
-                    {infantsCount
-                      ? `, ${infantsCount} infant${
-                          infantsCount !== 1 ? 's' : ''
-                        }`
-                      : ''}
-                    {petsCount
-                      ? `, ${petsCount} pet${petsCount !== 1 ? 's' : ''}`
-                      : ''}
-                  </div>
-                  <>{showGuests ? <UpArrow /> : <DownArrow />}</>
-                </div>
-              </div>
-            </button>
-            <div className={styles.guestDropdown}>
-              {showGuests && (
-                <AddGuestsPopUp
-                  guestsData={guestsData}
-                  onGuestChange={onGuestChange}
-                  style={addGuestPopUpStyles}
-                  allowGuestsNumber={allowGuestsNumber}
-                  toggleShowGuests={toggleShowGuests}
-                />
+          {isBookingOpen ? (
+            <div className={styles.pricingGuestSection}>
+              {checkInOut && !loading ? (
+                <>
+                  <strong>{`€ ${pricePerNight} `}</strong>
+                  night
+                </>
+              ) : (
+                <span>Add dates for prices</span>
               )}
             </div>
-          </div>
-          <div className="buttonContainer">
-            <button
-              type={checkInOut && !loading ? 'submit' : 'button'}
-              onClick={
-                !checkInOut && !loading
-                  ? () => toggleShowCalendar(true)
-                  : undefined
-              }
-              className={styles.reserveButton}
-            >
-              {checkInOut && !loading ? 'Reserve' : 'Check availability'}
-            </button>
-          </div>
+          ) : (
+            <h1 className={styles.soldOutGuestSection}>Booking closed</h1>
+          )}
+          {isBookingOpen && (
+            <div className={styles.reservationForm} ref={guestsRef}>
+              <DatePicker
+                checkInDate={checkInDate}
+                checkOutDate={checkOutDate}
+                onToggle={toggleShowCalendar}
+                setCheckInDate={setCheckInDate}
+                setCheckOutDate={setCheckOutDate}
+                renderAsButton={true}
+              />
+              {showCalendar && (
+                <ReservationDatesSelector
+                  setCheckInDate={setCheckInDate}
+                  setCheckOutDate={setCheckOutDate}
+                  checkInDate={checkInDate}
+                  checkOutDate={checkOutDate}
+                  toggleShowCalendar={toggleShowCalendar}
+                  minStayNights={minStayNights}
+                  toggleShortcutsPopup={toggleShortcutsPopup}
+                />
+              )}
+              <button
+                className={styles.guestsNumberPickerSection}
+                ref={guestsRef}
+                onClick={() => toggleShowGuests()}
+              >
+                <GuestCountDisplay
+                  showGuests={showGuests}
+                  adultsAndChildrenCount={adultsAndChildrenCount}
+                  infantsCount={infantsCount}
+                  petsCount={petsCount}
+                />
+              </button>
+              <div className={styles.guestDropdown}>
+                {showGuests && (
+                  <AddGuestsPopUp
+                    onGuestChange={onGuestChange}
+                    style={addGuestPopUpStyles}
+                    allowGuestsNumber={allowGuestsNumber}
+                    toggleShowGuests={toggleShowGuests}
+                    adultsCount={adultsCount}
+                    childrenCount={childrenCount}
+                    infantsCount={infantsCount}
+                    petsCount={petsCount}
+                    setGuestCounts={setGuestCounts}
+                    currentTotalPeople={currentTotalPeople}
+                    toggleGuestCountPopup={toggleGuestCountPopup}
+                  />
+                )}
+              </div>
+            </div>
+          )}
+          {isBookingOpen ? (
+            <div className="buttonContainer">
+              <button
+                type={checkInOut && !loading ? 'submit' : 'button'}
+                onClick={
+                  !checkInOut && !loading
+                    ? () => toggleShowCalendar(true)
+                    : undefined
+                }
+                className={styles.reserveButton}
+              >
+                {checkInOut && !loading ? 'Reserve' : 'Check availability'}
+              </button>
+            </div>
+          ) : (
+            <div className="buttonContainer">
+              <button className={styles.soldOutButton} disabled>
+                Sold Out
+              </button>
+            </div>
+          )}
           {error && <p className={styles.errorMessage}>{error}</p>}
         </form>
-        <div className={styles.noDatesMessage}>
-          {!checkInOut && (
-            <p>Enter your travel dates to see the total price per night.</p>
-          )}
-        </div>
+        {isBookingOpen && (
+          <div className={styles.noDatesMessage}>
+            {!checkInOut && (
+              <p>Enter your travel dates to see the total price per night.</p>
+            )}
+          </div>
+        )}
       </div>
 
-      {checkInOut && calculatedCosts && !loading && (
+      {checkInOut && !loading && isBookingOpen && (
         <CostsSummary
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
