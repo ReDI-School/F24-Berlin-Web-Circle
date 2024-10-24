@@ -135,12 +135,12 @@ const ProductPage = () => {
               reviews={23}
             />
             <FavoriteStay />
-            <HostSummary
-              hostName="Raus"
-              hostingDuration={1}
-              role="Superhost"
-              profilePicUrl={hostImage}
-            />
+            {!!place.hostSummary && <HostSummary
+              hostName={place.hostSummary.hostName}
+              hostingDuration={place.hostSummary.hostingDuration}
+              role={place.hostSummary.role}
+              profilePicUrl={place.hostSummary.profilePicUrl}
+            />}
             {!!place.highlights && <ProductHighlight highlights={place.highlights} />}
             <hr className={styles.separator} />
             <ProductDescription

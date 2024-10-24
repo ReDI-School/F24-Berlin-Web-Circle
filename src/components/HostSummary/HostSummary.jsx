@@ -9,7 +9,7 @@ const HostSummary = ({ hostName, hostingDuration, role, profilePicUrl }) => {
           alt={`Hosted by ${hostName}`}
           className={styles.profilePic}
         />
-        {role === 'Superhost' && (
+        {(role === 'Superhost' || role === 'Superhosts') && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 12 14"
@@ -44,7 +44,7 @@ const HostSummary = ({ hostName, hostingDuration, role, profilePicUrl }) => {
       <div className={styles.hostDetails}>
         <h2 className={styles.hostedBy}>{`Hosted by ${hostName}`}</h2>
         <p className={styles.hostingDuration}>
-          {role === 'Superhost' && (
+          {(role === 'Superhost' || role === 'Superhosts')  && (
             <>
               {`${role} `}
               <span>&#183;</span>
