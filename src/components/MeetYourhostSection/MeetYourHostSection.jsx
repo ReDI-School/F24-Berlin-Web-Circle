@@ -12,7 +12,8 @@ const MeetYourHostSection = ({
   yearsHosting,
   profileText,
   responseRate,
-  responseTime
+  responseTime,
+  isSuperhost
 }) => {
   return (
     <div className={styles.meetYourHostSection}>
@@ -35,6 +36,7 @@ const MeetYourHostSection = ({
             name={name}
             responseRate={responseRate}
             responseTime={responseTime}
+            isSuperhost={isSuperhost}
           />
         </div>
       </div>
