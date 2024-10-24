@@ -20,11 +20,10 @@ import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
 import { useEffect, useState } from "react";
-import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
-import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
+import ShortcutsPopUp from "../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp";
+import GuestCountPopUp from "../components/ReservationCard/GuestCountPopUp/GuestCountPopUp";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 
 const ProductPage = () => {
   const [error, setError] = useState(null);
@@ -40,6 +39,14 @@ const ProductPage = () => {
         setError(err.response?.data?.error || "Something went wrong")
       );
   }, [productId]);
+
+  //TODO add this into the places.json
+  const meetyourHost = {
+    "isVerified": "true",
+    "profileText": "Hi, we are Smiling Host, we enjoy giving other people a pleasant time. That's the reason we start",
+    "responseRate": "100%",
+    "responseTime": "an hour"
+  }
 
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
@@ -217,12 +224,6 @@ const ProductPage = () => {
             },
           }}
         />}
-        {/* <IconButton
-          faIcon={faArrowUpFromBracket}
-          label="Share"
-          onClick={handleShare}
-        />
-        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} /> */}
         { !!place.reviews &&
           <div className={styles.reviews}>
             <ReviewsSection reviews={place.reviews}/>
@@ -234,7 +235,18 @@ const ProductPage = () => {
           addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
         />
       </div>
-      <MeetYourHostSection />
+      {!!place.hostSummary && <MeetYourHostSection
+            image={place.hostSummary.profilePicUrl}
+            name={place.hostSummary.hostName}
+            role={place.hostSummary.role}
+            verified={meetyourHost.isVerified}
+            reviews={place.reviewSummary.totalReviewsCount}
+            rating={place.reviewSummary.valueAvgRating}
+            yearsHosting={place.hostSummary.hostingDuration}
+            profileText={meetyourHost.profileText}
+            responseRate={meetyourHost.responseRate}
+            responseTime={meetyourHost.responseTime}
+          />}
     </div>
   }
   </>);
