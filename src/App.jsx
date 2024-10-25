@@ -18,6 +18,7 @@ function App() {
         console.error(`Something went wrong. ${error.message}.`)
       );
   }, []);
+
   const handlePlaceClick = (placeId) => {
     setSelectPlaceId(placeId);
     console.log(placeId);
@@ -32,30 +33,34 @@ function App() {
       });
   };
 
-return (
-  <>
-    <div>
-      <CalendarToggle />
-    </div>
+  return (
+    <>
+      <div>
+        <CalendarToggle />
+      </div>
 
-    <div className="grid">
-      {places.map((place) => {
-        if (!place.id) return null;
-        return (
-          <Link to={`/rooms/${place.id}`} key={place.id}>
-            <ProductCard 
+      <div className="grid">
+        {places.map((place) => {
+          if (!place.id) return null;
+
+          return (
+            <ProductCard
+              key={place.id}
               images={place.images}
-              title={place.title}
-              host={place.host}
-              price={place.price}
               onClick={() => handlePlaceClick(place.id)} // Optional: Handle click here if needed
-            />
-          </Link>
-        );
-      })}
-    </div>
-  </>
-);
-  }
+            >
+              {/* Only wrapping title, host, and price in Link */}
+              <Link to={`/rooms/${place.id}`}>
+                <h2 className="title">{place.title}</h2>
+                <p className="host">{place.host}</p>
+                <p className="price">{place.price}</p>
+              </Link>
+            </ProductCard>
+          );
+        })}
+      </div>
+    </>
+  );
+}
 
 export default App;
