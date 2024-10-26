@@ -5,7 +5,6 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
 import { BASE_URL } from "./constants/constants";
-import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -15,17 +14,19 @@ function App() {
     axios
       .get(`${BASE_URL}places`)
       .then((response) => setPlaces(response?.data))
-      .catch((error) => console.error(`Something went wrong. ${error.message}.`));
+      .catch((error) =>
+        console.error(`Something went wrong. ${error.message}.`)
+      );
   }, []);
 
   const handlePlaceClick = (placeId) => {
     setSelectPlaceId(placeId);
-    console.log("Selected Place ID:", placeId);
+    console.log(placeId);
 
     axios
       .post(`${BASE_URL}savePlace`, { placeId })
       .then((response) => {
-        console.log("Place ID sent successfully:", response.data);
+        console.log("Place id sent successfully:", response.data);
       })
       .catch((error) => {
         console.error("Error sending place ID:", error.message);
@@ -37,8 +38,6 @@ function App() {
       <div>
         <CalendarToggle />
       </div>
-      
-      <DataIncrementsButtonForTheCalendar />
 
       <div className="grid">
         {places.map((place) => {
@@ -48,8 +47,9 @@ function App() {
             <ProductCard
               key={place.id}
               images={place.images}
-              onClick={() => handlePlaceClick(place.id)}
+              onClick={() => handlePlaceClick(place.id)} // Optional: Handle click here if needed
             >
+              {/* Only wrapping title, host, and price in Link */}
               <Link to={`/rooms/${place.id}`}>
                 <h2 className="title">{place.title}</h2>
                 <p className="host">{place.host}</p>
