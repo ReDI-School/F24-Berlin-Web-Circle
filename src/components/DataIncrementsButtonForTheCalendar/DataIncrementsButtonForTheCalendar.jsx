@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './DataIncrementsButtonForTheCalendar.css'; 
+import { useState } from 'react';
+import styles from './DataIncrementsButtonForTheCalendar.module.css'; 
 
 const DateIncrementsButtonForTheCalendar = () => {
-  
+
   const [selectedOption, setSelectedOption] = useState('exact');
 
 
@@ -21,11 +21,11 @@ const DateIncrementsButtonForTheCalendar = () => {
   };
 
   return (
-    <div className="date-selection-container">
+    <div className= {styles.dateSelectionContainer}>
       {options.map((option) => (
         <div
           key={option.value}
-          className={`option ${selectedOption === option.value ? 'selected' : ''}`}
+          className={`${styles.option} ${selectedOption === option.value ? styles.selected : ''}`}
           onClick={() => handleOptionChange(option.value)}
         >
           {option.label}
