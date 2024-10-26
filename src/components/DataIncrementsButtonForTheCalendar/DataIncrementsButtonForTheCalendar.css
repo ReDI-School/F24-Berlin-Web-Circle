@@ -1,4 +1,5 @@
-.date-selection-container {
+.dateSelectionContainer {
+  margin-top: 40px;
   display: flex;
   gap: 10px;
   justify-content: center; 
@@ -39,5 +40,5 @@
 .option.selected {
   border-color: black;
   border-width: 2px;
-   
+
 }
