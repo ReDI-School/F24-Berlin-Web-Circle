@@ -66,6 +66,10 @@ function App() {
           if (!place.id) return null;
 
           return (
+            <>
+            
+            <PriceRangeFilter histogramData={histogramData}/>
+
             <ProductCard
               key={place.id}
               images={place.images}
@@ -77,6 +81,8 @@ function App() {
                 <p className="price">{place.price}</p>
               </Link>
             </ProductCard>
+
+            </>
           );
         })}
       </div>
