@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import axios from "axios";
+import { BASE_URL } from "./constants/constants";
+import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
+import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
@@ -13,40 +15,47 @@ function App() {
     axios
       .get(`${BASE_URL}places`)
       .then((response) => setPlaces(response?.data))
-      .catch((error) =>
-        console.error(`Something went wrong. ${error.message}.`)
-      );
+      .catch((error) => console.error(`Something went wrong. ${error.message}.`));
   }, []);
-  
+
   const handlePlaceClick = (placeId) => {
     setSelectPlaceId(placeId);
-    console.log(placeId);
-return (
-  <>
-    <div>
-      <CalendarToggle />
-    </div>
-   <div>
-        <CategoryTabs />  
+    console.log("Selected Place ID:", placeId);
+
+    axios
+      .post(`${BASE_URL}savePlace`, { placeId })
+      .then((response) => {
+        console.log("Place ID sent successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending place ID:", error.message);
+      });
+  };
+
+  return (
+    <>
+      <div>
+        <CalendarToggle />
       </div>
+      
+      <DataIncrementsButtonForTheCalendar />
+<CategoryTabs />  
       <div className="grid">
         {places.map((place) => {
           if (!place.id) return null;
+
           return (
-            <div key={place.id} onClick={() => handlePlaceClick(place.id)}>
-              <ProductCard
-                images={place.images}
-                title={place.title}
-                host={place.host}
-                price={place.price}
-              />
-              {/* Wrap only the text content in Link */}
-              <Link to={`/rooms/${place.id}`} className="productLink">
-                <h2>{place.title}</h2>
-                <p>{place.host}</p>
-                <p>{place.price}</p>
+            <ProductCard
+              key={place.id}
+              images={place.images}
+              onClick={() => handlePlaceClick(place.id)}
+            >
+              <Link to={`/rooms/${place.id}`}>
+                <h2 className="title">{place.title}</h2>
+                <p className="host">{place.host}</p>
+                <p className="price">{place.price}</p>
               </Link>
-            </div>
+            </ProductCard>
           );
         })}
       </div>
