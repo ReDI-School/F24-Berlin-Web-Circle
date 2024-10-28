@@ -2,6 +2,7 @@
   max-width: 100%;
   max-height: 100%;
   margin-bottom: 100px;
+  margin-top: 100px;
 }
 .ProductPageContainer {
   text-align: center;
@@ -22,7 +23,7 @@
   position: relative;
 }
 .ProductDescription {
-  flex-basis: 50%;
+  flex-basis: 58%;
 }
 .ReservationCard {
   display: flex;

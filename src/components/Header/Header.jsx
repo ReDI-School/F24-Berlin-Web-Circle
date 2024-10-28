@@ -29,12 +29,6 @@ const Header = () => {
                     </div>
                     <hr className={styles.separator} />
                 </header>
-                <div className={styles.destinationPopUp}>
-                    <DestinationPopUp title='Search by region' onClick={(e) => handelRegionClick(e)} />
-                </div>
-                <div>
-                    <GuestsPopUp />
-                </div>
             </div >
         </>
     )

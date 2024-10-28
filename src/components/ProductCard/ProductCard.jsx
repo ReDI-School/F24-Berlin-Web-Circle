@@ -1,34 +1,35 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ProductCard.module.css";
 import SharePopup from "../SharePopup/SharePopup";
-import { Link } from "react-router-dom";
 
-const ProductCard = ({ images = [], title, host, price, place }) => {
+const ProductCard = ({ images = [], children, onClick }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [modalisVisible, setModalisVisible] = useState(false);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
 
+  // Function to open the share modal
   const openModal = () => {
-    setModalisVisible(true);
+    setModalIsVisible(true);
   };
 
+  // Function to close the share modal
   const closeModal = () => {
-    setModalisVisible(false);
+    setModalIsVisible(false);
   };
 
-  // Disable scrolling when modal is visible
+  // Disable scrolling when the modal is visible
   useEffect(() => {
-    if (modalisVisible) {
-      document.body.classList.add("no-scroll"); // Add class to body
+    if (modalIsVisible) {
+      document.body.classList.add("no-scroll");
     } else {
-      document.body.classList.remove("no-scroll"); // Remove class from body
+      document.body.classList.remove("no-scroll");
     }
 
     // Clean up function to remove class if component unmounts
     return () => {
       document.body.classList.remove("no-scroll");
     };
-  }, [modalisVisible]);
+  }, [modalIsVisible]);
 
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -42,12 +43,11 @@ const ProductCard = ({ images = [], title, host, price, place }) => {
     );
   };
 
-  const placeId = place?.id ? place.id : `dummy-${Date.now()}`;
-
   return (
     <>
       <div
         className={styles.productCard}
+        onClick={onClick}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -70,7 +70,7 @@ const ProductCard = ({ images = [], title, host, price, place }) => {
 
         <img
           src={images[currentImageIndex]}
-          alt={title}
+          alt=""
           className={styles.productImage}
         />
 
@@ -96,17 +96,13 @@ const ProductCard = ({ images = [], title, host, price, place }) => {
           ))}
         </div>
 
-        <Link to={`/rooms/${placeId}`} className={styles.cardLink}>
-          <div className={styles.cardContent}>
-            <h2 className={styles.cardTitle}>{title}</h2>
-            <p className={styles.cardHost}>{host}</p>
-            <p className={styles.cardPrice}>{price}</p>
-          </div>
-        </Link>
+        <div className={styles.cardContent}>
+          {children} {/* This will render the title, host, and price */}
+        </div>
       </div>
 
       {/* Render Overlay and SharePopup */}
-      {modalisVisible && (
+      {modalIsVisible && (
         <>
           <div className={styles.overlay} onClick={closeModal}></div>
           <SharePopup onClick={closeModal} />
