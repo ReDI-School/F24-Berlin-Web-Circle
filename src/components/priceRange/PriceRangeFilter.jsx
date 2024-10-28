@@ -69,14 +69,8 @@ const PriceRangeFilter = ({ histogramData }) => {
         renderTrack={(props, state) => {
           const [minValue, maxValue] = state.value;
 
-          let trackColor;
-          if (props.key === "track-0") {
-            trackColor = "gray";
-          } else if (props.key === "track-1") {
-            trackColor = "red";
-          } else {
-            trackColor = "gray";
-          }
+          let trackColor = props.key === "track-0" ? "gray" : props.key === "track-1" ? "red" : "gray";
+          
           return (
             <div
               {...props}

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
-import PersonProfile from "./components/personProfile/PersonProfile";
 import PriceRangeFilter from "./components/priceRange/PriceRangeFilter";
 
 function App() {
@@ -32,16 +31,7 @@ function App() {
   return (
     <>
       <PriceRangeFilter histogramData={histogramData}/>
-      <PersonProfile
-        title="Meet your host"
-        image="https://a0.muscache.com/im/pictures/user/d62627ea-ea22-4cf1-b38a-152f1f86a9ed.jpg"
-        name="Raus"
-        role="Superhost"
-        verified={true}
-        reviews={74}
-        rating={4.85}
-        yearsHosting={1}
-      />
+      
       <ProductCard
         image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"}
         title={"Cozy Apartment in City Center"}
