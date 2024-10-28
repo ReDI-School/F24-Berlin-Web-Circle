@@ -8,6 +8,7 @@ npm install
 ```
 
 ```bash
+
 # Run development server
 npm run dev
 ```
@@ -44,10 +45,11 @@ Currently, two official plugins are available:
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Mohammad Salavati ([@Sci-mo](https://github.com/Sci-mo))
 - Dona Vidushani Nishshanka ([@dvnishshanka](https://github.com/dvnishshanka))
+- Iman Bajalan ([@BajalanIman](https://github.com/BajalanIman))
 - Samuel Konzi ([@Konzisam](https://github.com/Konzisam))
 - Michael Kleinschmidt ([@miklesch](https://github.com/miklesch))
 - Kalina Iwaszko ( [@messkalina] (https://github.com/messkalina))
 - Bhagya Samarathunga ( [@BhagyaPrasadSamarathunga] (https://github.com/BhagyaPrasadSamarathunga))
 - Gabriel Melhem ([@GabrielMelhem] (https://github.com/GabrielMelhem))
 - Iman Bajalan ([@BajalanIman](https://github.com/BajalanIman))
-
+- Nataliya Rodionova ([@006080](https://github.com/006080))

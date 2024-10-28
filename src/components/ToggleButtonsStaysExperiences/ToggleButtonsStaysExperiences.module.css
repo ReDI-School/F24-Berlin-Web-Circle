@@ -1,5 +1,9 @@
 .buttonContainer {
     display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .toggleButton {
@@ -9,7 +13,11 @@
     border-radius: 24px;
     transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
     margin-right: none;
-    font-size: 17px;
+    outline: none;
+}
+
+.toggleButton:focus {
+    outline: none;
 }
 
 .active {

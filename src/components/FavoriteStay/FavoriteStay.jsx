@@ -1,10 +1,8 @@
-import React from "react";
 import StarRating from "../StarRating/StarRating";
 import "./FavoriteStay.css"
 import Left from "../../assets/fav-badge-left.png";
 import Right from "../../assets/fav-badge-right.png";
 
-/* rating vlaue to be obtained from DB */
 const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
   return (
     <div className="fav-stay-container">
@@ -32,7 +30,7 @@ const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
         <div></div>
         <div className="ratings-container">
           <span className="space-above"></span>
-          <div className="rating-value">{rating.toFixed(1)}</div>
+          <div className="rating-value">{rating}</div>
           <div className="rating-stars">
             <StarRating rating={rating} />
           </div>
@@ -51,7 +49,6 @@ const FavoriteStay = ({ rating = 5, reviews = 71 }) => {
           </div>
         </div>
         <div></div>
-        <div className="fav-stay-seperator"></div>
       </div>
     </div>
   );
