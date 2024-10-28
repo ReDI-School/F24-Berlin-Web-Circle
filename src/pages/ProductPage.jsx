@@ -1,7 +1,6 @@
 import ReservationCard from "../components/ReservationCard/ReservationCard";
 import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
-import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
@@ -135,12 +134,12 @@ const ProductPage = () => {
               reviews={23}
             />
             <FavoriteStay />
-            <HostSummary
-              hostName="Raus"
-              hostingDuration={1}
-              role="Superhost"
-              profilePicUrl={hostImage}
-            />
+            {!!place.hostSummary && <HostSummary
+              hostName={place.hostSummary.hostName}
+              hostingDuration={place.hostSummary.hostingDuration}
+              role={place.hostSummary.role}
+              profilePicUrl={place.hostSummary.profilePicUrl}
+            />}
             {!!place.highlights && <ProductHighlight highlights={place.highlights} />}
             <hr className={styles.separator} />
             <ProductDescription
