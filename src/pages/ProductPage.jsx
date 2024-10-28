@@ -29,17 +29,36 @@ import { useParams } from "react-router-dom";
 const ProductPage = () => {
   const [error, setError] = useState(null);
   const [place, setPlace] = useState(null);
+  const [booking, setBooking] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { productId } = useParams();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8800/places/${productId}`)
-      .then((response) => setPlace(response.data))
-      .catch((err) =>
-        setError(err.response?.data?.error || "Something went wrong")
-      );
-  }, [productId]);
+useEffect(() => {
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null); 
+
+    try {
+      const [placeResponse, bookingsResponse] = await Promise.all([
+        axios.get(`http://localhost:8800/places/${productId}`),
+        axios.get(`http://localhost:8800/bookings/${productId}`)
+      ]);
+      setPlace(placeResponse.data);
+      setBooking(bookingsResponse.data);
+    } catch (err) {
+      setError(err.response?.data?.error || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, [productId]);
+
+
+console.log('booking', booking)
+
 
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
