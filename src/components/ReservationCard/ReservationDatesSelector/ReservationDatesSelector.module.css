@@ -1,0 +1,106 @@
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -24px;
+  right: -32px;
+  padding: 24px 32px 16px;
+  background-color: white;
+  z-index: 10;
+  min-height: 460px;
+  width: 100%;
+  width: 661px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+}
+
+.datePickerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectorTitle h2{
+  margin: 0;
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.selectorTitle span{
+  color: var(--neutral);
+  font-size: 14px;
+}
+
+.inputsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  height: 303px;
+  margin-top: 24px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shortcutsPopupButton,
+.cancelButton button {
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+
+.shortcutsPopupButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.shortcutsPopupButton:hover {
+  background-color: #f7f7f7;
+}
+
+.clearToggleBtnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.cancelButton button {
+  width: 69px;
+  height: 34px;
+  background-color: #363636;
+  color: white;
+}
+.cancelButton button:hover {
+  background-color: black;
+}
+
+.clearDatesButton button {
+  background-color: transparent;
+  border: none;
+  padding: 9px;
+  text-decoration: underline;
+  font-size: 14px;
+}
+.clearDatesButton button:hover{
+  background-color: #f7f7f7;
+}
+.clearDatesButton button:focus,
+.clearDatesButton button:focus-visible,
+.shortcutsPopupButton:focus,
+.shortcutsPopupButton:focus-visible {
+  outline: none;
+}
+
+.clearDatesButton {
+  text-decoration: underline;
+}
+.datePickerWrapper .datePickerContainer > * {
+  border-radius: 6px;
+}

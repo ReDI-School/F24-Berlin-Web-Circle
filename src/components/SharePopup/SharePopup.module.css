@@ -1,0 +1,73 @@
+.shareModal {
+  flex-direction: column;
+  position: fixed;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 550px;
+  max-height: 800px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.text {
+  text-align: left;
+}
+
+.modalHeader h2 {
+  font-size: 20px;
+}
+
+.modalInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modalThumbnail {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.modalTitle p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.modalButtons {
+  display: flex;
+  flex: 0 1 calc(50% - 20px);
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.modalButtons button {
+  border: 1px solid lightgrey;
+  background-color: #ffffff;
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modalButtons button:hover {
+  border: 1px solid lightgrey;
+  background-color: rgb(243, 243, 243);
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}

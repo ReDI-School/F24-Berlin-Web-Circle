@@ -1,0 +1,44 @@
+.MainProductPage {
+  max-width: 100%;
+  max-height: 100%;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+.ProductPageContainer {
+  text-align: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.titlePage {
+  display: flex;
+  justify-content: space-between;
+}
+.IconButton {
+  margin-top: 40px;
+}
+.ProductDescriptionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.ProductDescription {
+  flex-basis: 58%;
+}
+.ReservationCard {
+  display: flex;
+  justify-content: right;
+  flex-basis: 30%;
+  max-height: 650px;
+  position: sticky;
+  top: 80px;
+  right: 0;
+}
+.separator {
+  border-top: 1px solid #eeeded;
+}
+.reviews {
+  border-top: 1px solid #eeeded;
+  padding-top: 40px;
+  margin-top: 40px;
+}

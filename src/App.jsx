@@ -1,14 +1,16 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import ProductCard from "./components/ProductCard/ProductCard";
+import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PriceRangeFilter from "./components/priceRange/PriceRangeFilter";
+import { BASE_URL } from "./constants/constants";
 
 function App() {
-  const places = [
-    { id: "1", name: "Idyllic house by the sea" },
-    { id: "2", name: "Studio Zempow / ecological wooden house / photo studio" },
-    { id: "3", name: "Funen's best ocean view" },
-  ];
+  const [places, setPlaces] = useState([]);
+  const [selectPlaceId, setSelectPlaceId] = useState(null);
 
   const histogramData = [
     { from: 16, to: 23, count: 2 },
@@ -28,24 +30,56 @@ function App() {
     { from: 292, to: 304, count: 22 },
   ];
 
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}places`)
+      .then((response) => setPlaces(response?.data))
+      .catch((error) => console.error(`Something went wrong. ${error.message}.`));
+  }, []);
+
+  const handlePlaceClick = (placeId) => {
+    setSelectPlaceId(placeId);
+    console.log("Selected Place ID:", placeId);
+
+    axios
+      .post(`${BASE_URL}savePlace`, { placeId })
+      .then((response) => {
+        console.log("Place ID sent successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending place ID:", error.message);
+      });
+  };
+
   return (
     <>
-      <PriceRangeFilter histogramData={histogramData}/>
+      <div>
+        <CalendarToggle />
+      </div>
       
-      <ProductCard
-        image={"src/assets/4f7a276e-9995-4b32-bda6-300de0619b25.webp"}
-        title={"Cozy Apartment in City Center"}
-        host={"Hosted by Wendy and Elisa"}
-        price={"Coming soon"}
-      />
-      {/* FOR TESTING */}
-      {places.map((place) => {
-        return (
-          <Link to={`/rooms/${place.id}`} key={place.id}>
-            <div>{`${place.id} - ${place.name}`}</div>
-          </Link>
-        );
-      })}
+      <DataIncrementsButtonForTheCalendar />
+
+      <PriceRangeFilter histogramData= {histogramData}/>
+
+      <div className="grid">
+        {places.map((place) => {
+          if (!place.id) return null;
+
+          return (
+            <ProductCard
+              key={place.id}
+              images={place.images}
+              onClick={() => handlePlaceClick(place.id)}
+            >
+              <Link to={`/rooms/${place.id}`}>
+                <h2 className="title">{place.title}</h2>
+                <p className="host">{place.host}</p>
+                <p className="price">{place.price}</p>
+              </Link>
+            </ProductCard>
+          );
+        })}
+      </div>
     </>
   );
 }

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import styles from "../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences.module.css"
 
-const ToggleButtonsStaysExperiences = () => {
+const ToggleButtonsStaysExperiences = ({toggleSearchType}) => {
 
     const [activeButton, setActiveButton] = useState("stays");
 
     const handleButtonClick = (button) => {
         setActiveButton(button);
+        toggleSearchType(button);
     };
 
     return (

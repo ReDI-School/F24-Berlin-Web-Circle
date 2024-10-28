@@ -1,0 +1,96 @@
+.container {
+    width: 98%;
+    border-radius: 0.313rem;
+    border-bottom: 1px solid #DDDDDD;
+    min-height: 2.75rem;
+}
+.tabContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.languageButton {
+    min-height: 2rem;
+    width: 10.875rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    color: black;
+    font-weight: 500;
+}
+.languageButtonDisabled {
+    min-height: 2rem;
+    width: 10.875rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    color: #758694;
+    font-weight: 500;
+}
+.languageButton:hover {
+    background-color: #F7F7F7;
+    cursor: default;
+}
+.languageButtonDisabled:hover {
+    background-color: #F7F7F7;
+    cursor: pointer;
+}
+.currencyButton {
+    min-height: 2rem;
+    width: 4.75rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    color: black;
+    font-weight: 500;
+}
+.currencyButtonDisabled {
+    min-height: 2rem;
+    width: 4.75rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    color: #758694;
+    font-weight: 500;
+}
+.currencyButton:hover {
+    background-color: #F7F7F7;
+    cursor: default;
+}
+.currencyButtonDisabled:hover {
+    background-color: #F7F7F7;
+    cursor: pointer;
+}
+.selectionIndicatorContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.languageSelectionIndicatorSelected {
+    min-width: 9.875rem;
+    height: 0.125rem;
+    border-top: 2px solid black;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.languageSelectionIndicatorNotSelected {
+    min-width: 9.875rem;
+    height: 0.125rem;
+    border-top: 2px solid white;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.currencySelectionIndicatorSelected {
+    min-width: 3.875rem;
+    height: 0.125rem;
+    border-top: 2px solid black;
+    margin-left: 1.125rem;
+    margin-right: 0.375rem;
+}
+.currencySelectionIndicatorNotSelected {
+    min-width: 3.875rem;
+    height: 0.125rem;
+    border-top: 2px solid white;
+    margin-left: 1.125rem;
+    margin-right: 0.375rem;
+}
