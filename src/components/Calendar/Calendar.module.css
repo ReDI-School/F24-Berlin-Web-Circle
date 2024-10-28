@@ -55,20 +55,23 @@
     font-size: 16px;
   }
   
-  button {
+  .prevButton,
+  .nextButton {
     font-size: 16px;
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
-
     margin-top: 8px;
   }
-  button:hover {
+
+  .prevButton,
+  .nextButton:hover {
     background-color: rgb(247, 242, 242);
     border-radius: 40px;
     outline: none;
   }
+
   .prevButton {
     margin-right: -60px;
   }
