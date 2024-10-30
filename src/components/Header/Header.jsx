@@ -27,7 +27,6 @@ const Header = () => {
                         <LanguageSelector />
                         <HeaderUserMenu />
                     </div>
-                    <hr className={styles.separator} />
                 </header>
             </div >
         </>
