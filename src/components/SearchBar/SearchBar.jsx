@@ -39,7 +39,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
         <div className={styles.separator}></div>
         {searchType === "stays" ? (
           <>
-            <div className={styles.inputContainerCheckIn}>
+            <div className={styles.inputContainerCheckIn} onClick={toggleCalendar}>
               <span className={styles.label}>Check in</span>
               <input
                 type="text"
@@ -48,7 +48,6 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                 onChange={(e) => setCheckIn(e.target.value)}
                 onFocus={toggleCalendar}
               />
-
             </div>
             <div className={styles.separator}></div>
             <div className={styles.inputContainerCheckOut}>
@@ -61,6 +60,11 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                 onFocus={toggleCalendar}
               />
             </div>
+            {showCalendar && (
+              <div className={styles.calendarWrapper}>
+                <Calendar />
+              </div>
+            )}
           </>
         ) : (
           <>
@@ -92,14 +96,6 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           </button>
         </div>
       </div>
-      <div className={styles.calendarWrapper}>
-      <ModalPopUp
-        isVisible={showCalendar}
-        onCloseClick={() => setShowCalendar(false)}
-        popUpDimension={{ width: "800px", left: "30%" }}
-      >
-        <Calendar />
-      </ModalPopUp></div>
     </>
   );
 };

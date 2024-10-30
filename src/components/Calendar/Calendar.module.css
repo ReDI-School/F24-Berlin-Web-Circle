@@ -1,58 +1,46 @@
 .calendarPopUp {
-  position: absolute;
-  top: 40px;
+  max-height: 555px;
 }
 
 .calendar {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* overflow: hidden; */
+    justify-content: center;
+    width: 800px;
+    height: 393px;
+    color: var(--primary);
   }
-  
-  /* .calendarHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-  } */
   
   .calendarRow {
     display: flex;
     justify-content: center; 
-    /* gap: 0; */
     align-items: flex-start;
     width: 100%;
-    position: relative;
-    gap: 50px;
-  
   }
   
   .monthContainer {
-    width: 250px; 
-    position: relative;
-    /* margin: 0 50px; */ 
-    /* margin-top: 0; */
+    width: 390px;
+    padding: 0 27px;
   }
   
   .calendarGrid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
   }
   
   .dayHeader,
   .date,
   .emptySlot {
-    padding: 5px; 
-    /* border: 1px solid #ddd; */
-    text-align: center;
-    font-size: 12px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    font-size: 14px;
   }
   h3 {
     font-size: 16px;
+    margin-bottom: 10px;
   }
   
   .prevButton,
@@ -62,14 +50,14 @@
     border: none;
     cursor: pointer;
     outline: none;
-    margin-top: 8px;
+    z-index: 5;
+    border-radius: 50%;
+    padding: 0;
   }
 
-  .prevButton,
+  .prevButton:hover,
   .nextButton:hover {
-    background-color: rgb(247, 242, 242);
-    border-radius: 40px;
-    outline: none;
+    background-color: #f7f7f7;
   }
 
   .prevButton {
@@ -77,4 +65,9 @@
   }
   .nextButton {
     margin-left: -60px;
+  }
+  .prevButton:disabled {
+    background-color: white;
+    cursor: not-allowed;
+    opacity: 0.6;
   }
