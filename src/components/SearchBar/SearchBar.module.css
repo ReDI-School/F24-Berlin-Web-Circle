@@ -19,7 +19,9 @@
   padding-left: 10px;
 }
 
-.inputTextPlaceholder {
+.inputTextPlaceholder,
+.checkInText,
+.checkOutText {
   color: #797777;
 }
 
@@ -32,6 +34,12 @@
   width: 140px;
   padding-left: 25px;
   position: relative;
+  cursor: pointer;
+}
+
+.checkInText,
+.checkOutText{
+  font-size: 14px;
 }
 
 .inputContainerWho {
@@ -50,6 +58,7 @@
   align-items: flex-start;
   width: 281px;
   padding-left: 25px;
+  cursor: pointer;
 }
 
 .label {
@@ -113,9 +122,8 @@
   padding: 16px 32px;
   background-color: white;
   z-index: 100;
-  min-height: 511px;
-  width: 100%;
   width: 850px;
+  width: 100%;
   border-radius: 32px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
 }
