@@ -25,9 +25,9 @@ const Calendar = () => {
       </div>
     ))
   }
-  const renderDays = () => {
-    const year = currentMonth.getFullYear()
-    const month = currentMonth.getMonth()
+
+  const renderDays = (year, month, isCurrentMonth) => {
+    const today = new Date().setHours(0, 0, 0, 0)
     const daysInMonth = getDaysInMonth(year, month)
     const firstDayOfMonth = getFirstDayOfMonth(year, month)
     const daysArray = []
@@ -37,9 +37,16 @@ const Calendar = () => {
         <div key={`empty-${i}`} className={styles.emptySlot}></div>
       )
     }
+
     for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(year, month, day).setHours(0, 0, 0, 0)
+      const isPastDate = isCurrentMonth && date < today
+
       daysArray.push(
-        <div key={day} className={styles.date}>
+        <div
+          key={day}
+          className={`${styles.date} ${isPastDate ? styles.pastDate : ''}`}
+        >
           {day}
         </div>
       )
@@ -51,13 +58,15 @@ const Calendar = () => {
     const year = date.getFullYear()
     const month = date.getMonth()
     const monthName = date.toLocaleString('default', { month: 'long' })
+    const isCurrentMonth =
+      currentMonth.getFullYear() === year && currentMonth.getMonth() === month
 
     return (
       <div className={styles.monthContainer}>
         <h3>{`${monthName} ${year}`}</h3>
         <div className={styles.calendarGrid}>
           {renderDaysOfWeek()}
-          {renderDays(year, month)}
+          {renderDays(year, month, isCurrentMonth)}
         </div>
       </div>
     )

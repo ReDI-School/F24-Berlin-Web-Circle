@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
-import ModalPopUp from "../ModalPopUp/ModalPopUp";
+import CalendarToggle from "../calendarToggle/CalendarToggle";
 
 const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
@@ -62,6 +62,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
             </div>
             {showCalendar && (
               <div className={styles.calendarWrapper}>
+                <CalendarToggle />
                 <Calendar />
               </div>
             )}

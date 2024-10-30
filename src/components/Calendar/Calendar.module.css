@@ -42,6 +42,11 @@
     font-size: 16px;
     margin-bottom: 10px;
   }
+
+  .date.pastDate {
+    color: #484848;
+    opacity: 0.3;
+  }
   
   .prevButton,
   .nextButton {
