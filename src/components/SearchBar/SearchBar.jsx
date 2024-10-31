@@ -16,9 +16,11 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
 
   const [showCalendar, setShowCalendar] = useState(false);
   const toggleCalendar = () => {
-    setShowCalendar(!showCalendar);
+    setShowCalendar((prevState) => !prevState);
   }
-  const calendarRef = useOutsideClick(() => setShowCalendar(false))
+
+  const closeCalendarPopup = () => setShowCalendar(false)
+  const calendarRef = useOutsideClick(closeCalendarPopup)
 
   const handleSearch = () => {
     //search logic here
@@ -41,18 +43,20 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
         </div>
         <div className={styles.separator}></div>
         {searchType === "stays" ? (
-          <>
+          <div className={styles.checkInOutWrapper} ref={calendarRef}>
             <div className={styles.inputContainerCheckIn} onClick={toggleCalendar}>
               <span className={styles.label}>Check in</span>
               <span className={styles.checkInText}>{checkIn}</span>
             </div>
+
             <div className={styles.separator}></div>
+
             <div className={styles.inputContainerCheckOut} onClick={toggleCalendar}>
               <span className={styles.label}>Check out</span>
               <span className={styles.checkOutText}>{checkOut}</span>
             </div>
             {showCalendar && (
-              <div className={styles.calendarWrapper} ref={calendarRef}>
+              <div className={styles.calendarWrapper}>
                 <div className={styles.calendarToggleWrapper}>
                   <CalendarToggle />
                 </div>
@@ -64,21 +68,21 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                 </div>
               </div>
             )}
-          </>
+            </div>
         ) : (
-          <>
+          <div className={styles.checkInOutExperiencesWrapper} ref={calendarRef}>
             <div className={styles.inputContainerDate} onClick={toggleCalendar}>
               <span className={styles.label}>Date</span>
               <span className={styles.checkInText}>{checkIn}</span>
             </div>
             {showCalendar && (
-              <div className={styles.calendarWrapper} ref={calendarRef}>
+              <div className={styles.calendarWrapper}>
                 <div className={styles.calendarExperiencesWrapper}>
                   <Calendar dayItemWidth="48px" dayItemHeight="48px" />
                 </div>
               </div>
             )}
-          </>
+          </div>
         )}
         <div className={styles.separator}></div>
         <div className={styles.inputContainerWho}>

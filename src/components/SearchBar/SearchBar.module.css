@@ -11,6 +11,11 @@
   transform: translate(-50%);
 }
 
+.checkInOutWrapper,
+.checkInOutExperiencesWrapper {
+  display: flex;
+}
+
 .inputContainerWhere {
   display: flex;
   flex-direction: column;
