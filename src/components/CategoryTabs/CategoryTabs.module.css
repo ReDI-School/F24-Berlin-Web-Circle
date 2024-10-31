@@ -1,4 +1,4 @@
-.category-tabs-container {
+.categoryTabsContainer {
   position: relative;
   max-width: 95%;
   max-height: 120px;
@@ -7,12 +7,12 @@
   z-index: 1000;
 }
 
-.category-tabs-wrapper {
+.categoryTabsWrapper {
   overflow: hidden;
   position: relative;
 }
 
-.category-tabs {
+.categoryTabs {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
@@ -20,7 +20,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.scroll-button {
+.scrollButton {
   position: absolute;
   top: 50%;
   border: none;
@@ -29,39 +29,43 @@
   outline: none;
   transform: translateY(-50%);
   z-index: 1005;
-  box-shadow: 0 0 5px 0px #fcfcfc9a ;
+  box-shadow: 0 0 5px 0px #fcfcfc9a;
   background-color: #fcfcfc9a;
 }
-.scroll-button-left-container {
+
+.scrollButtonLeftContainer {
   width: 30px;
   left: 0px;
   z-index: 1010;
 }
-.scroll-button.left {
+
+.scrollButtonLeft {
   display: flex;
   justify-content: center;
   width: 20px;
   left: -50px;
 }
-.scroll-button-right-container {
+
+.scrollButtonRightContainer {
   width: 30px;
   left: 0px;
   z-index: 1010;
 }
-.scroll-button.right {
+
+.scrollButtonRight {
   display: flex;
   justify-content: center;
   width: 20px;
   right: -50px;
-  box-shadow: 0 0 5px 0px #fcfcfc9a ;
+  box-shadow: 0 0 5px 0px #fcfcfc9a;
   background-color: #fcfcfc9a;
 }
 
-.scroll-button:focus {
+.scrollButton:focus {
   outline: none;
 }
 
-.tab-item {
+.tabItem {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -73,27 +77,27 @@
   color: #555;
 }
 
-.tab-item:hover {
+.tabItemHover:hover {
   color: #555;
   border-bottom: 2px solid #555;
 }
 
-.tab-icon {
+.tabIcon {
   margin-bottom: 8px;
 }
 
-.tab-label {
+.tabLabel {
   font-size: 12px;
   text-align: center;
 }
 
-.tab-item.active {
+.tabItemActive {
   color: #000;
   font-weight: bold;
   border-bottom: 2px solid #000;
 }
 
-.category-tabs::-webkit-scrollbar {
+.categoryTabsHideScrollbar::-webkit-scrollbar {
   display: none;
 }
 
@@ -104,6 +108,6 @@
   width: auto;
 }
 
-.left-arrow {
+.leftArrow {
   transform: rotate(180deg);
 }

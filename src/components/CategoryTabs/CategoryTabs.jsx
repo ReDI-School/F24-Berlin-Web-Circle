@@ -69,7 +69,7 @@ const CategoryTabs = () => {
 
   return (
     <>
-        <div className="category-tabs-container">
+        <div className={styles.categoryTabsContainer}>
           {showLeftArrow && 
             <div className="scroll-button-left-container">
               <div className="scroll-button left" onClick={() => handleScroll('left')}>
@@ -79,24 +79,24 @@ const CategoryTabs = () => {
               </div>
             </div>
           }
-          <div className="category-tabs-wrapper">
-            <div className="category-tabs" ref={scrollContainerRef}>
+          <div className={styles.categoryTabsWrapper}>
+            <div className={styles.categoryTabs} ref={scrollContainerRef}>
               {categories.map((category) => (
                 <div
                   key={category.label}
                   className={`tab-item ${activeTab === category.label ? 'active' : ''}`}
                   onClick={() => handleTabClick(category.label)}
                 >
-                  <div className="tab-icon">{category.icon}</div>
-                  <span className="tab-label">{category.label}</span>
+                  <div className={styles.tabIcon}>{category.icon}</div>
+                  <span className={styles.tabLabel}>{category.label}</span>
                 </div>
               ))}
             </div>
           </div>
           {!showRightArrow &&
-            <div className="scroll-button-right-container">
-              <div className="scroll-button right" onClick={() => handleScroll('right')}>
-                  <div className='button'>
+            <div className={styles.scrollButtonRightContainer}>
+              <div className={styles.scrollButtonRight} onClick={() => handleScroll('right')}>
+                  <div className={styles.button}>
                     <HiOutlineArrowRightCircle size={32}/>
                   </div>
               </div>
