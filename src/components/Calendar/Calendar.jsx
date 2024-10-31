@@ -4,18 +4,29 @@ import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [animationDirection, setAnimationDirection] = useState("")
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()
 
-  const goToNextMonth = () =>
+  const goToNextMonth = () => {
+    setAnimationDirection("flip-right")
     setCurrentMonth(
       new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
     )
-  const goToPrevMonth = () =>
+    resetAnimation()
+  }
+  const goToPrevMonth = () => {
+    setAnimationDirection("flip-left")
     setCurrentMonth(
       new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
     )
+    resetAnimation()
+  }
+
+  const resetAnimation = () => {
+    setTimeout(() => setAnimationDirection(""), 300)
+  }
 
   const renderDaysOfWeek = () => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -62,7 +73,8 @@ const Calendar = () => {
       currentMonth.getFullYear() === year && currentMonth.getMonth() === month
 
     return (
-      <div className={styles.monthContainer}>
+      // <div className={styles.monthContainer}>
+      <div className={`${styles.monthContainer} ${styles[animationDirection]}`}>
         <h3>{`${monthName} ${year}`}</h3>
         <div className={styles.calendarGrid}>
           {renderDaysOfWeek()}
