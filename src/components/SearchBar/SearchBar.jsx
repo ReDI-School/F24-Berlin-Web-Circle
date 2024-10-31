@@ -55,7 +55,7 @@ console.log('searchType', searchType)
                   <CalendarToggle />
                 </div>
                 <div className={styles.calendarContentWrapper}>
-                  <Calendar />
+                  <Calendar dayItemWidth="48px" dayItemHeight="48px" />
                 </div>
                 <div className={styles.incrementButtonWrapper}>
                   <DataIncrementsButtonForTheCalendar />
@@ -71,7 +71,9 @@ console.log('searchType', searchType)
             </div>
             {showCalendar && (
               <div className={styles.calendarWrapper}>
-                <Calendar />
+                <div className={styles.calendarExperiencesWrapper}>
+                  <Calendar dayItemWidth="48px" dayItemHeight="48px" />
+                </div>
               </div>
             )}
           </>

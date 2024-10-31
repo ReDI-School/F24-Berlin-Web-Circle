@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
-const Calendar = () => {
+const Calendar = ({ dayItemWidth, dayItemHeight }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
 
@@ -73,8 +73,12 @@ const Calendar = () => {
       currentMonth.getFullYear() === year && currentMonth.getMonth() === month
 
     return (
-      // <div className={styles.monthContainer}>
-      <div className={`${styles.monthContainer} ${styles[animationDirection]}`}>
+      <div className={`${styles.monthContainer} ${styles[animationDirection]}`}         
+           style={{
+             "--day-item-width": dayItemWidth,
+             "--day-item-height": dayItemHeight,
+           }}
+      >
         <h3>{`${monthName} ${year}`}</h3>
         <div className={styles.calendarGrid}>
           {renderDaysOfWeek()}

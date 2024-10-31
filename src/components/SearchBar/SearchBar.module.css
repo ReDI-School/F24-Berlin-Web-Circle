@@ -128,6 +128,10 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
 }
 
+.calendarExperiencesWrapper {
+  padding: 28px 30px 20px;
+}
+
 .calendarToggleWrapper {
   padding-bottom: 10px;
 }
