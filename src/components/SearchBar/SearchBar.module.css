@@ -127,3 +127,20 @@
   border-radius: 32px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
 }
+
+.calendarToggleWrapper {
+  padding-bottom: 10px;
+}
+
+.calendarContentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.incrementButtonWrapper {
+  display: flex;
+  justify-self: start;
+  padding: 22px 40px 14px;
+  width: 100%;
+}

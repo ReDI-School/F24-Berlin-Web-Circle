@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
+import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 
 const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
@@ -50,8 +51,15 @@ console.log('searchType', searchType)
             </div>
             {showCalendar && (
               <div className={styles.calendarWrapper}>
-                <CalendarToggle />
-                <Calendar />
+                <div className={styles.calendarToggleWrapper}>
+                  <CalendarToggle />
+                </div>
+                <div className={styles.calendarContentWrapper}>
+                  <Calendar />
+                </div>
+                <div className={styles.incrementButtonWrapper}>
+                  <DataIncrementsButtonForTheCalendar />
+                </div>
               </div>
             )}
           </>

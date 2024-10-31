@@ -5,7 +5,6 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
 import { BASE_URL } from "./constants/constants";
-import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -38,8 +37,6 @@ function App() {
         <CalendarToggle />
       </div>
       
-      <DataIncrementsButtonForTheCalendar />
-
       <div className="grid">
         {places.map((place) => {
           if (!place.id) return null;
