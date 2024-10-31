@@ -71,9 +71,9 @@ const CategoryTabs = () => {
     <>
         <div className={styles.categoryTabsContainer}>
           {showLeftArrow && 
-            <div className="scroll-button-left-container">
-              <div className="scroll-button left" onClick={() => handleScroll('left')}>
-                <div className='button left-arrow'>
+            <div className={styles.scrollButtonLeftContainer}>
+              <div className={styles.scrollButtonLeft} onClick={() => handleScroll('left')}>
+                <div className={styles.button.leftArrow}>
                   <HiOutlineArrowRightCircle size={32}/>
                 </div>
               </div>
