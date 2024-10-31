@@ -25,7 +25,8 @@
   top: 50%;
   border: none;
   cursor: pointer;
-  padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   outline: none;
   transform: translateY(-50%);
   z-index: 1005;
