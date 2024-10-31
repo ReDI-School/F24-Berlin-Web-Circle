@@ -4,6 +4,7 @@ import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree } from
 import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; 
 import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi';
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
+import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
 
 const categories = [
   { label: 'Amazing Pools', icon: <FaSwimmingPool size={32} /> },
@@ -70,7 +71,7 @@ const CategoryTabs = () => {
       {showLeftArrow && 
         <div className={styles.scrollButtonLeftContainer}>
           <div className={styles.scrollButton} onClick={() => handleScroll('left')}>
-            <HiOutlineArrowRightCircle className={styles.leftArrow} size={32}/>
+            <HiOutlineArrowLeftCircle size={32}/>
           </div>
         </div>
       }
