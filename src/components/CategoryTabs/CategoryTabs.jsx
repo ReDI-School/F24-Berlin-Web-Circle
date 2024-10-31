@@ -44,7 +44,6 @@ const CategoryTabs = () => {
       scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
 
-    // Update visibility of the left arrow
     setShowLeftArrow(scrollContainer.scrollLeft > 0);
   };
 
@@ -52,9 +51,8 @@ const CategoryTabs = () => {
     const scrollContainer = scrollContainerRef.current;
     const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
     
-    // Update visibility of the left arrow
     setShowLeftArrow(scrollContainer.scrollLeft > 0);
-    setShowRightArrow(scrollContainer.scrollLeft == maxScrollLeft)
+    setShowRightArrow(scrollContainer.scrollLeft === maxScrollLeft);
   };
 
   useEffect(() => {
@@ -68,43 +66,36 @@ const CategoryTabs = () => {
   }, []);
 
   return (
-    <>
-        <div className={styles.categoryTabsContainer}>
-          {showLeftArrow && 
-            <div className={styles.scrollButtonLeftContainer}>
-              <div className={styles.scrollButtonLeft} onClick={() => handleScroll('left')}>
-                <div className={styles.button.leftArrow}>
-                  <HiOutlineArrowRightCircle size={32}/>
-                </div>
-              </div>
-            </div>
-          }
-          <div className={styles.categoryTabsWrapper}>
-            <div className={styles.categoryTabs} ref={scrollContainerRef}>
-              {categories.map((category) => (
-                <div
-                  key={category.label}
-                  className={`tab-item ${activeTab === category.label ? 'active' : ''}`}
-                  onClick={() => handleTabClick(category.label)}
-                >
-                  <div className={styles.tabIcon}>{category.icon}</div>
-                  <span className={styles.tabLabel}>{category.label}</span>
-                </div>
-              ))}
-            </div>
+    <div className={styles.categoryTabsContainer}>
+      {showLeftArrow && 
+        <div className={styles.scrollButtonLeftContainer}>
+          <div className={styles.scrollButton} onClick={() => handleScroll('left')}>
+            <HiOutlineArrowRightCircle className={styles.button.leftArrow} size={32}/>
           </div>
-          {!showRightArrow &&
-            <div className={styles.scrollButtonRightContainer}>
-              <div className={styles.scrollButtonRight} onClick={() => handleScroll('right')}>
-                  <div className={styles.button}>
-                    <HiOutlineArrowRightCircle size={32}/>
-                  </div>
-              </div>
+        </div>
+      }
+      <div className={styles.categoryTabsWrapper}>
+        <div className={styles.categoryTabs} ref={scrollContainerRef}>
+          {categories.map((category) => (
+            <div
+              key={category.label}
+              className={`${styles.tabItem} ${activeTab === category.label ? styles.tabItemActive : ''}`}
+              onClick={() => handleTabClick(category.label)}
+            >
+              <div className={styles.tabIcon}>{category.icon}</div>
+              <span className={styles.tabLabel}>{category.label}</span>
             </div>
-          }
+          ))}
+        </div>
       </div>
-    </>
-
+      {!showRightArrow &&
+        <div className={styles.scrollButtonRightContainer}>
+          <div className={styles.scrollButton} onClick={() => handleScroll('right')}>
+            <HiOutlineArrowRightCircle className={styles.rightArrow} size={32}/>
+          </div>
+        </div>
+      }
+    </div>
   );
 };
 
