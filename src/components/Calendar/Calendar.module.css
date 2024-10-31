@@ -42,6 +42,7 @@ h3 {
 .date.pastDate {
   color: #484848;
   opacity: 0.3;
+  text-decoration: var(--pastDate-line-through, none);
 }
 
 .prevButton,

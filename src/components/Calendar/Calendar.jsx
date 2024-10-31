@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
-const Calendar = ({ dayItemWidth, dayItemHeight }) => {
+const Calendar = ({ dayItemWidth, dayItemHeight, textDecoration }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
 
@@ -57,6 +57,9 @@ const Calendar = ({ dayItemWidth, dayItemHeight }) => {
         <div
           key={day}
           className={`${styles.date} ${isPastDate ? styles.pastDate : ''}`}
+          style={{
+            "--pastDate-line-through": textDecoration,
+          }}
         >
           {day}
         </div>
