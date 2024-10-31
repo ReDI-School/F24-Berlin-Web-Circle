@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import './CategoryTabs.module.css';
+import styles from './CategoryTabs.module.css';
 import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree } from 'react-icons/fa'; 
 import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; 
 import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi';
