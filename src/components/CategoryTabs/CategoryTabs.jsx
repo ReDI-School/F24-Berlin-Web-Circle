@@ -52,7 +52,7 @@ const CategoryTabs = () => {
     const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
     
     setShowLeftArrow(scrollContainer.scrollLeft > 0);
-    setShowRightArrow(scrollContainer.scrollLeft === maxScrollLeft);
+    setShowRightArrow(scrollContainer.scrollLeft < maxScrollLeft);
   };
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const CategoryTabs = () => {
       {showLeftArrow && 
         <div className={styles.scrollButtonLeftContainer}>
           <div className={styles.scrollButton} onClick={() => handleScroll('left')}>
-            <HiOutlineArrowRightCircle className={styles.button.leftArrow} size={32}/>
+            <HiOutlineArrowRightCircle className={styles.leftArrow} size={32}/>
           </div>
         </div>
       }
@@ -88,10 +88,10 @@ const CategoryTabs = () => {
           ))}
         </div>
       </div>
-      {!showRightArrow &&
+      {showRightArrow &&
         <div className={styles.scrollButtonRightContainer}>
           <div className={styles.scrollButton} onClick={() => handleScroll('right')}>
-            <HiOutlineArrowRightCircle className={styles.rightArrow} size={32}/>
+            <HiOutlineArrowRightCircle size={32}/>
           </div>
         </div>
       }
