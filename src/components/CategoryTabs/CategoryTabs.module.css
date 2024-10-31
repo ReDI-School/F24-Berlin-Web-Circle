@@ -14,7 +14,7 @@
 
 .categoryTabs {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   white-space: nowrap;
   scroll-behavior: smooth;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
