@@ -5,6 +5,7 @@ import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
 import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
@@ -17,7 +18,8 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
   const toggleCalendar = () => {
     setShowCalendar(!showCalendar);
   }
-console.log('searchType', searchType)
+  const calendarRef = useOutsideClick(() => setShowCalendar(false))
+
   const handleSearch = () => {
     //search logic here
     onSearch({ location, checkIn, checkOut, date, guests });
@@ -50,7 +52,7 @@ console.log('searchType', searchType)
               <span className={styles.checkOutText}>{checkOut}</span>
             </div>
             {showCalendar && (
-              <div className={styles.calendarWrapper}>
+              <div className={styles.calendarWrapper} ref={calendarRef}>
                 <div className={styles.calendarToggleWrapper}>
                   <CalendarToggle />
                 </div>
@@ -70,7 +72,7 @@ console.log('searchType', searchType)
               <span className={styles.checkInText}>{checkIn}</span>
             </div>
             {showCalendar && (
-              <div className={styles.calendarWrapper}>
+              <div className={styles.calendarWrapper} ref={calendarRef}>
                 <div className={styles.calendarExperiencesWrapper}>
                   <Calendar dayItemWidth="48px" dayItemHeight="48px" />
                 </div>
