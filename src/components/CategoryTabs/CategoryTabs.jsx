@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './CategoryTabs.module.css';
-import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree } from 'react-icons/fa'; 
+import { FaSwimmingPool, FaUmbrellaBeach, FaCampground, FaCaravan, FaTree } from 'git /fa'; 
 import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md'; 
 import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi';
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
