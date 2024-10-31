@@ -1,6 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
@@ -15,6 +15,8 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
   const [date, setDates] = useState(initialDate || "");
 
   const [showCalendar, setShowCalendar] = useState(false);
+  const [closing, setClosing] = useState(false);
+
   const toggleCalendar = () => {
     setShowCalendar((prevState) => !prevState);
   }
@@ -22,6 +24,26 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
   const closeCalendarPopup = () => setShowCalendar(false)
   const calendarRef = useOutsideClick(closeCalendarPopup)
 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (showCalendar && !closing) {
+        setClosing(true);
+        setTimeout(() => {
+          setShowCalendar(false);
+          setClosing(false);
+        }, 300);
+      }
+    };
+    if (showCalendar) {
+      window.addEventListener("scroll", handleScroll);
+    } else {
+      window.removeEventListener("scroll", handleScroll);
+    }
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [showCalendar, closing]);
+
+  
   const handleSearch = () => {
     //search logic here
     onSearch({ location, checkIn, checkOut, date, guests });
@@ -56,7 +78,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
               <span className={styles.checkOutText}>{checkOut}</span>
             </div>
             {showCalendar && (
-              <div className={styles.calendarWrapper}>
+              <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
                 <div className={styles.calendarToggleWrapper}>
                   <CalendarToggle />
                 </div>
@@ -76,7 +98,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
               <span className={styles.checkInText}>{checkIn}</span>
             </div>
             {showCalendar && (
-              <div className={styles.calendarWrapper}>
+              <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
                 <div className={styles.calendarExperiencesWrapper}>
                   <Calendar dayItemWidth="48px" dayItemHeight="48px" />
                 </div>

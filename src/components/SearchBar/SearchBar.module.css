@@ -131,6 +131,19 @@
   width: 100%;
   border-radius: 32px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calendarWrapper.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calendarWrapper.close {
+  opacity: 0;
+  transform: translateY(-140px);
 }
 
 .calendarExperiencesWrapper {
