@@ -1,0 +1,108 @@
+.categoryTabsContainer {
+  position: relative;
+  max-width: 95%;
+  max-height: 120px;
+  margin: 0 auto;
+  background-color: white;
+  z-index: 1000;
+}
+
+.categoryTabsWrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.categoryTabs {
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  border: none;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  outline: none;
+  transform: translateY(-50%);
+  z-index: 1005;
+  box-shadow: 0 0 5px 0px #fcfcfc9a;
+  background-color: #fcfcfc9a;
+}
+
+.scrollButtonLeftContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  left: 0;
+  z-index: 1010;
+}
+
+.scrollButtonRightContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  right: 0;
+  z-index: 1010;
+}
+
+.scrollButtonRight, .scrollButtonLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+}
+
+.scrollButton:focus {
+  outline: none;
+}
+
+.tabItem {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+}
+
+.tabItem:hover {
+  color: #555;
+  border-bottom: 2px solid #555;
+}
+
+.tabIcon {
+  margin-bottom: 8px;
+}
+
+.tabLabel {
+  font-size: 12px;
+  text-align: center;
+}
+
+.tabItemActive {
+  color: #000;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.categoryTabsHideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: auto;
+}
+
