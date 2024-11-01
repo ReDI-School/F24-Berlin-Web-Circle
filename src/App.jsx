@@ -7,6 +7,7 @@ import axios from "axios";
 import { BASE_URL } from "./constants/constants";
 import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
+
 function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
@@ -40,6 +41,7 @@ function App() {
       
       <DataIncrementsButtonForTheCalendar />
 <CategoryTabs />  
+
       <div className="grid">
         {places.map((place) => {
           if (!place.id) return null;
