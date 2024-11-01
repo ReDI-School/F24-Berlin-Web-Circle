@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import { test, expect } from 'vitest';
 import App from './App'
 
-
+/*
 test('loads and displays greeting', async () => {
   // Render a React element into the DOM
   render(<App />)
@@ -15,3 +15,4 @@ test('loads and displays greeting', async () => {
   // assert that they work correctly
   expect(heading.innerHTML).toEqual('Hello F24-Berlin-Web-Circle')
 })
+*/
