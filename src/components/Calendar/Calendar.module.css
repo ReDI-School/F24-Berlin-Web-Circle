@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 800px;
   color: var(--primary);
 }
 
@@ -15,7 +14,7 @@
 
 .monthContainer {
   max-width: 390px;
-  padding: 0 27px;
+  padding: 0 var(--month-container-padding, 27px);
 }
 
 .calendarGrid {
@@ -37,6 +36,7 @@
 h3 {
   font-size: 16px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .date.pastDate {
@@ -64,11 +64,12 @@ h3 {
 }
 
 .prevButton {
-  margin-right: -60px;
+  margin-right: var(--button-right-margin, -60px); 
 }
 .nextButton {
-  margin-left: -60px;
+  margin-left: var(--button-left-margin, -60px); 
 }
+
 .prevButton:disabled {
   background-color: white;
   cursor: not-allowed;
@@ -77,12 +78,8 @@ h3 {
 
 @keyframes flipRightToLeft {
   0% {
-    transform: translateX(100%);
+    transform: translateX(16%);
     opacity: 0;
-  }
-  50% {
-    transform: translateX(0);
-    opacity: 1;
   }
   100% {
     transform: translateX(0);
@@ -92,12 +89,8 @@ h3 {
 
 @keyframes flipLeftToRight {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-16%);
     opacity: 0;
-  }
-  50% {
-    transform: translateX(0);
-    opacity: 1;
   }
   100% {
     transform: translateX(0);
@@ -106,9 +99,9 @@ h3 {
 }
 
 .monthContainer.flip-right {
-  animation: flipRightToLeft 0.5s ease-out forwards;
+  animation: flipRightToLeft 0.4s ease forwards;
 }
 
 .monthContainer.flip-left {
-  animation: flipLeftToRight 0.5s ease-out forwards;
+  animation: flipLeftToRight 0.4s ease forwards;
 }
