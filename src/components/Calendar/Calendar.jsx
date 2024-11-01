@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
-const Calendar = ({ dayItemWidth, dayItemHeight, textDecoration }) => {
+const Calendar = ({ 
+  dayItemWidth, 
+  dayItemHeight, 
+  textDecoration, 
+  monthContainerPadding,
+  buttonRightMargin,
+  buttonLeftMargin
+}) => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
 
@@ -42,7 +49,7 @@ const Calendar = ({ dayItemWidth, dayItemHeight, textDecoration }) => {
     const daysInMonth = getDaysInMonth(year, month)
     const firstDayOfMonth = getFirstDayOfMonth(year, month)
     const daysArray = []
-
+    
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(
         <div key={`empty-${i}`} className={styles.emptySlot}></div>
@@ -80,6 +87,7 @@ const Calendar = ({ dayItemWidth, dayItemHeight, textDecoration }) => {
            style={{
              "--day-item-width": dayItemWidth,
              "--day-item-height": dayItemHeight,
+             "--month-container-padding": monthContainerPadding
            }}
       >
         <h3>{`${monthName} ${year}`}</h3>
@@ -100,6 +108,7 @@ const Calendar = ({ dayItemWidth, dayItemHeight, textDecoration }) => {
         <div className={styles.calendarRow}>
           <button
             className={styles.prevButton}
+            style={{"--button-right-margin": buttonRightMargin}}
             onClick={goToPrevMonth}
             disabled={currentMonth <= new Date()}
           >
@@ -111,6 +120,7 @@ const Calendar = ({ dayItemWidth, dayItemHeight, textDecoration }) => {
 
           <button 
             className={styles.nextButton} 
+            style={{"--button-left-margin": buttonLeftMargin}}
             onClick={goToNextMonth}
           >
             <CalendarRightArrowIcon />

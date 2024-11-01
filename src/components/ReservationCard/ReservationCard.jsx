@@ -37,7 +37,7 @@ function ReservationCard({
     infants: 0,  
     pets: 0  
   });
-  const [calculatedCosts, setCalculatedCosts] = useState(null)
+  // const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -73,7 +73,7 @@ function ReservationCard({
           infants: infantsCount,
           pets: petsCount,
         },
-        setCalculatedCosts,
+        // setCalculatedCosts,
         setLoading,
         setError
       )
@@ -92,8 +92,6 @@ function ReservationCard({
     border: '1px solid var(--palette-deco)',
     zIndex: '99 !important',
   }
-
-console.log('calculatedCosts', calculatedCosts)
 
   return (
     <div className={styles.reservationCard}>
