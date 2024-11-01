@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <ProductPage />,
       },
       {
-        path: "s/:destination/homes",
+        path: "s/:region/homes",
         element: <FilteredPlacesPage />,
       },
     ],
