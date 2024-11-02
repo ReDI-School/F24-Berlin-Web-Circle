@@ -31,11 +31,13 @@ app.post("/savePlace", (req, res) => {
 const placesRoutes = require("./routes/places");
 const destinationsRoutes = require("./routes/destinations");
 const searchedPlacesRoutes = require("./routes/searchedPlaces");
+const bookingsRoutes = require("./routes/bookings");
 
 // Use Routes
 app.use("/places", placesRoutes);
 app.use("/destinations", destinationsRoutes);
 app.use("/s", searchedPlacesRoutes);
+app.use("/bookings", bookingsRoutes);
 
 app.listen(PORT, (error) => {
   if (error) console.log("Error starting the server:", error);
