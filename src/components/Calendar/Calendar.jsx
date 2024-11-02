@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
-const Calendar = ({
+const Calendar = ({ 
   dayItemWidth, 
   dayItemHeight, 
   textDecoration, 
@@ -49,7 +49,7 @@ const Calendar = ({
     const daysInMonth = getDaysInMonth(year, month)
     const firstDayOfMonth = getFirstDayOfMonth(year, month)
     const daysArray = []
-
+    
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(
         <div key={`empty-${i}`} className={styles.emptySlot}></div>
@@ -119,8 +119,8 @@ const Calendar = ({
           {renderCalendarForMonth(getNextMonth())}
 
           <button 
-            className={styles.nextButton}
-            style={{"--button-left-margin": buttonLeftMargin}} 
+            className={styles.nextButton} 
+            style={{"--button-left-margin": buttonLeftMargin}}
             onClick={goToNextMonth}
           >
             <CalendarRightArrowIcon />

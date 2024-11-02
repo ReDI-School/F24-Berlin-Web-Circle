@@ -5,6 +5,7 @@ import styles from './ReservationDatesSelector.module.css'
 import { useEffect, useState } from 'react'
 import WarningMessage from '../WarningMessage/WarningMessage'
 import { calculateNights, getStayPeriod } from '../../../utils/dateUtils'
+import Calendar from '../../Calendar/Calendar'
 
 const ReservationDatesSelector = ({
   setCheckInDate,
@@ -95,17 +96,16 @@ const ReservationDatesSelector = ({
           <WarningMessage message={checkInError || checkOutError} />
         </div>
       </div>
-      <div
-        className={styles.inputsContainer}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          color: 'red',
-          fontSize: '30px',
-        }}
-      >
-        A Calendar will appear here soon!
-      </div>
+        <div className={styles.calendarWrapper}>
+          <Calendar 
+            dayItemWidth="42px" 
+            dayItemHeight="40px" 
+            monthContainerPadding="13px" 
+            textDecoration="line-through" 
+            buttonRightMargin="-46px"
+            buttonLeftMargin="-46px"
+          />
+        </div>
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}
