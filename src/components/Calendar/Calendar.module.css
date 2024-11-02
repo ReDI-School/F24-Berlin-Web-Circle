@@ -1,0 +1,112 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.calendarRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.monthContainer {
+  max-width: 390px;
+  padding: 0 var(--month-container-padding, 27px);
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.dayHeader,
+.date,
+.emptySlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--day-item-width, 40px);
+  height: var(--day-item-height, 40px);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dayHeader {
+  font-size: 12px;
+}
+
+.monthContainer h3 { 
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.date.pastDate {
+  color: #484848;
+  opacity: 0.3;
+  text-decoration: var(--pastDate-line-through, none);
+}
+
+.prevButton,
+.nextButton {
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  z-index: 5;
+  border-radius: 50%;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: #f7f7f7;
+}
+
+.prevButton {
+  margin-right: var(--button-right-margin, -60px); 
+}
+.nextButton {
+  margin-left: var(--button-left-margin, -60px); 
+}
+
+.prevButton:disabled {
+  background-color: white;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@keyframes flipRightToLeft {
+  0% {
+    transform: translateX(16%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flipLeftToRight {
+  0% {
+    transform: translateX(-16%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.monthContainer.flip-right {
+  animation: flipRightToLeft 0.4s ease forwards;
+}
+
+.monthContainer.flip-left {
+  animation: flipLeftToRight 0.4s ease forwards;
+}

@@ -11,6 +11,11 @@
   transform: translate(-50%);
 }
 
+.checkInOutWrapper,
+.checkInOutExperiencesWrapper {
+  display: flex;
+}
+
 .inputContainerWhere {
   display: flex;
   flex-direction: column;
@@ -19,7 +24,9 @@
   padding-left: 10px;
 }
 
-.inputTextPlaceholder {
+.inputTextPlaceholder,
+.checkInText,
+.checkOutText {
   color: #797777;
 }
 
@@ -31,6 +38,13 @@
   position: relative;
   width: 140px;
   padding-left: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkInText,
+.checkOutText{
+  font-size: 14px;
 }
 
 .inputContainerWho {
@@ -49,6 +63,7 @@
   align-items: flex-start;
   width: 281px;
   padding-left: 25px;
+  cursor: pointer;
 }
 
 .label {
@@ -99,4 +114,55 @@
 .circle-button svg {
   width: 16px;
   height: 16px;
+}
+
+.calendarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  padding: 16px 32px;
+  background-color: white;
+  z-index: 100;
+  width: 850px;
+  width: 100%;
+  border-radius: 32px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calendarWrapper.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calendarWrapper.close {
+  opacity: 0;
+  transform: translateY(-140px);
+}
+
+.calendarExperiencesWrapper {
+  padding: 28px 30px 20px;
+}
+
+.calendarToggleWrapper {
+  padding-bottom: 10px;
+}
+
+.calendarContentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.incrementButtonWrapper {
+  display: flex;
+  justify-self: start;
+  padding: 22px 40px 14px;
+  width: 100%;
 }
