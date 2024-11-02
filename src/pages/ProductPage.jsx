@@ -23,6 +23,8 @@ import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/Shortcu
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import CalendarBlock from "../components/CalendarBlock/CalendarBlock";
+import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/CalendarBlockPopUp";
 
 
 const ProductPage = () => {
@@ -43,6 +45,7 @@ const ProductPage = () => {
   /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+  const [isKeybordPopupVisible, setIsKeybordPopupVisible] = useState(false)
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
   const [guestsList, setGuestsList] = useState([
@@ -58,6 +61,10 @@ const ProductPage = () => {
 
   const toggleGuestCountPopup = () => {
     setIsGuestCountPopupVisible((prevState) => !prevState)
+  }
+
+  const toggleKeyboardPopup = () => {
+    setIsKeybordPopupVisible((prevState) => !prevState)
   }
 
   const handleGuestClick = (updatedGuest) => {
@@ -156,6 +163,10 @@ const ProductPage = () => {
                 onClick={handleShowAmenities}
               />
             }
+            <hr className={styles.separator} />
+            <CalendarBlock 
+              toggleKeyboardPopup={toggleKeyboardPopup}
+            />  
           </div>
           <div className={styles.ReservationCard}>
             <ReservationCard
@@ -195,6 +206,12 @@ const ProductPage = () => {
                 setShowGuests={setShowGuests}
               />
             )}
+          {isKeybordPopupVisible && (
+              <CalendarBlockPopUp
+                isVisible={isKeybordPopupVisible}
+                onClose={toggleKeyboardPopup}
+              />
+            )}
         </div>
         <hr className={styles.separator} />
         {!!place.reviewSummary && <ReviewSummary
@@ -216,12 +233,6 @@ const ProductPage = () => {
             },
           }}
         />}
-        {/* <IconButton
-          faIcon={faArrowUpFromBracket}
-          label="Share"
-          onClick={handleShare}
-        />
-        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} /> */}
         { !!place.reviews &&
           <div className={styles.reviews}>
             <ReviewsSection reviews={place.reviews}/>

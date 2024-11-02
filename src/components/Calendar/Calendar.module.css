@@ -33,6 +33,11 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+.dayHeader {
+  font-size: 12px;
+}
+
 .monthContainer h3 { 
   font-size: 16px;
   margin-bottom: 10px;
@@ -69,6 +74,7 @@
 .nextButton {
   margin-left: var(--button-left-margin, -60px); 
 }
+
 .prevButton:disabled {
   background-color: white;
   cursor: not-allowed;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
