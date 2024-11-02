@@ -1,6 +1,6 @@
 .categoryTabsContainer {
   position: fixed;
-  max-width: 95%;
+  max-width: 100%;
   max-height: 120px;
   margin: 0 auto;
   background-color: white;
@@ -75,11 +75,28 @@
   cursor: pointer;
   font-size: 14px;
   color: #696969;
+  position: relative; /* Required for ::after positioning */
 }
 
 .tabItem:hover {
   color: #3f3f3f;
-  border-bottom: 2px solid #c2c2c2;
+}
+
+/* Underline effect with pseudo-element to prevent jumping */
+.tabItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px; /* Adjust thickness */
+  background-color: #c2c2c2;
+  transform: scaleX(0); /* Hidden initially */
+  transform-origin: center;
+}
+
+.tabItem:hover::after {
+  transform: scaleX(1); /* Show underline on hover */
 }
 
 .tabIcon {
@@ -94,7 +111,6 @@
 .tabItemActive {
   color: #000;
   font-weight: bold;
-  border-bottom: 2px solid #000;
 }
 
 .categoryTabsHideScrollbar::-webkit-scrollbar {
@@ -107,4 +123,3 @@
   padding-top: 10px;
   width: auto;
 }
-
