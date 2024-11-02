@@ -23,6 +23,7 @@ import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/Shortcu
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import CalendarBlock from "../components/CalendarBlock/CalendarBlock";
 
 
 const ProductPage = () => {
@@ -156,6 +157,8 @@ const ProductPage = () => {
                 onClick={handleShowAmenities}
               />
             }
+            <hr className={styles.separator} />
+            <CalendarBlock />
           </div>
           <div className={styles.ReservationCard}>
             <ReservationCard

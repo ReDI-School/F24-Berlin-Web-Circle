@@ -1,0 +1,75 @@
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.datePickerWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.selectorTitle h2{
+  margin: 0;
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.selectorTitle span{
+  color: var(--neutral);
+  font-size: 14px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shortcutsPopupButton {
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+
+.shortcutsPopupButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.shortcutsPopupButton:hover {
+  background-color: #f7f7f7;
+}
+
+.clearToggleBtnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.clearDatesButton button {
+  background-color: transparent;
+  border: none;
+  padding: 9px;
+  text-decoration: underline;
+  font-size: 14px;
+}
+.clearDatesButton button:hover{
+  background-color: #f7f7f7;
+}
+.clearDatesButton button:focus,
+.clearDatesButton button:focus-visible,
+.shortcutsPopupButton:focus,
+.shortcutsPopupButton:focus-visible {
+  outline: none;
+}
+
+.clearDatesButton {
+  text-decoration: underline;
+}
