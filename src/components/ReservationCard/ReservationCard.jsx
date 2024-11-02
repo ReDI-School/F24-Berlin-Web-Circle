@@ -112,7 +112,10 @@ function ReservationCard({
             <h1 className={styles.soldOutGuestSection}>Booking closed</h1>
           )}
           {isBookingOpen && (
-            <div className={styles.reservationForm} ref={guestsRef}>
+            <div 
+              className={styles.reservationForm} 
+              ref={guestsRef}
+            >
               <DatePicker
                 checkInDate={checkInDate}
                 checkOutDate={checkOutDate}
