@@ -257,5 +257,4 @@ console.log('booking', booking)
   }
   </>);
 };
-
 export default ProductPage;
