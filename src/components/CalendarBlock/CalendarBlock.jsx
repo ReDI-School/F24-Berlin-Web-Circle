@@ -10,7 +10,7 @@ const CalendarBlock = ({
   checkInDate,
   checkOutDate,
   minStayNights,
-  toggleShortcutsPopup,
+  toggleKeyboardPopup  
 }) => {
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
@@ -65,7 +65,7 @@ const CalendarBlock = ({
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}
-          onClick={toggleShortcutsPopup}
+          onClick={toggleKeyboardPopup}
         >
           <KeyboardIcon />
         </button>

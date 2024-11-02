@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 30px 0;
 }
 
 .datePickerWrapper {
   display: flex;
   justify-content: flex-start;
+}
+
+.selectorTitle {
+  margin-bottom: 10px;
 }
 
 .selectorTitle h2{
@@ -26,6 +31,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
 .shortcutsPopupButton {
@@ -33,14 +39,12 @@
   border: none;
   text-align: center;
   outline: none;
-}
-
-.shortcutsPopupButton {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #fff;
+  padding: 0;
 }
 
 .shortcutsPopupButton:hover {
