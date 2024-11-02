@@ -5,6 +5,7 @@
   margin: 0 auto;
   background-color: white;
   z-index: 1000;
+  margin-top: 32px;
 }
 
 .categoryTabsWrapper {
