@@ -5,6 +5,9 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
 import { BASE_URL } from "./constants/constants";
+import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
+
+
 function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
@@ -35,7 +38,9 @@ function App() {
       <div>
         <CalendarToggle />
       </div>
-      
+
+      <CategoryTabs /> 
+
       <div className="grid">
         {places.map((place) => {
           if (!place.id) return null;
