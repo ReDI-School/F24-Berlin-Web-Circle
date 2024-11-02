@@ -18,15 +18,15 @@
 }
 
 .separator {
+    width: 100%;
+    margin-top: 160px;
     position: absolute;
     left: 0;
     right: 0;
-    width: 100%;
-    height: 0.5px;
-    color: rgba(232, 227, 227, 0.399);
-    margin-top: 160px;
     z-index: 1001;
-}
+      border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.115); 
+    }
 
 .airbnbHomeButton {
     display: flex;

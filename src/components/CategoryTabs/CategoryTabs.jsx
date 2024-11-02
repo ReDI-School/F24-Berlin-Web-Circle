@@ -7,22 +7,22 @@ import { HiOutlineArrowRightCircle } from "react-icons/hi2";
 import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
 
 const categories = [
-  { label: 'Amazing Pools', icon: <FaSwimmingPool size={32} /> },
-  { label: 'Beachfront', icon: <FaUmbrellaBeach size={32} /> },
-  { label: 'Cabins', icon: <MdOutlineCabin size={32} /> },
-  { label: 'Tiny Homes', icon: <GiHouse size={32} /> },
-  { label: 'Castles', icon: <MdOutlineCastle size={32} /> },
-  { label: 'Camping', icon: <FaCampground size={32} /> },
-  { label: 'Luxe', icon: <GiDiamondHard size={32} /> },
-  { label: 'Arctic', icon: <GiSnowflake2 size={32} /> },
-  { label: 'Caravans', icon: <FaCaravan size={32} /> },
-  { label: 'Tree Houses', icon: <FaTree size={32} /> },
-  { label: 'Fishing Boats', icon: <GiFishingBoat size={32} /> },
-  { label: 'Sailboats', icon: <GiSailboat size={32} /> },
-  { label: 'Luxury Villas', icon: <GiDiamondHard size={32} /> },
-  { label: 'Beach Houses', icon: <FaUmbrellaBeach size={32} /> },
-  { label: 'Chalets', icon: <GiHouse size={32} /> },
-  { label: 'Riverside Cabins', icon: <MdOutlineCabin size={32} /> },
+  { label: 'Amazing Pools', icon: <FaSwimmingPool size={28} /> },
+  { label: 'Beachfront', icon: <FaUmbrellaBeach size={28} /> },
+  { label: 'Cabins', icon: <MdOutlineCabin size={28} /> },
+  { label: 'Tiny Homes', icon: <GiHouse size={28} /> },
+  { label: 'Castles', icon: <MdOutlineCastle size={28} /> },
+  { label: 'Camping', icon: <FaCampground size={28} /> },
+  { label: 'Luxe', icon: <GiDiamondHard size={28} /> },
+  { label: 'Arctic', icon: <GiSnowflake2 size={28} /> },
+  { label: 'Caravans', icon: <FaCaravan size={28} /> },
+  { label: 'Tree Houses', icon: <FaTree size={28} /> },
+  { label: 'Fishing Boats', icon: <GiFishingBoat size={28} /> },
+  { label: 'Sailboats', icon: <GiSailboat size={28} /> },
+  { label: 'Luxury Villas', icon: <GiDiamondHard size={28} /> },
+  { label: 'Beach Houses', icon: <FaUmbrellaBeach size={28} /> },
+  { label: 'Chalets', icon: <GiHouse size={28} /> },
+  { label: 'Riverside Cabins', icon: <MdOutlineCabin size={28} /> },
 ];
 
 const CategoryTabs = () => {

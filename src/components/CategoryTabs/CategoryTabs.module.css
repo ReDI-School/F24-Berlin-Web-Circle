@@ -1,11 +1,12 @@
 .categoryTabsContainer {
-  position: relative;
+  position: fixed;
   max-width: 95%;
   max-height: 120px;
   margin: 0 auto;
   background-color: white;
   z-index: 1000;
-  margin-top: 32px;
+  padding-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .categoryTabsWrapper {
@@ -73,12 +74,12 @@
   margin-right: 10px;
   cursor: pointer;
   font-size: 14px;
-  color: #555;
+  color: #696969;
 }
 
 .tabItem:hover {
-  color: #555;
-  border-bottom: 2px solid #555;
+  color: #3f3f3f;
+  border-bottom: 2px solid #c2c2c2;
 }
 
 .tabIcon {
