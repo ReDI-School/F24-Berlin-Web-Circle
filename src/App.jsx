@@ -5,7 +5,6 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import axios from "axios";
 import { BASE_URL } from "./constants/constants";
-import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 
 function App() {
@@ -39,8 +38,7 @@ function App() {
         <CalendarToggle />
       </div>
       
-      <DataIncrementsButtonForTheCalendar />
-<CategoryTabs />  
+      <CategoryTabs />  
 
       <div className="grid">
         {places.map((place) => {
