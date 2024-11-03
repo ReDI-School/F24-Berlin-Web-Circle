@@ -21,7 +21,6 @@ function ReservationCard({
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
-  totalPrice,
   toggleShortcutsPopup,
   toggleGuestCountPopup,
   setShowGuests,

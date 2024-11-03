@@ -164,7 +164,6 @@ useEffect(() => {
               allowGuestsNumber={booking.bookingData.allowGuestsNumber}
               minStayNights={booking.bookingData.minStayNights}
               isBookingOpen={booking.bookingData.isBookingOpen}
-              totalPrice={booking.totalPrice}
               guestCounts={booking.guestCounts}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
