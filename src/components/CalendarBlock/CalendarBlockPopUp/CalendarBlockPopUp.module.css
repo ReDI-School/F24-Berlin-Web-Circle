@@ -2,6 +2,7 @@
   width: 376px;
   padding: 40px 32px 32px;
 }
+
 .header h2{
   display: flex;
   justify-content: space-between;

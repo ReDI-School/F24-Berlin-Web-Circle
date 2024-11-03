@@ -7,7 +7,7 @@
 
 .calendarPopUp {
   position: relative;
-  z-index: 3000;
+  z-index: 1000;
 }
 
 .calendarRow {
