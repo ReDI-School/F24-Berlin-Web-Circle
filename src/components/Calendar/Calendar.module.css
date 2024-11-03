@@ -5,6 +5,11 @@
   color: var(--primary);
 }
 
+.calendarPopUp {
+  position: relative;
+  z-index: 1000;
+}
+
 .calendarRow {
   display: flex;
   justify-content: center;
