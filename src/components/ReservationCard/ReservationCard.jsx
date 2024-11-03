@@ -17,11 +17,11 @@ function ReservationCard({
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  onGuestChange,
-  guestsList,
+  guestCounts: defaulfGuestCounts,
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
+  totalPrice,
   toggleShortcutsPopup,
   toggleGuestCountPopup,
   setShowGuests,
@@ -31,12 +31,13 @@ function ReservationCard({
 }) {
   const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
   const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
-  const [guestCounts, setGuestCounts] = useState({
-    adults: 1,  
-    children: 0, 
-    infants: 0,  
-    pets: 0  
-  });
+  const [guestCounts, setGuestCounts] = useState(defaulfGuestCounts || {});
+  const [guestsList, setGuestsList] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ])
   // const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -58,6 +59,16 @@ function ReservationCard({
     petsCount,
     adultsAndChildrenCount,
   } = calculateGuestCounts(guestsList)
+
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
 
   const checkInOut = checkInDate && checkOutDate
 
@@ -150,7 +161,7 @@ function ReservationCard({
               <div className={styles.guestDropdown}>
                 {showGuests && (
                   <AddGuestsPopUp
-                    onGuestChange={onGuestChange}
+                    onGuestChange={handleGuestClick}
                     style={addGuestPopUpStyles}
                     allowGuestsNumber={allowGuestsNumber}
                     toggleShowGuests={toggleShowGuests}

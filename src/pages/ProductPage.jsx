@@ -28,6 +28,12 @@ import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/C
 
 
 const ProductPage = () => {
+  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
+  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+  const [isKeybordPopupVisible, setIsKeybordPopupVisible] = useState(false)
+  const [showGuests, setShowGuests] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
+
   const [error, setError] = useState(null);
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
@@ -58,22 +64,6 @@ useEffect(() => {
 }, [productId]);
 
 
-console.log('booking', booking)
-
-
-  /* ============== Reservation card data ============== */
-  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
-  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
-  const [isKeybordPopupVisible, setIsKeybordPopupVisible] = useState(false)
-  const [showGuests, setShowGuests] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
-  const [guestsList, setGuestsList] = useState([
-    { typeofGuest: 'Adults', numberOfGuests: 1 },
-    { typeofGuest: 'Children', numberOfGuests: 0 },
-    { typeofGuest: 'Infants', numberOfGuests: 0 },
-    { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ])
-
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
   }
@@ -86,31 +76,6 @@ console.log('booking', booking)
     setIsKeybordPopupVisible((prevState) => !prevState)
   }
 
-  const handleGuestClick = (updatedGuest) => {
-    setGuestsList((prevList) =>
-      prevList.map((guest) =>
-        guest.typeofGuest === updatedGuest.typeofGuest
-          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-          : guest
-      )
-    )
-  }
-
-  const defaultCheckInDate = '10/20/2024'
-  const defaultCheckOutDate = '10/25/2024'
-  const pricePerNight = 146
-  const cleaningFee = 10
-  const airbnbServiceFee = 10
-  const longStayDiscount = 30
-  const nightsCountForDiscount = 5
-  const minStayNights = 3
-  const isBookingOpen = true
-  const allowGuestsNumber = {
-    peopleNumber: 6,
-    petsNumber: 2,
-  }
-  
-  /* ============== End of Reservation card data ============== */
 
   function handleShare() {
     alert("Share this experience");
@@ -188,19 +153,19 @@ console.log('booking', booking)
             />  
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard
-              defaultCheckInDate={defaultCheckInDate}
-              defaultCheckOutDate={defaultCheckOutDate}
-              pricePerNight={pricePerNight}
-              cleaningFee={cleaningFee}
-              airbnbServiceFee={airbnbServiceFee}
-              longStayDiscount={longStayDiscount}
-              nightsCountForDiscount={nightsCountForDiscount}
-              onGuestChange={handleGuestClick}
-              guestsList={guestsList}
-              allowGuestsNumber={allowGuestsNumber}
-              minStayNights={minStayNights}
-              isBookingOpen={isBookingOpen}
+          {!!booking && <ReservationCard
+              defaultCheckInDate={booking.checkInDate}
+              defaultCheckOutDate={booking.checkOutDate}
+              pricePerNight={booking.bookingData.pricePerNight}
+              cleaningFee={booking.bookingData.cleaningFee}
+              airbnbServiceFee={booking.bookingData.airbnbServiceFee}
+              longStayDiscount={booking.bookingData.longStayDiscount}
+              nightsCountForDiscount={booking.bookingData.nightsCountForLongStayDiscount}
+              allowGuestsNumber={booking.bookingData.allowGuestsNumber}
+              minStayNights={booking.bookingData.minStayNights}
+              isBookingOpen={booking.bookingData.isBookingOpen}
+              totalPrice={booking.totalPrice}
+              guestCounts={booking.guestCounts}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
               setShowGuests={setShowGuests}
@@ -208,6 +173,7 @@ console.log('booking', booking)
               showCalendar={showCalendar}
               setShowCalendar={setShowCalendar}
             />
+          }
           </div>
           {isShortcutsPopupVisible && (
               <ShortcutsPopUp
