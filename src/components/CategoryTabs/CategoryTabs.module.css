@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   background-color: white;
-  z-index: 1000;
+  z-index: 998;
   padding-top: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
