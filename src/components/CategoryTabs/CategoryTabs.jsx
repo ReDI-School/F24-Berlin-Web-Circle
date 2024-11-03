@@ -71,7 +71,7 @@ const CategoryTabs = () => {
       {showLeftArrow && 
         <div className={styles.scrollButtonLeftContainer}>
           <div className={styles.scrollButton} onClick={() => handleScroll('left')}>
-            <HiOutlineArrowLeftCircle size={32}/>
+            <HiOutlineArrowLeftCircle size={28}/>
           </div>
         </div>
       }
@@ -92,7 +92,7 @@ const CategoryTabs = () => {
       {showRightArrow &&
         <div className={styles.scrollButtonRightContainer}>
           <div className={styles.scrollButton} onClick={() => handleScroll('right')}>
-            <HiOutlineArrowRightCircle size={32}/>
+            <HiOutlineArrowRightCircle size={28}/>
           </div>
         </div>
       }

@@ -1,6 +1,7 @@
 .categoryTabsContainer {
   position: fixed;
-  max-width: 100%;
+  justify-content: center;
+  max-width: 95%;
   max-height: 120px;
   margin: 0 auto;
   background-color: white;
@@ -22,6 +23,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Scroll button base styles */
 .scrollButton {
   position: absolute;
   top: 50%;
@@ -30,16 +32,16 @@
   padding-top: 20px;
   padding-bottom: 20px;
   outline: none;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   z-index: 1005;
-  box-shadow: 0 0 5px 0px #fcfcfc9a;
   background-color: #fcfcfc9a;
 }
 
+/* Scroll button positioning */
 .scrollButtonLeftContainer {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   width: 30px;
   left: 0;
   z-index: 1010;
@@ -48,8 +50,8 @@
 .scrollButtonRightContainer {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
+  transform: translateY(-40%);
+  width: 28px;
   right: 0;
   z-index: 1010;
 }
@@ -58,13 +60,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
+  width: 28px;
 }
 
 .scrollButton:focus {
   outline: none;
 }
 
+/* Tab item styles */
 .tabItem {
   display: inline-flex;
   flex-direction: column;
@@ -89,14 +92,14 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px; /* Adjust thickness */
+  height: 2px;
   background-color: #c2c2c2;
-  transform: scaleX(0); /* Hidden initially */
+  transform: scaleX(0);
   transform-origin: center;
 }
 
 .tabItem:hover::after {
-  transform: scaleX(1); /* Show underline on hover */
+  transform: scaleX(1);
 }
 
 .tabIcon {
@@ -123,3 +126,4 @@
   padding-top: 10px;
   width: auto;
 }
+
