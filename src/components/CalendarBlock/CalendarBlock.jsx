@@ -10,7 +10,12 @@ const CalendarBlock = ({
   checkInDate,
   checkOutDate,
   minStayNights,
-  toggleKeyboardPopup  
+  toggleKeyboardPopup,
+  pickedCheckIn,
+  pickedCheckOut,
+  setPickedCheckIn,
+  setPickedCheckOut
+
 }) => {
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
@@ -62,6 +67,10 @@ const CalendarBlock = ({
             textDecoration="line-through" 
             buttonRightMargin="-46px"
             buttonLeftMargin="-46px"
+            pickedCheckIn={pickedCheckIn}
+            pickedCheckOut={pickedCheckOut}
+            setPickedCheckIn={setPickedCheckIn}
+            setPickedCheckOut={setPickedCheckOut}
           />
         </div>
       <div className={styles.buttonsContainer}>

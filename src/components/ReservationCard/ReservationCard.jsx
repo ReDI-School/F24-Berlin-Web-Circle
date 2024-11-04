@@ -28,6 +28,10 @@ function ReservationCard({
   showGuests,
   showCalendar,
   setShowCalendar,
+  pickedCheckIn,
+  pickedCheckOut,
+  setPickedCheckIn,
+  setPickedCheckOut
 }) {
   const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
   const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
@@ -133,6 +137,10 @@ function ReservationCard({
                   toggleShowCalendar={toggleShowCalendar}
                   minStayNights={minStayNights}
                   toggleShortcutsPopup={toggleShortcutsPopup}
+                  pickedCheckIn={pickedCheckIn}
+                  pickedCheckOut={pickedCheckOut}
+                  setPickedCheckIn={setPickedCheckIn}
+                  setPickedCheckOut={setPickedCheckOut}
                 />
               )}
               <button

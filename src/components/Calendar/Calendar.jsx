@@ -10,12 +10,15 @@ const Calendar = ({
   textDecoration, 
   monthContainerPadding,
   buttonRightMargin,
-  buttonLeftMargin
+  buttonLeftMargin,
+  pickedCheckIn,
+  pickedCheckOut,
+  setPickedCheckIn,
+  setPickedCheckOut
+
 }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
-  const [pickedCheckIn, setPickedCheckIn] = useState(null);
-  const [pickedCheckOut, setPickedCheckOut] = useState(null);
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()

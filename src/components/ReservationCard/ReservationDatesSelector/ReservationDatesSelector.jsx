@@ -15,6 +15,10 @@ const ReservationDatesSelector = ({
   toggleShowCalendar,
   minStayNights,
   toggleShortcutsPopup,
+  pickedCheckIn,
+  pickedCheckOut,
+  setPickedCheckIn,
+  setPickedCheckOut
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
 
@@ -106,6 +110,10 @@ const ReservationDatesSelector = ({
             textDecoration="line-through" 
             buttonRightMargin="-46px"
             buttonLeftMargin="-46px"
+            pickedCheckIn={pickedCheckIn}
+            pickedCheckOut={pickedCheckOut}
+            setPickedCheckIn={setPickedCheckIn}
+            setPickedCheckOut={setPickedCheckOut}
           />
         </div>
       <div className={styles.buttonsContainer}>

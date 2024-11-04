@@ -31,6 +31,8 @@ const ProductPage = () => {
   const [error, setError] = useState(null);
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
+  const [pickedCheckIn, setPickedCheckIn] = useState(null);
+  const [pickedCheckOut, setPickedCheckOut] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { productId } = useParams();
@@ -185,6 +187,10 @@ console.log('booking', booking)
             <hr className={styles.separator} />
             <CalendarBlock 
               toggleKeyboardPopup={toggleKeyboardPopup}
+              pickedCheckIn={pickedCheckIn}
+              pickedCheckOut={pickedCheckOut}
+              setPickedCheckIn={setPickedCheckIn}
+              setPickedCheckOut={setPickedCheckOut}
             />  
           </div>
           <div className={styles.ReservationCard}>
@@ -207,6 +213,10 @@ console.log('booking', booking)
               showGuests={showGuests}
               showCalendar={showCalendar}
               setShowCalendar={setShowCalendar}
+              pickedCheckIn={pickedCheckIn}
+              pickedCheckOut={pickedCheckOut}
+              setPickedCheckIn={setPickedCheckIn}
+              setPickedCheckOut={setPickedCheckOut}
             />
           </div>
           {isShortcutsPopupVisible && (
