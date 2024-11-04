@@ -11,10 +11,6 @@ const CalendarBlock = ({
   checkOutDate,
   minStayNights,
   toggleKeyboardPopup,
-  pickedCheckIn,
-  pickedCheckOut,
-  setPickedCheckIn,
-  setPickedCheckOut,
 }) => {
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
@@ -33,6 +29,7 @@ const CalendarBlock = ({
 
   const stayPeriod =
     checkInDate && checkOutDate ? getStayPeriod(checkInDate, checkOutDate) : ''
+    console.log('checkInDate2', checkInDate)
 
   return (
     <div className={styles.selectorContainer}>
@@ -66,10 +63,10 @@ const CalendarBlock = ({
             textDecoration="line-through" 
             buttonRightMargin="-46px"
             buttonLeftMargin="-46px"
-            pickedCheckIn={pickedCheckIn}
-            pickedCheckOut={pickedCheckOut}
-            setPickedCheckIn={setPickedCheckIn}
-            setPickedCheckOut={setPickedCheckOut}
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
           />
         </div>
       <div className={styles.buttonsContainer}>

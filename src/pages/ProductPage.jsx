@@ -33,9 +33,7 @@ const ProductPage = () => {
 
   const [checkInDate, setCheckInDate] = useState('10/20/2024')
   const [checkOutDate, setCheckOutDate] = useState('10/25/2024')
-  const [pickedCheckIn, setPickedCheckIn] = useState(null);
-  const [pickedCheckOut, setPickedCheckOut] = useState(null);
-
+console.log('checkInDate', checkInDate)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -190,10 +188,6 @@ console.log('booking', booking)
             <hr className={styles.separator} />
             <CalendarBlock 
               toggleKeyboardPopup={toggleKeyboardPopup}
-              pickedCheckIn={pickedCheckIn}
-              pickedCheckOut={pickedCheckOut}
-              setPickedCheckIn={setPickedCheckIn}
-              setPickedCheckOut={setPickedCheckOut}
               minStayNights={minStayNights}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
@@ -219,10 +213,6 @@ console.log('booking', booking)
               showGuests={showGuests}
               showCalendar={showCalendar}
               setShowCalendar={setShowCalendar}
-              pickedCheckIn={pickedCheckIn}
-              pickedCheckOut={pickedCheckOut}
-              setPickedCheckIn={setPickedCheckIn}
-              setPickedCheckOut={setPickedCheckOut}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}

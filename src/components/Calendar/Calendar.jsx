@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 
@@ -11,14 +11,44 @@ const Calendar = ({
   monthContainerPadding,
   buttonRightMargin,
   buttonLeftMargin,
-  pickedCheckIn,
-  pickedCheckOut,
-  setPickedCheckIn,
-  setPickedCheckOut
-
+  setCheckInDate,
+  setCheckOutDate,
+  checkInDate,
+  checkOutDate,
 }) => {
+
+  function convertStringToDateObject(dateString) {
+    const [month, day, year] = dateString.split('/').map(Number)
+    return { day, month, year }
+  }
+
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
+  const [pickedCheckIn, setPickedCheckIn] = useState(
+    checkInDate ? convertStringToDateObject(checkInDate) : null
+  )
+  const [pickedCheckOut, setPickedCheckOut] = useState(
+    checkOutDate ? convertStringToDateObject(checkOutDate) : null
+  )
+  console.log('checkInDate', checkInDate)
+  console.log('checkOutDate', checkOutDate)
+
+  useEffect(() => {
+    if (checkInDate) {
+      setPickedCheckIn(convertStringToDateObject(checkInDate));
+    } else {
+      setPickedCheckIn(null);
+    }
+  }, [checkInDate]);
+
+  useEffect(() => {
+    if (checkOutDate) {
+      setPickedCheckOut(convertStringToDateObject(checkOutDate));
+    } else {
+      setPickedCheckOut(null);
+    }
+  }, [checkOutDate]);
+
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()
@@ -43,22 +73,32 @@ const Calendar = ({
   }
 
   const handleDateClick = (day, month, year) => {
-    const selectedDate = { day, month, year };
+    const selectedDate = { day, month, year }
+
+    function convertDateObjectToString(dateObject) {
+      const { day, month, year } = dateObject
+      return `${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`
+    }
+    
+    const dateString = convertDateObjectToString({ day, month, year })
 
     if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
+      setCheckInDate(dateString);
       setPickedCheckIn(selectedDate);
       setPickedCheckOut(null);
     } else if (pickedCheckIn && !pickedCheckOut) {
-      const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime();
-      const selectedDateTime = new Date(year, month, day).getTime();
+      const pickedCheckInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
+      const selectedDateTime = new Date(year, month, day).getTime()
 
-      if (selectedDateTime > checkInDate) {
-        setPickedCheckOut(selectedDate);
+      if (selectedDateTime > pickedCheckInDate) {
+        setPickedCheckOut(selectedDate)
+        setCheckOutDate(dateString)
       } else {
-        setPickedCheckIn(selectedDate);
+        setPickedCheckIn(selectedDate)
+        setCheckInDate(dateString)
       }
     }
-  };
+  }
 
   const renderDaysOfWeek = () => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
