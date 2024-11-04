@@ -28,12 +28,16 @@ import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/C
 
 
 const ProductPage = () => {
-  const [error, setError] = useState(null);
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
+
+  const [checkInDate, setCheckInDate] = useState('10/20/2024')
+  const [checkOutDate, setCheckOutDate] = useState('10/25/2024')
   const [pickedCheckIn, setPickedCheckIn] = useState(null);
   const [pickedCheckOut, setPickedCheckOut] = useState(null);
+
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const { productId } = useParams();
 
@@ -98,8 +102,7 @@ console.log('booking', booking)
     )
   }
 
-  const defaultCheckInDate = '10/20/2024'
-  const defaultCheckOutDate = '10/25/2024'
+
   const pricePerNight = 146
   const cleaningFee = 10
   const airbnbServiceFee = 10
@@ -191,12 +194,15 @@ console.log('booking', booking)
               pickedCheckOut={pickedCheckOut}
               setPickedCheckIn={setPickedCheckIn}
               setPickedCheckOut={setPickedCheckOut}
+              minStayNights={minStayNights}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
             />  
           </div>
           <div className={styles.ReservationCard}>
             <ReservationCard
-              defaultCheckInDate={defaultCheckInDate}
-              defaultCheckOutDate={defaultCheckOutDate}
               pricePerNight={pricePerNight}
               cleaningFee={cleaningFee}
               airbnbServiceFee={airbnbServiceFee}
@@ -217,6 +223,10 @@ console.log('booking', booking)
               pickedCheckOut={pickedCheckOut}
               setPickedCheckIn={setPickedCheckIn}
               setPickedCheckOut={setPickedCheckOut}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
             />
           </div>
           {isShortcutsPopupVisible && (

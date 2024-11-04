@@ -14,8 +14,7 @@ const CalendarBlock = ({
   pickedCheckIn,
   pickedCheckOut,
   setPickedCheckIn,
-  setPickedCheckOut
-
+  setPickedCheckOut,
 }) => {
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
