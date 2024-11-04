@@ -34,8 +34,21 @@
   font-weight: 500;
 }
 
+.date:hover {
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .dayHeader {
   font-size: 12px;
+}
+
+.pickedCheckIn,
+.pickedCheckOut {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
 }
 
 .monthContainer h3 { 
@@ -48,6 +61,7 @@
   color: #484848;
   opacity: 0.3;
   text-decoration: var(--pastDate-line-through, none);
+  pointer-events: none;
 }
 
 .prevButton,

@@ -12,6 +12,8 @@ const Calendar = ({
 }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
+  const [pickedCheckIn, setPickedCheckIn] = useState(null);
+  const [pickedCheckOut, setPickedCheckOut] = useState(null);
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()
@@ -34,6 +36,24 @@ const Calendar = ({
   const resetAnimation = () => {
     setTimeout(() => setAnimationDirection(""), 300)
   }
+
+  const handleDateClick = (day, month, year) => {
+    const selectedDate = { day, month, year };
+
+    if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
+      setPickedCheckIn(selectedDate);
+      setPickedCheckOut(null);
+    } else if (pickedCheckIn && !pickedCheckOut) {
+      const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime();
+      const selectedDateTime = new Date(year, month, day).getTime();
+
+      if (selectedDateTime > checkInDate) {
+        setPickedCheckOut(selectedDate);
+      } else {
+        setPickedCheckIn(selectedDate);
+      }
+    }
+  };
 
   const renderDaysOfWeek = () => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -59,14 +79,20 @@ const Calendar = ({
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(year, month, day).setHours(0, 0, 0, 0)
       const isPastDate = isCurrentMonth && date < today
+      const isCheckInDate = pickedCheckIn && pickedCheckIn.day === day && pickedCheckIn.month === month && pickedCheckIn.year === year;
+      const isCheckOutDate = pickedCheckOut && pickedCheckOut.day === day && pickedCheckOut.month === month && pickedCheckOut.year === year;
 
       daysArray.push(
         <div
           key={day}
-          className={`${styles.date} ${isPastDate ? styles.pastDate : ''}`}
+          className={`${styles.date} ${isPastDate ? styles.pastDate : ''} 
+                      ${isCheckInDate ? styles.pickedCheckIn : ''} 
+                      ${isCheckOutDate ? styles.pickedCheckOut : ''}
+                    `}
           style={{
             "--pastDate-line-through": textDecoration,
           }}
+          onClick={() => handleDateClick( day, month, year )}
         >
           {day}
         </div>
