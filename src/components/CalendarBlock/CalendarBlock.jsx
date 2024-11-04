@@ -55,7 +55,9 @@ const CalendarBlock = ({
       <div className={styles.calendarWrapper}>
         <Calendar 
             dayItemWidth="44px" 
-            dayItemHeight="42px" 
+            dayItemHeight="42px"
+            pickedDayWidth="42px"
+            pickedDayHeight="42px"  
             monthContainerPadding="13px" 
             textDecoration="line-through" 
             buttonRightMargin="-46px"

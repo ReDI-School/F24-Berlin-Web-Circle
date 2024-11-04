@@ -99,7 +99,9 @@ const ReservationDatesSelector = ({
         <div className={styles.calendarWrapper}>
           <Calendar 
             dayItemWidth="42px" 
-            dayItemHeight="40px" 
+            dayItemHeight="40px"
+            pickedDayWidth="40px"
+            pickedDayHeight="40px" 
             monthContainerPadding="13px" 
             textDecoration="line-through" 
             buttonRightMargin="-46px"

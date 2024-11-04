@@ -83,7 +83,12 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                   <CalendarToggle />
                 </div>
                 <div className={styles.calendarContentWrapper}>
-                  <Calendar dayItemWidth="48px" dayItemHeight="48px" />
+                  <Calendar 
+                    dayItemWidth="48px" 
+                    dayItemHeight="48px"
+                    pickedDayWidth="46px"
+                    pickedDayHeight="46px"  
+                  />
                 </div>
                 <div className={styles.incrementButtonWrapper}>
                   <DataIncrementsButtonForTheCalendar />
@@ -100,7 +105,12 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
                 <div className={styles.calendarExperiencesWrapper}>
-                  <Calendar dayItemWidth="48px" dayItemHeight="48px" />
+                  <Calendar 
+                    dayItemWidth="48px" 
+                    dayItemHeight="48px" 
+                    pickedDayWidth="46px"
+                    pickedDayHeight="46px" 
+                  />
                 </div>
               </div>
             )}
