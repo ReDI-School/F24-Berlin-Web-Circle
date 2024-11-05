@@ -15,6 +15,7 @@ const Calendar = ({
   setCheckOutDate,
   checkInDate,
   checkOutDate,
+  isSearchBarCalendar 
 }) => {
 
   function convertStringToDateObject(dateString) {
@@ -24,31 +25,34 @@ const Calendar = ({
 
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
+  
   const [pickedCheckIn, setPickedCheckIn] = useState(
-    checkInDate ? convertStringToDateObject(checkInDate) : null
+    checkInDate && !isSearchBarCalendar ? convertStringToDateObject(checkInDate) : null
   )
   const [pickedCheckOut, setPickedCheckOut] = useState(
-    checkOutDate ? convertStringToDateObject(checkOutDate) : null
+    checkOutDate && !isSearchBarCalendar ? convertStringToDateObject(checkOutDate) : null
   )
-  console.log('checkInDate', checkInDate)
-  console.log('checkOutDate', checkOutDate)
+
 
   useEffect(() => {
-    if (checkInDate) {
-      setPickedCheckIn(convertStringToDateObject(checkInDate));
-    } else {
-      setPickedCheckIn(null);
+    if (!isSearchBarCalendar) {
+      if (checkInDate) {
+        setPickedCheckIn(convertStringToDateObject(checkInDate));
+      } else {
+        setPickedCheckIn(null);
+      }
     }
-  }, [checkInDate]);
+  }, [checkInDate, isSearchBarCalendar]);
 
   useEffect(() => {
-    if (checkOutDate) {
-      setPickedCheckOut(convertStringToDateObject(checkOutDate));
-    } else {
-      setPickedCheckOut(null);
+    if (!isSearchBarCalendar) {
+      if (checkOutDate) {
+        setPickedCheckOut(convertStringToDateObject(checkOutDate));
+      } else {
+        setPickedCheckOut(null);
+      }
     }
-  }, [checkOutDate]);
-
+  }, [checkOutDate, isSearchBarCalendar]);
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()
@@ -82,10 +86,25 @@ const Calendar = ({
     
     const dateString = convertDateObjectToString({ day, month, year })
 
-    if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
-      setCheckInDate(dateString);
-      setPickedCheckIn(selectedDate);
-      setPickedCheckOut(null);
+    if (isSearchBarCalendar) {
+      if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
+        setPickedCheckIn(selectedDate);
+        setPickedCheckOut(null);
+      } else if (pickedCheckIn && !pickedCheckOut) {
+        const pickedCheckInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
+        const selectedDateTime = new Date(year, month, day).getTime()
+  
+        if (selectedDateTime > pickedCheckInDate) {
+          setPickedCheckOut(selectedDate)
+        } else  {
+          setPickedCheckIn(selectedDate)
+        }
+      }
+    } else {
+      if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
+        setCheckInDate(dateString);
+        setPickedCheckIn(selectedDate);
+        setPickedCheckOut(null);
     } else if (pickedCheckIn && !pickedCheckOut) {
       const pickedCheckInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
       const selectedDateTime = new Date(year, month, day).getTime()
@@ -99,6 +118,7 @@ const Calendar = ({
       }
     }
   }
+}
 
   const renderDaysOfWeek = () => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']

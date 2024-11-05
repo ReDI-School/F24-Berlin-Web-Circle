@@ -87,7 +87,8 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                     dayItemWidth="48px" 
                     dayItemHeight="48px"
                     pickedDayWidth="46px"
-                    pickedDayHeight="46px"  
+                    pickedDayHeight="46px"
+                    isSearchBarCalendar={true}  
                   />
                 </div>
                 <div className={styles.incrementButtonWrapper}>
@@ -109,7 +110,8 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                     dayItemWidth="48px" 
                     dayItemHeight="48px" 
                     pickedDayWidth="46px"
-                    pickedDayHeight="46px" 
+                    pickedDayHeight="46px"
+                    isSearchBarCalendar={true}  
                   />
                 </div>
               </div>
