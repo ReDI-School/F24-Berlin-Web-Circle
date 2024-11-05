@@ -139,26 +139,26 @@ const Calendar = ({
 
     const isBetweenCheckInAndOut = (day, month, year) => {
       if (pickedCheckIn && pickedCheckOut) {
-        const currentDate = new Date(year, month, day).getTime();
-        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime();
-        const checkOutDate = new Date(pickedCheckOut.year, pickedCheckOut.month, pickedCheckOut.day).getTime();
+        const currentDate = new Date(year, month, day).getTime()
+        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
+        const checkOutDate = new Date(pickedCheckOut.year, pickedCheckOut.month, pickedCheckOut.day).getTime()
 
-        return currentDate >= checkInDate && currentDate <= checkOutDate;
+        return currentDate >= checkInDate && currentDate <= checkOutDate
       }
-      return false;
-    };
+      return false
+    }
 
     const isWithinMinStay = (day, month, year) => {
       if (pickedCheckIn && minStayNights && !pickedCheckOut) {
-        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day);
-        const minStayEndDate = new Date(checkInDate);
-        minStayEndDate.setDate(checkInDate.getDate() + minStayNights);
+        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day)
+        const minStayEndDate = new Date(checkInDate)
+        minStayEndDate.setDate(checkInDate.getDate() + minStayNights)
   
-        const currentDate = new Date(year, month, day);
+        const currentDate = new Date(year, month, day)
   
-        return currentDate > checkInDate && currentDate < minStayEndDate;
+        return currentDate > checkInDate && currentDate < minStayEndDate
       }
-      return false;
+      return false
     };
     
     for (let i = 0; i < firstDayOfMonth; i++) {
@@ -170,10 +170,14 @@ const Calendar = ({
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(year, month, day).setHours(0, 0, 0, 0)
       const isPastDate = isCurrentMonth && date < today
-      const isCheckInDate = pickedCheckIn && pickedCheckIn.day === day && pickedCheckIn.month === month && pickedCheckIn.year === year;
-      const isCheckOutDate = pickedCheckOut && pickedCheckOut.day === day && pickedCheckOut.month === month && pickedCheckOut.year === year;
-      const isBetweenDates = isBetweenCheckInAndOut(day, month, year);
-      const isInMinStayRange = isWithinMinStay(day, month, year);
+      const isCheckInDate = pickedCheckIn && pickedCheckIn.day === day && pickedCheckIn.month === month && pickedCheckIn.year === year
+      const isCheckOutDate = pickedCheckOut && pickedCheckOut.day === day && pickedCheckOut.month === month && pickedCheckOut.year === year
+      const isBetweenDates = isBetweenCheckInAndOut(day, month, year)
+      const isInMinStayRange = isWithinMinStay(day, month, year)
+
+      const minNightsTooltipClass = `${styles.tooltipText} ${isCheckInDate && !isCheckOutDate && !isBetweenDates ? styles.minNightsToolTip : ''}`
+      const checkInTooltipClass = `${styles.tooltipText} ${isCheckInDate && isBetweenDates ? styles.checkInToolTip : ''}`
+      const checkOutTooltipClass = `${styles.tooltipText} ${isCheckOutDate && isBetweenDates ? styles.checkOutToolTip : ''}`
 
       daysArray.push(
         <div
@@ -182,17 +186,25 @@ const Calendar = ({
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
-                                  ${isInMinStayRange ? styles.minStayRange : ''}
+                      ${isInMinStayRange ? styles.minStayRange : ''}
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
           }}
-          // onClick={() => !isInMinStayRange && handleDateClick( day, month, year )}
           onClick={() => {
             if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
               handleDateClick(day, month, year);
             }
           }}
+          // tabIndex={isInMinStayRange ? 0 : -1}
+          //       onFocus={(e) => {
+          //           if (isInMinStayRange) {
+          //               e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'visible';
+          //           }
+          //       }}
+          //       onBlur={(e) => {
+          //           e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'hidden';
+          //       }}
         >
           {<div 
             className={`${styles.pickedDay}
@@ -203,8 +215,31 @@ const Calendar = ({
               "--pickedDay-item-width": pickedDayWidth,
               "--pickedDay-item-height": pickedDayHeight,
             }}
+
+             // tabIndex={isInMinStayRange ? 0 : -1}
+          //       onFocus={(e) => {
+          //           if (isInMinStayRange) {
+          //               e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'visible';
+          //           }
+          //       }}
+          //       onBlur={(e) => {
+          //           e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'hidden';
+          //       }}
           >
             {day}
+            {!isSearchBarCalendar && (
+              <>
+                <span className={minNightsTooltipClass}>
+                    {minStayNights}-nights minimum
+                </span>
+                <span className={checkInTooltipClass}>
+                    Check-in day
+                </span>
+                <span className={checkOutTooltipClass}>
+                    Checkout day
+                </span>
+              </>
+            )}
           </div>
           }
         </div>
