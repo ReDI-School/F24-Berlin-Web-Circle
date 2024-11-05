@@ -15,7 +15,8 @@ const Calendar = ({
   setCheckOutDate,
   checkInDate,
   checkOutDate,
-  isSearchBarCalendar 
+  isSearchBarCalendar,
+  minStayNights 
 }) => {
 
   function convertStringToDateObject(dateString) {
@@ -25,7 +26,7 @@ const Calendar = ({
 
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
-  
+
   const [pickedCheckIn, setPickedCheckIn] = useState(
     checkInDate && !isSearchBarCalendar ? convertStringToDateObject(checkInDate) : null
   )
@@ -105,6 +106,7 @@ const Calendar = ({
         setCheckInDate(dateString);
         setPickedCheckIn(selectedDate);
         setPickedCheckOut(null);
+        setCheckOutDate(null)
     } else if (pickedCheckIn && !pickedCheckOut) {
       const pickedCheckInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
       const selectedDateTime = new Date(year, month, day).getTime()
@@ -145,6 +147,19 @@ const Calendar = ({
       }
       return false;
     };
+
+    const isWithinMinStay = (day, month, year) => {
+      if (pickedCheckIn && minStayNights && !pickedCheckOut) {
+        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day);
+        const minStayEndDate = new Date(checkInDate);
+        minStayEndDate.setDate(checkInDate.getDate() + minStayNights);
+  
+        const currentDate = new Date(year, month, day);
+  
+        return currentDate > checkInDate && currentDate < minStayEndDate;
+      }
+      return false;
+    };
     
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(
@@ -158,6 +173,7 @@ const Calendar = ({
       const isCheckInDate = pickedCheckIn && pickedCheckIn.day === day && pickedCheckIn.month === month && pickedCheckIn.year === year;
       const isCheckOutDate = pickedCheckOut && pickedCheckOut.day === day && pickedCheckOut.month === month && pickedCheckOut.year === year;
       const isBetweenDates = isBetweenCheckInAndOut(day, month, year);
+      const isInMinStayRange = isWithinMinStay(day, month, year);
 
       daysArray.push(
         <div
@@ -166,11 +182,17 @@ const Calendar = ({
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
+                                  ${isInMinStayRange ? styles.minStayRange : ''}
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
           }}
-          onClick={() => handleDateClick( day, month, year )}
+          // onClick={() => !isInMinStayRange && handleDateClick( day, month, year )}
+          onClick={() => {
+            if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
+              handleDateClick(day, month, year);
+            }
+          }}
         >
           {<div 
             className={`${styles.pickedDay}

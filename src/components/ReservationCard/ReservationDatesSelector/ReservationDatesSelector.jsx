@@ -30,6 +30,23 @@ const ReservationDatesSelector = ({
   const [checkOutError, setCheckOutError] = useState('')
 
   useEffect(() => {
+      if (checkInDate) {
+        setInputCheckInDate(checkInDate);
+      } else {
+        setInputCheckInDate('');
+      }
+  }, [checkInDate]);
+
+  useEffect(() => {
+      if (checkOutDate) {
+        setInputCheckOutDate(checkOutDate);
+      } else {
+        setInputCheckOutDate('');
+      }
+  }, [checkOutDate]);
+
+
+  useEffect(() => {
     if (
       userSelectedCheckOut &&
       checkInDate &&
@@ -108,6 +125,7 @@ const ReservationDatesSelector = ({
             checkOutDate={checkOutDate}
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
           />
         </div>
       <div className={styles.buttonsContainer}>

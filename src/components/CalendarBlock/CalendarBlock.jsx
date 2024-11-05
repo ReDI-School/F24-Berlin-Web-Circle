@@ -2,7 +2,6 @@ import { KeyboardIcon } from '../../icons/KeyboardIcon'
 import styles from './CalendarBlock.module.css'
 import { calculateNights, getStayPeriod } from '../../utils/dateUtils'
 import  Calendar  from '../Calendar/Calendar' 
-import { useState } from 'react'
 
 const CalendarBlock = ({
   setCheckInDate,
@@ -13,23 +12,11 @@ const CalendarBlock = ({
   toggleKeyboardPopup,
 }) => {
 
-  const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
-  const [userSelectedCheckOut, setUserSelectedCheckOut] = useState(false)
-  const [inputCheckInDate, setInputCheckInDate] = useState(
-    checkInDate ? checkInDate : ''
-  )
-  const [inputCheckOutDate, setInputCheckOutDate] = useState(
-    checkOutDate ? checkOutDate : ''
-  )
-  const [checkInError, setCheckInError] = useState('')
-  const [checkOutError, setCheckOutError] = useState('')
-
   const nightsCount =
     checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
 
   const stayPeriod =
     checkInDate && checkOutDate ? getStayPeriod(checkInDate, checkOutDate) : ''
-    console.log('checkInDate2', checkInDate)
 
   return (
     <div className={styles.selectorContainer}>
@@ -67,6 +54,7 @@ const CalendarBlock = ({
             checkOutDate={checkOutDate}
             setCheckInDate={setCheckInDate}
             setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
           />
         </div>
       <div className={styles.buttonsContainer}>
@@ -83,10 +71,6 @@ const CalendarBlock = ({
               onClick={() => {
                 setCheckInDate('')
                 setCheckOutDate('')
-                setInputCheckInDate('')
-                setInputCheckOutDate('')
-                setCheckInError('')
-                setCheckOutError('')
               }}
             >
               Clear dates
