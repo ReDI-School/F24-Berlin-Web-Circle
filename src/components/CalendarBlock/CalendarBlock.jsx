@@ -53,7 +53,7 @@ const CalendarBlock = ({
         </div>
       </div>
       <div className={styles.calendarWrapper}>
-          <Calendar 
+        <Calendar 
             dayItemWidth="44px" 
             dayItemHeight="42px" 
             monthContainerPadding="13px" 
