@@ -73,7 +73,7 @@
 
 .pickedDay:hover .minNightsToolTip,
 .pickedDay:hover .checkInToolTip,
-.pickedDay:hover .checkOutToolTip {
+.pickedDay:hover .checkOutToolTip{
   visibility: visible;  
 }
 
@@ -120,6 +120,24 @@
   border: 1px solid #ccc;
   border-radius: 50%; 
   cursor: pointer;
+} 
+
+.minStayRange.tooltipVisible,
+.minStayRange:focus-within {
+  opacity: 1;
+  border-radius: 50%; 
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+
+.minStayRange.tooltipVisible .pickedDay:hover ,
+.minStayRange:focus-within .pickedDay:hover {
+  border: 1px solid #ccc;
+}
+
+.date.minStayRange.tooltipVisible,
+.date.minStayRange:focus-within {
+  color: var(--neutral);
 }
 
 .monthContainer h3 { 

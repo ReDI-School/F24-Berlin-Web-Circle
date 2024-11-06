@@ -34,7 +34,6 @@ const Calendar = ({
     checkOutDate && !isSearchBarCalendar ? convertStringToDateObject(checkOutDate) : null
   )
 
-
   useEffect(() => {
     if (!isSearchBarCalendar) {
       if (checkInDate) {
@@ -194,17 +193,37 @@ const Calendar = ({
           onClick={() => {
             if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
               handleDateClick(day, month, year);
+            } 
+          }}
+          tabIndex={isInMinStayRange ? 0 : -1}
+          onFocus={(e) => {
+            if (isInMinStayRange) {
+                const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+                tooltip.style.visibility = 'visible';
+                e.currentTarget.classList.add(styles.tooltipVisible);
             }
           }}
-          // tabIndex={isInMinStayRange ? 0 : -1}
-          //       onFocus={(e) => {
-          //           if (isInMinStayRange) {
-          //               e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'visible';
-          //           }
-          //       }}
-          //       onBlur={(e) => {
-          //           e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'hidden';
-          //       }}
+          onBlur={(e) => {
+            if (isInMinStayRange) {
+                const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+                tooltip.style.visibility = 'hidden';
+                e.currentTarget.classList.remove(styles.tooltipVisible);
+            }
+           }}
+          onMouseOver={(e) => {
+            if (isInMinStayRange && e.currentTarget === document.activeElement) {
+              const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+              tooltip.style.visibility = 'visible';
+              e.currentTarget.classList.add(styles.tooltipVisible);
+            }
+          }}
+          onMouseLeave={(e) => {
+          if (isInMinStayRange && e.currentTarget === document.activeElement) {
+            const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+            tooltip.style.visibility = 'hidden';
+            e.currentTarget.classList.remove(styles.tooltipVisible);
+            }
+          }}
         >
           {<div 
             className={`${styles.pickedDay}
@@ -215,16 +234,6 @@ const Calendar = ({
               "--pickedDay-item-width": pickedDayWidth,
               "--pickedDay-item-height": pickedDayHeight,
             }}
-
-             // tabIndex={isInMinStayRange ? 0 : -1}
-          //       onFocus={(e) => {
-          //           if (isInMinStayRange) {
-          //               e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'visible';
-          //           }
-          //       }}
-          //       onBlur={(e) => {
-          //           e.currentTarget.querySelector(`.${styles.tooltipText}`).style.visibility = 'hidden';
-          //       }}
           >
             {day}
             {!isSearchBarCalendar && (
