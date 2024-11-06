@@ -29,7 +29,8 @@ function ReservationCard({
   checkInDate,
   checkOutDate,
   setCheckInDate,
-  setCheckOutDate
+  setCheckOutDate,
+  alreadyBookedDates
 }) {
 
   const [guestCounts, setGuestCounts] = useState({
@@ -134,6 +135,7 @@ function ReservationCard({
                   toggleShowCalendar={toggleShowCalendar}
                   minStayNights={minStayNights}
                   toggleShortcutsPopup={toggleShortcutsPopup}
+                  alreadyBookedDates={alreadyBookedDates}
                 />
               )}
               <button

@@ -112,6 +112,16 @@ console.log('booking', booking)
     peopleNumber: 6,
     petsNumber: 2,
   }
+  const alreadyBookedDates = [
+    {
+      startDate: "11/01/2024",
+      endDate: "11/05/2024",
+    },
+    {
+      startDate: "12/20/2024",
+      endDate: "12/25/2024",
+    },
+  ];
   
   /* ============== End of Reservation card data ============== */
 
@@ -193,6 +203,7 @@ console.log('booking', booking)
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
+              alreadyBookedDates={alreadyBookedDates}
             />  
           </div>
           <div className={styles.ReservationCard}>
@@ -217,6 +228,7 @@ console.log('booking', booking)
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
+              alreadyBookedDates={alreadyBookedDates}
             />
           </div>
           {isShortcutsPopupVisible && (
