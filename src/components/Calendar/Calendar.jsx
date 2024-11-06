@@ -210,7 +210,8 @@ const Calendar = ({
       const minNightsTooltipClass = `${styles.tooltipText} ${isCheckInDate && !isCheckOutDate && !isBetweenDates ? styles.minNightsToolTip : ''}`
       const checkInTooltipClass = `${styles.tooltipText} ${isCheckInDate && isBetweenDates ? styles.checkInToolTip : ''}`
       const checkOutTooltipClass = `${styles.tooltipText} ${isCheckOutDate && isBetweenDates ? styles.checkOutToolTip : ''}`
-      const beforeBookedTooltipClass = `${styles.tooltipText} ${isDayBeforeBookedDate && !checkInDate || checkInDate && checkOutDate && isDayBeforeBookedDate ? styles.checkoutOnlyToolTip : ''}`;
+      const beforeBookedTooltipClass = `${styles.tooltipText} ${isDayBeforeBookedDate && !checkInDate || checkInDate && checkOutDate && isDayBeforeBookedDate && !isCheckOutDate ? styles.checkoutOnlyToolTip : ''}`;
+
 
       daysArray.push(
         <div
@@ -221,13 +222,12 @@ const Calendar = ({
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
                       ${isInMinStayRange && !isAlreadyBooked ? styles.minStayRange : ''}
                       ${isAlreadyBooked ? styles.pastDate : ''}
-                      ${isDayBeforeBookedDate && !isInMinStayRange ? styles.checkoutOnlyToolTip : ''}
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
           }}
           onClick={() => {
-            if (isAlreadyBooked || isPastDate || !checkInDate && isDayBeforeBookedDate || checkInDate && checkOutDate && isDayBeforeBookedDate ) return; 
+            if (isAlreadyBooked || isPastDate || (!checkInDate && isDayBeforeBookedDate) || (checkInDate && checkOutDate && isDayBeforeBookedDate)) return; 
             if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
               handleDateClick(day, month, year);
             }
