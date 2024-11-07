@@ -31,8 +31,8 @@ const ProductPage = () => {
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
 
-  const [checkInDate, setCheckInDate] = useState('10/20/2024')
-  const [checkOutDate, setCheckOutDate] = useState('10/25/2024')
+  const [checkInDate, setCheckInDate] = useState('11/20/2024')
+  const [checkOutDate, setCheckOutDate] = useState('11/25/2024')
 console.log('checkInDate', checkInDate)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

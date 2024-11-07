@@ -22,7 +22,7 @@ const Calendar = ({
 
   function convertStringToDateObject(dateString) {
     const [month, day, year] = dateString.split('/').map(Number)
-    return { day, month, year }
+    return { day, month: month - 1, year };
   }
 
   const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -82,7 +82,7 @@ const Calendar = ({
 
     function convertDateObjectToString(dateObject) {
       const { day, month, year } = dateObject
-      return `${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`
+      return `${String(month + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`
     }
     
     const dateString = convertDateObjectToString({ day, month, year })
@@ -137,7 +137,7 @@ const Calendar = ({
     const firstDayOfMonth = getFirstDayOfMonth(year, month)
     const daysArray = []
 
-    
+
   const checkInDateTime = pickedCheckIn 
     ? new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime() 
     : null;
@@ -154,6 +154,7 @@ const Calendar = ({
 
 
     const isBooked = (day, month, year) => {
+      if (isSearchBarCalendar) return;
       if (!Array.isArray(alreadyBookedDates)) {
         return false;
     }
@@ -173,15 +174,16 @@ const Calendar = ({
     };
 
     const isDayBeforeBooked = (day, month, year) => {
-      const currentDate = new Date(year, month, day).getTime();
+      if (isSearchBarCalendar) return;
+      const currentDate = new Date(year, month, day).getTime()
 
       return alreadyBookedDates.some(({ startDate }) => {
-          const [startMonth, startDay, startYear] = startDate.split('/').map(Number);
-          const previousDay = new Date(startYear, startMonth - 1, startDay - 1); 
+          const [startMonth, startDay, startYear] = startDate.split('/').map(Number)
+          const previousDay = new Date(startYear, startMonth - 1, startDay - 1);
 
-          return currentDate === previousDay.getTime();
-      });
-    };
+          return currentDate === previousDay.getTime()
+      })
+    }
 
     const isBetweenCheckInAndOut = (day, month, year) => {
       if (pickedCheckIn && pickedCheckOut) {
@@ -242,7 +244,7 @@ const Calendar = ({
                       ${isInMinStayRange && !isAlreadyBooked ? styles.minStayRange : ''}
                       ${isAlreadyBooked ? styles.pastDate : ''}
                       ${isDayBeforeBookedDate ? styles.dayBeforeBookedDate : ''}
-                      ${(!isInValidRange && checkInDateTime && !checkOutDate) ? styles.pastDate : ''}   
+                      ${(!isInValidRange && checkInDateTime && !checkOutDate && !isSearchBarCalendar) ? styles.pastDate : ''}   
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
@@ -345,6 +347,7 @@ const Calendar = ({
 
   const getNextMonth = () =>
     new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
+
 
   return (
     <div className={styles.calendarPopUp}>
