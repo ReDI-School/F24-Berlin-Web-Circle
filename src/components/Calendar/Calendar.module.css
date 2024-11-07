@@ -125,15 +125,17 @@
 } 
 
 .minStayRange.tooltipVisible,
-.minStayRange:focus-within{
+.minStayRange:focus-within,
+.dayBeforeBookedDate:focus-within {
   opacity: 1;
   border-radius: 50%; 
   background-color: #f7f7f7;
   border: 1px solid #ccc;
 }
 
-.minStayRange.tooltipVisible .pickedDay:hover ,
-.minStayRange:focus-within .pickedDay:hover {
+.minStayRange.tooltipVisible .pickedDay:hover,
+.minStayRange:focus-within .pickedDay:hover,
+.dayBeforeBookedDate .pickedDay:hover {
   border: 1px solid #ccc;
 }
 

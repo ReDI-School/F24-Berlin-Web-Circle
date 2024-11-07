@@ -137,6 +137,22 @@ const Calendar = ({
     const firstDayOfMonth = getFirstDayOfMonth(year, month)
     const daysArray = []
 
+    
+  const checkInDateTime = pickedCheckIn 
+    ? new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime() 
+    : null;
+
+  const dayBeforeBookedDateTime = alreadyBookedDates && alreadyBookedDates.length > 0
+  ? alreadyBookedDates
+      .map(({ startDate }) => {
+        const [startMonth, startDay, startYear] = startDate.split('/').map(Number);
+        const previousDay = new Date(startYear, startMonth - 1, startDay - 1);
+        return previousDay.getTime();
+      })
+      .find(time => checkInDateTime && time > checkInDateTime)
+  : null;
+
+
     const isBooked = (day, month, year) => {
       if (!Array.isArray(alreadyBookedDates)) {
         return false;
@@ -206,6 +222,9 @@ const Calendar = ({
       const isInMinStayRange = isWithinMinStay(day, month, year)
       const isAlreadyBooked = isBooked(day, month, year);
       const isDayBeforeBookedDate = isDayBeforeBooked(day, month, year);
+      const isInValidRange = dayBeforeBookedDateTime 
+      ? (date >= checkInDateTime && date <= dayBeforeBookedDateTime)
+      : (checkInDateTime ? date >= checkInDateTime : true);
 
       const minNightsTooltipClass = `${styles.tooltipText} ${isCheckInDate && !isCheckOutDate && !isBetweenDates ? styles.minNightsToolTip : ''}`
       const checkInTooltipClass = `${styles.tooltipText} ${isCheckInDate && isBetweenDates ? styles.checkInToolTip : ''}`
@@ -222,6 +241,8 @@ const Calendar = ({
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
                       ${isInMinStayRange && !isAlreadyBooked ? styles.minStayRange : ''}
                       ${isAlreadyBooked ? styles.pastDate : ''}
+                      ${isDayBeforeBookedDate ? styles.dayBeforeBookedDate : ''}
+                      ${(!isInValidRange && checkInDateTime && !checkOutDate) ? styles.pastDate : ''}   
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
