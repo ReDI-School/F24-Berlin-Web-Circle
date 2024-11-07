@@ -185,6 +185,28 @@ const Calendar = ({
       })
     }
 
+    const minStayBeforeBooked = (day, month, year) => {
+      if (isSearchBarCalendar) return;
+      const currentDate = new Date(year, month, day).getTime();
+    
+      return alreadyBookedDates.some(({ startDate }) => {
+        const [startMonth, startDay, startYear] = startDate.split('/').map(Number);
+        const bookedDate = new Date(startYear, startMonth - 1, startDay);
+        const previousDay = new Date(bookedDate);
+        previousDay.setDate(bookedDate.getDate() - 1); 
+        const minStayRangeStartDate = new Date(previousDay);
+        minStayRangeStartDate.setDate(previousDay.getDate() - minStayNights); 
+    
+        return currentDate > minStayRangeStartDate.getTime() && currentDate < previousDay.getTime();
+      });
+    };
+    
+
+
+
+
+
+
     const isBetweenCheckInAndOut = (day, month, year) => {
       if (pickedCheckIn && pickedCheckOut) {
         const currentDate = new Date(year, month, day).getTime()
@@ -208,6 +230,7 @@ const Calendar = ({
       }
       return false
     };
+ 
     
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(
@@ -227,11 +250,36 @@ const Calendar = ({
       const isInValidRange = dayBeforeBookedDateTime 
       ? (date >= checkInDateTime && date <= dayBeforeBookedDateTime)
       : (checkInDateTime ? date >= checkInDateTime : true);
+      const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year);
 
-      const minNightsTooltipClass = `${styles.tooltipText} ${isCheckInDate && !isCheckOutDate && !isBetweenDates ? styles.minNightsToolTip : ''}`
-      const checkInTooltipClass = `${styles.tooltipText} ${isCheckInDate && isBetweenDates ? styles.checkInToolTip : ''}`
-      const checkOutTooltipClass = `${styles.tooltipText} ${isCheckOutDate && isBetweenDates ? styles.checkOutToolTip : ''}`
-      const beforeBookedTooltipClass = `${styles.tooltipText} ${isDayBeforeBookedDate && !checkInDate || checkInDate && checkOutDate && isDayBeforeBookedDate && !isCheckOutDate ? styles.checkoutOnlyToolTip : ''}`;
+      const tooltipClass = `${styles.tooltipText}`;
+          
+      const minNightsTooltipClass = `${tooltipClass} ${
+        (isCheckInDate && !isCheckOutDate && !isBetweenDates && !isMinStayBeforeBooked) || 
+        (isMinStayBeforeBooked && !checkOutDate)  
+          ? styles.minNightsToolTip 
+          : ''
+      }`;
+      
+      
+      const checkInTooltipClass = `${tooltipClass} ${
+        isCheckInDate && isBetweenDates 
+          ? styles.checkInToolTip 
+          : ''
+      }`;
+      
+      const checkOutTooltipClass = `${tooltipClass} ${
+        isCheckOutDate && isBetweenDates 
+          ? styles.checkOutToolTip 
+          : ''
+      }`;
+      
+      const beforeBookedTooltipClass = `${tooltipClass} ${
+        isDayBeforeBookedDate && (!checkInDate || (checkInDate && checkOutDate && !isCheckOutDate)) 
+          ? styles.checkoutOnlyToolTip 
+          : ''
+      }`;
+
 
 
       daysArray.push(
@@ -244,45 +292,62 @@ const Calendar = ({
                       ${isInMinStayRange && !isAlreadyBooked ? styles.minStayRange : ''}
                       ${isAlreadyBooked ? styles.pastDate : ''}
                       ${isDayBeforeBookedDate ? styles.dayBeforeBookedDate : ''}
-                      ${(!isInValidRange && checkInDateTime && !checkOutDate && !isSearchBarCalendar) ? styles.pastDate : ''}   
+                      ${(!isInValidRange && checkInDateTime && !checkOutDate && !isSearchBarCalendar) ? styles.pastDate : ''}                     
+                      ${isMinStayBeforeBooked && !isCheckOutDate && !isCheckInDate ? styles.minStayRange : ''}
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
           }}
           onClick={() => {
-            if (isAlreadyBooked || isPastDate || (!checkInDate && isDayBeforeBookedDate) || (checkInDate && checkOutDate && isDayBeforeBookedDate)) return; 
+            if (isAlreadyBooked || 
+                isPastDate || (
+                !checkInDate && isDayBeforeBookedDate) || 
+                (checkInDate && checkOutDate && isDayBeforeBookedDate) || 
+                (!checkInDate && isMinStayBeforeBooked) ||
+                (checkInDate && checkOutDate && isMinStayBeforeBooked)) {
+                  return;
+                }  
             if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
               handleDateClick(day, month, year);
-            }
-          }}
-          
-          tabIndex={isInMinStayRange ? 0 : -1}
+              }
+            }}
+          tabIndex={isInMinStayRange && !isCheckOutDate ? 0 : -1}
           onFocus={(e) => {
-            if (isInMinStayRange && !isAlreadyBooked) {
-                const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
-                tooltip.style.visibility = 'visible';
-                e.currentTarget.classList.add(styles.tooltipVisible);
+            if (isInMinStayRange && !isCheckOutDate && !isAlreadyBooked || isMinStayBeforeBooked) {
+              const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+              tooltip.style.visibility = 'visible';
+              e.currentTarget.classList.add(styles.tooltipVisible);
             }
           }}
           onBlur={(e) => {
-            if (isInMinStayRange && !isAlreadyBooked) {
-                const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
-                tooltip.style.visibility = 'hidden';
-                e.currentTarget.classList.remove(styles.tooltipVisible);
+            if (isInMinStayRange && !isCheckOutDate && !isAlreadyBooked || isMinStayBeforeBooked) {
+              const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+              tooltip.style.visibility = 'hidden';
+              e.currentTarget.classList.remove(styles.tooltipVisible);
             }
-           }}
+          }}
           onMouseOver={(e) => {
-            if (isInMinStayRange && !isAlreadyBooked && e.currentTarget === document.activeElement) {
+            if (
+              isInMinStayRange &&
+              !isCheckOutDate &&
+              !isAlreadyBooked ||
+              (e.currentTarget === document.activeElement && isMinStayBeforeBooked)
+            ) {
               const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
               tooltip.style.visibility = 'visible';
               e.currentTarget.classList.add(styles.tooltipVisible);
             }
           }}
           onMouseLeave={(e) => {
-          if (isInMinStayRange && !isAlreadyBooked && e.currentTarget === document.activeElement) {
-            const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
-            tooltip.style.visibility = 'hidden';
-            e.currentTarget.classList.remove(styles.tooltipVisible);
+            if (
+              isInMinStayRange &&
+              !isCheckOutDate &&
+              !isAlreadyBooked ||
+              (e.currentTarget === document.activeElement && isMinStayBeforeBooked)
+            ) {
+              const tooltip = e.currentTarget.querySelector(`.${styles.tooltipText}`);
+              tooltip.style.visibility = 'hidden';
+              e.currentTarget.classList.remove(styles.tooltipVisible);
             }
           }}
         >
@@ -299,18 +364,29 @@ const Calendar = ({
             {day}
             {!isSearchBarCalendar && (
               <>
-                <span className={minNightsTooltipClass}>
+                {(isCheckInDate && !isCheckOutDate && !isBetweenDates && !isMinStayBeforeBooked) || (isMinStayBeforeBooked && !isCheckOutDate) || (isInMinStayRange) ? (
+                  <span className={minNightsTooltipClass}>
                     {minStayNights} night{minStayNights > 1 ? 's' : ''} minimum
-                </span>
-                <span className={checkInTooltipClass}>
+                  </span>
+                ) : null}
+
+                {isCheckInDate && isBetweenDates ? (
+                  <span className={checkInTooltipClass}>
                     Check-in day
-                </span>
-                <span className={checkOutTooltipClass}>
+                  </span>
+                ) : null}
+
+                {isCheckOutDate && isBetweenDates ? (
+                  <span className={checkOutTooltipClass}>
                     Checkout day
-                </span>
-                <span className={beforeBookedTooltipClass}>
+                  </span>
+                ) : null}
+
+                {isDayBeforeBookedDate && !checkInDate || (checkInDate && checkOutDate && isDayBeforeBookedDate && !isCheckOutDate) ? (
+                  <span className={beforeBookedTooltipClass}>
                     Checkout only
-                </span>
+                  </span>
+                ) : null}
               </>
             )}
           </div>

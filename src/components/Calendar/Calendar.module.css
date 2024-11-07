@@ -71,11 +71,9 @@
   border-color: #fff transparent transparent transparent;
 }
 
-.pickedDay:hover .minNightsToolTip,
 .pickedDay:hover .checkInToolTip,
 .pickedDay:hover .checkOutToolTip,
-.pickedDay:hover .checkoutOnlyToolTip 
-{
+.pickedDay:hover .checkoutOnlyToolTip {
   visibility: visible;  
 }
 
