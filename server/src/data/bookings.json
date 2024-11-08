@@ -22,7 +22,17 @@
         "peopleNumber": 5,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/18/2024",
+        "endDate": "11/22/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 2,
@@ -47,7 +57,17 @@
         "peopleNumber": 5,
         "petsNumber": 1
       }
-    }
+    },
+     "alreadyBookedDates": [
+      {
+        "startDate": "11/20/2024",
+        "endDate": "11/26/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 3,
@@ -72,7 +92,17 @@
         "peopleNumber": 5,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/21/2024",
+        "endDate": "11/24/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 4,
@@ -97,7 +127,17 @@
         "peopleNumber": 4,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/27/2024",
+        "endDate": "11/30/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 5,
@@ -122,7 +162,17 @@
         "peopleNumber": 6,
         "petsNumber": 3
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/19/2024",
+        "endDate": "11/29/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 6,
@@ -147,7 +197,17 @@
         "peopleNumber": 7,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/19/2024",
+        "endDate": "11/27/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 7,
@@ -172,7 +232,13 @@
         "peopleNumber": 3,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 8,
@@ -197,7 +263,13 @@
         "peopleNumber": 4,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/14/2024",
+        "endDate": "12/18/2024"
+      }
+    ]
   },
   {
     "id": 9,
@@ -222,7 +294,21 @@
         "peopleNumber": 2,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/01/2024",
+        "endDate": "12/05/2024"
+      },
+      {
+        "startDate": "12/10/2024",
+        "endDate": "12/14/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 10,
@@ -247,7 +333,17 @@
         "peopleNumber": 5,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/02/2024",
+        "endDate": "12/05/2024"
+      },
+      {
+        "startDate": "12/18/2024",
+        "endDate": "12/28/2024"
+      }
+    ]
   },
   {
     "id": 11,
@@ -272,7 +368,13 @@
         "peopleNumber": 1,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/16/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 12,
@@ -297,7 +399,13 @@
         "peopleNumber": 2,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 13,
@@ -322,7 +430,21 @@
         "peopleNumber": 3,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/26/2024",
+        "endDate": "12/15/2024"
+      },
+      {
+        "startDate": "12/06/2024",
+        "endDate": "12/10/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 14,
@@ -347,7 +469,21 @@
         "peopleNumber": 1,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/04/2024",
+        "endDate": "12/07/2024"
+      },
+      {
+        "startDate": "12/10/2024",
+        "endDate": "12/14/2024"
+      },
+      {
+        "startDate": "12/22/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 15,
@@ -372,7 +508,13 @@
         "peopleNumber": 4,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/23/2024"
+      }
+    ]
   },
   {
     "id": 16,
@@ -397,7 +539,13 @@
         "peopleNumber": 2,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/26/2024",
+        "endDate": "11/29/2024"
+      }
+    ]
   },
   {
     "id": 17,
@@ -422,7 +570,13 @@
         "peopleNumber": 5,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/14/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 18,
@@ -447,7 +601,13 @@
         "peopleNumber": 2,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 19,
@@ -472,7 +632,17 @@
         "peopleNumber": 3,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/01/2024",
+        "endDate": "12/07/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 20,
@@ -497,7 +667,13 @@
         "peopleNumber": 4,
         "petsNumber": 2
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/03/2024",
+        "endDate": "12/06/2024"
+      }
+    ]
   },
   {
     "id": 21,
@@ -522,7 +698,17 @@
         "peopleNumber": 2,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/28/2024",
+        "endDate": "12/05/2024"
+      },
+      {
+        "startDate": "12/21/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 22,
@@ -547,7 +733,13 @@
         "peopleNumber": 1,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/13/2024",
+        "endDate": "12/18/2024"
+      }
+    ]
   },
   {
     "id": 23,
@@ -572,7 +764,17 @@
         "peopleNumber": 3,
         "petsNumber": 1
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/01/2024",
+        "endDate": "12/03/2024"
+      },
+      {
+        "startDate": "12/20/2024",
+        "endDate": "12/25/2024"
+      }
+    ]
   },
   {
     "id": 24,
@@ -597,6 +799,20 @@
         "peopleNumber": 2,
         "petsNumber": 0
       }
-    }
+    },
+    "alreadyBookedDates": [
+      {
+        "startDate": "12/01/2024",
+        "endDate": "12/03/2024"
+      },
+      {
+        "startDate": "12/10/2024",
+        "endDate": "12/15/2024"
+      },
+      {
+        "startDate": "12/23/2024",
+        "endDate": "12/28/2024"
+      }
+    ]
   }
 ]
