@@ -125,6 +125,7 @@ function ReservationCard({
                 setCheckInDate={setCheckInDate}
                 setCheckOutDate={setCheckOutDate}
                 renderAsButton={true}
+                alreadyBookedDates={alreadyBookedDates}
               />
               {showCalendar && (
                 <ReservationDatesSelector

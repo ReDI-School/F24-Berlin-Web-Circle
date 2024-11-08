@@ -252,6 +252,7 @@ const Calendar = ({
       : (checkInDateTime ? date >= checkInDateTime : true);
       const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year);
 
+      
       const tooltipClass = `${styles.tooltipText}`;
           
       const minNightsTooltipClass = `${tooltipClass} ${

@@ -33,7 +33,6 @@ const ProductPage = () => {
 
   const [checkInDate, setCheckInDate] = useState('11/20/2024')
   const [checkOutDate, setCheckOutDate] = useState('11/25/2024')
-console.log('checkInDate', checkInDate)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -61,8 +60,6 @@ useEffect(() => {
   fetchData();
 }, [productId]);
 
-
-console.log('booking', booking)
 
 
   /* ============== Reservation card data ============== */
@@ -122,7 +119,7 @@ console.log('booking', booking)
       endDate: "12/25/2024",
     },
   ];
-  
+
   /* ============== End of Reservation card data ============== */
 
   function handleShare() {
