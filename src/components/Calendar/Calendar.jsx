@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
+import { 
+  convertStringToDateObject, 
+  isBooked, 
+  isDayBeforeBooked, 
+  minStayBeforeBooked, 
+  isWithinMinStay, 
+  isBetweenCheckInAndOut 
+} from '../../utils/dateUtils';
 
 const Calendar = ({ 
   dayItemWidth, 
@@ -19,11 +27,6 @@ const Calendar = ({
   minStayNights,
   alreadyBookedDates
 }) => {
-
-  function convertStringToDateObject(dateString) {
-    const [month, day, year] = dateString.split('/').map(Number)
-    return { day, month: month - 1, year };
-  }
 
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
@@ -151,87 +154,7 @@ const Calendar = ({
       })
       .find(time => checkInDateTime && time > checkInDateTime)
   : null;
-
-
-    const isBooked = (day, month, year) => {
-      if (isSearchBarCalendar) return;
-      if (!Array.isArray(alreadyBookedDates)) {
-        return false;
-    }
-    const currentDateString = `${String(month + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`;
-      
-    return alreadyBookedDates.some(({ startDate, endDate }) => {
-        const [startMonth, startDay, startYear] = startDate.split('/').map(Number);
-        const [endMonth, endDay, endYear] = endDate.split('/').map(Number);
-        const [currMonth, currDay, currYear] = currentDateString.split('/').map(Number);
-
-        const start = new Date(startYear, startMonth - 1, startDay); 
-        const end = new Date(endYear, endMonth - 1, endDay); 
-        const current = new Date(currYear, currMonth - 1, currDay); 
-
-        return current >= start && current <= end;
-      });
-    };
-
-    const isDayBeforeBooked = (day, month, year) => {
-      if (isSearchBarCalendar) return;
-      const currentDate = new Date(year, month, day).getTime()
-
-      return alreadyBookedDates.some(({ startDate }) => {
-          const [startMonth, startDay, startYear] = startDate.split('/').map(Number)
-          const previousDay = new Date(startYear, startMonth - 1, startDay - 1);
-
-          return currentDate === previousDay.getTime()
-      })
-    }
-
-    const minStayBeforeBooked = (day, month, year) => {
-      if (isSearchBarCalendar) return;
-      const currentDate = new Date(year, month, day).getTime();
-    
-      return alreadyBookedDates.some(({ startDate }) => {
-        const [startMonth, startDay, startYear] = startDate.split('/').map(Number);
-        const bookedDate = new Date(startYear, startMonth - 1, startDay);
-        const previousDay = new Date(bookedDate);
-        previousDay.setDate(bookedDate.getDate() - 1); 
-        const minStayRangeStartDate = new Date(previousDay);
-        minStayRangeStartDate.setDate(previousDay.getDate() - minStayNights); 
-    
-        return currentDate > minStayRangeStartDate.getTime() && currentDate < previousDay.getTime();
-      });
-    };
-    
-
-
-
-
-
-
-    const isBetweenCheckInAndOut = (day, month, year) => {
-      if (pickedCheckIn && pickedCheckOut) {
-        const currentDate = new Date(year, month, day).getTime()
-        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
-        const checkOutDate = new Date(pickedCheckOut.year, pickedCheckOut.month, pickedCheckOut.day).getTime()
-
-        return currentDate >= checkInDate && currentDate <= checkOutDate
-      }
-      return false
-    }
-
-    const isWithinMinStay = (day, month, year) => {
-      if (pickedCheckIn && minStayNights && !pickedCheckOut) {
-        const checkInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day)
-        const minStayEndDate = new Date(checkInDate)
-        minStayEndDate.setDate(checkInDate.getDate() + minStayNights)
   
-        const currentDate = new Date(year, month, day)
-  
-        return currentDate > checkInDate && currentDate < minStayEndDate
-      }
-      return false
-    };
- 
-    
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(
         <div key={`empty-${i}`} className={styles.emptySlot}></div>
@@ -243,26 +166,24 @@ const Calendar = ({
       const isPastDate = isCurrentMonth && date < today
       const isCheckInDate = pickedCheckIn && pickedCheckIn.day === day && pickedCheckIn.month === month && pickedCheckIn.year === year
       const isCheckOutDate = pickedCheckOut && pickedCheckOut.day === day && pickedCheckOut.month === month && pickedCheckOut.year === year
-      const isBetweenDates = isBetweenCheckInAndOut(day, month, year)
-      const isInMinStayRange = isWithinMinStay(day, month, year)
-      const isAlreadyBooked = isBooked(day, month, year);
-      const isDayBeforeBookedDate = isDayBeforeBooked(day, month, year);
+      const isBetweenDates = isBetweenCheckInAndOut(day, month, year, pickedCheckIn, pickedCheckOut)
+      const isInMinStayRange = isWithinMinStay(day, month, year, pickedCheckIn, pickedCheckOut, minStayNights)
+      const isAlreadyBooked = isBooked(day, month, year, alreadyBookedDates, isSearchBarCalendar);
+      const isDayBeforeBookedDate = isDayBeforeBooked(day, month, year, alreadyBookedDates, isSearchBarCalendar);
       const isInValidRange = dayBeforeBookedDateTime 
       ? (date >= checkInDateTime && date <= dayBeforeBookedDateTime)
       : (checkInDateTime ? date >= checkInDateTime : true);
-      const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year);
+      const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year, alreadyBookedDates, minStayNights, isSearchBarCalendar);
 
       
-      const tooltipClass = `${styles.tooltipText}`;
-          
+      const tooltipClass = `${styles.tooltipText}`;        
       const minNightsTooltipClass = `${tooltipClass} ${
         (isCheckInDate && !isCheckOutDate && !isBetweenDates && !isMinStayBeforeBooked) || 
         (isMinStayBeforeBooked && !checkOutDate)  
           ? styles.minNightsToolTip 
           : ''
       }`;
-      
-      
+       
       const checkInTooltipClass = `${tooltipClass} ${
         isCheckInDate && isBetweenDates 
           ? styles.checkInToolTip 
@@ -280,7 +201,6 @@ const Calendar = ({
           ? styles.checkoutOnlyToolTip 
           : ''
       }`;
-
 
 
       daysArray.push(
@@ -383,7 +303,8 @@ const Calendar = ({
                   </span>
                 ) : null}
 
-                {isDayBeforeBookedDate && !checkInDate || (checkInDate && checkOutDate && isDayBeforeBookedDate && !isCheckOutDate) ? (
+                {isDayBeforeBookedDate && !checkInDate || 
+                (checkInDate && checkOutDate && isDayBeforeBookedDate && !isCheckOutDate) ? (
                   <span className={beforeBookedTooltipClass}>
                     Checkout only
                   </span>
