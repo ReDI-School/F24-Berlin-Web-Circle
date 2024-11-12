@@ -257,24 +257,24 @@
       {
         "reservationId": 1,
         "customerId": 3,
-        "dates": [
-          "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue Dec 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+		"dates": [
+			"2025-02-15T13:00:00.000Z",
+			"2025-02-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 2,
         "customerId": 4,
-        "dates": [
-          "Tue Dec 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue Dec 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+		"dates": [
+			"2025-03-15T13:00:00.000Z",
+			"2025-03-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
   {
     "id": 3,
-    "title": "In the Heart of Berlin - Kreuzberg",
+    "title": "Nice Home in Swan Lake",
     "host": "Hosted by John and Sarah",
     "price": "$130 per night",
     "images": [
@@ -393,23 +393,23 @@
         "reservationId": 3,
         "customerId": 7,
         "dates": [
-          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 4,
         "customerId": 8,
         "dates": [
-          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-22T13:00:00.000Z",
+			"2025-01-25T10:00:00.000Z"
+		  ]
       }
     ]
   },
   {
     "id": 4,
-    "title": "Loft  Berlin-Schöneberg",
+    "title": "Loft  San Francisco",
     "host": "Hosted by Mike and Laura",
     "price": "$210 per night",
     "images": [
@@ -523,24 +523,24 @@
       {
         "reservationId": 3,
         "customerId": 7,
-        "dates": [
-          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+		"dates": [
+			"2025-03-15T13:00:00.000Z",
+			"2025-03-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 4,
         "customerId": 8,
         "dates": [
-          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-05-15T13:00:00.000Z",
+			"2025-05-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
   {
     "id": 5,
-    "title": "Nähe KaDeWe & Kurfürstendamm",
+    "title": "Nähe Big Bear Lake",
     "host": "Hosted by Emma and Jack",
     "price": "$180 per night",
     "images": [
@@ -659,23 +659,23 @@
         "reservationId": 3,
         "customerId": 7,
         "dates": [
-          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 4,
         "customerId": 8,
         "dates": [
-          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
   {
     "id": 6,
-    "title": "Beautiful flat 95m² in Berlin Mitte",
+    "title": "Beautiful flat 95m² in Miami Beach",
     "host": "Hosted by Anna",
     "price": "$120 per night",
     "images": [
@@ -794,17 +794,17 @@
         "reservationId": 3,
         "customerId": 7,
         "dates": [
-          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 4,
         "customerId": 8,
         "dates": [
-          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -925,17 +925,17 @@
         "reservationId": 3,
         "customerId": 7,
         "dates": [
-          "Mon Jan 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jan 19 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-10T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 4,
         "customerId": 8,
         "dates": [
-          "Tue Jan 16 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jan 25 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-20T13:00:00.000Z",
+			"2025-01-29T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -1060,23 +1060,15 @@
         "reservationId": 5,
         "customerId": 2,
         "dates": [
-          "Wed Feb 07 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Sat Feb 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 6,
-        "customerId": 10,
-        "dates": [
-          "Mon Feb 12 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Feb 16 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
   {
     "id": 9,
-    "title": "Quiet room 32 min from TXL/SXF @Central Berlin",
+    "title": "Quiet room 32 min from Napa Valley",
     "host": "Hosted by John",
     "price": "$125 per night",
     "images": [
@@ -1195,23 +1187,23 @@
         "reservationId": 7,
         "customerId": 5,
         "dates": [
-          "Sat Mar 23 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Wed Mar 27 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 8,
         "customerId": 6,
-        "dates": [
-          "Fri Mar 22 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Mar 28 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+		"dates": [
+			"2025-01-25T13:00:00.000Z",
+			"2025-01-29T10:00:00.000Z"
+		  ]
       }
     ]
   },
   {
     "id": 10,
-    "title": "Germany, Berlin, Südliche Friedrichstadt",
+    "title": "Home in San Francisco",
     "host": "Hosted by Eric",
     "price": "$159 per night",
     "images": [
@@ -1324,18 +1316,10 @@
       {
         "reservationId": 9,
         "customerId": 12,
-        "dates": [
-          "Thu Apr 04 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Mon Apr 08 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 10,
-        "customerId": 13,
-        "dates": [
-          "Tue Apr 09 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Apr 12 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+		"dates": [
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -1451,17 +1435,9 @@
         "reservationId": 11,
         "customerId": 15,
         "dates": [
-          "Wed May 01 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Sat May 04 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 12,
-        "customerId": 16,
-        "dates": [
-          "Sun May 05 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue May 07 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -1576,17 +1552,9 @@
         "reservationId": 13,
         "customerId": 17,
         "dates": [
-          "Mon May 06 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu May 09 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 14,
-        "customerId": 18,
-        "dates": [
-          "Fri May 10 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Mon May 13 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -1701,17 +1669,9 @@
         "reservationId": 15,
         "customerId": 19,
         "dates": [
-          "Wed May 15 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Sat May 18 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 16,
-        "customerId": 20,
-        "dates": [
-          "Sun May 19 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue May 21 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -1821,24 +1781,7 @@
       "address": "New York, Manhattan, USA",
       "addressDescription": "Located near famous landmarks in Manhattan."
     },
-    "reservations": [
-      {
-        "reservationId": 17,
-        "customerId": 21,
-        "dates": [
-          "Tue Jun 04 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jun 07 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 18,
-        "customerId": 22,
-        "dates": [
-          "Sat Jun 08 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue Jun 11 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      }
-    ]
+    "reservations": []
   },
 
   {
@@ -1948,17 +1891,9 @@
         "reservationId": 19,
         "customerId": 23,
         "dates": [
-          "Fri Jun 14 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Mon Jun 17 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 20,
-        "customerId": 24,
-        "dates": [
-          "Tue Jun 18 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jun 20 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2073,17 +2008,17 @@
         "reservationId": 21,
         "customerId": 25,
         "dates": [
-          "Fri Jun 21 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Sun Jun 23 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 22,
         "customerId": 26,
-        "dates": [
-          "Tue Jun 25 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Thu Jun 27 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+		"dates": [
+			"2025-01-19T13:00:00.000Z",
+			"2025-01-20T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2198,17 +2133,9 @@
         "reservationId": 23,
         "customerId": 27,
         "dates": [
-          "Sat Jun 29 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue Jul 02 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 24,
-        "customerId": 28,
-        "dates": [
-          "Wed Jul 03 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Jul 05 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2322,24 +2249,7 @@
       "address": "Rome, Trastevere, Italy",
       "addressDescription": "Located in the charming Trastevere district."
     },
-    "reservations": [
-      {
-        "reservationId": 25,
-        "customerId": 29,
-        "dates": [
-          "Mon Jul 08 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Wed Jul 10 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 26,
-        "customerId": 30,
-        "dates": [
-          "Thu Jul 11 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Sat Jul 13 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
-      }
-    ]
+    "reservations": []
   },
   {
     "id": 19,
@@ -2452,17 +2362,17 @@
         "reservationId": 27,
         "customerId": 31,
         "dates": [
-          "Sun Jul 28 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Tue Jul 30 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 28,
         "customerId": 32,
         "dates": [
-          "Wed Jul 31 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Fri Aug 02 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-25T13:00:00.000Z",
+			"2025-01-29T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2581,17 +2491,17 @@
         "reservationId": 29,
         "customerId": 33,
         "dates": [
-          "Mon Jul 22 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Wed Jul 24 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 30,
         "customerId": 34,
         "dates": [
-          "Thu Jul 25 2024 00:00:00 GMT+0100 (Central European Standard Time)",
-          "Sat Jul 27 2024 00:00:00 GMT+0100 (Central European Standard Time)"
-        ]
+			"2025-01-05T13:00:00.000Z",
+			"2025-01-09T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2702,17 +2612,17 @@
         "reservationId": 31,
         "customerId": 35,
         "dates": [
-          "Mon Aug 5 2024 00:00:00 GMT+0200 (Central European Summer Time)",
-          "Wed Aug 7 2024 00:00:00 GMT+0200 (Central European Summer Time)"
-        ]
+			"2025-01-05T13:00:00.000Z",
+			"2025-01-09T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 32,
         "customerId": 36,
         "dates": [
-          "Fri Aug 9 2024 00:00:00 GMT+0200 (Central European Summer Time)",
-          "Sun Aug 11 2024 00:00:00 GMT+0200 (Central European Summer Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2831,17 +2741,17 @@
         "reservationId": 33,
         "customerId": 37,
         "dates": [
-          "Tue Aug 12 2024 00:00:00 GMT+0900 (Japan Standard Time)",
-          "Thu Aug 14 2024 00:00:00 GMT+0900 (Japan Standard Time)"
-        ]
+			"2025-01-05T13:00:00.000Z",
+			"2025-01-09T10:00:00.000Z"
+		  ]
       },
       {
         "reservationId": 34,
         "customerId": 38,
         "dates": [
-          "Sat Aug 16 2024 00:00:00 GMT+0900 (Japan Standard Time)",
-          "Mon Aug 18 2024 00:00:00 GMT+0900 (Japan Standard Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -2952,17 +2862,9 @@
         "reservationId": 35,
         "customerId": 39,
         "dates": [
-          "Mon Aug 20 2024 00:00:00 GMT+0200 (Central European Summer Time)",
-          "Wed Aug 22 2024 00:00:00 GMT+0200 (Central European Summer Time)"
-        ]
-      },
-      {
-        "reservationId": 36,
-        "customerId": 40,
-        "dates": [
-          "Fri Aug 30 2024 00:00:00 GMT+0200 (Central European Summer Time)",
-          "Sun Sep 1 2024 00:00:00 GMT+0200 (Central European Summer Time)"
-        ]
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   },
@@ -3072,18 +2974,10 @@
       {
         "reservationId": 37,
         "customerId": 41,
-        "dates": [
-          "Thu Aug 22 2024 00:00:00 GMT+1000 (Australian Eastern Standard Time)",
-          "Sat Aug 24 2024 00:00:00 GMT+1000 (Australian Eastern Standard Time)"
-        ]
-      },
-      {
-        "reservationId": 38,
-        "customerId": 42,
-        "dates": [
-          "Mon Sep 1 2024 00:00:00 GMT+1000 (Australian Eastern Standard Time)",
-          "Wed Sep 4 2024 00:00:00 GMT+1000 (Australian Eastern Standard Time)"
-        ]
+		"dates": [
+			"2025-01-15T13:00:00.000Z",
+			"2025-01-19T10:00:00.000Z"
+		  ]
       }
     ]
   }

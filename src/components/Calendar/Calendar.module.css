@@ -32,10 +32,114 @@
   height: var(--day-item-height, 40px);
   font-size: 14px;
   font-weight: 500;
+  margin: 1px 0;
+}
+
+.pickedDay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pickedDay-item-width, 40px); 
+  height: var(--pickedDay-item-height, 40px);
+  position: relative;
+}
+
+.pickedDay .tooltipText{
+  visibility: hidden;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #fff;
+  color: var(--primary);
+  border-radius: 4px;
+  padding: 4px 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 132%;
+  font-weight: 400;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.pickedDay .tooltipText::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.pickedDay:hover .checkInToolTip,
+.pickedDay:hover .checkOutToolTip,
+.pickedDay:hover .checkoutOnlyToolTip {
+  visibility: visible;  
+}
+
+.pickedDay:hover {
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .dayHeader {
   font-size: 12px;
+}
+
+.pickedCheckIn,
+.pickedCheckOut {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  width: var(--pickedDay-item-width, 40px); 
+  height: var(--pickedDay-item-height, 40px);
+}
+
+.betweenDates {
+  background-color: #f7f7f7; 
+}
+
+.betweenDatesAndCheckIn {
+  border-top-left-radius: 50%; 
+  border-bottom-left-radius: 50%;
+}
+
+.betweenDatesAndCheckOut {
+  border-top-right-radius: 50%; 
+  border-bottom-right-radius: 50%;
+}
+
+.minStayRange {
+  opacity: 0.6;
+}
+
+.minStayRange:hover {
+  border: 1px solid #ccc;
+  border-radius: 50%; 
+  cursor: pointer;
+} 
+
+.minStayRange.tooltipVisible,
+.minStayRange:focus-within,
+.dayBeforeBookedDate:focus-within {
+  opacity: 1;
+  border-radius: 50%; 
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+
+.minStayRange.tooltipVisible .pickedDay:hover,
+.minStayRange:focus-within .pickedDay:hover,
+.dayBeforeBookedDate .pickedDay:hover {
+  border: 1px solid #ccc;
+}
+
+.date.minStayRange.tooltipVisible,
+.date.minStayRange:focus-within{
+  color: var(--neutral);
 }
 
 .monthContainer h3 { 
@@ -48,6 +152,7 @@
   color: #484848;
   opacity: 0.3;
   text-decoration: var(--pastDate-line-through, none);
+  pointer-events: none;
 }
 
 .prevButton,
@@ -110,3 +215,4 @@
 .monthContainer.flip-left {
   animation: flipLeftToRight 0.4s ease forwards;
 }
+
