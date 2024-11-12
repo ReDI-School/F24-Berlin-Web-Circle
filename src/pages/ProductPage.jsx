@@ -28,10 +28,13 @@ import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/C
 
 
 const ProductPage = () => {
-  const [error, setError] = useState(null);
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
+
+  const [checkInDate, setCheckInDate] = useState('11/20/2024')
+  const [checkOutDate, setCheckOutDate] = useState('11/25/2024')
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const { productId } = useParams();
 
@@ -57,8 +60,6 @@ useEffect(() => {
   fetchData();
 }, [productId]);
 
-
-console.log('booking', booking)
 
 
   /* ============== Reservation card data ============== */
@@ -96,8 +97,7 @@ console.log('booking', booking)
     )
   }
 
-  const defaultCheckInDate = '10/20/2024'
-  const defaultCheckOutDate = '10/25/2024'
+
   const pricePerNight = 146
   const cleaningFee = 10
   const airbnbServiceFee = 10
@@ -109,7 +109,17 @@ console.log('booking', booking)
     peopleNumber: 6,
     petsNumber: 2,
   }
-  
+  const alreadyBookedDates = [
+    {
+      startDate: "11/01/2024",
+      endDate: "11/05/2024",
+    },
+    {
+      startDate: "12/20/2024",
+      endDate: "12/25/2024",
+    },
+  ];
+
   /* ============== End of Reservation card data ============== */
 
   function handleShare() {
@@ -185,12 +195,16 @@ console.log('booking', booking)
             <hr className={styles.separator} />
             <CalendarBlock 
               toggleKeyboardPopup={toggleKeyboardPopup}
+              minStayNights={minStayNights}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
+              alreadyBookedDates={alreadyBookedDates}
             />  
           </div>
           <div className={styles.ReservationCard}>
             <ReservationCard
-              defaultCheckInDate={defaultCheckInDate}
-              defaultCheckOutDate={defaultCheckOutDate}
               pricePerNight={pricePerNight}
               cleaningFee={cleaningFee}
               airbnbServiceFee={airbnbServiceFee}
@@ -207,6 +221,11 @@ console.log('booking', booking)
               showGuests={showGuests}
               showCalendar={showCalendar}
               setShowCalendar={setShowCalendar}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
+              alreadyBookedDates={alreadyBookedDates}
             />
           </div>
           {isShortcutsPopupVisible && (
