@@ -15,10 +15,9 @@ const ReservationDatesSelector = ({
   toggleShowCalendar,
   minStayNights,
   toggleShortcutsPopup,
+  alreadyBookedDates
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
-
-
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
   const [userSelectedCheckOut, setUserSelectedCheckOut] = useState(false)
@@ -30,6 +29,23 @@ const ReservationDatesSelector = ({
   )
   const [checkInError, setCheckInError] = useState('')
   const [checkOutError, setCheckOutError] = useState('')
+
+  useEffect(() => {
+      if (checkInDate) {
+        setInputCheckInDate(checkInDate);
+      } else {
+        setInputCheckInDate('');
+      }
+  }, [checkInDate]);
+
+  useEffect(() => {
+      if (checkOutDate) {
+        setInputCheckOutDate(checkOutDate);
+      } else {
+        setInputCheckOutDate('');
+      }
+  }, [checkOutDate]);
+
 
   useEffect(() => {
     if (
@@ -92,6 +108,7 @@ const ReservationDatesSelector = ({
             setInputCheckInDate={setInputCheckInDate}
             setInputCheckOutDate={setInputCheckOutDate}
             minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
           />
           <WarningMessage message={checkInError || checkOutError} />
         </div>
@@ -99,11 +116,19 @@ const ReservationDatesSelector = ({
         <div className={styles.calendarWrapper}>
           <Calendar 
             dayItemWidth="42px" 
-            dayItemHeight="40px" 
+            dayItemHeight="40px"
+            pickedDayWidth="40px"
+            pickedDayHeight="40px" 
             monthContainerPadding="13px" 
             textDecoration="line-through" 
             buttonRightMargin="-46px"
             buttonLeftMargin="-46px"
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
           />
         </div>
       <div className={styles.buttonsContainer}>

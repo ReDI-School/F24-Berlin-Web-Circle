@@ -10,8 +10,6 @@ import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
 
 function ReservationCard({
-  defaultCheckInDate,
-  defaultCheckOutDate,
   pricePerNight,
   cleaningFee,
   airbnbServiceFee,
@@ -28,9 +26,13 @@ function ReservationCard({
   showGuests,
   showCalendar,
   setShowCalendar,
+  checkInDate,
+  checkOutDate,
+  setCheckInDate,
+  setCheckOutDate,
+  alreadyBookedDates
 }) {
-  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
-  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
+
   const [guestCounts, setGuestCounts] = useState({
     adults: 1,  
     children: 0, 
@@ -123,6 +125,7 @@ function ReservationCard({
                 setCheckInDate={setCheckInDate}
                 setCheckOutDate={setCheckOutDate}
                 renderAsButton={true}
+                alreadyBookedDates={alreadyBookedDates}
               />
               {showCalendar && (
                 <ReservationDatesSelector
@@ -133,6 +136,7 @@ function ReservationCard({
                   toggleShowCalendar={toggleShowCalendar}
                   minStayNights={minStayNights}
                   toggleShortcutsPopup={toggleShortcutsPopup}
+                  alreadyBookedDates={alreadyBookedDates}
                 />
               )}
               <button
