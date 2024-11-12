@@ -15,8 +15,7 @@ function ReservationCard({
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  onGuestChange,
-  guestsList,
+  guestCounts: defaultGuestCounts,
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
@@ -33,12 +32,13 @@ function ReservationCard({
   alreadyBookedDates
 }) {
 
-  const [guestCounts, setGuestCounts] = useState({
-    adults: 1,  
-    children: 0, 
-    infants: 0,  
-    pets: 0  
-  });
+  const [guestCounts, setGuestCounts] = useState(defaultGuestCounts || {});
+  const [guestsList, setGuestsList] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ])
   // const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -60,6 +60,16 @@ function ReservationCard({
     petsCount,
     adultsAndChildrenCount,
   } = calculateGuestCounts(guestsList)
+
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
 
   const checkInOut = checkInDate && checkOutDate
 
@@ -154,7 +164,7 @@ function ReservationCard({
               <div className={styles.guestDropdown}>
                 {showGuests && (
                   <AddGuestsPopUp
-                    onGuestChange={onGuestChange}
+                    onGuestChange={handleGuestClick}
                     style={addGuestPopUpStyles}
                     allowGuestsNumber={allowGuestsNumber}
                     toggleShowGuests={toggleShowGuests}

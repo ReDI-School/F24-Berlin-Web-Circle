@@ -28,16 +28,32 @@ import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/C
 
 
 const ProductPage = () => {
+  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
+  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+  const [isKeybordPopupVisible, setIsKeybordPopupVisible] = useState(false)
+  const [showGuests, setShowGuests] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
-
-  const [checkInDate, setCheckInDate] = useState('11/20/2024')
-  const [checkOutDate, setCheckOutDate] = useState('11/25/2024')
+  const [checkInDate, setCheckInDate] = useState(null)
+  const [checkOutDate, setCheckOutDate] = useState(null)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { productId } = useParams();
 
+  const alreadyBookedDates = [ // TODO: remove after alreadyBookedDates will be fetched from backend
+    {
+      startDate: "11/01/2024",
+      endDate: "11/05/2024",
+    },
+    {
+      startDate: "12/20/2024",
+      endDate: "12/25/2024",
+    },
+  ];
+
+  const { productId } = useParams();
+  
 useEffect(() => {
   const fetchData = async () => {
     setLoading(true);
@@ -50,6 +66,11 @@ useEffect(() => {
       ]);
       setPlace(placeResponse.data);
       setBooking(bookingsResponse.data);
+
+      if (bookingsResponse.data) {
+        setCheckInDate(bookingsResponse.data.checkInDate);
+        setCheckOutDate(bookingsResponse.data.checkOutDate);
+      }
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
     } finally {
@@ -60,20 +81,6 @@ useEffect(() => {
   fetchData();
 }, [productId]);
 
-
-
-  /* ============== Reservation card data ============== */
-  const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
-  const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
-  const [isKeybordPopupVisible, setIsKeybordPopupVisible] = useState(false)
-  const [showGuests, setShowGuests] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
-  const [guestsList, setGuestsList] = useState([
-    { typeofGuest: 'Adults', numberOfGuests: 1 },
-    { typeofGuest: 'Children', numberOfGuests: 0 },
-    { typeofGuest: 'Infants', numberOfGuests: 0 },
-    { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ])
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -87,40 +94,6 @@ useEffect(() => {
     setIsKeybordPopupVisible((prevState) => !prevState)
   }
 
-  const handleGuestClick = (updatedGuest) => {
-    setGuestsList((prevList) =>
-      prevList.map((guest) =>
-        guest.typeofGuest === updatedGuest.typeofGuest
-          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-          : guest
-      )
-    )
-  }
-
-
-  const pricePerNight = 146
-  const cleaningFee = 10
-  const airbnbServiceFee = 10
-  const longStayDiscount = 30
-  const nightsCountForDiscount = 5
-  const minStayNights = 3
-  const isBookingOpen = true
-  const allowGuestsNumber = {
-    peopleNumber: 6,
-    petsNumber: 2,
-  }
-  const alreadyBookedDates = [
-    {
-      startDate: "11/01/2024",
-      endDate: "11/05/2024",
-    },
-    {
-      startDate: "12/20/2024",
-      endDate: "12/25/2024",
-    },
-  ];
-
-  /* ============== End of Reservation card data ============== */
 
   function handleShare() {
     alert("Share this experience");
@@ -195,7 +168,7 @@ useEffect(() => {
             <hr className={styles.separator} />
             <CalendarBlock 
               toggleKeyboardPopup={toggleKeyboardPopup}
-              minStayNights={minStayNights}
+              minStayNights={booking.bookingData.minStayNights}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
@@ -204,17 +177,16 @@ useEffect(() => {
             />  
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard
-              pricePerNight={pricePerNight}
-              cleaningFee={cleaningFee}
-              airbnbServiceFee={airbnbServiceFee}
-              longStayDiscount={longStayDiscount}
-              nightsCountForDiscount={nightsCountForDiscount}
-              onGuestChange={handleGuestClick}
-              guestsList={guestsList}
-              allowGuestsNumber={allowGuestsNumber}
-              minStayNights={minStayNights}
-              isBookingOpen={isBookingOpen}
+          {!!booking && <ReservationCard
+              pricePerNight={booking.bookingData.pricePerNight}
+              cleaningFee={booking.bookingData.cleaningFee}
+              airbnbServiceFee={booking.bookingData.airbnbServiceFee}
+              longStayDiscount={booking.bookingData.longStayDiscount}
+              nightsCountForDiscount={booking.bookingData.nightsCountForLongStayDiscount}
+              allowGuestsNumber={booking.bookingData.allowGuestsNumber}
+              minStayNights={booking.bookingData.minStayNights}
+              isBookingOpen={booking.bookingData.isBookingOpen}
+              guestCounts={booking.guestCounts}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
               setShowGuests={setShowGuests}
@@ -227,6 +199,7 @@ useEffect(() => {
               setCheckOutDate={setCheckOutDate}
               alreadyBookedDates={alreadyBookedDates}
             />
+          }
           </div>
           {isShortcutsPopupVisible && (
               <ShortcutsPopUp
