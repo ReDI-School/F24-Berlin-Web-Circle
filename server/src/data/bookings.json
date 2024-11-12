@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "checkInDate": "11/11/2024",
-    "checkOutDate": "11/16/2024",
+    "checkInDate": "12/11/2024",
+    "checkOutDate": "12/16/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -36,8 +36,8 @@
   },
   {
     "id": 2,
-    "checkInDate": "11/15/2024",
-    "checkOutDate": "11/20/2024",
+    "checkInDate": "12/15/2024",
+    "checkOutDate": "12/20/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -64,7 +64,7 @@
         "endDate": "11/26/2024"
       },
       {
-        "startDate": "12/20/2024",
+        "startDate": "12/21/2024",
         "endDate": "12/25/2024"
       }
     ]
@@ -141,8 +141,8 @@
   },
   {
     "id": 5,
-    "checkInDate": "11/10/2024",
-    "checkOutDate": "11/15/2024",
+    "checkInDate": "12/10/2024",
+    "checkOutDate": "12/15/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -176,8 +176,8 @@
   },
   {
     "id": 6,
-    "checkInDate": "11/25/2024",
-    "checkOutDate": "11/30/2024",
+    "checkInDate": "12/25/2024",
+    "checkOutDate": "12/30/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -205,14 +205,14 @@
       },
       {
         "startDate": "12/20/2024",
-        "endDate": "12/25/2024"
+        "endDate": "12/24/2024"
       }
     ]
   },
   {
     "id": 7,
-    "checkInDate": "11/15/2024",
-    "checkOutDate": "11/20/2024",
+    "checkInDate": "11/25/2024",
+    "checkOutDate": "11/30/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -273,8 +273,8 @@
   },
   {
     "id": 9,
-    "checkInDate": "12/07/2024",
-    "checkOutDate": "12/12/2024",
+    "checkInDate": "12/06/2024",
+    "checkOutDate": "12/09/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -409,8 +409,8 @@
   },
   {
     "id": 13,
-    "checkInDate": "11/25/2024",
-    "checkOutDate": "11/30/2024",
+    "checkInDate": "11/22/2024",
+    "checkOutDate": "11/25/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -677,8 +677,8 @@
   },
   {
     "id": 21,
-    "checkInDate": "12/21/2024",
-    "checkOutDate": "12/26/2024",
+    "checkInDate": "12/26/2024",
+    "checkOutDate": "12/29/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
