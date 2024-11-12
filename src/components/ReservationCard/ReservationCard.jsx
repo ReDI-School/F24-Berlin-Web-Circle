@@ -15,7 +15,7 @@ function ReservationCard({
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  guestCounts: defaulfGuestCounts,
+  guestCounts: defaultGuestCounts,
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
@@ -32,7 +32,7 @@ function ReservationCard({
   alreadyBookedDates
 }) {
 
-  const [guestCounts, setGuestCounts] = useState(defaulfGuestCounts || {});
+  const [guestCounts, setGuestCounts] = useState(defaultGuestCounts || {});
   const [guestsList, setGuestsList] = useState([
     { typeofGuest: 'Adults', numberOfGuests: 1 },
     { typeofGuest: 'Children', numberOfGuests: 0 },
