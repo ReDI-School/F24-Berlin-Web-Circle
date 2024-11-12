@@ -35,8 +35,8 @@ const ProductPage = () => {
   const [showCalendar, setShowCalendar] = useState(false)
   const [place, setPlace] = useState(null);
   const [booking, setBooking] = useState(null);
-  const [checkInDate, setCheckInDate] = useState('11/20/2024')
-  const [checkOutDate, setCheckOutDate] = useState('11/25/2024')
+  const [checkInDate, setCheckInDate] = useState(null)
+  const [checkOutDate, setCheckOutDate] = useState(null)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -53,7 +53,7 @@ const ProductPage = () => {
   ];
 
   const { productId } = useParams();
-
+  
 useEffect(() => {
   const fetchData = async () => {
     setLoading(true);
@@ -66,6 +66,11 @@ useEffect(() => {
       ]);
       setPlace(placeResponse.data);
       setBooking(bookingsResponse.data);
+
+      if (bookingsResponse.data) {
+        setCheckInDate(bookingsResponse.data.checkInDate);
+        setCheckOutDate(bookingsResponse.data.checkOutDate);
+      }
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
     } finally {
