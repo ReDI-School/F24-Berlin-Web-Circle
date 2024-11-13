@@ -40,18 +40,6 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
-  const alreadyBookedDates = [ // TODO: remove after alreadyBookedDates will be fetched from backend
-    {
-      startDate: "11/01/2024",
-      endDate: "11/05/2024",
-    },
-    {
-      startDate: "12/20/2024",
-      endDate: "12/25/2024",
-    },
-  ];
-
   const { productId } = useParams();
   
 useEffect(() => {
@@ -165,16 +153,17 @@ useEffect(() => {
                 onClick={handleShowAmenities}
               />
             }
-            <hr className={styles.separator} />
-            <CalendarBlock 
+            {booking.bookingData.isBookingOpen && <hr className={styles.separator} />}
+            {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
               toggleKeyboardPopup={toggleKeyboardPopup}
               minStayNights={booking.bookingData.minStayNights}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={alreadyBookedDates}
+              alreadyBookedDates={booking.alreadyBookedDates}
             />  
+            }
           </div>
           <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
@@ -197,7 +186,7 @@ useEffect(() => {
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={alreadyBookedDates}
+              alreadyBookedDates={booking.alreadyBookedDates}
             />
           }
           </div>
