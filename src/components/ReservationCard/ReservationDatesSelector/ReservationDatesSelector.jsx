@@ -5,6 +5,7 @@ import styles from './ReservationDatesSelector.module.css'
 import { useEffect, useState } from 'react'
 import WarningMessage from '../WarningMessage/WarningMessage'
 import { calculateNights, getStayPeriod } from '../../../utils/dateUtils'
+import Calendar from '../../Calendar/Calendar'
 
 const ReservationDatesSelector = ({
   setCheckInDate,
@@ -14,10 +15,9 @@ const ReservationDatesSelector = ({
   toggleShowCalendar,
   minStayNights,
   toggleShortcutsPopup,
+  alreadyBookedDates
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
-
-
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
   const [userSelectedCheckOut, setUserSelectedCheckOut] = useState(false)
@@ -29,6 +29,23 @@ const ReservationDatesSelector = ({
   )
   const [checkInError, setCheckInError] = useState('')
   const [checkOutError, setCheckOutError] = useState('')
+
+  useEffect(() => {
+      if (checkInDate) {
+        setInputCheckInDate(checkInDate);
+      } else {
+        setInputCheckInDate('');
+      }
+  }, [checkInDate]);
+
+  useEffect(() => {
+      if (checkOutDate) {
+        setInputCheckOutDate(checkOutDate);
+      } else {
+        setInputCheckOutDate('');
+      }
+  }, [checkOutDate]);
+
 
   useEffect(() => {
     if (
@@ -91,21 +108,29 @@ const ReservationDatesSelector = ({
             setInputCheckInDate={setInputCheckInDate}
             setInputCheckOutDate={setInputCheckOutDate}
             minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
           />
           <WarningMessage message={checkInError || checkOutError} />
         </div>
       </div>
-      <div
-        className={styles.inputsContainer}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          color: 'red',
-          fontSize: '30px',
-        }}
-      >
-        A Calendar will appear here soon!
-      </div>
+        <div className={styles.calendarWrapper}>
+          <Calendar 
+            dayItemWidth="42px" 
+            dayItemHeight="40px"
+            pickedDayWidth="40px"
+            pickedDayHeight="40px" 
+            monthContainerPadding="13px" 
+            textDecoration="line-through" 
+            buttonRightMargin="-46px"
+            buttonLeftMargin="-46px"
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
+          />
+        </div>
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}
