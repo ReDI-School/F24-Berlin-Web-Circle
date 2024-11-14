@@ -28,6 +28,14 @@ Then you should see something like this in the terminal, showing you can see the
 npm test
 ```
 
+## Database Migration
+
+After modifying the `schema.prisma` file, apply the migration by running:
+
+```bash
+npx prisma migrate dev --name add_place_model
+
+
 ## Vite React Template
 
 Taken from https://reactrouter.com/en/main/start/tutorial
