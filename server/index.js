@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const products = require("./src/data/places.json");
 const dotenv = require("dotenv");
-const prisma = require(".db/prisma");
+// const prisma = require(".db/prisma");
 
 dotenv.config();
 
