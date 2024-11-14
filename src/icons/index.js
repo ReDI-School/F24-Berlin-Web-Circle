@@ -30,3 +30,5 @@ export { KeyboardIcon } from "./KeyboardIcon";
 export { WarningIcon } from "./WarningIcon";
 export { CloseButtonIcon } from "./CloseButtonIcon";
 export {CloseIcon} from "./CloseIcon";
+export { CalendarLeftArrowIcon } from "./CalendarLeftArrowIcon";
+export { CalendarRightArrowIcon } from "./CalendarRightArrowIcon";

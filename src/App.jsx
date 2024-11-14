@@ -2,11 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
-import DataIncrementsButtonForTheCalendar from "./components/DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
+import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import PriceRangeFilter from "./components/priceRange/PriceRangeFilter";
 import { BASE_URL } from "./constants/constants";
+
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -57,7 +58,7 @@ function App() {
         <CalendarToggle />
       </div>
       
-      <DataIncrementsButtonForTheCalendar />
+      <CategoryTabs />  
 
       <PriceRangeFilter histogramData= {histogramData}/>
 
