@@ -131,7 +131,7 @@ const ProductPage = () => {
               bedrooms={{ key: place.productSummary.bedrooms.key, value: place.productSummary.bedrooms.value }}
               beds={{ key: place.productSummary.beds.key, value: place.productSummary.beds.value}}
               baths={{ key: place.productSummary.baths.key, value: place.productSummary.baths.value}}
-              starGrade={place.reviewSummary.ratings.valueAvgRating}
+              starGrade={place.reviewSummary.totalAvgRating}
               reviews={place.reviewSummary.totalReviewsCount}
             />}
             <FavoriteStay />
