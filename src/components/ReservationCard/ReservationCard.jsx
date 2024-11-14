@@ -10,15 +10,12 @@ import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
 
 function ReservationCard({
-  defaultCheckInDate,
-  defaultCheckOutDate,
   pricePerNight,
   cleaningFee,
   airbnbServiceFee,
   longStayDiscount,
   nightsCountForDiscount,
-  onGuestChange,
-  guestsList,
+  guestCounts: defaultGuestCounts,
   allowGuestsNumber,
   minStayNights,
   isBookingOpen,
@@ -28,16 +25,21 @@ function ReservationCard({
   showGuests,
   showCalendar,
   setShowCalendar,
+  checkInDate,
+  checkOutDate,
+  setCheckInDate,
+  setCheckOutDate,
+  alreadyBookedDates
 }) {
-  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate)
-  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate)
-  const [guestCounts, setGuestCounts] = useState({
-    adults: 1,  
-    children: 0, 
-    infants: 0,  
-    pets: 0  
-  });
-  const [calculatedCosts, setCalculatedCosts] = useState(null)
+
+  const [guestCounts, setGuestCounts] = useState(defaultGuestCounts || {});
+  const [guestsList, setGuestsList] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ])
+  // const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -59,6 +61,16 @@ function ReservationCard({
     adultsAndChildrenCount,
   } = calculateGuestCounts(guestsList)
 
+  const handleGuestClick = (updatedGuest) => {
+    setGuestsList((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
+
   const checkInOut = checkInDate && checkOutDate
 
   const handleFormSubmit = (e) => {
@@ -73,7 +85,7 @@ function ReservationCard({
           infants: infantsCount,
           pets: petsCount,
         },
-        setCalculatedCosts,
+        // setCalculatedCosts,
         setLoading,
         setError
       )
@@ -92,8 +104,6 @@ function ReservationCard({
     border: '1px solid var(--palette-deco)',
     zIndex: '99 !important',
   }
-
-console.log('calculatedCosts', calculatedCosts)
 
   return (
     <div className={styles.reservationCard}>
@@ -114,7 +124,10 @@ console.log('calculatedCosts', calculatedCosts)
             <h1 className={styles.soldOutGuestSection}>Booking closed</h1>
           )}
           {isBookingOpen && (
-            <div className={styles.reservationForm} ref={guestsRef}>
+            <div 
+              className={styles.reservationForm} 
+              ref={guestsRef}
+            >
               <DatePicker
                 checkInDate={checkInDate}
                 checkOutDate={checkOutDate}
@@ -122,6 +135,7 @@ console.log('calculatedCosts', calculatedCosts)
                 setCheckInDate={setCheckInDate}
                 setCheckOutDate={setCheckOutDate}
                 renderAsButton={true}
+                alreadyBookedDates={alreadyBookedDates}
               />
               {showCalendar && (
                 <ReservationDatesSelector
@@ -132,6 +146,7 @@ console.log('calculatedCosts', calculatedCosts)
                   toggleShowCalendar={toggleShowCalendar}
                   minStayNights={minStayNights}
                   toggleShortcutsPopup={toggleShortcutsPopup}
+                  alreadyBookedDates={alreadyBookedDates}
                 />
               )}
               <button
@@ -149,7 +164,7 @@ console.log('calculatedCosts', calculatedCosts)
               <div className={styles.guestDropdown}>
                 {showGuests && (
                   <AddGuestsPopUp
-                    onGuestChange={onGuestChange}
+                    onGuestChange={handleGuestClick}
                     style={addGuestPopUpStyles}
                     allowGuestsNumber={allowGuestsNumber}
                     toggleShowGuests={toggleShowGuests}

@@ -13,22 +13,21 @@ const SearchPanel = () => {
     const toggleSearchType = (type) => {
         setSearchType(type);
     };
-    const handleAirbnbSearch = ({ location: destination, checkIn, checkOut, guests }) => {
+    const handleAirbnbSearch = ({ location: region, checkIn, checkOut, guests }) => {
         // TODO: After configuring the props below should be removed. USED FOR TESTING.
-        destination = "US";
-        checkIn = new Date(2024, 11, 2);
-        checkOut = new Date(2024, 11, 3);
+        region = "uS";
+        checkIn = new Date("2025-01-14T13:00:00.000Z");
+        checkOut = new Date("2025-01-15T10:00:00.000Z");
         guests = 1;
-        ///////////////////
 
         const searchQueries = {
-            destination,
+            region,
             checkIn,
             checkOut,
             guests
         }
-        if (destination)
-            navigate({pathname: `/s/${destination}/homes`, search: createSearchParams(searchQueries).toString()});
+        if (region)
+            navigate({pathname: `/s/${region}/homes`, search: createSearchParams(searchQueries).toString()});
     };
 
     return (

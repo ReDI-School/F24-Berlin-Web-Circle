@@ -11,9 +11,28 @@
 }
 
 .grid {
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   width: 95vw;
   overflow: hidden;
   justify-content: center;
+}
+
+.title {
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.price {
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+}
+
+.host {
+  color: grey;
 }

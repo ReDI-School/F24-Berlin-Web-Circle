@@ -1,7 +1,6 @@
 import ReservationCard from "../components/ReservationCard/ReservationCard";
 import FavoriteStay from "../components/FavoriteStay/FavoriteStay";
 import HostSummary from "../components/HostSummary/HostSummary";
-import hostImage from "../assets/images/host-raus.webp";
 import MapView from "../components/MapView/MapView";
 import mapViewSampleImg from "./../assets/map-view-sample.png";
 import ProductGallery from "../components/ProductGallery/ProductGallery";
@@ -24,34 +23,64 @@ import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/Shortcu
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import CalendarBlock from "../components/CalendarBlock/CalendarBlock";
+import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/CalendarBlockPopUp";
 
 
 const ProductPage = () => {
-  const [error, setError] = useState(null);
-  const [place, setPlace] = useState(null);
-
-  const { productId } = useParams();
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8800/places/${productId}`)
-      .then((response) => setPlace(response.data))
-      .catch((err) =>
-        setError(err.response?.data?.error || "Something went wrong")
-      );
-  }, [productId]);
-
-  /* ============== Reservation card data ============== */
   const [isShortcutsPopupVisible, setIsShortcutsPopupVisible] = useState(false)
   const [isGuestCountPopupVisible, setIsGuestCountPopupVisible] = useState(false)
+  const [isKeybordPopupVisible, setIsKeybordPopupVisible] = useState(false)
   const [showGuests, setShowGuests] = useState(false)
   const [showCalendar, setShowCalendar] = useState(false)
-  const [guestsList, setGuestsList] = useState([
-    { typeofGuest: 'Adults', numberOfGuests: 1 },
-    { typeofGuest: 'Children', numberOfGuests: 0 },
-    { typeofGuest: 'Infants', numberOfGuests: 0 },
-    { typeofGuest: 'Pets', numberOfGuests: 0 },
-  ])
+  const [place, setPlace] = useState(null);
+  const [booking, setBooking] = useState(null);
+  const [checkInDate, setCheckInDate] = useState(null)
+  const [checkOutDate, setCheckOutDate] = useState(null)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
+  const alreadyBookedDates = [ // TODO: remove after alreadyBookedDates will be fetched from backend
+    {
+      startDate: "11/01/2024",
+      endDate: "11/05/2024",
+    },
+    {
+      startDate: "12/20/2024",
+      endDate: "12/25/2024",
+    },
+  ];
+
+  const { productId } = useParams();
+  
+useEffect(() => {
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null); 
+
+    try {
+      const [placeResponse, bookingsResponse] = await Promise.all([
+        axios.get(`http://localhost:8800/places/${productId}`),
+        axios.get(`http://localhost:8800/bookings/${productId}`)
+      ]);
+      setPlace(placeResponse.data);
+      setBooking(bookingsResponse.data);
+
+      if (bookingsResponse.data) {
+        setCheckInDate(bookingsResponse.data.checkInDate);
+        setCheckOutDate(bookingsResponse.data.checkOutDate);
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, [productId]);
+
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -61,32 +90,10 @@ const ProductPage = () => {
     setIsGuestCountPopupVisible((prevState) => !prevState)
   }
 
-  const handleGuestClick = (updatedGuest) => {
-    setGuestsList((prevList) =>
-      prevList.map((guest) =>
-        guest.typeofGuest === updatedGuest.typeofGuest
-          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
-          : guest
-      )
-    )
+  const toggleKeyboardPopup = () => {
+    setIsKeybordPopupVisible((prevState) => !prevState)
   }
 
-
-  const defaultCheckInDate = '10/20/2024'
-  const defaultCheckOutDate = '10/25/2024'
-  const pricePerNight = 146
-  const cleaningFee = 10
-  const airbnbServiceFee = 10
-  const longStayDiscount = 30
-  const nightsCountForDiscount = 5
-  const minStayNights = 3
-  const isBookingOpen = true
-  const allowGuestsNumber = {
-    peopleNumber: 6,
-    petsNumber: 2,
-  }
-  
-  /* ============== End of Reservation card data ============== */
 
   function handleShare() {
     alert("Share this experience");
@@ -158,28 +165,41 @@ const ProductPage = () => {
                 onClick={handleShowAmenities}
               />
             }
+            <hr className={styles.separator} />
+            <CalendarBlock 
+              toggleKeyboardPopup={toggleKeyboardPopup}
+              minStayNights={booking.bookingData.minStayNights}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
+              alreadyBookedDates={alreadyBookedDates}
+            />  
           </div>
           <div className={styles.ReservationCard}>
-            <ReservationCard
-              defaultCheckInDate={defaultCheckInDate}
-              defaultCheckOutDate={defaultCheckOutDate}
-              pricePerNight={pricePerNight}
-              cleaningFee={cleaningFee}
-              airbnbServiceFee={airbnbServiceFee}
-              longStayDiscount={longStayDiscount}
-              nightsCountForDiscount={nightsCountForDiscount}
-              onGuestChange={handleGuestClick}
-              guestsList={guestsList}
-              allowGuestsNumber={allowGuestsNumber}
-              minStayNights={minStayNights}
-              isBookingOpen={isBookingOpen}
+          {!!booking && <ReservationCard
+              pricePerNight={booking.bookingData.pricePerNight}
+              cleaningFee={booking.bookingData.cleaningFee}
+              airbnbServiceFee={booking.bookingData.airbnbServiceFee}
+              longStayDiscount={booking.bookingData.longStayDiscount}
+              nightsCountForDiscount={booking.bookingData.nightsCountForLongStayDiscount}
+              allowGuestsNumber={booking.bookingData.allowGuestsNumber}
+              minStayNights={booking.bookingData.minStayNights}
+              isBookingOpen={booking.bookingData.isBookingOpen}
+              guestCounts={booking.guestCounts}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
               setShowGuests={setShowGuests}
               showGuests={showGuests}
               showCalendar={showCalendar}
               setShowCalendar={setShowCalendar}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
+              alreadyBookedDates={alreadyBookedDates}
             />
+          }
           </div>
           {isShortcutsPopupVisible && (
               <ShortcutsPopUp
@@ -197,33 +217,33 @@ const ProductPage = () => {
                 setShowGuests={setShowGuests}
               />
             )}
+          {isKeybordPopupVisible && (
+              <CalendarBlockPopUp
+                isVisible={isKeybordPopupVisible}
+                onClose={toggleKeyboardPopup}
+              />
+            )}
         </div>
         <hr className={styles.separator} />
-        <ReviewSummary
-          totalAvgRating={4.91}
-          totalReviewsCount={200}
+        {!!place.reviewSummary && <ReviewSummary
+          totalAvgRating={place.reviewSummary.valueAvgRating}
+          totalReviewsCount={place.reviewSummary.totalReviewsCount}
           ratings={{
-            cleanlinessAvgRating: 4.8,
-            accuracyAvgRating: 4.9,
-            checkInAvgRating: 5.0,
-            communicationAvgRating: 5.0,
-            locationAvgRating: 4.9,
-            valueAvgRating: 4.6,
+            cleanlinessAvgRating: place.reviewSummary.ratings.cleanlinessAvgRating,
+            accuracyAvgRating: place.reviewSummary.ratings.accuracyAvgRating,
+            checkInAvgRating: place.reviewSummary.ratings.checkInAvgRating,
+            communicationAvgRating: place.reviewSummary.ratings.communicationAvgRating,
+            locationAvgRating: place.reviewSummary.ratings.locationAvgRating,
+            valueAvgRating: place.reviewSummary.ratings.valueAvgRating,
             starTotals: {
-              fiveStar: 130,
-              fourStar: 50,
-              threeStar: 10,
-              twoStar: 6,
-              oneStar: 4,
+              fiveStar: place.reviewSummary.ratings.starTotals.fiveStar,
+              fourStar: place.reviewSummary.ratings.starTotals.fourStar,
+              threeStar: place.reviewSummary.ratings.starTotals.threeStar,
+              twoStar: place.reviewSummary.ratings.starTotals.twoStar,
+              oneStar: place.reviewSummary.ratings.starTotals.oneStar,
             },
           }}
-        />
-        {/* <IconButton
-          faIcon={faArrowUpFromBracket}
-          label="Share"
-          onClick={handleShare}
-        />
-        <IconButton faIcon={faHeart} label="Save" onClick={handleSave} /> */}
+        />}
         { !!place.reviews &&
           <div className={styles.reviews}>
             <ReviewsSection reviews={place.reviews}/>
@@ -240,5 +260,4 @@ const ProductPage = () => {
   }
   </>);
 };
-
 export default ProductPage;

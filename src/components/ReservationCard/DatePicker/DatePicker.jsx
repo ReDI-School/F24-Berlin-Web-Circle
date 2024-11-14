@@ -21,12 +21,24 @@ const DatePicker = ({
   setCheckOutError,
   checkInError,
   checkOutError,
+  alreadyBookedDates = []
 }) => {
   const [checkInFocus, setCheckInFocus] = useState(false)
   const [checkOutFocus, setCheckOutFocus] = useState(false)
 
   const checkInInputRef = useRef(null)
   const checkOutInputRef = useRef(null)
+
+  const isDateBooked = (date) => {
+    const selectedDate = new Date(date);
+  
+    const isBooked = alreadyBookedDates.some(({ startDate, endDate }) => {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      return selectedDate >= start && selectedDate <= end;
+    });
+    return isBooked;
+  };
 
   useEffect(() => {
     if (!checkInDate || checkInError) {
@@ -70,6 +82,12 @@ const DatePicker = ({
   const handleCheckInBlur = (dataCheckIn) => {
     if (validateDate(dataCheckIn)) {
       const checkInDateObj = new Date(dataCheckIn)
+
+      if (isDateBooked(dataCheckIn)) {
+        setCheckInError('This date is unavailable');
+        return;
+      }
+
       const chekInOutDiff = (checkOutDateObj - checkInDateObj) / MS_PER_DAY
 
       if (checkOutDate && checkInDateObj >= checkOutDateObj) {
@@ -91,6 +109,12 @@ const DatePicker = ({
   const handleCheckOutBlur = (dataCheckOut) => {
     if (validateDate(dataCheckOut)) {
       const checkOutDateObj = new Date(dataCheckOut)
+
+      if (isDateBooked(dataCheckOut)) {
+        setCheckOutError('This date is unavailable');
+        return;
+      } 
+
       const chekInOutDiff = (checkOutDateObj - checkInDateObj) / MS_PER_DAY
 
       if (checkInDate && checkOutDateObj <= checkInDateObj) {

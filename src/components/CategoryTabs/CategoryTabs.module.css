@@ -1,0 +1,134 @@
+.categoryTabsContainer {
+  position: fixed;
+  justify-content: center;
+  max-width: 100vw;
+  max-height: 120px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 998;
+  padding-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.categoryTabsWrapper {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.categoryTabs {
+  padding-top: 10px;
+  width: 90vw;
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+/* Scroll button base styles */
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  border: none;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  outline: none;
+  transform: translateY(-40%);
+  z-index: 1005;
+  background-color: #fcfcfc9a;
+}
+
+/* Scroll button positioning */
+.scrollButtonLeftContainer {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 30px;
+  left: 20px;
+  z-index: 1010;
+}
+
+.scrollButtonRightContainer {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 28px;
+  right: 20px;
+  z-index: 1010;
+}
+
+.scrollButtonRight, .scrollButtonLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+}
+
+.scrollButton:focus {
+  outline: none;
+}
+
+/* Tab item styles */
+.tabItem {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #696969;
+  position: relative; /* Required for ::after positioning */
+}
+
+.tabItem:hover {
+  color: #3f3f3f;
+}
+
+/* Underline effect with pseudo-element to prevent jumping */
+.tabItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #c2c2c2;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.tabItem:hover::after {
+  transform: scaleX(1);
+}
+
+.tabIcon {
+  margin-bottom: 8px;
+}
+
+.tabLabel {
+  font-size: 12px;
+  text-align: center;
+}
+
+.tabItemActive {
+  color: #000;
+  font-weight: bold;
+}
+
+.categoryTabsHideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: auto;
+}
+
