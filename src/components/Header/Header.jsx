@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from "./Header.module.css"
 import airbnbLogo from "../../assets/logo_airbnb.svg"
 import ButtonBeAHost from '../ButtonBeAHost/ButtonBeAHost'
+import HeaderUserMenu from '../HeaderUserMenu/HeaderUserMenu'
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
 import SearchPanel from '../SearchPanel/SearchPanel'
-import HeaderUserMenu from '../HeaderUserMenu/HeaderUserMenu'
+import styles from "./Header.module.css"
 
 const Header = () => {
 
