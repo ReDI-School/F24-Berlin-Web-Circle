@@ -67,9 +67,6 @@ function App() {
 
           return (
             <>
-            
-            <PriceRangeFilter histogramData={histogramData}/>
-
             <ProductCard
               key={place.id}
               images={place.images}
