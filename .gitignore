@@ -25,3 +25,4 @@ dist-ssr
 .env
 server/.env
 backend/.env
+backend/utils/ingest_data.py
