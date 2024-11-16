@@ -29,7 +29,6 @@ const Calendar = ({
   availableCheckIn
 }) => {
 
-  // const [currentMonth, setCurrentMonth] = useState(new Date())
   const [currentMonth, setCurrentMonth] = useState(
     checkInDate
       ? (() => {
@@ -218,7 +217,7 @@ const Calendar = ({
       daysArray.push(
         <div
           key={day}
-          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !isSearchBarCalendar) || isAvailableCheckIn ? styles.pastDate : ''} 
+          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) || isAvailableCheckIn ? styles.pastDate : ''} 
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}

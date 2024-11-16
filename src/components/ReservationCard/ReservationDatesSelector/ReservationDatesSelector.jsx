@@ -110,6 +110,7 @@ const ReservationDatesSelector = ({
             setInputCheckOutDate={setInputCheckOutDate}
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
+            availableCheckIn={availableCheckIn}
           />
           <WarningMessage message={checkInError || checkOutError} />
         </div>
