@@ -5,7 +5,12 @@ name: tests checking the PR code
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
+      - "feature/*"
+      - "fix/*"
+      - "bug/*"
+      - "refactor/*"
   pull_request:
     branches: [ "main" ]
 
