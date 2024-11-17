@@ -1,6 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
@@ -16,68 +16,48 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [hoverStates, setHoverStates] = useState({
+    location: false,
+    checkIn: false,
+    checkOut: false,
+    guests: false,
+    date: false,
+  });
+  const [selectedBlock, setSelectedBlock] = useState(null);
+  const [focusedSearchBar, setFocusedSearchBar] = useState(false);
 
-  const [hoverLocation, setHoverLocation] = useState(false);
-  const [hoverCheckIn, setHoverCheckIn] = useState(false);
-  const [hoverCheckOut, setHoverCheckOut] = useState(false);
-  const [hoverGuests, setHoverGuests] = useState(false);
-  const [hoverDate, setHoverDate] = useState(false);
 
+  const disableSearchBarFocus = () => { 
+    setFocusedSearchBar(false);
+    setSelectedBlock(null);
+  }
+  const closeCalendarPopup = () => setShowCalendar(false)
 
-  const handleMouseEnterLocation = () => {
-    setHoverLocation(true);
+  const searchBarRef = useOutsideClick(disableSearchBarFocus);
+  const calendarRef = useOutsideClick(closeCalendarPopup)
+
+  const handleBlockClick = (block) => {
+    setSelectedBlock((prevBlock) => (prevBlock === block && selectedBlock !== 'where' ? null : block));
+    setFocusedSearchBar(true);
   };
 
-  const handleMouseLeaveLocation = () => {
-    setHoverLocation(false);
+  const handleMouseHover = (block, isHovering) => {
+    setHoverStates((prev) => ({
+      ...prev,
+      [block]: isHovering,
+    }));
   };
-
-  const handleMouseEnterCheckIn = () => {
-    setHoverCheckIn(true);
-  };
-
-  const handleMouseLeaveCheckIn = () => {
-    setHoverCheckIn(false);
-  };
-
-  const handleMouseEnterCheckOut = () => {
-    setHoverCheckOut(true);
-  };
-
-  const handleMouseLeaveCheckOut = () => {
-    setHoverCheckOut(false);
-  };
-
-  const handleMouseEnterGuests = () => {
-    setHoverGuests(true);
-  };
-
-  const handleMouseLeaveGuests = () => {
-    setHoverGuests(false);
-  }; 
-  
-  const handleMouseEnterDate = () => {
-    setHoverDate(true);
-  };
-
-  const handleMouseLeaveDate = () => {
-    setHoverDate(false);
-  };
-
-
 
   const toggleCalendar = () => {
     setShowCalendar((prevState) => !prevState);
   }
 
-  const closeCalendarPopup = () => setShowCalendar(false)
-  const calendarRef = useOutsideClick(closeCalendarPopup)
-
-
   useEffect(() => {
     const handleScroll = () => {
       if (showCalendar && !closing) {
         setClosing(true);
+        setFocusedSearchBar(false);
+        setSelectedBlock(null);
         setTimeout(() => {
           setShowCalendar(false);
           setClosing(false);
@@ -100,10 +80,15 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
 
   return (
     <>
-      <div className={styles.searchBar}>
-        <div className={styles.inputContainerWhere}
-          onMouseEnter={handleMouseEnterLocation}
-          onMouseLeave={handleMouseLeaveLocation}  
+      <div className={`${styles.searchBar} ${focusedSearchBar ? styles.focused : ''}`} ref={searchBarRef}>
+        <div 
+          className={`${styles.inputContainerWhere} 
+                      ${selectedBlock === "where" ? styles.selected : ''}
+                      ${selectedBlock === "checkIn" || selectedBlock === "date" ? styles.hoveredWhereBlock : ''}
+                    `}
+          onMouseEnter={() => handleMouseHover("location", true)}
+          onMouseLeave={() => handleMouseHover("location", false)}
+          onClick={() => handleBlockClick("where")}  
         >
           <span className={styles.label}>Where</span>
           <input
@@ -116,31 +101,55 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           />
         </div>
         <div className={styles.separatorWrapper}
-             style={{ opacity: hoverLocation || hoverCheckIn || hoverDate ? 0 : 1 }}
+             style={{ opacity: hoverStates.location ||
+              hoverStates.checkIn ||
+              hoverStates.date ||
+               (selectedBlock === "where" && focusedSearchBar) ||
+               (selectedBlock === "checkIn" && focusedSearchBar) ||
+               (selectedBlock === "date" && focusedSearchBar) ?
+               0 : 1 }}
         >
           <div className={styles.separator}></div>
         </div>
         {searchType === "stays" ? (
           <div className={styles.checkInOutWrapper} ref={calendarRef}>
-            <div className={styles.inputContainerCheckIn} 
-              onClick={toggleCalendar}
-              onMouseEnter={handleMouseEnterCheckIn}
-              onMouseLeave={handleMouseLeaveCheckIn}
+            <div className={`${styles.inputContainerCheckIn} 
+                             ${selectedBlock === "checkIn" ? styles.selected : ''}
+                             ${selectedBlock === "where" ? styles.hoveredCheckInBlock : ''}
+                             ${selectedBlock === "checkOut" ? styles.hoveredReversedCheckInBlock : ''}
+                           `}
+              onClick={() => {
+                handleBlockClick("checkIn");
+                toggleCalendar();
+              }}
+              onMouseEnter={() => handleMouseHover("checkIn", true)}
+              onMouseLeave={() => handleMouseHover("checkIn", false)}
             >
               <span className={styles.label}>Check in</span>
               <span className={styles.checkInText}>{checkIn}</span>
             </div>
 
             <div className={styles.separatorWrapper} 
-                 style={{ opacity: hoverCheckIn || hoverCheckOut ? 0 : 1 }}
+                 style={{ opacity: hoverStates.checkIn ||
+                   hoverStates.checkOut ||
+                   (selectedBlock === "checkIn" && focusedSearchBar) ||
+                   (selectedBlock === "checkOut" && focusedSearchBar) ? 
+                   0 : 1 }}
             >
               <div className={styles.separator}></div>
             </div>
 
-            <div className={styles.inputContainerCheckOut} 
-                 onClick={toggleCalendar}
-                 onMouseEnter={handleMouseEnterCheckOut}
-                 onMouseLeave={handleMouseLeaveCheckOut}
+            <div className={`${styles.inputContainerCheckOut} 
+                             ${selectedBlock === "checkOut" ? styles.selected : ''}
+                             ${selectedBlock === "who" ? styles.hoveredCheckOutBlock : ''}
+                             ${selectedBlock === "checkIn" ? styles.hoveredReversedCheckOutBlock : ''}
+                           `}
+                 onMouseEnter={() => handleMouseHover("checkOut", true)}
+                 onMouseLeave={() => handleMouseHover("checkOut", false)}
+                 onClick={() => {
+                  handleBlockClick("checkOut")
+                  toggleCalendar()
+                }}
             >
               <span className={styles.label}>Check out</span>
               <span className={styles.checkOutText}>{checkOut}</span>
@@ -167,10 +176,17 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
             </div>
         ) : (
           <div className={styles.checkInOutExperiencesWrapper} ref={calendarRef}>
-            <div className={styles.inputContainerDate} 
-              onClick={toggleCalendar}
-              onMouseEnter={handleMouseEnterDate}
-              onMouseLeave={handleMouseLeaveDate} 
+            <div  className={`${styles.inputContainerDate} 
+                              ${selectedBlock === "date" ? styles.selected : ''}
+                              ${selectedBlock === "where" ? styles.hoveredDateBlock : ''}
+                              ${selectedBlock === "who" ? styles.hoveredReversedDateBlock : ''}
+                            `}
+              onClick={() => {
+                handleBlockClick("date")
+                toggleCalendar()
+              }}
+              onMouseEnter={() => handleMouseHover("date", true)}
+              onMouseLeave={() => handleMouseHover("date", false)}
             >
               <span className={styles.label}>Date</span>
               <span className={styles.checkInText}>{checkIn}</span>
@@ -191,13 +207,22 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
           </div>
         )}
         <div className={styles.separatorWrapper}
-             style={{ opacity: hoverGuests || hoverCheckOut || hoverDate ? 0 : 1 }}
+             style={{ opacity: hoverStates.guests ||
+              hoverStates.checkOut ||
+              (selectedBlock === "who" && focusedSearchBar) ||
+              (selectedBlock === "checkOut" && focusedSearchBar) ||
+              (selectedBlock === "date" && focusedSearchBar) ||
+              hoverStates.date ? 0 : 1 }}
         >
           <div className={styles.separator}></div>
         </div>
-        <div className={styles.inputContainerWho}
-          onMouseEnter={handleMouseEnterGuests}
-          onMouseLeave={handleMouseLeaveGuests} 
+        <div className={`${styles.inputContainerWho} 
+                         ${selectedBlock === "who" ? styles.selected : ''}
+                         ${selectedBlock === "checkOut" || selectedBlock === "date" ? styles.hoveredWhoBlock : ''}
+                       `}
+          onMouseEnter={() => handleMouseHover("guests", true)}
+          onMouseLeave={() => handleMouseHover("guests", false)}
+          onClick={() => handleBlockClick("who")}
         >
           <div className={styles.inputContainerWhoInner}>
             <span className={styles.label}>Who</span>

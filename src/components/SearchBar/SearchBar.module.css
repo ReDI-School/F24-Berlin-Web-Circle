@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  outline: 1px solid #d7d7d7;
   border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 851px;
@@ -9,6 +10,11 @@
   position: fixed;
   left: 50%;
   transform: translate(-50%);
+}
+
+.searchBar.focused,
+.searchBar.focused .inputTextPlaceholder {
+  background-color: #ebebeb;
 }
 
 .checkInOutWrapper,
@@ -39,7 +45,7 @@
 .checkInText,
 .checkOutText,
 .guestsText  {
-  color: #797777;
+  color: #6A6A6A;
 }
 
 .inputContainerCheckIn,
@@ -102,14 +108,95 @@
   border-radius: 50px;
 }
 
+.searchBar.focused .inputContainerWhere:hover,
+.searchBar.focused .inputContainerCheckIn:hover,
+.searchBar.focused .inputContainerCheckOut:hover,
+.searchBar.focused .inputContainerWho:hover,
+.searchBar.focused .inputContainerDate:hover,
+.searchBar.focused .inputContainerWhere:hover .inputTextPlaceholder {
+  background-color: #ddd;
+}
+
+.searchBar.focused .inputContainerWhere.hoveredWhereBlock:hover,
+.searchBar.focused .inputContainerCheckOut.hoveredCheckOutBlock:hover,
+.searchBar.focused .inputContainerCheckIn.hoveredReversedCheckInBlock:hover,
+.searchBar.focused .inputContainerDate.hoveredReversedDateBlock:hover {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;
+}
+
+.searchBar.focused .inputContainerWhere.hoveredWhereBlock:hover::before,
+.searchBar.focused .inputContainerCheckOut.hoveredCheckOutBlock:hover::before,
+.searchBar.focused .inputContainerCheckIn.hoveredReversedCheckInBlock:hover::before,
+.searchBar.focused .inputContainerDate.hoveredReversedDateBlock:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -30px;
+  bottom: 0;
+  left: 30px;
+  background-color: #ddd;
+  z-index: -1;
+}
+
+.searchBar.focused .inputContainerWho.hoveredWhoBlock:hover,
+.searchBar.focused .inputContainerCheckIn.hoveredCheckInBlock:hover,
+.searchBar.focused .inputContainerCheckOut.hoveredReversedCheckOutBlock:hover,
+.searchBar.focused .inputContainerDate.hoveredDateBlock:hover {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  position: relative;
+}
+
+.searchBar.focused .inputContainerWho.hoveredWhoBlock:hover::before,
+.searchBar.focused .inputContainerCheckIn.hoveredCheckInBlock:hover::before,
+.searchBar.focused .inputContainerCheckOut.hoveredReversedCheckOutBlock:hover::before,
+.searchBar.focused .inputContainerDate.hoveredDateBlock:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 30px;
+  bottom: 0;
+  left: -30px;
+  background-color: #ddd;
+  z-index: -1;
+}
+
+.searchBar.focused .inputContainerWhere.selected,
+.searchBar.focused .inputContainerCheckIn.selected,
+.searchBar.focused .inputContainerCheckOut.selected,
+.searchBar.focused .inputContainerWho.selected,
+.searchBar.focused .inputContainerDate.selected,
+.searchBar.focused .inputContainerWhere.selected .inputTextPlaceholder {
+  background-color: white;
+}
+
+.searchBar.focused .inputContainerWhere:not(.selected) input::placeholder,
+.searchBar.focused .inputContainerCheckIn:not(.selected) .checkInText,
+.searchBar.focused .inputContainerCheckOut:not(.selected) .checkOutText,
+.searchBar.focused .inputContainerWho:not(.selected) .guestsText,
+.searchBar.focused .inputContainerDate:not(.selected) .checkInText{
+  color: var(--primary);
+}
+
+.searchBar.focused .inputContainerWhere.selected,
+.searchBar.focused .inputContainerCheckIn.selected,
+.searchBar.focused .inputContainerCheckOut.selected,
+.searchBar.focused .inputContainerWho.selected,
+.searchBar.focused .inputContainerDate.selected {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
 .inputContainerWhere:hover input {
   background-color: #efefef;
 }
 
 .label {
   font-size: 12px;
-  color: #666;
-  font-weight: bold;
+  color: var(--primary);
+  font-weight: 500;
   text-align: left;
   border: none;
   width: 100%;
@@ -119,7 +206,6 @@
   border: none;
   outline: none;
   width: 100%;
-  background-color: white;
   padding: 0px 0px;
 }
 
@@ -142,7 +228,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 10px;
+  top: 9px;
   right: 10px; 
   background-color: #ff385c;
   color: white;
@@ -212,4 +298,12 @@
   justify-self: start;
   padding: 22px 40px 14px;
   width: 100%;
+}
+.selected,
+.deselected {
+  border-radius: 50px;
+}
+
+.selected {
+  background-color: white; 
 }
