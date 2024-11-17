@@ -132,16 +132,16 @@ useEffect(() => {
         />}
         <div className={styles.ProductDescriptionContainer}>
           <div className={styles.ProductDescription}>
-            <ProductSummary
-              accommodation={"Entire rental unit"}
-              address={"Berlin, Germany"}
-              guests={{ key: "guest", value: 3 }}
-              bedrooms={{ key: "bedroom", value: 1 }}
-              beds={{ key: "bed", value: 3 }}
-              baths={{ key: "bath", value: 1 }}
-              starGrade={4.65}
-              reviews={23}
-            />
+            {!!place.productSummary && <ProductSummary
+              accommodation={place.productSummary.accommodation}
+              address={place.productSummary.address}
+              guests={{ key: place.productSummary.guests.key, value: place.productSummary.guests.value}}
+              bedrooms={{ key: place.productSummary.bedrooms.key, value: place.productSummary.bedrooms.value }}
+              beds={{ key: place.productSummary.beds.key, value: place.productSummary.beds.value}}
+              baths={{ key: place.productSummary.baths.key, value: place.productSummary.baths.value}}
+              starGrade={place.reviewSummary.totalAvgRating}
+              reviews={place.reviewSummary.totalReviewsCount}
+            />}
             <FavoriteStay />
             {!!place.hostSummary && <HostSummary
               hostName={place.hostSummary.hostName}
