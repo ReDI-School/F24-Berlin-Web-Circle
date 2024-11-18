@@ -6,11 +6,12 @@ import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
 import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import { formatDateToMonthDay, formatDateRange } from "../../utils/dateUtils";
 
-const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
+const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSearch }) => {
   const [location, setLocation] = useState("");
-  const [checkIn, setCheckIn] = useState(initialCheckIn || "Add dates");
-  const [checkOut, setCheckOut] = useState(initialCheckOut || "Add dates");
+  const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
+  const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
   const [guests, setGuests] = useState(initialGuests || "");
   const [date, setDates] = useState(initialDate || "");
 
@@ -25,7 +26,6 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
   });
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
-
 
   const disableSearchBarFocus = () => { 
     setFocusedSearchBar(false);
@@ -75,7 +75,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
   
   const handleSearch = () => {
     //search logic here
-    onSearch({ location, checkIn, checkOut, date, guests });
+    onSearch({ location, searchCheckIn, searchCheckOut, date, guests });
   };
 
   return (
@@ -126,7 +126,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
               onMouseLeave={() => handleMouseHover("checkIn", false)}
             >
               <span className={styles.label}>Check in</span>
-              <span className={styles.checkInText}>{checkIn}</span>
+              <span className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}</span>
             </div>
 
             <div className={styles.separatorWrapper} 
@@ -152,7 +152,7 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                 }}
             >
               <span className={styles.label}>Check out</span>
-              <span className={styles.checkOutText}>{checkOut}</span>
+              <span className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}</span> 
             </div>
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
@@ -165,7 +165,11 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                     dayItemHeight="48px"
                     pickedDayWidth="46px"
                     pickedDayHeight="46px"
-                    isSearchBarCalendar={true}  
+                    isSearchBarCalendar={true}
+                    searchCheckIn={searchCheckIn}
+                    searchCheckOut={searchCheckOut}
+                    setSearchCheckIn={setSearchCheckIn}
+                    setSearchCheckOut={setSearchCheckOut}
                   />
                 </div>
                 <div className={styles.incrementButtonWrapper}>
@@ -189,7 +193,9 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
               onMouseLeave={() => handleMouseHover("date", false)}
             >
               <span className={styles.label}>Date</span>
-              <span className={styles.checkInText}>{checkIn}</span>
+              <div className={styles.experienceDatesWrapper}>
+                <span className={styles.checkInText}>{formatDateRange(searchCheckIn, searchCheckOut)}</span>
+              </div>
             </div>
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
@@ -199,7 +205,11 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                     dayItemHeight="48px" 
                     pickedDayWidth="46px"
                     pickedDayHeight="46px"
-                    isSearchBarCalendar={true}  
+                    isSearchBarCalendar={true}
+                    searchCheckIn={searchCheckIn}
+                    searchCheckOut={searchCheckOut}
+                    setSearchCheckIn={setSearchCheckIn}
+                    setSearchCheckOut={setSearchCheckOut}  
                   />
                 </div>
               </div>

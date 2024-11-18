@@ -7,7 +7,7 @@ import {
   isDayBeforeBooked, 
   minStayBeforeBooked, 
   isWithinMinStay, 
-  isBetweenCheckInAndOut 
+  isBetweenCheckInAndOut
 } from '../../utils/dateUtils';
 
 const Calendar = ({ 
@@ -25,18 +25,35 @@ const Calendar = ({
   checkOutDate,
   isSearchBarCalendar,
   minStayNights,
-  alreadyBookedDates
+  alreadyBookedDates,
+  searchCheckIn,
+  searchCheckOut,
+  setSearchCheckIn,
+  setSearchCheckOut
 }) => {
 
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
 
-  const [pickedCheckIn, setPickedCheckIn] = useState(
-    checkInDate && !isSearchBarCalendar ? convertStringToDateObject(checkInDate) : null
-  )
-  const [pickedCheckOut, setPickedCheckOut] = useState(
-    checkOutDate && !isSearchBarCalendar ? convertStringToDateObject(checkOutDate) : null
-  )
+
+  const [pickedCheckIn, setPickedCheckIn] = useState(() => {
+    if (checkInDate && !isSearchBarCalendar) {
+      return convertStringToDateObject(checkInDate);
+    } else if (searchCheckIn && isSearchBarCalendar) {
+      return convertStringToDateObject(searchCheckIn);
+    }
+    return null;
+  });
+
+  const [pickedCheckOut, setPickedCheckOut] = useState(() => {
+    if (checkOutDate && !isSearchBarCalendar) {
+      return convertStringToDateObject(checkOutDate);
+    } else if (searchCheckOut && isSearchBarCalendar) {
+      return convertStringToDateObject(searchCheckOut);
+    }
+    return null;
+  });
+
 
   useEffect(() => {
     if (!isSearchBarCalendar) {
@@ -90,18 +107,23 @@ const Calendar = ({
     
     const dateString = convertDateObjectToString({ day, month, year })
 
+
     if (isSearchBarCalendar) {
       if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
+        setSearchCheckIn(dateString)
         setPickedCheckIn(selectedDate);
         setPickedCheckOut(null);
+        setSearchCheckOut("Add dates")
       } else if (pickedCheckIn && !pickedCheckOut) {
         const pickedCheckInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
         const selectedDateTime = new Date(year, month, day).getTime()
   
         if (selectedDateTime > pickedCheckInDate) {
           setPickedCheckOut(selectedDate)
+          setSearchCheckOut(dateString)
         } else  {
           setPickedCheckIn(selectedDate)
+          setSearchCheckIn(dateString)
         }
       }
     } else {

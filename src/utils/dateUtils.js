@@ -148,3 +148,59 @@ export const isWithinMinStay = (
   }
   return false
 }
+
+
+export function formatDateToMonthDay(dateString) {
+  if (!dateString || typeof dateString !== "string") {
+    throw new Error("Invalid dateString provided");
+  }
+  if (dateString === "Add dates") {
+    return dateString;
+  }
+  const parts = dateString.split("/");
+  if (parts.length !== 3) {
+    throw new Error("dateString must be in MM/DD/YYYY format");
+  }
+  const [month, day, year] = parts.map(Number);
+  if (isNaN(month) || isNaN(day) || isNaN(year)) {
+    throw new Error("dateString contains invalid numbers");
+  }
+  const date = new Date(year, month - 1, day); 
+  if (isNaN(date.getTime())) {
+    throw new Error("Invalid date created from dateString");
+  }
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit" }).format(date);
+}
+
+
+export function formatDateRange(checkIn, checkOut) {
+  const parseDate = (dateString) => {
+    if (!dateString || dateString === "Add dates") return null;
+    const [month, day, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day); 
+  };
+
+  const checkInDate = parseDate(checkIn);
+  const checkOutDate = parseDate(checkOut);
+
+  if (!checkInDate && !checkOutDate) {
+    return "Add dates";
+  }
+
+  if (checkInDate && !checkOutDate) {
+    const optionsMonthDay = { month: "short", day: "numeric" };
+    return checkInDate.toLocaleDateString("en-US", optionsMonthDay);
+  }
+
+  const optionsMonthDay = { month: "short", day: "numeric" };
+  const optionsDayOnly = { day: "numeric" };
+
+  const checkInMonth = checkInDate.toLocaleDateString("en-US", { month: "short" });
+  const checkOutMonth = checkOutDate.toLocaleDateString("en-US", { month: "short" });
+
+  if (checkInMonth === checkOutMonth) {
+    return `${checkInDate.toLocaleDateString("en-US", optionsMonthDay)} - ${checkOutDate.toLocaleDateString("en-US", optionsDayOnly)}`;
+  }
+
+  return `${checkInDate.toLocaleDateString("en-US", optionsMonthDay)} - ${checkOutDate.toLocaleDateString("en-US", optionsMonthDay)}`;
+}
