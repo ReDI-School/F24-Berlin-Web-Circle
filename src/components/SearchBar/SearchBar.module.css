@@ -24,8 +24,8 @@
 
 .inputContainerWhere {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   width: 284px;
   cursor: pointer;
 }
@@ -51,8 +51,8 @@
 .inputContainerCheckIn,
 .inputContainerCheckOut {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   width: 140px;
   position: relative;
@@ -92,8 +92,8 @@
 
 .inputContainerDate {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   width: 281px;
   padding-left: 25px;
   cursor: pointer;
@@ -310,4 +310,35 @@
 
 .experienceDatesWrapper{
   display: flex;
+}
+
+.locationContentWrapper,
+.checkInTextWrapper,
+.checkOutTextWrapper,
+.dateTextWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchDeleteContentBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  outline: none;
+  padding: 0;
+  margin-right: -12px;
+}
+
+.searchDeleteContentBtn:hover {
+  background-color: #ddd;
+}
+
+.searchDeleteContentBtn:focus,
+.searchDeleteContentBtn:focus-visible {
+  outline: none;
 }

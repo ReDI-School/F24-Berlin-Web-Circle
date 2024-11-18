@@ -7,13 +7,14 @@ import CalendarToggle from "../calendarToggle/CalendarToggle";
 import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { formatDateToMonthDay, formatDateRange } from "../../utils/dateUtils";
+import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
 
-const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSearch }) => {
+const SearchBar = ({ searchType, onSearch }) => {
   const [location, setLocation] = useState("");
   const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
   const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
-  const [guests, setGuests] = useState(initialGuests || "");
-  const [date, setDates] = useState(initialDate || "");
+  const [guests, setGuests] = useState("");
+  // const [date, setDates] = useState(initialDate || "");
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -75,7 +76,7 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
   
   const handleSearch = () => {
     //search logic here
-    onSearch({ location, searchCheckIn, searchCheckOut, date, guests });
+    onSearch({ location, searchCheckIn, searchCheckOut, guests });
   };
 
   return (
@@ -90,15 +91,22 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
           onMouseLeave={() => handleMouseHover("location", false)}
           onClick={() => handleBlockClick("where")}  
         >
-          <span className={styles.label}>Where</span>
-          <input
-            className={styles.inputTextPlaceholder}
-            type="text"
-            placeholder="Search destinations"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+          <div className={styles.locationContentWrapper}>
+            <span className={styles.label}>Where</span>
+            <input
+              className={styles.inputTextPlaceholder}
+              type="text"
+              placeholder="Search destinations"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
 
-          />
+            />
+          </div>
+          {location && (
+            <button className={styles.searchDeleteContentBtn}>
+              <CloseButtonIcon />
+            </button>
+          )}
         </div>
         <div className={styles.separatorWrapper}
              style={{ opacity: hoverStates.location ||
@@ -125,8 +133,15 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
               onMouseEnter={() => handleMouseHover("checkIn", true)}
               onMouseLeave={() => handleMouseHover("checkIn", false)}
             >
-              <span className={styles.label}>Check in</span>
-              <span className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}</span>
+              <div className={styles.checkInTextWrapper}>
+                <span className={styles.label}>Check in</span>
+                <span className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}</span>
+              </div>
+              {searchCheckIn && searchCheckIn !== "Add dates" && (
+              <button className={styles.searchDeleteContentBtn}>
+                <CloseButtonIcon />
+              </button>
+              )}
             </div>
 
             <div className={styles.separatorWrapper} 
@@ -151,8 +166,15 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
                   toggleCalendar()
                 }}
             >
-              <span className={styles.label}>Check out</span>
-              <span className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}</span> 
+              <div className={styles.checkOutTextWrapper}>
+                <span className={styles.label}>Check out</span>
+                <span className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}</span>
+              </div>
+              {searchCheckOut && searchCheckOut !== "Add dates" && (
+              <button className={styles.searchDeleteContentBtn}>
+                <CloseButtonIcon />
+              </button> 
+              )}
             </div>
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
@@ -180,7 +202,7 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
             </div>
         ) : (
           <div className={styles.checkInOutExperiencesWrapper} ref={calendarRef}>
-            <div  className={`${styles.inputContainerDate} 
+            <div className={`${styles.inputContainerDate} 
                               ${selectedBlock === "date" ? styles.selected : ''}
                               ${selectedBlock === "where" ? styles.hoveredDateBlock : ''}
                               ${selectedBlock === "who" ? styles.hoveredReversedDateBlock : ''}
@@ -192,10 +214,17 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
               onMouseEnter={() => handleMouseHover("date", true)}
               onMouseLeave={() => handleMouseHover("date", false)}
             >
-              <span className={styles.label}>Date</span>
-              <div className={styles.experienceDatesWrapper}>
-                <span className={styles.checkInText}>{formatDateRange(searchCheckIn, searchCheckOut)}</span>
+              <div className={styles.dateTextWrapper}>
+                <span className={styles.label}>Date</span>
+                <div className={styles.experienceDatesWrapper}>
+                  <span className={styles.checkInText}>{formatDateRange(searchCheckIn, searchCheckOut)}</span>
+                </div>
               </div>
+              {searchCheckIn && searchCheckIn !== "Add dates" && ( 
+              <button className={styles.searchDeleteContentBtn}>
+                <CloseButtonIcon />
+              </button> 
+              )}
             </div>
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
@@ -238,6 +267,11 @@ const SearchBar = ({ searchType, date: initialDate, guests: initialGuests, onSea
             <span className={styles.label}>Who</span>
             <span className={styles.guestsText}>Add guests</span>
           </div>
+          {guests && ( 
+          <button className={styles.searchDeleteContentBtn}>
+            <CloseButtonIcon />
+          </button> 
+          )}
           <div>
             <button onClick={handleSearch} className={styles.circleButton}>
               <FontAwesomeIcon icon={faSearch} />
