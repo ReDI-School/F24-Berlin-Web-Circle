@@ -35,7 +35,6 @@ const Calendar = ({
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [animationDirection, setAnimationDirection] = useState("")
 
-
   const [pickedCheckIn, setPickedCheckIn] = useState(() => {
     if (checkInDate && !isSearchBarCalendar) {
       return convertStringToDateObject(checkInDate);
@@ -53,7 +52,6 @@ const Calendar = ({
     }
     return null;
   });
-
 
   useEffect(() => {
     if (!isSearchBarCalendar) {
@@ -74,6 +72,27 @@ const Calendar = ({
       }
     }
   }, [checkOutDate, isSearchBarCalendar]);
+
+  useEffect(() => {
+    if (isSearchBarCalendar) {
+      if (searchCheckIn !== "Add dates") {
+        setPickedCheckIn(convertStringToDateObject(searchCheckIn));
+      } else {
+        setPickedCheckIn(null);
+      }
+    }
+  }, [searchCheckIn, isSearchBarCalendar]);
+
+  useEffect(() => {
+    if (isSearchBarCalendar) {
+      if (searchCheckOut !== "Add dates") {
+        setPickedCheckOut(convertStringToDateObject(searchCheckOut));
+      } else {
+        setPickedCheckOut(null);
+      }
+    }
+  }, [searchCheckOut, isSearchBarCalendar]);
+
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()

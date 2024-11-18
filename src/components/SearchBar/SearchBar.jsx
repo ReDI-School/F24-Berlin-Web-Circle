@@ -1,6 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
@@ -13,9 +13,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [location, setLocation] = useState("");
   const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
   const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
-  const [guests, setGuests] = useState("");
-  // const [date, setDates] = useState(initialDate || "");
-
+  const [guests, setGuests] = useState("Add guests");
   const [showCalendar, setShowCalendar] = useState(false);
   const [closing, setClosing] = useState(false);
   const [hoverStates, setHoverStates] = useState({
@@ -27,15 +25,28 @@ const SearchBar = ({ searchType, onSearch }) => {
   });
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
+// console.log('selectedBlock', selectedBlock)
+// console.log('focusedSearchBar', focusedSearchBar)
+// console.log('searchType', searchType)
+// console.log('searchCheckIn', searchCheckIn)
+// console.log('searchCheckOut', searchCheckOut)
+
+
+  const prevSelectedBlock = useRef(null);
 
   const disableSearchBarFocus = () => { 
     setFocusedSearchBar(false);
     setSelectedBlock(null);
   }
+
   const closeCalendarPopup = () => setShowCalendar(false)
 
   const searchBarRef = useOutsideClick(disableSearchBarFocus);
   const calendarRef = useOutsideClick(closeCalendarPopup)
+
+  useEffect(() => {
+    prevSelectedBlock.current = selectedBlock;
+  }, [selectedBlock]);
 
   const handleBlockClick = (block) => {
     setSelectedBlock((prevBlock) => (prevBlock === block && selectedBlock !== 'where' ? null : block));
@@ -49,9 +60,19 @@ const SearchBar = ({ searchType, onSearch }) => {
     }));
   };
 
+
   const toggleCalendar = () => {
     setShowCalendar((prevState) => !prevState);
   }
+
+  useEffect(() => {
+    searchCheckIn && searchCheckIn !== "Add dates" ? setSelectedBlock("checkOut") : setSelectedBlock("checkIn")
+  }, [searchCheckIn])
+
+  useEffect(() => {
+    searchCheckIn && searchCheckOut && searchType === "experiences" ? setSelectedBlock("date") : null
+  }, [searchCheckIn, searchType, searchCheckOut])
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,8 +123,14 @@ const SearchBar = ({ searchType, onSearch }) => {
 
             />
           </div>
-          {location && (
-            <button className={styles.searchDeleteContentBtn}>
+          {location && selectedBlock === "where" && (
+            <button 
+              onClick={(e) => {
+                e.stopPropagation()
+                setLocation("")
+              }}
+              className={styles.searchDeleteContentBtn}
+            >
               <CloseButtonIcon />
             </button>
           )}
@@ -128,7 +155,10 @@ const SearchBar = ({ searchType, onSearch }) => {
                            `}
               onClick={() => {
                 handleBlockClick("checkIn");
-                toggleCalendar();
+                if((prevSelectedBlock.current !== "checkOut" && showCalendar) ||
+                  (!showCalendar)) {
+                  toggleCalendar();
+                }
               }}
               onMouseEnter={() => handleMouseHover("checkIn", true)}
               onMouseLeave={() => handleMouseHover("checkIn", false)}
@@ -137,8 +167,15 @@ const SearchBar = ({ searchType, onSearch }) => {
                 <span className={styles.label}>Check in</span>
                 <span className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}</span>
               </div>
-              {searchCheckIn && searchCheckIn !== "Add dates" && (
-              <button className={styles.searchDeleteContentBtn}>
+              {searchCheckIn && searchCheckIn !== "Add dates" && selectedBlock === "checkIn" && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSearchCheckIn("Add dates")
+                  setSearchCheckOut("Add dates")
+                }}
+                className={styles.searchDeleteContentBtn}
+              >
                 <CloseButtonIcon />
               </button>
               )}
@@ -163,15 +200,25 @@ const SearchBar = ({ searchType, onSearch }) => {
                  onMouseLeave={() => handleMouseHover("checkOut", false)}
                  onClick={() => {
                   handleBlockClick("checkOut")
-                  toggleCalendar()
+                  if((prevSelectedBlock.current !== "checkIn" && showCalendar) ||
+                  (!showCalendar)) {
+                    toggleCalendar();
+                  }
                 }}
             >
               <div className={styles.checkOutTextWrapper}>
                 <span className={styles.label}>Check out</span>
                 <span className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}</span>
               </div>
-              {searchCheckOut && searchCheckOut !== "Add dates" && (
-              <button className={styles.searchDeleteContentBtn}>
+              {searchCheckOut && searchCheckOut !== "Add dates" && selectedBlock === "checkOut" && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSearchCheckIn("Add dates")
+                  setSearchCheckOut("Add dates")
+                }}
+                className={styles.searchDeleteContentBtn}
+              >
                 <CloseButtonIcon />
               </button> 
               )}
@@ -220,8 +267,15 @@ const SearchBar = ({ searchType, onSearch }) => {
                   <span className={styles.checkInText}>{formatDateRange(searchCheckIn, searchCheckOut)}</span>
                 </div>
               </div>
-              {searchCheckIn && searchCheckIn !== "Add dates" && ( 
-              <button className={styles.searchDeleteContentBtn}>
+              {searchCheckIn && searchCheckIn !== "Add dates" && selectedBlock === "date" && ( 
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSearchCheckIn("Add dates")
+                  setSearchCheckOut("Add dates")
+                }}
+                className={styles.searchDeleteContentBtn}
+              >
                 <CloseButtonIcon />
               </button> 
               )}
@@ -265,10 +319,16 @@ const SearchBar = ({ searchType, onSearch }) => {
         >
           <div className={styles.inputContainerWhoInner}>
             <span className={styles.label}>Who</span>
-            <span className={styles.guestsText}>Add guests</span>
+            <span className={styles.guestsText}>{guests}</span>
           </div>
-          {guests && ( 
-          <button className={styles.searchDeleteContentBtn}>
+          {guests && guests !== "Add guests" && selectedBlock === "guests" && ( 
+          <button 
+            onClick={(e) => {
+              e.stopPropagation()
+              setGuests("Add guests")
+            }}
+            className={styles.searchDeleteContentBtn}
+          >
             <CloseButtonIcon />
           </button> 
           )}
