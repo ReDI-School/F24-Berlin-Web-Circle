@@ -116,6 +116,7 @@ const Calendar = ({
     setTimeout(() => setAnimationDirection(""), 300)
   }
 
+
   const handleDateClick = (day, month, year) => {
     const selectedDate = { day, month, year }
 
@@ -124,15 +125,15 @@ const Calendar = ({
       return `${String(month + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`
     }
     
-    const dateString = convertDateObjectToString({ day, month, year })
 
+    const dateString = convertDateObjectToString({ day, month, year });
 
     if (isSearchBarCalendar) {
       if (!pickedCheckIn || (pickedCheckIn && pickedCheckOut)) {
         setSearchCheckIn(dateString)
-        setPickedCheckIn(selectedDate);
-        setPickedCheckOut(null);
-        setSearchCheckOut("Add dates")
+        setPickedCheckIn(selectedDate)
+        setPickedCheckOut(null)
+        setSearchCheckOut("Add dates")  
       } else if (pickedCheckIn && !pickedCheckOut) {
         const pickedCheckInDate = new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime()
         const selectedDateTime = new Date(year, month, day).getTime()

@@ -6,13 +6,18 @@ import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
 import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import useOutsideClick from "../../hooks/useOutsideClick";
-import { formatDateToMonthDay, formatDateRange } from "../../utils/dateUtils";
+import { formatDateToMonthDay, formatDateRange, convertStringToDateObject } from "../../utils/dateUtils";
 import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
 
 const SearchBar = ({ searchType, onSearch }) => {
-  const [location, setLocation] = useState("");
+  const [selectedOption, setSelectedOption] = useState('exact');
   const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
   const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
+  const [checkInToServer, setCheckInToServer] = useState('');
+  const [checkOutToServer, setCheckOutToServer] = useState('');
+  // const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
+  // const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
+  const [location, setLocation] = useState("");
   const [guests, setGuests] = useState("Add guests");
   const [showCalendar, setShowCalendar] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -28,8 +33,96 @@ const SearchBar = ({ searchType, onSearch }) => {
 // console.log('selectedBlock', selectedBlock)
 // console.log('focusedSearchBar', focusedSearchBar)
 // console.log('searchType', searchType)
-// console.log('searchCheckIn', searchCheckIn)
-// console.log('searchCheckOut', searchCheckOut)
+console.log('checkInToServer', checkInToServer)
+console.log('checkOutToServer', checkOutToServer)
+
+
+////////////////////////////////////////////////////////////////
+    
+    useEffect(() => {
+      handleDateConversion(); 
+    }, [searchCheckIn, searchCheckOut, selectedOption]); 
+    
+    const convertDateObjectToString = (dateObject) => {
+      const day = dateObject.getDate(); 
+      const month = dateObject.getMonth(); 
+      const year = dateObject.getFullYear();
+      
+      return `${String(month + 1).padStart(2, "0")}/${String(day).padStart(2, "0")}/${year}`;
+    };
+    
+    const handleDateConversion = () => {
+      const searchCheckInObj = convertStringToDateObject(searchCheckIn);
+      const searchCheckOutObj = convertStringToDateObject(searchCheckOut);
+    
+      console.log("searchCheckInObj", searchCheckInObj);
+      console.log("searchCheckOutObj", searchCheckOutObj);
+    
+      const { day: checkInDay, month: checkInMonth, year: checkInYear } = searchCheckInObj;
+      const checkInBaseDate = new Date(checkInYear, checkInMonth, checkInDay); 
+    
+      const checkInDateObject = (() => {
+        switch (selectedOption) {
+          case "exact":
+            return checkInBaseDate;
+          case "1-day":
+            checkInBaseDate.setDate(checkInBaseDate.getDate() - 1);
+            return checkInBaseDate;
+          case "2-days":
+            checkInBaseDate.setDate(checkInBaseDate.getDate() - 2);
+            return checkInBaseDate;
+          case "3-days":
+            checkInBaseDate.setDate(checkInBaseDate.getDate() - 3);
+            return checkInBaseDate;
+          case "7-days":
+            checkInBaseDate.setDate(checkInBaseDate.getDate() - 7);
+            return checkInBaseDate;
+          case "14-days":
+            checkInBaseDate.setDate(checkInBaseDate.getDate() - 14);
+            return checkInBaseDate;
+          default:
+            throw new Error("Invalid option selected");
+        }
+      })();
+    
+      const { day: checkOutDay, month: checkOutMonth, year: checkOutYear } = searchCheckOutObj;
+      const checkOutBaseDate = new Date(checkOutYear, checkOutMonth, checkOutDay); 
+
+      const checkOutDateObject = (() => {
+        switch (selectedOption) {
+          case "exact":
+            return checkOutBaseDate;
+          case "1-day":
+            checkOutBaseDate.setDate(checkOutBaseDate.getDate() + 1);
+            return checkOutBaseDate;
+          case "2-days":
+            checkOutBaseDate.setDate(checkOutBaseDate.getDate() + 2);
+            return checkOutBaseDate;
+          case "3-days":
+            checkOutBaseDate.setDate(checkOutBaseDate.getDate() + 3);
+            return checkOutBaseDate;
+          case "7-days":
+            checkOutBaseDate.setDate(checkOutBaseDate.getDate() + 7);
+            return checkOutBaseDate;
+          case "14-days":
+            checkOutBaseDate.setDate(checkOutBaseDate.getDate() + 14);
+            return checkOutBaseDate;
+          default:
+            throw new Error("Invalid option selected");
+        }
+      })();
+    
+      console.log("checkInDateObject", checkInDateObject);
+      console.log("checkOutDateObject", checkOutDateObject);
+    
+      setCheckInToServer(convertDateObjectToString(checkInDateObject));
+      setCheckOutToServer(convertDateObjectToString(checkOutDateObject));
+    };
+    
+//////////////////////////////////////////////////////////////
+
+
+
 
 
   const prevSelectedBlock = useRef(null);
@@ -97,7 +190,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   
   const handleSearch = () => {
     //search logic here
-    onSearch({ location, searchCheckIn, searchCheckOut, guests });
+    onSearch({ location, checkInToServer, checkOutToServer, guests });
   };
 
   return (
@@ -242,7 +335,10 @@ const SearchBar = ({ searchType, onSearch }) => {
                   />
                 </div>
                 <div className={styles.incrementButtonWrapper}>
-                  <DataIncrementsButtonForTheCalendar />
+                  <DataIncrementsButtonForTheCalendar 
+                    selectedOption={selectedOption}
+                    setSelectedOption={setSelectedOption}
+                  />
                 </div>
               </div>
             )}
@@ -292,7 +388,7 @@ const SearchBar = ({ searchType, onSearch }) => {
                     searchCheckIn={searchCheckIn}
                     searchCheckOut={searchCheckOut}
                     setSearchCheckIn={setSearchCheckIn}
-                    setSearchCheckOut={setSearchCheckOut}  
+                    setSearchCheckOut={setSearchCheckOut}
                   />
                 </div>
               </div>
