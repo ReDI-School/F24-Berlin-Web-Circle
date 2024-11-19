@@ -1,10 +1,6 @@
-import { useState } from 'react';
 import styles from './DataIncrementsButtonForTheCalendar.module.css'; 
 
-const DateIncrementsButtonForTheCalendar = () => {
-
-  const [selectedOption, setSelectedOption] = useState('exact');
-
+const DateIncrementsButtonForTheCalendar = ({selectedOption, setSelectedOption}) => {
 
   const options = [
     { label: 'Exact dates', value: 'exact' },
@@ -14,7 +10,6 @@ const DateIncrementsButtonForTheCalendar = () => {
     { label: '±7 days', value: '7-days' },
     { label: '±14 days', value: '14-days' }
   ];
-
 
   const handleOptionChange = (value) => {
     setSelectedOption(value); 

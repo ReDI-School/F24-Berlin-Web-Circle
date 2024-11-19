@@ -12,24 +12,27 @@ const SearchPanel = () => {
   const toggleSearchType = (type) => {
     setSearchType(type);
   };
+  
   const handleAirbnbSearch = ({
     location: region,
     checkIn,
     checkOut,
     guests,
   }) => {
+    
     const searchQueries = {
       region,
       checkIn,
       checkOut,
       guests,
     };
-    if (region)
+    
+    if (region) {
       navigate({
         pathname: `/s/${region}/homes`,
         search: createSearchParams(searchQueries).toString(),
       });
-  };
+    }
 
   return (
     <div>
@@ -48,5 +51,4 @@ const SearchPanel = () => {
     </div>
   );
 };
-
 export default SearchPanel;
