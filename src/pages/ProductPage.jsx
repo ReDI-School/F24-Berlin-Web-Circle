@@ -37,20 +37,9 @@ const ProductPage = () => {
   const [booking, setBooking] = useState(null);
   const [checkInDate, setCheckInDate] = useState(null)
   const [checkOutDate, setCheckOutDate] = useState(null)
+  const [availableCheckIn, setAvailableCheckIn] = useState(null) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-
-  const alreadyBookedDates = [ // TODO: remove after alreadyBookedDates will be fetched from backend
-    {
-      startDate: "11/01/2024",
-      endDate: "11/05/2024",
-    },
-    {
-      startDate: "12/20/2024",
-      endDate: "12/25/2024",
-    },
-  ];
 
   const { productId } = useParams();
   
@@ -70,6 +59,7 @@ useEffect(() => {
       if (bookingsResponse.data) {
         setCheckInDate(bookingsResponse.data.checkInDate);
         setCheckOutDate(bookingsResponse.data.checkOutDate);
+        setAvailableCheckIn(bookingsResponse.data.checkInDate)
       }
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
@@ -80,7 +70,6 @@ useEffect(() => {
 
   fetchData();
 }, [productId]);
-
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -165,16 +154,18 @@ useEffect(() => {
                 onClick={handleShowAmenities}
               />
             }
-            <hr className={styles.separator} />
-            <CalendarBlock 
+            {booking.bookingData.isBookingOpen && <hr className={styles.separator} />}
+            {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
               toggleKeyboardPopup={toggleKeyboardPopup}
               minStayNights={booking.bookingData.minStayNights}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={alreadyBookedDates}
+              alreadyBookedDates={booking.alreadyBookedDates}
+              availableCheckIn={availableCheckIn}
             />  
+            }
           </div>
           <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
@@ -197,7 +188,8 @@ useEffect(() => {
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={alreadyBookedDates}
+              alreadyBookedDates={booking.alreadyBookedDates}
+              availableCheckIn={availableCheckIn}
             />
           }
           </div>
