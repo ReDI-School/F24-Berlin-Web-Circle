@@ -17,7 +17,6 @@ const SuggestedDestinations = ({ suggestions, onSelect }) => {
             <IconComponent className={styles.icon} />
             <div>
               <div className={styles.name}>{destination.name}</div>
-              <div className={styles.description}>{destination.description}</div>
             </div>
           </div>
         );
