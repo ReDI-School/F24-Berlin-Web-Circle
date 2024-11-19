@@ -331,7 +331,7 @@
   text-align: center;
   outline: none;
   padding: 0;
-  margin-right: -12px;
+  margin-right: -14px;
 }
 
 .searchDeleteContentBtn:hover {
@@ -341,4 +341,9 @@
 .searchDeleteContentBtn:focus,
 .searchDeleteContentBtn:focus-visible {
   outline: none;
+}
+
+.additionalDates {
+  margin-left: 6px;
+  font-size: 13px;
 }

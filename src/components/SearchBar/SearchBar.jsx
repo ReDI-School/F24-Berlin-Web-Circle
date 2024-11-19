@@ -15,8 +15,6 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
   const [checkInToServer, setCheckInToServer] = useState('');
   const [checkOutToServer, setCheckOutToServer] = useState('');
-  // const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
-  // const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
   const [location, setLocation] = useState("");
   const [guests, setGuests] = useState("Add guests");
   const [showCalendar, setShowCalendar] = useState(false);
@@ -30,7 +28,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   });
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
-// console.log('selectedBlock', selectedBlock)
+console.log('selectedBlock', selectedBlock)
 // console.log('focusedSearchBar', focusedSearchBar)
 // console.log('searchType', searchType)
 console.log('checkInToServer', checkInToServer)
@@ -258,7 +256,19 @@ console.log('checkOutToServer', checkOutToServer)
             >
               <div className={styles.checkInTextWrapper}>
                 <span className={styles.label}>Check in</span>
-                <span className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}</span>
+                <div className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}
+                  <span className={styles.additionalDates}>
+                    {searchCheckIn && searchCheckIn !== "Add dates" && (
+                      <>
+                        {selectedOption === "1-day" && "±1"}
+                        {selectedOption === "2-days" && "±2"}
+                        {selectedOption === "3-days" && "±3"}
+                        {selectedOption === "7-days" && "±7"}
+                        {selectedOption === "14-days" && "±14"}
+                      </>
+                    )}
+                  </span>
+                </div>
               </div>
               {searchCheckIn && searchCheckIn !== "Add dates" && selectedBlock === "checkIn" && (
               <button 
@@ -301,7 +311,19 @@ console.log('checkOutToServer', checkOutToServer)
             >
               <div className={styles.checkOutTextWrapper}>
                 <span className={styles.label}>Check out</span>
-                <span className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}</span>
+                <div className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}
+                  <span className={styles.additionalDates}>
+                    {searchCheckOut && searchCheckOut !== "Add dates" && (
+                      <>
+                        {selectedOption === "1-day" && "±1"}
+                        {selectedOption === "2-days" && "±2"}
+                        {selectedOption === "3-days" && "±3"}
+                        {selectedOption === "7-days" && "±7"}
+                        {selectedOption === "14-days" && "±14"}
+                      </>
+                    )}
+                  </span>
+                </div>
               </div>
               {searchCheckOut && searchCheckOut !== "Add dates" && selectedBlock === "checkOut" && (
               <button 
