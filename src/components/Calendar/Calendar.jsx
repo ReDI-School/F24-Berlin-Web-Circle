@@ -29,10 +29,18 @@ const Calendar = ({
   searchCheckIn,
   searchCheckOut,
   setSearchCheckIn,
-  setSearchCheckOut
+  setSearchCheckOut,
+  availableCheckIn
 }) => {
 
-  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [currentMonth, setCurrentMonth] = useState(
+    checkInDate
+      ? (() => {
+          const { year, month } = convertStringToDateObject(checkInDate);
+          return new Date(year, month, 1);
+        })()
+      : new Date()
+  );
   const [animationDirection, setAnimationDirection] = useState("")
 
   const [pickedCheckIn, setPickedCheckIn] = useState(() => {
@@ -180,8 +188,8 @@ const Calendar = ({
     const today = new Date().setHours(0, 0, 0, 0)
     const daysInMonth = getDaysInMonth(year, month)
     const firstDayOfMonth = getFirstDayOfMonth(year, month)
-    const daysArray = []
 
+    const daysArray = []
 
   const checkInDateTime = pickedCheckIn 
     ? new Date(pickedCheckIn.year, pickedCheckIn.month, pickedCheckIn.day).getTime() 
@@ -216,9 +224,12 @@ const Calendar = ({
       ? (date >= checkInDateTime && date <= dayBeforeBookedDateTime)
       : (checkInDateTime ? date >= checkInDateTime : true);
       const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year, alreadyBookedDates, minStayNights, isSearchBarCalendar);
+      const isBeforeCheckIn = checkInDateTime && date < checkInDateTime
+      const isAvailableCheckIn = availableCheckIn && date < (new Date(availableCheckIn)).getTime()
+      const shouldAddPastDate = !checkInDate && availableCheckIn && date < (new Date(availableCheckIn)).getTime();
 
       
-      const tooltipClass = `${styles.tooltipText}`;        
+      const tooltipClass = `${styles.tooltipText}`        
       const minNightsTooltipClass = `${tooltipClass} ${
         (isCheckInDate && !isCheckOutDate && !isBetweenDates && !isMinStayBeforeBooked) || 
         (isMinStayBeforeBooked && !checkOutDate)  
@@ -248,7 +259,7 @@ const Calendar = ({
       daysArray.push(
         <div
           key={day}
-          className={`${styles.date} ${isPastDate ? styles.pastDate : ''} 
+          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) || isAvailableCheckIn ? styles.pastDate : ''} 
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
@@ -256,7 +267,8 @@ const Calendar = ({
                       ${isAlreadyBooked ? styles.pastDate : ''}
                       ${isDayBeforeBookedDate ? styles.dayBeforeBookedDate : ''}
                       ${(!isInValidRange && checkInDateTime && !checkOutDate && !isSearchBarCalendar) ? styles.pastDate : ''}                     
-                      ${isMinStayBeforeBooked && !isCheckOutDate && !isCheckInDate ? styles.minStayRange : ''}
+                      ${isMinStayBeforeBooked && !isCheckOutDate && !isCheckInDate ? styles.minStayRange : ''} 
+                      ${shouldAddPastDate ? styles.pastDate : ''} 
                     `}
           style={{
             "--pastDate-line-through": textDecoration,

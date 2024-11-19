@@ -66,6 +66,13 @@
   margin-top: -1px;
 }
 
+.checkInText,
+.checkOutText {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
 .inputContainerWho {
   display: flex;
   align-items: center;
@@ -343,7 +350,6 @@
   outline: none;
 }
 
-.additionalDates {
-  margin-left: 6px;
+.checkOutText .additionalDates {
   font-size: 13px;
 }
