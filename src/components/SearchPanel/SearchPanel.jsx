@@ -29,7 +29,6 @@ const SearchPanel = () => {
         if (region)
             navigate({pathname: `/s/${region}/homes`, search: createSearchParams(searchQueries).toString()});
     };
-
     return (
         <div>
             <div className={styles.toggleButtonsContainer}>

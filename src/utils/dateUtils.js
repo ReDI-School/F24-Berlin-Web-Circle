@@ -204,3 +204,11 @@ export function formatDateRange(checkIn, checkOut) {
 
   return `${checkInDate.toLocaleDateString("en-US", optionsMonthDay)} - ${checkOutDate.toLocaleDateString("en-US", optionsMonthDay)}`;
 }
+
+
+export function convertDateObjectToString(dateObject) {
+  const day = dateObject.getDate();
+  const month = dateObject.getMonth();
+  const year = dateObject.getFullYear();
+  return `${String(month + 1).padStart(2, "0")}/${String(day).padStart(2, "0")}/${year}`;
+};

@@ -2,7 +2,6 @@ import styles from './DataIncrementsButtonForTheCalendar.module.css';
 
 const DateIncrementsButtonForTheCalendar = ({selectedOption, setSelectedOption}) => {
 
-console.log('selectedOption', selectedOption);
   const options = [
     { label: 'Exact dates', value: 'exact' },
     { label: '±1 day', value: '1-day' },
