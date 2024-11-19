@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const products = require("./src/data/places.json");
+//const products = require("./src/data/places.json");
 const dotenv = require("dotenv");
 // const prisma = require(".db/prisma");
 
@@ -34,12 +34,14 @@ app.post("/savePlace", (req, res) => {
 
 // import Routes
 const placesRoutes = require("./routes/places");
+const v2placesRoutes = require("./routes/v2Places")
 const destinationsRoutes = require("./routes/destinations");
 const searchedPlacesRoutes = require("./routes/searchedPlaces");
 const bookingsRoutes = require("./routes/bookings");
 
 // Use Routes
 app.use("/places", placesRoutes);
+app.use("/v2/places",v2placesRoutes);
 app.use("/destinations", destinationsRoutes);
 app.use("/s", searchedPlacesRoutes);
 app.use("/bookings", bookingsRoutes);
