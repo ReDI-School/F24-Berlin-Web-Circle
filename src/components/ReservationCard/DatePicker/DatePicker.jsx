@@ -21,7 +21,8 @@ const DatePicker = ({
   setCheckOutError,
   checkInError,
   checkOutError,
-  alreadyBookedDates = []
+  alreadyBookedDates = [],
+  availableCheckIn
 }) => {
   const [checkInFocus, setCheckInFocus] = useState(false)
   const [checkOutFocus, setCheckOutFocus] = useState(false)
@@ -77,20 +78,21 @@ const DatePicker = ({
 
   const checkInDateObj = new Date(checkInDate)
   const checkOutDateObj = new Date(checkOutDate)
+  const availableCheckInObj = new Date(availableCheckIn)
   const MS_PER_DAY = 1000 * 60 * 60 * 24
 
   const handleCheckInBlur = (dataCheckIn) => {
     if (validateDate(dataCheckIn)) {
-      const checkInDateObj = new Date(dataCheckIn)
+      const dataCheckInObj = new Date(dataCheckIn)
 
-      if (isDateBooked(dataCheckIn)) {
-        setCheckInError('This date is unavailable');
-        return;
+      if (isDateBooked(dataCheckIn) || dataCheckInObj < availableCheckInObj) {
+        setCheckInError('This date is unavailable')
+        return
       }
 
-      const chekInOutDiff = (checkOutDateObj - checkInDateObj) / MS_PER_DAY
+      const chekInOutDiff = (checkOutDateObj - dataCheckInObj) / MS_PER_DAY
 
-      if (checkOutDate && checkInDateObj >= checkOutDateObj) {
+      if (checkOutDate && dataCheckInObj >= checkOutDateObj) {
         setCheckInError('Check-in date must be earlier than check-out date')
       } else if (checkOutDate && chekInOutDiff < Number(minStayNights)) {
         setCheckInError(`Minimum stay: ${minStayNights} nights`)
@@ -108,16 +110,16 @@ const DatePicker = ({
 
   const handleCheckOutBlur = (dataCheckOut) => {
     if (validateDate(dataCheckOut)) {
-      const checkOutDateObj = new Date(dataCheckOut)
+      const dataCheckOutObj = new Date(dataCheckOut)
 
       if (isDateBooked(dataCheckOut)) {
-        setCheckOutError('This date is unavailable');
-        return;
+        setCheckOutError('This date is unavailable')
+        return
       } 
 
-      const chekInOutDiff = (checkOutDateObj - checkInDateObj) / MS_PER_DAY
+      const chekInOutDiff = (dataCheckOutObj - checkInDateObj) / MS_PER_DAY
 
-      if (checkInDate && checkOutDateObj <= checkInDateObj) {
+      if (checkInDate && dataCheckOutObj <= checkInDateObj) {
         setCheckOutError('Check-out date must be later than check-in date')
       } else if (chekInOutDiff < minStayNights) {
         setCheckOutError(`Minimum stay: ${minStayNights} nights`)

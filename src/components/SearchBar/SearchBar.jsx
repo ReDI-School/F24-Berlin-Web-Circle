@@ -1,34 +1,130 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./SearchBar.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
 import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import { formatDateToMonthDay, formatDateRange, convertStringToDateObject, convertDateObjectToString } from "../../utils/dateUtils";
+import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
 
-const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, checkOut: initialCheckOut, guests: initialGuests, onSearch }) => {
+const SearchBar = ({ searchType, onSearch }) => {
+  const [selectedOption, setSelectedOption] = useState('exact');
+  const [searchCheckIn, setSearchCheckIn] = useState("Add dates");
+  const [searchCheckOut, setSearchCheckOut] = useState("Add dates");
+  const [checkInToServer, setCheckInToServer] = useState('');
+  const [checkOutToServer, setCheckOutToServer] = useState('');
   const [location, setLocation] = useState("");
-  const [checkIn, setCheckIn] = useState(initialCheckIn || "Add dates");
-  const [checkOut, setCheckOut] = useState(initialCheckOut || "Add dates");
-  const [guests, setGuests] = useState(initialGuests || "");
-  const [date, setDates] = useState(initialDate || "");
-
+  const [guests, setGuests] = useState("");
   const [showCalendar, setShowCalendar] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [hoverStates, setHoverStates] = useState({
+    location: false,
+    checkIn: false,
+    checkOut: false,
+    guests: false,
+    date: false,
+  });
+  const [selectedBlock, setSelectedBlock] = useState(null);
+  const [focusedSearchBar, setFocusedSearchBar] = useState(false);
+
+  useEffect(() => {
+    const createAdjustedDate = (baseDate, daysAdjustment) => {
+      const adjustedDate = new Date(baseDate);
+      adjustedDate.setDate(adjustedDate.getDate() + daysAdjustment);
+      return adjustedDate;
+    };
+  
+    if (!searchCheckIn || !searchCheckOut) {
+      setCheckInToServer('');
+      setCheckOutToServer('');
+      return;
+    }
+  
+    const searchCheckInObj = convertStringToDateObject(searchCheckIn);
+    const searchCheckOutObj = convertStringToDateObject(searchCheckOut);
+  
+    const checkInBaseDate = new Date(searchCheckInObj.year, searchCheckInObj.month, searchCheckInObj.day);
+    const checkOutBaseDate = new Date(searchCheckOutObj.year, searchCheckOutObj.month, searchCheckOutObj.day);
+  
+    const checkInDateObject = (() => {
+      switch (selectedOption) {
+        case "exact": return checkInBaseDate;
+        case "1-day": return createAdjustedDate(checkInBaseDate, -1);
+        case "2-days": return createAdjustedDate(checkInBaseDate, -2);
+        case "3-days": return createAdjustedDate(checkInBaseDate, -3);
+        case "7-days": return createAdjustedDate(checkInBaseDate, -7);
+        case "14-days": return createAdjustedDate(checkInBaseDate, -14);
+        default: throw new Error("Invalid option selected");
+      }
+    })();
+  
+    const checkOutDateObject = (() => {
+      switch (selectedOption) {
+        case "exact": return checkOutBaseDate;
+        case "1-day": return createAdjustedDate(checkOutBaseDate, 1);
+        case "2-days": return createAdjustedDate(checkOutBaseDate, 2);
+        case "3-days": return createAdjustedDate(checkOutBaseDate, 3);
+        case "7-days": return createAdjustedDate(checkOutBaseDate, 7);
+        case "14-days": return createAdjustedDate(checkOutBaseDate, 14);
+        default: throw new Error("Invalid option selected");
+      }
+    })();
+  
+    setCheckInToServer(convertDateObjectToString(checkInDateObject));
+    setCheckOutToServer(convertDateObjectToString(checkOutDateObject));
+  }, [searchCheckIn, searchCheckOut, selectedOption]);
+
+
+  const prevSelectedBlock = useRef(null);
+
+  const disableSearchBarFocus = () => { 
+    setFocusedSearchBar(false);
+    setSelectedBlock(null);
+  }
+
+  const closeCalendarPopup = () => setShowCalendar(false)
+
+  const searchBarRef = useOutsideClick(disableSearchBarFocus);
+  const calendarRef = useOutsideClick(closeCalendarPopup)
+
+  useEffect(() => {
+    prevSelectedBlock.current = selectedBlock;
+  }, [selectedBlock]);
+
+  const handleBlockClick = (block) => {
+    setSelectedBlock((prevBlock) => (prevBlock === block && selectedBlock !== 'where' ? null : block));
+    setFocusedSearchBar(true);
+  };
+
+  const handleMouseHover = (block, isHovering) => {
+    setHoverStates((prev) => ({
+      ...prev,
+      [block]: isHovering,
+    }));
+  };
+
 
   const toggleCalendar = () => {
     setShowCalendar((prevState) => !prevState);
   }
 
-  const closeCalendarPopup = () => setShowCalendar(false)
-  const calendarRef = useOutsideClick(closeCalendarPopup)
+  useEffect(() => {
+    searchCheckIn && searchCheckIn !== "Add dates" ? setSelectedBlock("checkOut") : setSelectedBlock("checkIn")
+  }, [searchCheckIn])
 
+  useEffect(() => {
+    searchCheckIn && searchCheckOut && searchType === "experiences" ? setSelectedBlock("date") : null
+  }, [searchCheckIn, searchType, searchCheckOut])
+  
 
   useEffect(() => {
     const handleScroll = () => {
       if (showCalendar && !closing) {
         setClosing(true);
+        setFocusedSearchBar(false);
+        setSelectedBlock(null);
         setTimeout(() => {
           setShowCalendar(false);
           setClosing(false);
@@ -45,37 +141,170 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
 
   
   const handleSearch = () => {
-    //search logic here
-    onSearch({ location, checkIn, checkOut, date, guests });
+    const validCheckIn = checkInToServer && !isNaN(new Date(checkInToServer).getTime()) ? checkInToServer : null;
+    const validCheckOut = checkOutToServer && !isNaN(new Date(checkOutToServer).getTime()) ? checkOutToServer : null;
+  
+    const searchParams = {
+      location,
+      guests,
+    };
+  
+    if (validCheckIn) {
+      searchParams.checkIn = validCheckIn;
+    }
+    if (validCheckOut) {
+      searchParams.checkOut = validCheckOut;
+    }
+  
+    onSearch(searchParams);
   };
-
+  
   return (
     <>
-      <div className={styles.searchBar}>
-        <div className={styles.inputContainerWhere}>
-          <span className={styles.label}>Where</span>
-          <input
-            className={styles.inputTextPlaceholder}
-            type="text"
-            placeholder="Search destinations"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+      <div className={`${styles.searchBar} ${focusedSearchBar ? styles.focused : ''}`} ref={searchBarRef}>
+        <div 
+          className={`${styles.inputContainerWhere} 
+                      ${selectedBlock === "where" ? styles.selected : ''}
+                      ${selectedBlock === "checkIn" || selectedBlock === "date" ? styles.hoveredWhereBlock : ''}
+                    `}
+          onMouseEnter={() => handleMouseHover("location", true)}
+          onMouseLeave={() => handleMouseHover("location", false)}
+          onClick={() => handleBlockClick("where")}  
+        >
+          <div className={styles.locationContentWrapper}>
+            <span className={styles.label}>Where</span>
+            <input
+              className={styles.inputTextPlaceholder}
+              type="text"
+              placeholder="Search destinations"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
 
-          />
+            />
+          </div>
+          {location && selectedBlock === "where" && (
+            <button 
+              onClick={(e) => {
+                e.stopPropagation()
+                setLocation("")
+              }}
+              className={styles.searchDeleteContentBtn}
+            >
+              <CloseButtonIcon />
+            </button>
+          )}
         </div>
-        <div className={styles.separator}></div>
+        <div className={styles.separatorWrapper}
+             style={{ opacity: hoverStates.location ||
+              hoverStates.checkIn ||
+              hoverStates.date ||
+               (selectedBlock === "where" && focusedSearchBar) ||
+               (selectedBlock === "checkIn" && focusedSearchBar) ||
+               (selectedBlock === "date" && focusedSearchBar) ?
+               0 : 1 }}
+        >
+          <div className={styles.separator}></div>
+        </div>
         {searchType === "stays" ? (
           <div className={styles.checkInOutWrapper} ref={calendarRef}>
-            <div className={styles.inputContainerCheckIn} onClick={toggleCalendar}>
-              <span className={styles.label}>Check in</span>
-              <span className={styles.checkInText}>{checkIn}</span>
+            <div className={`${styles.inputContainerCheckIn} 
+                             ${selectedBlock === "checkIn" ? styles.selected : ''}
+                             ${selectedBlock === "where" ? styles.hoveredCheckInBlock : ''}
+                             ${selectedBlock === "checkOut" ? styles.hoveredReversedCheckInBlock : ''}
+                           `}
+              onClick={() => {
+                handleBlockClick("checkIn");
+                if((prevSelectedBlock.current !== "checkOut" && showCalendar) ||
+                  (!showCalendar)) {
+                  toggleCalendar();
+                }
+              }}
+              onMouseEnter={() => handleMouseHover("checkIn", true)}
+              onMouseLeave={() => handleMouseHover("checkIn", false)}
+            >
+              <div className={styles.checkInTextWrapper}>
+                <span className={styles.label}>Check in</span>
+                <div className={styles.checkInText}>{formatDateToMonthDay(searchCheckIn)}
+                  <span className={styles.additionalDates}>
+                    {searchCheckIn && searchCheckIn !== "Add dates" && (
+                      <>
+                        {selectedOption === "1-day" && "±1"}
+                        {selectedOption === "2-days" && "±2"}
+                        {selectedOption === "3-days" && "±3"}
+                        {selectedOption === "7-days" && "±7"}
+                        {selectedOption === "14-days" && "±14"}
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
+              {searchCheckIn && searchCheckIn !== "Add dates" && selectedBlock === "checkIn" && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSearchCheckIn("Add dates")
+                  setSearchCheckOut("Add dates")
+                }}
+                className={styles.searchDeleteContentBtn}
+              >
+                <CloseButtonIcon />
+              </button>
+              )}
             </div>
 
-            <div className={styles.separator}></div>
+            <div className={styles.separatorWrapper} 
+                 style={{ opacity: hoverStates.checkIn ||
+                   hoverStates.checkOut ||
+                   (selectedBlock === "checkIn" && focusedSearchBar) ||
+                   (selectedBlock === "checkOut" && focusedSearchBar) ? 
+                   0 : 1 }}
+            >
+              <div className={styles.separator}></div>
+            </div>
 
-            <div className={styles.inputContainerCheckOut} onClick={toggleCalendar}>
-              <span className={styles.label}>Check out</span>
-              <span className={styles.checkOutText}>{checkOut}</span>
+            <div className={`${styles.inputContainerCheckOut} 
+                             ${selectedBlock === "checkOut" ? styles.selected : ''}
+                             ${selectedBlock === "who" ? styles.hoveredCheckOutBlock : ''}
+                             ${selectedBlock === "checkIn" ? styles.hoveredReversedCheckOutBlock : ''}
+                           `}
+                 onMouseEnter={() => handleMouseHover("checkOut", true)}
+                 onMouseLeave={() => handleMouseHover("checkOut", false)}
+                 onClick={() => {
+                  handleBlockClick("checkOut")
+                  if((prevSelectedBlock.current !== "checkIn" && showCalendar) ||
+                  (!showCalendar)) {
+                    toggleCalendar();
+                  }
+                }}
+            >
+              <div className={styles.checkOutTextWrapper}>
+                <span className={styles.label}>Check out</span>
+                <div className={styles.checkOutText}>{formatDateToMonthDay(searchCheckOut)}
+                  <span className={styles.additionalDates}>
+                    {searchCheckOut && searchCheckOut !== "Add dates" && (
+                      <>
+                        {selectedOption === "1-day" && "±1"}
+                        {selectedOption === "2-days" && "±2"}
+                        {selectedOption === "3-days" && "±3"}
+                        {selectedOption === "7-days" && "±7"}
+                        {selectedOption === "14-days" && "±14"}
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
+              {searchCheckOut && searchCheckOut !== "Add dates" && selectedBlock === "checkOut" && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSearchCheckIn("Add dates")
+                  setSearchCheckOut("Add dates")
+                }}
+                className={styles.searchDeleteContentBtn}
+              >
+                <CloseButtonIcon />
+              </button> 
+              )}
             </div>
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
@@ -88,20 +317,54 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                     dayItemHeight="48px"
                     pickedDayWidth="46px"
                     pickedDayHeight="46px"
-                    isSearchBarCalendar={true}  
+                    isSearchBarCalendar={true}
+                    searchCheckIn={searchCheckIn}
+                    searchCheckOut={searchCheckOut}
+                    setSearchCheckIn={setSearchCheckIn}
+                    setSearchCheckOut={setSearchCheckOut}
                   />
                 </div>
                 <div className={styles.incrementButtonWrapper}>
-                  <DataIncrementsButtonForTheCalendar />
+                  <DataIncrementsButtonForTheCalendar 
+                    selectedOption={selectedOption}
+                    setSelectedOption={setSelectedOption}
+                  />
                 </div>
               </div>
             )}
             </div>
         ) : (
           <div className={styles.checkInOutExperiencesWrapper} ref={calendarRef}>
-            <div className={styles.inputContainerDate} onClick={toggleCalendar}>
-              <span className={styles.label}>Date</span>
-              <span className={styles.checkInText}>{checkIn}</span>
+            <div className={`${styles.inputContainerDate} 
+                              ${selectedBlock === "date" ? styles.selected : ''}
+                              ${selectedBlock === "where" ? styles.hoveredDateBlock : ''}
+                              ${selectedBlock === "who" ? styles.hoveredReversedDateBlock : ''}
+                            `}
+              onClick={() => {
+                handleBlockClick("date")
+                toggleCalendar()
+              }}
+              onMouseEnter={() => handleMouseHover("date", true)}
+              onMouseLeave={() => handleMouseHover("date", false)}
+            >
+              <div className={styles.dateTextWrapper}>
+                <span className={styles.label}>Date</span>
+                <div className={styles.experienceDatesWrapper}>
+                  <span className={styles.checkInText}>{formatDateRange(searchCheckIn, searchCheckOut)}</span>
+                </div>
+              </div>
+              {searchCheckIn && searchCheckIn !== "Add dates" && selectedBlock === "date" && ( 
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSearchCheckIn("Add dates")
+                  setSearchCheckOut("Add dates")
+                }}
+                className={styles.searchDeleteContentBtn}
+              >
+                <CloseButtonIcon />
+              </button> 
+              )}
             </div>
             {showCalendar && (
               <div className={`${styles.calendarWrapper} ${closing ? styles.close : styles.open}`}>
@@ -111,27 +374,55 @@ const SearchBar = ({ searchType, date: initialDate, checkIn: initialCheckIn, che
                     dayItemHeight="48px" 
                     pickedDayWidth="46px"
                     pickedDayHeight="46px"
-                    isSearchBarCalendar={true}  
+                    isSearchBarCalendar={true}
+                    searchCheckIn={searchCheckIn}
+                    searchCheckOut={searchCheckOut}
+                    setSearchCheckIn={setSearchCheckIn}
+                    setSearchCheckOut={setSearchCheckOut}
                   />
                 </div>
               </div>
             )}
           </div>
         )}
-        <div className={styles.separator}></div>
-        <div className={styles.inputContainerWho}>
-          <span className={styles.label}>Who</span>
-          <input
-            type="text"
-            placeholder="Add guests"
-            value={guests}
-            onChange={(e) => setGuests(e.target.value)}
-          />
+        <div className={styles.separatorWrapper}
+             style={{ opacity: hoverStates.guests ||
+              hoverStates.checkOut ||
+              (selectedBlock === "who" && focusedSearchBar) ||
+              (selectedBlock === "checkOut" && focusedSearchBar) ||
+              (selectedBlock === "date" && focusedSearchBar) ||
+              hoverStates.date ? 0 : 1 }}
+        >
+          <div className={styles.separator}></div>
         </div>
-        <div>
-          <button onClick={handleSearch} className={styles.circleButton}>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
+        <div className={`${styles.inputContainerWho} 
+                         ${selectedBlock === "who" ? styles.selected : ''}
+                         ${selectedBlock === "checkOut" || selectedBlock === "date" ? styles.hoveredWhoBlock : ''}
+                       `}
+          onMouseEnter={() => handleMouseHover("guests", true)}
+          onMouseLeave={() => handleMouseHover("guests", false)}
+          onClick={() => handleBlockClick("who")}
+        >
+          <div className={styles.inputContainerWhoInner}>
+            <span className={styles.label}>Who</span>
+            <span className={styles.guestsText}>{guests}</span>
+          </div>
+          {guests && guests !== "Add guests" && selectedBlock === "guests" && ( 
+          <button 
+            onClick={(e) => {
+              e.stopPropagation()
+              setGuests("Add guests")
+            }}
+            className={styles.searchDeleteContentBtn}
+          >
+            <CloseButtonIcon />
+          </button> 
+          )}
+          <div>
+            <button onClick={handleSearch} className={styles.circleButton}>
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </div>
         </div>
       </div>
     </>
