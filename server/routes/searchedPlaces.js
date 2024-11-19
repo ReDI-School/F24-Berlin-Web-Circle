@@ -12,6 +12,7 @@ router.get("/:region/homes", (req, res) => {
 	// checkIn and checkOut values are passed as strings. If the given string is not valid it will return 'Invalid Date'
 	const checkIn = new Date(req?.query?.checkIn);
 	let checkOut = new Date(req?.query?.checkOut);
+
 	const filteredResult = [];
 
 	let filteredDestinations;

@@ -16,7 +16,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [checkInToServer, setCheckInToServer] = useState('');
   const [checkOutToServer, setCheckOutToServer] = useState('');
   const [location, setLocation] = useState("");
-  const [guests, setGuests] = useState("Add guests");
+  const [guests, setGuests] = useState("");
   const [showCalendar, setShowCalendar] = useState(false);
   const [closing, setClosing] = useState(false);
   const [hoverStates, setHoverStates] = useState({
