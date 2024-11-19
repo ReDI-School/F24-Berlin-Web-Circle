@@ -20,6 +20,97 @@ model User {
   password String
 }
 
+model Product {
+  product_id           Int        @id @default(autoincrement())
+  title                String     @db.VarChar(150)
+  host                 String     @db.VarChar(150)
+  star_grade           Float
+  price                Float
+  accommodation        String     @db.VarChar(150)
+  address              String     @db.VarChar(150)
+  guests               Int
+  bedrooms             Int
+  beds                 Int
+  baths                Int
+  host_name            String     @db.VarChar(64)
+  hosting_duration     String     @db.VarChar(64)
+  role                 String     @db.VarChar(64)
+  profile_pic_Url      String     @db.VarChar(150)
+  description_space    String     @db.Text
+  description_place    String     @db.Text
+  guest_access         String     @db.Text
+  other_things         String     @db.VarChar(150)
+  lon                  Decimal    @db.Decimal(12, 8)
+  lat                  Decimal    @db.Decimal(12, 8)
+  address_description  String     @db.Text
+  total_avg_rating     Float
+  total_reviews_count  Int
+  cleanliness_avg_rating Float
+  accuracy_avg_rating    Float
+  checkin_avg_rating     Float
+  communication_avg_rating Float
+  location_avg_rating     Float
+  value_avg_rating        Float
+
+  highlights           Highlight[]
+  amenities            Amenitie[]
+  images               Image[]
+  reviews              Review[]
+}
+
+model Highlight {
+  highlight_id Int      @id @default(autoincrement())
+  product_id   Int
+  type         String   @db.VarChar(64)
+  text         String   @db.VarChar(64)
+  sub_text     String   @db.VarChar(150)
+
+  Product      Product  @relation(fields: [product_id], references: [product_id])
+
+  @@index([product_id])
+}
+
+model Amenitie {
+  amenitie_id  Int      @id @default(autoincrement())
+  product_id   Int
+  type         String   @db.VarChar(64)
+  text         String   @db.VarChar(64)
+
+  Product      Product  @relation(fields: [product_id], references: [product_id])
+
+  @@index([product_id])
+}
+
+model Image {
+  image_id       Int      @id @default(autoincrement())
+  product_id     Int
+  image          String   @db.VarChar(250)
+  image_location String   @db.VarChar(150)
+
+  Product        Product  @relation(fields: [product_id], references: [product_id])
+
+  @@index([product_id])
+}
+
+model Review {
+  review_id            Int      @id @default(autoincrement())
+  product_id           Int
+  name                 String   @db.VarChar(64)
+  review_text          String   @db.VarChar(250)
+  rating               Int
+  reviewer_image       String   @db.VarChar(250)
+  date_image           DateTime
+  accuracy_rating      Float
+  checkin_rating       Float
+  cleanliness_rating   Float
+  communication_rating Float
+
+  Product              Product  @relation(fields: [product_id], references: [product_id])
+
+  @@index([product_id])
+}
+
+
 model Place {
   id       Int @id @default(autoincrement())
   title               String
