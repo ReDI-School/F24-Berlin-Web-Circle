@@ -14,6 +14,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Berlin, Germany",
+      "categories": ["LUXURY_VILLAS", "LUXE"],
       "guests": { "key": "guest", "value": 3 },
       "bedrooms": { "key": "bedroom", "value": 1 },
       "beds": { "key": "bed", "value": 3 },
@@ -142,6 +143,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Zempow, Germany",
+      "categories": ["TINY_HOMES", "CASTLES", "CABINS"],
       "guests": { "key": "guest", "value": 2 },
       "bedrooms": { "key": "bedroom", "value": 1 },
       "beds": { "key": "bed", "value": 1 },
@@ -287,6 +289,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Swan Lake, USA",
+      "categories": ["TINY_HOMES", "CABINS"],
       "guests": { "key": "guest", "value": 4 },
       "bedrooms": { "key": "bedroom", "value": 2 },
       "beds": { "key": "bed", "value": 3 },
@@ -422,6 +425,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "San Francisco, USA",
+      "categories": ["TINY_HOMES", "CABINS"],
       "guests": { "key": "guest", "value": 2 },
       "bedrooms": { "key": "bedroom", "value": 1 },
       "beds": { "key": "bed", "value": 1 },
@@ -553,6 +557,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Big Bear Lake, USA",
+      "categories": ["TINY_HOMES", "BEACHFRONT", "BEACH_HOUSES", "RIVERSIDE_CABINS"],
       "guests": { "key": "guest", "value": 6 },
       "bedrooms": { "key": "bedroom", "value": 3 },
       "beds": { "key": "bed", "value": 4 },
@@ -688,6 +693,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Miami Beach, USA",
+      "categories": ["TINY_HOMES", "BEACHFRONT", "BEACH_HOUSES", "RIVERSIDE_CABINS"],
       "guests": { "key": "guest", "value": 4 },
       "bedrooms": { "key": "bedroom", "value": 2 },
       "beds": { "key": "bed", "value": 3 },

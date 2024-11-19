@@ -5,24 +5,25 @@ import { MdOutlineCabin, MdOutlineCastle } from 'react-icons/md';
 import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 'react-icons/gi';
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
 import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
+import * as constants from '../../constants/constants';
 
 const categories = [
-  { label: 'Amazing Pools', icon: <FaSwimmingPool size={28} /> },
-  { label: 'Beachfront', icon: <FaUmbrellaBeach size={28} /> },
-  { label: 'Cabins', icon: <MdOutlineCabin size={28} /> },
-  { label: 'Tiny Homes', icon: <GiHouse size={28} /> },
-  { label: 'Castles', icon: <MdOutlineCastle size={28} /> },
-  { label: 'Camping', icon: <FaCampground size={28} /> },
-  { label: 'Luxe', icon: <GiDiamondHard size={28} /> },
-  { label: 'Arctic', icon: <GiSnowflake2 size={28} /> },
-  { label: 'Caravans', icon: <FaCaravan size={28} /> },
-  { label: 'Tree Houses', icon: <FaTree size={28} /> },
-  { label: 'Fishing Boats', icon: <GiFishingBoat size={28} /> },
-  { label: 'Sailboats', icon: <GiSailboat size={28} /> },
-  { label: 'Luxury Villas', icon: <GiDiamondHard size={28} /> },
-  { label: 'Beach Houses', icon: <FaUmbrellaBeach size={28} /> },
-  { label: 'Chalets', icon: <GiHouse size={28} /> },
-  { label: 'Riverside Cabins', icon: <MdOutlineCabin size={28} /> },
+  {label: "Amazing Pools", tag: constants.AMAZING_POOLS, icon: <FaSwimmingPool size={28} /> },
+  {label: "Beachfront", tag: constants.BEACHFRONT, icon: <FaUmbrellaBeach size={28} /> },
+  {label: "Cabins", tag: constants.CABINS, icon: <MdOutlineCabin size={28} /> },
+  {label: "Tiny Homes", tag: constants.TINY_HOMES, icon: <GiHouse size={28} /> },
+  {label: "Castles", tag: constants.CASTLES, icon: <MdOutlineCastle size={28} /> },
+  {label: "Camping", tag: constants.CAMPING, icon: <FaCampground size={28} /> },
+  {label: "Luxe", tag: constants.LUXE, icon: <GiDiamondHard size={28} /> },
+  {label: "Arctic", tag: constants.ARCTIC, icon: <GiSnowflake2 size={28} /> },
+  {label: "Caravans", tag: constants.CARAVANS, icon: <FaCaravan size={28} /> },
+  {label: "Tree Houses", tag: constants.TREE_HOUSES, icon: <FaTree size={28} /> },
+  {label: "Fishing Boats", tag: constants.FISHING_BOATS, icon: <GiFishingBoat size={28} /> },
+  {label: "Sailboats", tag: constants.SAILBOATS, icon: <GiSailboat size={28} /> },
+  {label: "Luxury Villas", tag: constants.LUXURY_VILLAS, icon: <GiDiamondHard size={28} /> },
+  {label: "Beach Houses", tag: constants.BEACH_HOUSES, icon: <FaUmbrellaBeach size={28} /> },
+  {label: "Chalets", tag: constants.CHALETS, icon: <GiHouse size={28} /> },
+  {label: "Riverside Cabins", tag: constants.RIVERSIDE_CABINS, icon: <MdOutlineCabin size={28} /> },
 ];
 
 const CategoryTabs = () => {
@@ -31,8 +32,8 @@ const CategoryTabs = () => {
   const [showRightArrow, setShowRightArrow] = useState(false);
   const scrollContainerRef = useRef(null);
 
-  const handleTabClick = (label) => {
-    setActiveTab(label);
+  const handleTabClick = (tag) => {
+    setActiveTab(tag);
   };
 
   const handleScroll = (direction) => {
@@ -79,9 +80,9 @@ const CategoryTabs = () => {
         <div className={styles.categoryTabs} ref={scrollContainerRef}>
           {categories.map((category) => (
             <div
-              key={category.label}
+              key={category.tag}
               className={`${styles.tabItem} ${activeTab === category.label ? styles.tabItemActive : ''}`}
-              onClick={() => handleTabClick(category.label)}
+              onClick={() => handleTabClick(category.tag)}
             >
               <div className={styles.tabIcon}>{category.icon}</div>
               <span className={styles.tabLabel}>{category.label}</span>
