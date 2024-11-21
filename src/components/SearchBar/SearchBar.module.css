@@ -79,7 +79,6 @@
   justify-content: space-between;
   position: relative;
   width: 284px;
-  flex: 1;
   cursor: pointer;
 }
 
@@ -352,4 +351,27 @@
 
 .checkOutText .additionalDates {
   font-size: 13px;
+}
+
+.popupContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 76px;
+  padding: 16px 32px;
+  background-color: white;
+  z-index: 1200;
+  min-width: 400px;
+  border-radius: 32px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guestDropdown {
+  background-color: #e7314d;
 }
