@@ -32,6 +32,22 @@ const SearchBar = ({
     setShowCalendar((prevState) => !prevState);
   };
 
+  const handleAirbnbSearch = ({ region, checkIn = "", checkOut = "", guests = "" }) => {
+    const searchQueries = {
+      region,
+      checkIn,
+      checkOut,
+      guests,
+    };
+
+    if (region) {
+      navigate({
+        pathname: `/s/${region}/homes`,
+        search: createSearchParams(searchQueries).toString(),
+      });
+    }
+  };
+
   const closeCalendarPopup = () => setShowCalendar(false);
   const calendarRef = useOutsideClick(closeCalendarPopup);
 
