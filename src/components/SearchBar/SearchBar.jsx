@@ -6,7 +6,7 @@ import Calendar from "../Calendar/Calendar";
 import CalendarToggle from "../calendarToggle/CalendarToggle";
 import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCalendar/DataIncrementsButtonForTheCalendar";
 import useOutsideClick from "../../hooks/useOutsideClick";
-import SuggestedDestinations from "src/components/SuggestedDestinations/SuggestedDestinations.jsx";
+import SuggestedDestinations from "../SuggestedDestinations/SuggestedDestinations.jsx";
 
 const SearchBar = ({
   searchType,
