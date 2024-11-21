@@ -3,6 +3,8 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { BASE_URL } from "../../constants/constants";
 import axios from "axios";
 import { Link, useParams, useSearchParams } from "react-router-dom";
+import CategoryTabs from "../../components/CategoryTabs/CategoryTabs";
+import CalendarToggle from "../../components/calendarToggle/CalendarToggle";
 
 const FilteredPlacesPage = () => {
 	const [filteredPlaces, setFilteredPlaces] = useState([]);
@@ -20,25 +22,31 @@ const FilteredPlacesPage = () => {
 	}, [region, searchParams])
 	
 	return (
-		<div className="grid">
-			{
-				filteredPlaces.map((filteredPlace) => {	
-					return (
-						<ProductCard
-						key={filteredPlace.id}
-						images={filteredPlace.images}
-						// onClick={() => handlePlaceClick(filteredPlace.id)} // Optional: Handle click here if needed
-					  >
-						<Link to={`/rooms/${filteredPlace.id}`}>
-						  <h2 className="title">{filteredPlace.title}</h2>
-						  <p className="host">{filteredPlace.host}</p>
-						  <p className="price">{filteredPlace.price}</p>
-						</Link>
-					  </ProductCard>
-					)
-				})
-			}
-		</div>
+		<>
+		    <div>
+       			<CalendarToggle />
+      		</div>
+			<CategoryTabs />  
+			<div className="grid">
+				{
+					filteredPlaces.map((filteredPlace) => {	
+						return (
+							<ProductCard
+							key={filteredPlace.id}
+							images={filteredPlace.images}
+							// onClick={() => handlePlaceClick(filteredPlace.id)} // Optional: Handle click here if needed
+						>
+							<Link to={`/rooms/${filteredPlace.id}`}>
+							<h2 className="title">{filteredPlace.title}</h2>
+							<p className="host">{filteredPlace.host}</p>
+							<p className="price">{filteredPlace.price}</p>
+							</Link>
+						</ProductCard>
+						)
+					})
+				}
+			</div>
+		</>
 	)
 }
 
