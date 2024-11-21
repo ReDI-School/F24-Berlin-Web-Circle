@@ -2,32 +2,38 @@
     {
       "name": "Berlin",
       "description": "The vibrant capital of Germany.",
-      "icon": "FaCity"
+      "icon": "FaCity",
+      "region": "berlin"
     },
     {
       "name": "Paris",
       "description": "The romantic city of lights.",
-      "icon": "FaCity"
+      "icon": "FaCity",
+      "region": "paris"
     },
     {
       "name": "Madrid",
       "description": "The heart of Spain.",
-      "icon": "FaCity"
+      "icon": "FaCity",
+      "region":"madrid"
     },
     {
       "name": "Rome",
       "description": "The Eternal City of Italy.",
-      "icon": "FaCity"
+      "icon": "FaCity",
+      "region":"rome"
     },
     {
       "name": "Vienna",
       "description": "The imperial capital of Austria.",
-      "icon": "FaCity"
+      "icon": "FaCity",
+      "region": "vienna"
     },
     {
       "name": "Athens",
       "description": "The cradle of Western civilization.",
-      "icon": "FaCity"
+      "icon": "FaCity",
+      "region": "athens"
     }
   ]
   

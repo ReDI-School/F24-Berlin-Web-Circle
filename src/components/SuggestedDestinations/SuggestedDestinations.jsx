@@ -12,7 +12,7 @@ const SuggestedDestinations = ({ suggestions, onSelect }) => {
           <div
             key={index}
             className={styles.suggestionItem}
-            onClick={() => onSelectDestination(destination.region)}
+            onClick={() => onSelect(destination.region)}  // Pass region to onSelect
           >
             <IconComponent className={styles.icon} />
             <div>
