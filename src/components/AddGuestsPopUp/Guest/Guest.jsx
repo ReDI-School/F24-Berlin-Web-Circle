@@ -5,97 +5,171 @@ const Guest = ({
   title,
   description,
   descriptionType,
-  onClick,
+  onGuestChange,
   count: initialCount,
   allowGuestsNumber,
   setGuestCounts,
   currentTotalPeople,
   toggleGuestCountPopup,
+  isSearchWhoDropdown,
+  setGuestSearchCounts,
+  currentSearchTotalPeople,
+  handleGuestSearchClick,
 }) => {
   const [count, setCount] = useState(initialCount)
   const { peopleNumber, petsNumber } = allowGuestsNumber
- 
+
+  const petsSearchNumber = 5
+  const searchTotalPeopleNumber = 16
 
   const handleMinusCount = () => {
-    if ((title === 'Adults' && count > 1) || (title !== 'Adults' && count > 0)) {
-      const newCount = count - 1;
-      setCount(newCount);
-      onClick({ typeofGuest: title, numberOfGuests: newCount });
-      setGuestCounts((prevCounts) => ({
-        ...prevCounts,
-        [title.toLowerCase()]: newCount,
-      }));
+    if (
+      (title === 'Adults' && count > 1) ||
+      (title !== 'Adults' && count > 0)
+    ) {
+      const newCount = count - 1
+      setCount(newCount)
+      if (!isSearchWhoDropdown) {
+        onGuestChange({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestCounts((prevCounts) => ({
+          ...prevCounts,
+          [title.toLowerCase()]: newCount,
+        }))
+      } else {
+        handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestSearchCounts((prevCounts) => ({
+          ...prevCounts,
+          [title.toLowerCase()]: newCount,
+        }))
+      }
     }
-  };
+  }
 
   const handlePlusCount = () => {
     if (
-      (title === 'Adults' || title === 'Children') &&
-      currentTotalPeople < peopleNumber
+      !isSearchWhoDropdown
+        ? (title === 'Adults' || title === 'Children') &&
+          currentTotalPeople < peopleNumber
+        : (title === 'Adults' || title === 'Children') &&
+          currentSearchTotalPeople < searchTotalPeopleNumber
     ) {
-      const newCount = count + 1;
-      setCount(newCount);
-      onClick({ typeofGuest: title, numberOfGuests: newCount });
-      setGuestCounts((prevCounts) => ({
-        ...prevCounts,
-        [title.toLowerCase()]: newCount,
-      }));
-    } else if (title === 'Pets' && count < petsNumber) {
-      const newCount = count + 1;
-      setCount(newCount);
-      onClick({ typeofGuest: title, numberOfGuests: newCount });
-      setGuestCounts((prevCounts) => ({
-        ...prevCounts,
-        pets: newCount,
-      }));
+      const newCount = count + 1
+      setCount(newCount)
+      if (!isSearchWhoDropdown) {
+        onGuestChange({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestCounts((prevCounts) => ({
+          ...prevCounts,
+          [title.toLowerCase()]: newCount,
+        }))
+      } else {
+        handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestSearchCounts((prevCounts) => ({
+          ...prevCounts,
+          [title.toLowerCase()]: newCount,
+        }))
+      }
+    } else if (
+      !isSearchWhoDropdown
+        ? title === 'Pets' && count < petsNumber
+        : title === 'Pets' && count < petsSearchNumber
+    ) {
+      const newCount = count + 1
+      setCount(newCount)
+      if (!isSearchWhoDropdown) {
+        onGuestChange({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestCounts((prevCounts) => ({
+          ...prevCounts,
+          pets: newCount,
+        }))
+      } else{
+        handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestSearchCounts((prevCounts) => ({
+          ...prevCounts,
+          pets: newCount,
+        }))
+      }
     } else if (title === 'Infants' && count < 5) {
-      const newCount = count + 1;
-      setCount(newCount);
-      onClick({ typeofGuest: title, numberOfGuests: newCount });
-      setGuestCounts((prevCounts) => ({
-        ...prevCounts,
-        infants: newCount,
-      }));
+      const newCount = count + 1
+      setCount(newCount)
+      if (!isSearchWhoDropdown) {
+        onGuestChange({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestCounts((prevCounts) => ({
+          ...prevCounts,
+          infants: newCount,
+        }))
+      } else {
+        handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
+        setGuestSearchCounts((prevCounts) => ({
+          ...prevCounts,
+          infants: newCount,
+        }))
+      }
     }
-  };
+  }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.detailContainer}>
+    <div
+      className={`${styles.container} ${
+        isSearchWhoDropdown ? styles.whoDropdownContainer : ''
+      }`}
+    >
+      <div
+        className={`${styles.detailContainer} ${
+          isSearchWhoDropdown ? styles.whoDropdownDetailContainer : ''
+        }`}
+      >
         <div className={styles.title}>{title}</div>
         {descriptionType === 'string' ? (
           <div>{description}</div>
         ) : (
-          <div className={styles.descriptionLink} onClick={toggleGuestCountPopup}>{description}</div>
+          !isSearchWhoDropdown && (
+            <div
+              className={styles.descriptionLink}
+              onClick={toggleGuestCountPopup}
+            >
+              {description}
+            </div>
+          )
         )}
       </div>
       <div className={styles.buttonContainer}>
-        <div
+        <button
           className={
-            (count !== 0 && title !== 'Adults') || (count > 1 && title === 'Adults')
+            (count !== 0 && title !== 'Adults') ||
+            (count > 1 && title === 'Adults')
               ? styles.button
               : styles.buttonDisable
           }
           onClick={handleMinusCount}
         >
           -
-        </div>
+        </button>
         <div className={styles.count}>{count}</div>
-        <div
+        <button
           className={
-            ((title === 'Adults' || title === 'Children') && currentTotalPeople < peopleNumber) ||
-            (title === 'Pets' && count < petsNumber) ||
-            (title === 'Infants' && count < 5)
-              ? styles.button
-              : styles.buttonDisable
+            !isSearchWhoDropdown
+              ? ((title === 'Adults' || title === 'Children') &&
+                  (currentTotalPeople < peopleNumber ||
+                    currentSearchTotalPeople < peopleNumber)) ||
+                (title === 'Pets' && count < petsNumber) ||
+                (title === 'Infants' && count < 5)
+                ? styles.button
+                : styles.buttonDisable
+              : (title === 'Pets' && count < petsSearchNumber) ||
+                (title === 'Infants' && count < 5) ||
+                ((title === 'Adults' || title === 'Children') &&
+                  (currentSearchTotalPeople < searchTotalPeopleNumber ||
+                    currentSearchTotalPeople < searchTotalPeopleNumber))
+                ? styles.button
+                : styles.buttonDisable
           }
           onClick={handlePlusCount}
         >
           +
-        </div>
-
+        </button>
       </div>
     </div>
   )
 }
 export default Guest
+

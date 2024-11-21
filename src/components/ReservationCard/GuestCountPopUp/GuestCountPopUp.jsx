@@ -3,9 +3,9 @@ import { CloseIcon } from '../../../icons'
 import AnimalServiceImg from '../../../assets/images/service-images/animal-service.jpg'
 import styles from './GuestCountPopUp.module.css'
 
-const GuestCountPopUp = ({ isVisible, onClose, showGuests, setShowGuests }) => {
+const GuestCountPopUp = ({ isVisible, onClose, showGuests, setShowGuests, isSearchWhoDropdown }) => {
 
-  if (!showGuests) {
+  if (!showGuests && !isSearchWhoDropdown) {
     setShowGuests(true)
   } 
 

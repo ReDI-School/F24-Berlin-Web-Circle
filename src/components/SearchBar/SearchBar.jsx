@@ -8,6 +8,8 @@ import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCal
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { formatDateToMonthDay, formatDateRange, convertStringToDateObject, convertDateObjectToString } from "../../utils/dateUtils";
 import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
+import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
+import { calculateGuestCounts } from "../../utils/guestCounts";
 
 const SearchBar = ({ searchType, onSearch }) => {
   const [selectedOption, setSelectedOption] = useState('exact');
@@ -16,8 +18,14 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [checkInToServer, setCheckInToServer] = useState('');
   const [checkOutToServer, setCheckOutToServer] = useState('');
   const [location, setLocation] = useState("");
-  const [guests, setGuests] = useState("");
+  const [guests, setGuests] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ]);
   const [showCalendar, setShowCalendar] = useState(false);
+  const [showWhoDropdown, setShowWhoDropdown] = useState(false);
   const [closing, setClosing] = useState(false);
   const [hoverStates, setHoverStates] = useState({
     location: false,
@@ -28,6 +36,40 @@ const SearchBar = ({ searchType, onSearch }) => {
   });
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
+  const [isSearchWhoDropdown, setIsSearchWhoDropdown] = useState(true);
+  const [guestSearchCounts, setGuestSearchCounts] = useState({
+    "adults": 1,
+    "children": 0,
+    "infants": 0,
+    "pets": 0
+  });
+
+  const currentSearchTotalPeople = guestSearchCounts.adults + guestSearchCounts.children;
+
+  const {
+    adultsCount,
+    childrenCount,
+    infantsCount,
+    petsCount,
+    adultsAndChildrenCount,
+  } = calculateGuestCounts(guests)
+
+  console.log("======GUESTS========", adultsCount,
+    childrenCount,
+    infantsCount,
+    petsCount,
+    adultsAndChildrenCount)
+
+  const handleGuestSearchClick = (updatedGuest) => {
+    setGuests((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
+
 
   useEffect(() => {
     const createAdjustedDate = (baseDate, daysAdjustment) => {
@@ -85,9 +127,12 @@ const SearchBar = ({ searchType, onSearch }) => {
   }
 
   const closeCalendarPopup = () => setShowCalendar(false)
+  const closeWhoDropdown = () => setShowWhoDropdown(false)
 
   const searchBarRef = useOutsideClick(disableSearchBarFocus);
   const calendarRef = useOutsideClick(closeCalendarPopup)
+  const whoRef = useOutsideClick(closeWhoDropdown)
+
 
   useEffect(() => {
     prevSelectedBlock.current = selectedBlock;
@@ -110,6 +155,10 @@ const SearchBar = ({ searchType, onSearch }) => {
     setShowCalendar((prevState) => !prevState);
   }
 
+  const toggleWhoDropdown = () => {
+    setShowWhoDropdown((prevState) => !prevState);
+  }
+
   useEffect(() => {
     searchCheckIn && searchCheckIn !== "Add dates" ? setSelectedBlock("checkOut") : setSelectedBlock("checkIn")
   }, [searchCheckIn])
@@ -121,32 +170,35 @@ const SearchBar = ({ searchType, onSearch }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (showCalendar && !closing) {
+      if ((showCalendar && !closing) || (showWhoDropdown && !closing)) {
         setClosing(true);
         setFocusedSearchBar(false);
         setSelectedBlock(null);
         setTimeout(() => {
           setShowCalendar(false);
+          setShowWhoDropdown(false);
           setClosing(false);
         }, 300);
       }
     };
-    if (showCalendar) {
+    if (showCalendar || showWhoDropdown) {
       window.addEventListener("scroll", handleScroll);
     } else {
       window.removeEventListener("scroll", handleScroll);
     }
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [showCalendar, closing]);
+  }, [showCalendar, showWhoDropdown, closing]);
 
-  
+
   const handleSearch = () => {
     const validCheckIn = checkInToServer && !isNaN(new Date(checkInToServer).getTime()) ? checkInToServer : null;
     const validCheckOut = checkOutToServer && !isNaN(new Date(checkOutToServer).getTime()) ? checkOutToServer : null;
+    // const validGuestsCount = guests && !isNaN(guests) ? guests : 1;
+    
+
   
     const searchParams = {
       location,
-      guests,
     };
   
     if (validCheckIn) {
@@ -155,6 +207,9 @@ const SearchBar = ({ searchType, onSearch }) => {
     if (validCheckOut) {
       searchParams.checkOut = validCheckOut;
     }
+    // if(validGuestsCount) {
+    //   searchParams.guests = validGuestsCount;
+    // }
   
     onSearch(searchParams);
   };
@@ -395,17 +450,21 @@ const SearchBar = ({ searchType, onSearch }) => {
         >
           <div className={styles.separator}></div>
         </div>
+      <div className={styles.inputContainerWhoWrapper} ref={whoRef}>
         <div className={`${styles.inputContainerWho} 
                          ${selectedBlock === "who" ? styles.selected : ''}
                          ${selectedBlock === "checkOut" || selectedBlock === "date" ? styles.hoveredWhoBlock : ''}
                        `}
           onMouseEnter={() => handleMouseHover("guests", true)}
           onMouseLeave={() => handleMouseHover("guests", false)}
-          onClick={() => handleBlockClick("who")}
+          onClick={() => {
+            handleBlockClick("who")
+            toggleWhoDropdown()
+          }} 
         >
           <div className={styles.inputContainerWhoInner}>
             <span className={styles.label}>Who</span>
-            <span className={styles.guestsText}>{guests}</span>
+            <span className={styles.guestsText}>Add guests</span>
           </div>
           {guests && guests !== "Add guests" && selectedBlock === "guests" && ( 
           <button 
@@ -424,7 +483,22 @@ const SearchBar = ({ searchType, onSearch }) => {
             </button>
           </div>
         </div>
+        {showWhoDropdown && (
+            <div className={`${styles.whoDropdownWrapper} ${closing ? styles.close : styles.open}`}>
+              <AddGuestsPopUp 
+                isSearchWhoDropdown={isSearchWhoDropdown}
+                adultsCount={adultsCount}
+                childrenCount={childrenCount}
+                infantsCount={infantsCount}
+                petsCount={petsCount}
+                setGuestSearchCounts={setGuestSearchCounts}
+                currentSearchTotalPeople={currentSearchTotalPeople}
+                handleGuestSearchClick={handleGuestSearchClick}
+              />
+            </div>
+          )}
       </div>
+    </div>
     </>
   );
 };
