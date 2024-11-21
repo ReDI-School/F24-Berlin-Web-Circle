@@ -65,10 +65,10 @@ const SearchBar = ({
   };
 
   const handleSelectDestination = (region) => {
-    // When a destination is selected, navigate to the homes search page
+
     navigate(`/s/${region}/homes`);
-    setLocation(region);  // Optionally update the location in the input field
-    setIsFocused(false);  // Close the suggestions dropdown
+    setLocation(region);  
+    setIsFocused(false);  
   };
 
   return (
@@ -91,7 +91,6 @@ const SearchBar = ({
           />
         )}
       </div>
-      {/* Other search inputs (Check-in, Check-out, Guests) */}
     </div>
   );
 };

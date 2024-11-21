@@ -34,7 +34,7 @@ const SearchPanel = () => {
                     checkOut=""
                     guests=""
                     onSearch={handleAirbnbSearch}
-                    navigate={navigate}  // Pass navigate here
+                    navigate={navigate}
                 />
             </div>
         </div>
