@@ -1,33 +1,25 @@
-import React from 'react'
-import SearchBar from "../SearchBar/SearchBar";
-import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences'
-import styles from "./SearchPanel.module.css"
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
+import SearchBar from "../SearchBar/SearchBar";
+import ToggleButtonsStaysExperiences from '../ToggleButtonsStaysExperiences/ToggleButtonsStaysExperiences';
+import styles from "./SearchPanel.module.css";
 
 const SearchPanel = () => {
-
     const [searchType, setSearchType] = useState("stays");
     const navigate = useNavigate();
 
     const toggleSearchType = (type) => {
         setSearchType(type);
     };
-    const handleAirbnbSearch = ({ location: region, checkIn, checkOut, guests }) => {
-        // TODO: After configuring the props below should be removed. USED FOR TESTING.
-          region;
-         checkIn;
-         checkOut;
-         guests;
 
-        const searchQueries = {
-            region,
-            checkIn,
-            checkOut,
-            guests
+    const handleAirbnbSearch = ({ location: region, checkIn, checkOut, guests }) => {
+        const searchQueries = { region, checkIn, checkOut, guests };
+        if (region) {
+            navigate({
+                pathname: `/s/${region}/homes`,
+                search: createSearchParams(searchQueries).toString(),
+            });
         }
-        if (region)
-            navigate({pathname: `/s/${region}/homes`, search: createSearchParams(searchQueries).toString()});
     };
 
     return (
@@ -42,10 +34,11 @@ const SearchPanel = () => {
                     checkOut=""
                     guests=""
                     onSearch={handleAirbnbSearch}
+                    navigate={navigate}  // Pass navigate here
                 />
-            </div>            
-        </div>        
-    )
-}
+            </div>
+        </div>
+    );
+};
 
-export default SearchPanel
+export default SearchPanel;
