@@ -5,7 +5,6 @@ const filterPlaces = require('../src/utils/filter');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  console.log(req.queries);
 	const {region, guests = 1, category} = req.query;
 
 	// checkIn and checkOut values are passed as strings. If the given string is not valid it will return 'Invalid Date'

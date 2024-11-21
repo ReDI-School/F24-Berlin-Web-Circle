@@ -12,7 +12,6 @@ router.get("/:region/homes", (req, res) => {
 	const checkIn = new Date(req?.query?.checkIn);
 	let checkOut = new Date(req?.query?.checkOut);
 
-	console.log("==========city, checkIn, checkout, guests",region,checkIn, checkOut, guests);
 	const filteredPlaces = filterPlaces(region, checkIn, checkOut, guests);
 	return res.json(filteredPlaces);
   });

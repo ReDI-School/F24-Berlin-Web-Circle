@@ -13,7 +13,9 @@ const FilteredPlacesPage = () => {
 	axios.get(`${BASE_URL}s/${region}/homes`, {
 		params: searchParams
 	})
-	.then(response => setFilteredPlaces(response?.data))
+	.then(response => {
+		setFilteredPlaces(response?.data);
+	})
 	.catch(error => console.error(`Something went wrong. ${error.message}.`))
 	}, [region, searchParams])
 	

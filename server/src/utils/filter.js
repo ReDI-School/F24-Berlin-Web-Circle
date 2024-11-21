@@ -13,8 +13,6 @@ const constants = require('../constants/constants');
 	else {
 		filteredDestinations = places.filter(place => place?.productSummary?.address?.toLowerCase().includes(region.toLowerCase()) && place?.productSummary?.guests?.value >= guests);
 	}
-	
-
 	// Filter by category
 	if (category) {
 		filteredDestinations = filteredDestinations.filter(place => place.productSummary?.categories?.includes(category));
@@ -28,7 +26,7 @@ const constants = require('../constants/constants');
 		checkOut.setDate(checkIn.getDate() + DEFAULT_NO_OF_DAYS_PER_STAY);
 	}
 
-	if (filteredDestinations.length && checkIn && checkOut)
+	if (filteredDestinations.length && checkIn && checkOut && !isNaN(checkIn.getDate()) && !isNaN(checkOut.getDate()))
 	{
 		filteredDestinations.forEach(destination => {
 			let isPlaceNotAvailable = destination.reservations?.some((reservation)=> {
@@ -57,7 +55,6 @@ const constants = require('../constants/constants');
 		return (filteredResult);
 	}
 	else {
-		console.log("===========",filteredDestinations);
 		return (filteredDestinations);
 	}
 }

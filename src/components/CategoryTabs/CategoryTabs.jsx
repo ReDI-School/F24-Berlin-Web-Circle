@@ -6,6 +6,7 @@ import { GiSnowflake2, GiDiamondHard, GiHouse, GiFishingBoat, GiSailboat } from 
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
 import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
 import * as constants from '../../constants/constants';
+import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
 
 const categories = [
   {label: "Amazing Pools", tag: constants.AMAZING_POOLS, icon: <FaSwimmingPool size={28} /> },
@@ -31,9 +32,15 @@ const CategoryTabs = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
   const scrollContainerRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleTabClick = (tag) => {
     setActiveTab(tag);
+    navigate({
+      pathname: location.pathname,
+      search: createSearchParams({category: tag}).toString(),
+  });
   };
 
   const handleScroll = (direction) => {
