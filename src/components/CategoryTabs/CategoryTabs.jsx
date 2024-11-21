@@ -78,16 +78,17 @@ const CategoryTabs = () => {
       }
       <div className={styles.categoryTabsWrapper}>
         <div className={styles.categoryTabs} ref={scrollContainerRef}>
-          {categories.map((category) => (
+          {categories.map((category, id) => {
+            return (
             <div
-              key={category.tag}
+              key={id}
               className={`${styles.tabItem} ${activeTab === category.label ? styles.tabItemActive : ''}`}
               onClick={() => handleTabClick(category.tag)}
             >
               <div className={styles.tabIcon}>{category.icon}</div>
               <span className={styles.tabLabel}>{category.label}</span>
             </div>
-          ))}
+          )})}
         </div>
       </div>
       {showRightArrow &&

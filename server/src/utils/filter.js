@@ -13,6 +13,7 @@ const constants = require('../constants/constants');
 	else {
 		filteredDestinations = places.filter(place => place?.productSummary?.address?.toLowerCase().includes(region.toLowerCase()) && place?.productSummary?.guests?.value >= guests);
 	}
+	
 
 	// Filter by category
 	if (category) {
@@ -30,7 +31,7 @@ const constants = require('../constants/constants');
 	if (filteredDestinations.length && checkIn && checkOut)
 	{
 		filteredDestinations.forEach(destination => {
-			let isPlaceNotAvailable = destination.reservations.some((reservation)=> {
+			let isPlaceNotAvailable = destination.reservations?.some((reservation)=> {
 
 				// In a JSON file dates are saved as strings. Hence to perform date operations, they are converted to dates.
 				const reservationCheckIn = new Date(reservation.dates[0]);
@@ -56,6 +57,7 @@ const constants = require('../constants/constants');
 		return (filteredResult);
 	}
 	else {
+		console.log("===========",filteredDestinations);
 		return (filteredDestinations);
 	}
 }

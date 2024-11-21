@@ -6,7 +6,14 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   console.log(req.queries);
-    res.json(filterPlaces());
+	const {region, guests = 1, category} = req.query;
+
+	// checkIn and checkOut values are passed as strings. If the given string is not valid it will return 'Invalid Date'
+	const checkIn = new Date(req?.query?.checkIn);
+	let checkOut = new Date(req?.query?.checkOut);
+
+	const filteredPlaces = filterPlaces(region, checkIn, checkOut, guests, category);
+	return res.json(filteredPlaces);
   });
 
 module.exports = router;
