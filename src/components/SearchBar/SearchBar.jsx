@@ -15,7 +15,7 @@ const SearchBar = ({
   checkOut: initialCheckOut,
   guests: initialGuests,
   onSearch,
-  navigate,  // Receive the navigate function here
+  navigate,
 }) => {
   const [location, setLocation] = useState("");
   const [checkIn, setCheckIn] = useState(initialCheckIn || "Add dates");
@@ -87,7 +87,7 @@ const SearchBar = ({
         {isFocused && (
           <SuggestedDestinations
             suggestions={suggestions}
-            onSelect={handleSelectDestination}  // Pass the select handler here
+            onSelect={handleSelectDestination}
           />
         )}
       </div>
