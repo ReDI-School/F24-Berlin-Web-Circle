@@ -960,6 +960,7 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Beverly Hills, USA",
+      "categories": ["TINY_HOMES"],
       "guests": { "key": "guest", "value": 8 },
       "bedrooms": { "key": "bedroom", "value": 4 },
       "beds": { "key": "bed", "value": 5 },
@@ -1227,7 +1228,8 @@
       "beds": { "key": "bed", "value": 3 },
       "baths": { "key": "bath", "value": 2 },
       "starGrade": 4.8,
-      "reviews": 30
+      "reviews": 30,
+      "categories": ["TINY_HOMES"]
     },
     "highlights": [
       {
@@ -1467,6 +1469,7 @@
       "beds": { "key": "bed", "value": 2 },
       "baths": { "key": "bath", "value": 1 },
       "starGrade": 4.7,
+      "categories": ["TINY_HOMES", "CHALETS"],
       "reviews": 45
     },
     "highlights": [
@@ -1584,6 +1587,7 @@
       "beds": { "key": "bed", "value": 2 },
       "baths": { "key": "bath", "value": 1 },
       "starGrade": 4.6,
+      "categories": ["TINY_HOMES", "CHALETS"],
       "reviews": 40
     },
     "highlights": [
@@ -1701,6 +1705,7 @@
       "beds": { "key": "bed", "value": 2 },
       "baths": { "key": "bath", "value": 2 },
       "starGrade": 4.9,
+      "categories": [ "LUXURY_VILLAS"],
       "reviews": 100
     },
     "highlights": [
@@ -1805,6 +1810,7 @@
     "productSummary": {
       "accommodation": "Entire apartment",
       "address": "Sydney, Australia",
+      "categories": ["TINY_HOMES"],
       "guests": { "key": "guest", "value": 4 },
       "bedrooms": { "key": "bedroom", "value": 2 },
       "beds": { "key": "bed", "value": 3 },
@@ -1922,6 +1928,7 @@
       "bedrooms": { "key": "bedroom", "value": 1 },
       "beds": { "key": "bed", "value": 1 },
       "baths": { "key": "bath", "value": 1 },
+      "categories": ["LUXURY_VILLAS", "LUXE"],
       "starGrade": 4.7,
       "reviews": 65
     },
@@ -2164,6 +2171,7 @@
       "bedrooms": { "key": "bedroom", "value": 1 },
       "beds": { "key": "bed", "value": 1 },
       "baths": { "key": "bath", "value": 1 },
+      "categories": ["RIVERSIDE_CABINS", "CHALETS"],
       "starGrade": 4.6,
       "reviews": 60
     },
@@ -2889,6 +2897,7 @@
     "productSummary": {
       "accommodation": "Entire apartment",
       "address": "Sydney, Australia",
+      "categories": ["TINY_HOMES", "BEACH_HOUSES"],
       "guests": { "key": "guest", "value": 4 },
       "bedrooms": { "key": "bedroom", "value": 2 },
       "beds": { "key": "bed", "value": 2 },
