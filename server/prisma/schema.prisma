@@ -56,6 +56,7 @@ model Product {
   amenities            Amenitie[]
   images               Image[]
   reviews              Review[]
+  booking              Booking[]
 }
 
 model Highlight {
@@ -82,12 +83,12 @@ model Amenitie {
 }
 
 model Image {
-  image_id       Int      @id @default(autoincrement())
-  product_id     Int
-  image          String   @db.VarChar(250)
-  image_location String   @db.VarChar(150)
+  image_id        Int      @id @default(autoincrement())
+  product_id      Int
+  image_url       String   @db.VarChar(250)
+  product_section String   @db.VarChar(150)
 
-  Product        Product  @relation(fields: [product_id], references: [product_id])
+  Product         Product  @relation(fields: [product_id], references: [product_id])
 
   @@index([product_id])
 }
@@ -110,6 +111,28 @@ model Review {
   @@index([product_id])
 }
 
+model Booking {
+  booking_id                  Int      @id @default(autoincrement())
+  product_id                  Int
+  checkInDate                 DateTime
+  checkOutDate                DateTime
+  totalPrice                  Float
+  pricePerNight               Float
+  cleaningFee                 Float
+  airbnbServiceFee            Float
+  longStayDiscount            Float
+  nightsCountForLongStayDiscount Int
+  minStayNights               Int
+  isBookingOpen               Boolean
+  adults                      Int
+  children                    Int
+  infants                     Int
+  pets                        Int
+
+  Product                     Product  @relation(fields: [product_id], references: [product_id])
+
+  @@index([product_id])
+}
 
 model Place {
   id       Int @id @default(autoincrement())
