@@ -36,7 +36,6 @@ const SearchBar = ({ searchType, onSearch }) => {
   });
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
-  const [isSearchWhoDropdown, setIsSearchWhoDropdown] = useState(true);
   const [guestSearchCounts, setGuestSearchCounts] = useState({
     "adults": 0,
     "children": 0,
@@ -186,25 +185,17 @@ const SearchBar = ({ searchType, onSearch }) => {
 
 
   const handleSearch = () => {
-    const adults = adultsCount
-    const children = childrenCount
-    const infants = infantsCount
-    const pets = petsCount
-    const validCheckIn = checkInToServer && !isNaN(new Date(checkInToServer).getTime()) ? checkInToServer : null;
-    const validCheckOut = checkOutToServer && !isNaN(new Date(checkOutToServer).getTime()) ? checkOutToServer : null;
-    const validadultsCount = adults && !isNaN(adults) ? adults : 0;
-    const validchildrenCount = children && !isNaN(children) ? children : 0;
-    const validinfantsCount = infants && !isNaN(infants) ? infants : 0;
-    const validpetsCount = pets && !isNaN(pets) ? pets : 0;
+    const validateCount = (count) => (count && !isNaN(count) ? count : 0);
+    const validateDate = (date) => (date && !isNaN(new Date(date).getTime()) ? date : null);
   
     const searchParams = {
       location,
-      checkIn: validCheckIn || null,
-      checkOut: validCheckOut || null,
-      adults: validadultsCount || 0,
-      children: validchildrenCount || 0,
-      infants: validinfantsCount || 0,
-      pets: validpetsCount || 0
+      checkIn: validateDate(checkInToServer),
+      checkOut: validateDate(checkOutToServer),
+      adults: validateCount(adultsCount),
+      children: validateCount(childrenCount),
+      infants: validateCount(infantsCount),
+      pets: validateCount(petsCount),
     };
   
     onSearch(searchParams);
@@ -494,7 +485,7 @@ const SearchBar = ({ searchType, onSearch }) => {
         {showWhoDropdown && (
             <div className={`${styles.whoDropdownWrapper} ${closing ? styles.close : styles.open}`}>
               <AddGuestsPopUp 
-                isSearchWhoDropdown={isSearchWhoDropdown}
+                isSearchWhoDropdown={true}
                 adultsCount={adultsCount}
                 childrenCount={childrenCount}
                 infantsCount={infantsCount}
