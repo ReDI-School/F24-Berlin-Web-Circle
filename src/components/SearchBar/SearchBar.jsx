@@ -43,8 +43,7 @@ const SearchBar = ({ searchType, onSearch }) => {
     "infants": 0,
     "pets": 0
   });
-console.log('guestSearchCounts', guestSearchCounts)
-console.log('guests', guests)
+
   const currentSearchTotalPeople = guestSearchCounts.adults + guestSearchCounts.children;
 
   const {
@@ -55,13 +54,6 @@ console.log('guests', guests)
     adultsAndChildrenCount,
   } = calculateGuestCounts(guests)
 
-  
-
-  console.log("======GUESTS========", adultsCount,
-    childrenCount,
-    infantsCount,
-    petsCount,
-    adultsAndChildrenCount)
 
   const handleGuestSearchClick = (updatedGuest) => {
     setGuests((prevList) =>
@@ -194,26 +186,26 @@ console.log('guests', guests)
 
 
   const handleSearch = () => {
+    const adults = adultsCount
+    const children = childrenCount
+    const infants = infantsCount
+    const pets = petsCount
     const validCheckIn = checkInToServer && !isNaN(new Date(checkInToServer).getTime()) ? checkInToServer : null;
     const validCheckOut = checkOutToServer && !isNaN(new Date(checkOutToServer).getTime()) ? checkOutToServer : null;
-    // const validGuestsCount = guests && !isNaN(guests) ? guests : 1;
-    
-
+    const validadultsCount = adults && !isNaN(adults) ? adults : 0;
+    const validchildrenCount = children && !isNaN(children) ? children : 0;
+    const validinfantsCount = infants && !isNaN(infants) ? infants : 0;
+    const validpetsCount = pets && !isNaN(pets) ? pets : 0;
   
     const searchParams = {
       location,
-      guests: 0,
+      checkIn: validCheckIn || null,
+      checkOut: validCheckOut || null,
+      adults: validadultsCount || 0,
+      children: validchildrenCount || 0,
+      infants: validinfantsCount || 0,
+      pets: validpetsCount || 0
     };
-  
-    if (validCheckIn) {
-      searchParams.checkIn = validCheckIn;
-    }
-    if (validCheckOut) {
-      searchParams.checkOut = validCheckOut;
-    }
-    // if(validGuestsCount) {
-    //   searchParams.guests = validGuestsCount;
-    // }
   
     onSearch(searchParams);
   };

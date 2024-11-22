@@ -37,7 +37,6 @@ const AddGuestsPopUp = ({
       );
       }
     }, [adjustedAdultsCount, setGuests, isSearchWhoDropdown]);
-console.log('adjustedAdultsCount', adjustedAdultsCount)
 
   return (
     <div className={styles.popup} style={style}>
