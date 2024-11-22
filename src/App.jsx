@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "./App.css";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import ProductCard from "./components/ProductCard/ProductCard";
@@ -12,6 +12,7 @@ import { BASE_URL } from "./constants/constants";
 function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
+  const [searchParams] = useSearchParams();
 
   const histogramData = [
     { from: 16, to: 23, count: 2 },
@@ -33,10 +34,10 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}places`)
+      .get(`${BASE_URL}places`, {params: searchParams})
       .then((response) => setPlaces(response?.data))
       .catch((error) => console.error(`Something went wrong. ${error.message}.`));
-  }, []);
+  }, [searchParams]);
 
   const handlePlaceClick = (placeId) => {
     setSelectPlaceId(placeId);
@@ -67,7 +68,6 @@ function App() {
           if (!place.id) return null;
 
           return (
-            <>
             <ProductCard
               key={place.id}
               images={place.images}
@@ -79,8 +79,6 @@ function App() {
                 <p className="price">{place.price}</p>
               </Link>
             </ProductCard>
-
-            </>
           );
         })}
       </div>
