@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Guest.module.css'
 
 const Guest = ({
@@ -15,6 +15,9 @@ const Guest = ({
   setGuestSearchCounts,
   currentSearchTotalPeople,
   handleGuestSearchClick,
+  childrenCount,
+  infantsCount,
+  petsCount
 }) => {
   const [count, setCount] = useState(initialCount)
   const { peopleNumber, petsNumber } = allowGuestsNumber
@@ -22,33 +25,51 @@ const Guest = ({
   const petsSearchNumber = 5
   const searchTotalPeopleNumber = 16
 
+  useEffect(() => {
+    setCount(initialCount);
+  }, [initialCount]);
+
+
+  const isOtherGuestsPresent = infantsCount > 0 || petsCount > 0 || childrenCount > 0;
+
   const handleMinusCount = () => {
-    if (!isSearchWhoDropdown ?
-      (title === 'Adults' && count > 1) ||
-      (title !== 'Adults' && count > 0) :
-      (title === 'Adults' && count > 0) ||
-      (title !== 'Adults' && count > 0) 
-    ) {
-      const newCount = count - 1
-      setCount(newCount)
-      if (!isSearchWhoDropdown) {
+    if (!isSearchWhoDropdown) {
+      if ((title === 'Adults' && count > 1) || (title !== 'Adults' && count > 0)) {
+        const newCount = count - 1
+        setCount(newCount)
         onGuestChange({ typeofGuest: title, numberOfGuests: newCount })
         setGuestCounts((prevCounts) => ({
           ...prevCounts,
           [title.toLowerCase()]: newCount,
         }))
+      }
+    } else {      
+      if (title === 'Adults') {
+        if (count > 0 && (!isOtherGuestsPresent || count > 1)) {
+          const newCount = count - 1
+          setCount(newCount)
+          handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
+          setGuestSearchCounts((prevCounts) => ({
+            ...prevCounts,
+            [title.toLowerCase()]: newCount,
+          }))
+        }
       } else {
-        handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
-        setGuestSearchCounts((prevCounts) => ({
-          ...prevCounts,
-          [title.toLowerCase()]: newCount,
-        }))
+        if (count > 0) {
+          const newCount = count - 1
+          setCount(newCount)
+          handleGuestSearchClick({ typeofGuest: title, numberOfGuests: newCount })
+          setGuestSearchCounts((prevCounts) => ({
+            ...prevCounts,
+            [title.toLowerCase()]: newCount,
+          }))
+        }
       }
     }
   }
 
+
   const handlePlusCount = () => {
-    
     if (
       !isSearchWhoDropdown
         ? (title === 'Adults' || title === 'Children') &&
@@ -144,7 +165,7 @@ const Guest = ({
               : styles.buttonDisable
             ) : (
             (count !== 0 && title !== 'Adults') ||
-            (count > 0 && title === 'Adults')
+            (count > 0 && (title !== 'Adults' || !isOtherGuestsPresent || count > 1)) 
               ? styles.button
               : styles.buttonDisable
             )
@@ -153,7 +174,9 @@ const Guest = ({
         >
           -
         </button>
+
         <div className={styles.count}>{count}</div>
+        
         <button
           className={
             !isSearchWhoDropdown

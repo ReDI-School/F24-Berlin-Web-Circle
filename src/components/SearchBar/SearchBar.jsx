@@ -43,7 +43,8 @@ const SearchBar = ({ searchType, onSearch }) => {
     "infants": 0,
     "pets": 0
   });
-
+console.log('guestSearchCounts', guestSearchCounts)
+console.log('guests', guests)
   const currentSearchTotalPeople = guestSearchCounts.adults + guestSearchCounts.children;
 
   const {
@@ -54,11 +55,13 @@ const SearchBar = ({ searchType, onSearch }) => {
     adultsAndChildrenCount,
   } = calculateGuestCounts(guests)
 
-  // console.log("======GUESTS========", adultsCount,
-  //   childrenCount,
-  //   infantsCount,
-  //   petsCount,
-  //   adultsAndChildrenCount)
+  
+
+  console.log("======GUESTS========", adultsCount,
+    childrenCount,
+    infantsCount,
+    petsCount,
+    adultsAndChildrenCount)
 
   const handleGuestSearchClick = (updatedGuest) => {
     setGuests((prevList) =>
@@ -507,6 +510,7 @@ const SearchBar = ({ searchType, onSearch }) => {
                 setGuestSearchCounts={setGuestSearchCounts}
                 currentSearchTotalPeople={currentSearchTotalPeople}
                 handleGuestSearchClick={handleGuestSearchClick}
+                setGuests={setGuests}
               />
             </div>
           )}
