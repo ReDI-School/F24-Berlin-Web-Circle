@@ -23,9 +23,11 @@ const Guest = ({
   const searchTotalPeopleNumber = 16
 
   const handleMinusCount = () => {
-    if (
+    if (!isSearchWhoDropdown ?
       (title === 'Adults' && count > 1) ||
-      (title !== 'Adults' && count > 0)
+      (title !== 'Adults' && count > 0) :
+      (title === 'Adults' && count > 0) ||
+      (title !== 'Adults' && count > 0) 
     ) {
       const newCount = count - 1
       setCount(newCount)
@@ -46,6 +48,7 @@ const Guest = ({
   }
 
   const handlePlusCount = () => {
+    
     if (
       !isSearchWhoDropdown
         ? (title === 'Adults' || title === 'Children') &&
@@ -134,11 +137,17 @@ const Guest = ({
       </div>
       <div className={styles.buttonContainer}>
         <button
-          className={
-            (count !== 0 && title !== 'Adults') ||
+          className={!isSearchWhoDropdown ?
+            ((count !== 0 && title !== 'Adults') ||
             (count > 1 && title === 'Adults')
               ? styles.button
               : styles.buttonDisable
+            ) : (
+            (count !== 0 && title !== 'Adults') ||
+            (count > 0 && title === 'Adults')
+              ? styles.button
+              : styles.buttonDisable
+            )
           }
           onClick={handleMinusCount}
         >

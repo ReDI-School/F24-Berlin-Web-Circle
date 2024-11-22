@@ -19,7 +19,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [checkOutToServer, setCheckOutToServer] = useState('');
   const [location, setLocation] = useState("");
   const [guests, setGuests] = useState([
-    { typeofGuest: 'Adults', numberOfGuests: 1 },
+    { typeofGuest: 'Adults', numberOfGuests: 0 },
     { typeofGuest: 'Children', numberOfGuests: 0 },
     { typeofGuest: 'Infants', numberOfGuests: 0 },
     { typeofGuest: 'Pets', numberOfGuests: 0 },
@@ -38,7 +38,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
   const [isSearchWhoDropdown, setIsSearchWhoDropdown] = useState(true);
   const [guestSearchCounts, setGuestSearchCounts] = useState({
-    "adults": 1,
+    "adults": 0,
     "children": 0,
     "infants": 0,
     "pets": 0
@@ -54,11 +54,11 @@ const SearchBar = ({ searchType, onSearch }) => {
     adultsAndChildrenCount,
   } = calculateGuestCounts(guests)
 
-  console.log("======GUESTS========", adultsCount,
-    childrenCount,
-    infantsCount,
-    petsCount,
-    adultsAndChildrenCount)
+  // console.log("======GUESTS========", adultsCount,
+  //   childrenCount,
+  //   infantsCount,
+  //   petsCount,
+  //   adultsAndChildrenCount)
 
   const handleGuestSearchClick = (updatedGuest) => {
     setGuests((prevList) =>
@@ -199,6 +199,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   
     const searchParams = {
       location,
+      guests: 0,
     };
   
     if (validCheckIn) {
@@ -464,7 +465,13 @@ const SearchBar = ({ searchType, onSearch }) => {
         >
           <div className={styles.inputContainerWhoInner}>
             <span className={styles.label}>Who</span>
-            <span className={styles.guestsText}>Add guests</span>
+            <span className={styles.guestsText}>
+              {adultsAndChildrenCount ? `${adultsAndChildrenCount <=15 ? adultsAndChildrenCount :
+                 adultsAndChildrenCount + '+'} guest${adultsAndChildrenCount !== 1 ? 's' : ''}` : ''}
+              {infantsCount ? `, ${infantsCount} infant${infantsCount !== 1 ? 's' : ''}` : ''}
+              {petsCount ? `, ${petsCount} pet${petsCount !== 1 ? 's' : ''}` : ''}
+              {!adultsAndChildrenCount && !infantsCount && !petsCount && 'Add guests'}
+            </span>
           </div>
           {guests && guests !== "Add guests" && selectedBlock === "guests" && ( 
           <button 
@@ -478,7 +485,13 @@ const SearchBar = ({ searchType, onSearch }) => {
           </button> 
           )}
           <div>
-            <button onClick={handleSearch} className={styles.circleButton}>
+            <button 
+              onClick={(e) => {
+                e.stopPropagation()
+                handleSearch()
+              }}
+              className={styles.circleButton}
+            >
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>

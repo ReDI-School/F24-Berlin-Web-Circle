@@ -6,7 +6,7 @@ const AddGuestsPopUp = ({
   onGuestChange,
   style,
   toggleShowGuests,
-  adultsCount = 1,
+  adultsCount,
   childrenCount,
   infantsCount,
   petsCount,
