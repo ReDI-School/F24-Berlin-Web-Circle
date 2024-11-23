@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "reservationId": 1,
+    "productId": 1,
+    "checkInDate": "12/01/2024",
+    "checkOutDate": "12/04/2024",
+    "guestCounts": {
+      "adults": 1,
+      "children": 0,
+      "infants": 0,
+      "pets": 0
+    },
+    "totalPrice": 458,
+    "breakdown": {
+      "nights": 3,
+      "basePrice": 438,
+      "airbnbServiceFee": 10,
+      "cleaningFee": 10,
+      "longStayDiscount": 0
+    }
+  },
+  {
+    "reservationId": 2,
+    "productId": 1,
+    "checkInDate": "12/01/2024",
+    "checkOutDate": "12/04/2024",
+    "guestCounts": {
+      "adults": 1,
+      "children": 0,
+      "infants": 0,
+      "pets": 0
+    },
+    "totalPrice": 458,
+    "breakdown": {
+      "nights": 3,
+      "basePrice": 438,
+      "airbnbServiceFee": 10,
+      "cleaningFee": 10,
+      "longStayDiscount": 0
+    }
+  }
+]

@@ -1,15 +1,18 @@
 [
   {
+    "lastUpdateDate": "2024-11-23"
+  },
+  {
     "id": 1,
-    "checkInDate": "12/13/2024",
-    "checkOutDate": "12/18/2024",
+    "checkInDate": "12/01/2024",
+    "checkOutDate": "12/04/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 720,
+    "totalPrice": 458,
     "bookingData": {
       "pricePerNight": 146,
       "cleaningFee": 10,
@@ -25,22 +28,26 @@
     },
     "alreadyBookedDates": [
       {
-        "startDate": "12/20/2024",
-        "endDate": "12/25/2024"
+        "startDate": "11/23/2024",
+        "endDate": "11/26/2024"
+      },
+      {
+        "startDate": "11/27/2024",
+        "endDate": "11/30/2024"
       }
     ]
   },
   {
     "id": 2,
-    "checkInDate": "12/15/2024",
-    "checkOutDate": "12/20/2024",
+    "checkInDate": "01/06/2025",
+    "checkOutDate": "01/09/2025",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 670,
+    "totalPrice": 410,
     "bookingData": {
       "pricePerNight": 130,
       "cleaningFee": 10,
@@ -54,9 +61,9 @@
         "petsNumber": 1
       }
     },
-     "alreadyBookedDates": [
+    "alreadyBookedDates": [
       {
-        "startDate": "12/25/2024",
+        "startDate": "11/23/2024",
         "endDate": "12/29/2024"
       },
       {
@@ -67,15 +74,15 @@
   },
   {
     "id": 3,
-    "checkInDate": "12/14/2024",
-    "checkOutDate": "12/19/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/25/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 595,
+    "totalPrice": 250,
     "bookingData": {
       "pricePerNight": 115,
       "cleaningFee": 10,
@@ -98,15 +105,15 @@
   },
   {
     "id": 4,
-    "checkInDate": "12/14/2024",
-    "checkOutDate": "12/19/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 590,
+    "totalPrice": 362,
     "bookingData": {
       "pricePerNight": 114,
       "cleaningFee": 10,
@@ -129,15 +136,15 @@
   },
   {
     "id": 5,
-    "checkInDate": "12/13/2024",
-    "checkOutDate": "12/18/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/27/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 620,
+    "totalPrice": 506,
     "bookingData": {
       "pricePerNight": 114,
       "cleaningFee": 40,
@@ -160,15 +167,15 @@
   },
   {
     "id": 6,
-    "checkInDate": "12/25/2024",
-    "checkOutDate": "12/30/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 745,
+    "totalPrice": 455,
     "bookingData": {
       "pricePerNight": 145,
       "cleaningFee": 10,
@@ -195,15 +202,15 @@
   },
   {
     "id": 7,
-    "checkInDate": "12/25/2024",
-    "checkOutDate": "12/30/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/25/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 620,
+    "totalPrice": 260,
     "bookingData": {
       "pricePerNight": 120,
       "cleaningFee": 10,
@@ -226,15 +233,15 @@
   },
   {
     "id": 8,
-    "checkInDate": "12/17/2024",
-    "checkOutDate": "12/22/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 715,
+    "totalPrice": 445,
     "bookingData": {
       "pricePerNight": 135,
       "cleaningFee": 30,
@@ -257,15 +264,15 @@
   },
   {
     "id": 9,
-    "checkInDate": "12/15/2024",
-    "checkOutDate": "12/19/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 645,
+    "totalPrice": 395,
     "bookingData": {
       "pricePerNight": 125,
       "cleaningFee": 10,
@@ -292,15 +299,15 @@
   },
   {
     "id": 10,
-    "checkInDate": "12/20/2024",
-    "checkOutDate": "12/25/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 720,
+    "totalPrice": 440,
     "bookingData": {
       "pricePerNight": 140,
       "cleaningFee": 10,
@@ -327,8 +334,8 @@
   },
   {
     "id": 11,
-    "checkInDate": "01/04/2025",
-    "checkOutDate": "01/09/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/28/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -358,15 +365,15 @@
   },
   {
     "id": 12,
-    "checkInDate": "12/25/2024",
-    "checkOutDate": "12/30/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/24/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 575,
+    "totalPrice": 145,
     "bookingData": {
       "pricePerNight": 115,
       "cleaningFee": 20,
@@ -389,15 +396,15 @@
   },
   {
     "id": 13,
-    "checkInDate": "12/22/2024",
-    "checkOutDate": "12/25/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 720,
+    "totalPrice": 440,
     "bookingData": {
       "pricePerNight": 140,
       "cleaningFee": 10,
@@ -424,15 +431,15 @@
   },
   {
     "id": 14,
-    "checkInDate": "01/05/2025",
-    "checkOutDate": "01/10/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 685,
+    "totalPrice": 435,
     "bookingData": {
       "pricePerNight": 125,
       "cleaningFee": 50,
@@ -459,15 +466,15 @@
   },
   {
     "id": 15,
-    "checkInDate": "12/17/2024",
-    "checkOutDate": "12/22/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 700,
+    "totalPrice": 440,
     "bookingData": {
       "pricePerNight": 130,
       "cleaningFee": 40,
@@ -490,15 +497,15 @@
   },
   {
     "id": 16,
-    "checkInDate": "01/01/2025",
-    "checkOutDate": "01/06/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/24/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 745,
+    "totalPrice": 165,
     "bookingData": {
       "pricePerNight": 145,
       "cleaningFee": 10,
@@ -521,15 +528,15 @@
   },
   {
     "id": 17,
-    "checkInDate": "01/13/2025",
-    "checkOutDate": "01/18/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/25/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 790,
+    "totalPrice": 340,
     "bookingData": {
       "pricePerNight": 150,
       "cleaningFee": 30,
@@ -552,15 +559,15 @@
   },
   {
     "id": 18,
-    "checkInDate": "02/22/2025",
-    "checkOutDate": "02/27/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/27/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 680,
+    "totalPrice": 590,
     "bookingData": {
       "pricePerNight": 140,
       "cleaningFee": 20,
@@ -583,15 +590,15 @@
   },
   {
     "id": 19,
-    "checkInDate": "03/02/2025",
-    "checkOutDate": "03/07/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 770,
+    "totalPrice": 485,
     "bookingData": {
       "pricePerNight": 155,
       "cleaningFee": 10,
@@ -614,15 +621,15 @@
   },
   {
     "id": 20,
-    "checkInDate": "03/15/2025",
-    "checkOutDate": "03/20/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/24/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 800,
+    "totalPrice": 200,
     "bookingData": {
       "pricePerNight": 150,
       "cleaningFee": 40,
@@ -645,15 +652,15 @@
   },
   {
     "id": 21,
-    "checkInDate": "12/26/2024",
-    "checkOutDate": "12/29/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 705,
+    "totalPrice": 455,
     "bookingData": {
       "pricePerNight": 135,
       "cleaningFee": 40,
@@ -680,8 +687,8 @@
   },
   {
     "id": 22,
-    "checkInDate": "01/01/2025",
-    "checkOutDate": "01/06/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/28/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
@@ -711,15 +718,15 @@
   },
   {
     "id": 23,
-    "checkInDate": "01/13/2025",
-    "checkOutDate": "01/18/2025",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 765,
+    "totalPrice": 475,
     "bookingData": {
       "pricePerNight": 145,
       "cleaningFee": 30,
@@ -742,15 +749,15 @@
   },
   {
     "id": 24,
-    "checkInDate": "12/17/2024",
-    "checkOutDate": "12/21/2024",
+    "checkInDate": "11/23/2024",
+    "checkOutDate": "11/26/2024",
     "guestCounts": {
       "adults": 1,
       "children": 0,
       "infants": 0,
       "pets": 0
     },
-    "totalPrice": 790,
+    "totalPrice": 490,
     "bookingData": {
       "pricePerNight": 150,
       "cleaningFee": 30,
