@@ -73,3 +73,14 @@ model Place {
   guestAccess          String
   otherThings          String
 }
+
+model Destination {
+  id          Int      @id @default(autoincrement())
+  name        String
+  location    String
+  description String
+  price       String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
