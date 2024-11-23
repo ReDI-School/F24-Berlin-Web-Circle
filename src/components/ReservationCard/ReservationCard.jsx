@@ -8,6 +8,9 @@ import useOutsideClick from '../../hooks/useOutsideClick'
 import { fetchCalculatedCosts } from '../../api/pricingApi'
 import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { calculateNights } from '../../utils/dateUtils'
 
 function ReservationCard({
   pricePerNight,
@@ -40,9 +43,11 @@ function ReservationCard({
     { typeofGuest: 'Infants', numberOfGuests: 0 },
     { typeofGuest: 'Pets', numberOfGuests: 0 },
   ])
-  // const [calculatedCosts, setCalculatedCosts] = useState(null)
+  const [calculatedCosts, setCalculatedCosts] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('');
+  const { productId } = useParams();
 
   const currentTotalPeople = guestCounts.adults + guestCounts.children;
 
@@ -74,25 +79,55 @@ function ReservationCard({
 
   const checkInOut = checkInDate && checkOutDate
 
-  const handleFormSubmit = (e) => {
+  const nights =
+  checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
+  const isDiscount = nights >= nightsCountForDiscount
+  const basePrice = nights * pricePerNight
+  const totalPrice =
+    basePrice +
+    airbnbServiceFee +
+    cleaningFee -
+    (isDiscount ? longStayDiscount : 0)
+
+  
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
-    if (checkInOut && adultsAndChildrenCount > 0) {
-      fetchCalculatedCosts(
-        checkInDate,
-        checkOutDate,
-        {
-          adults: adultsAndChildrenCount,
-          children: childrenCount,
-          infants: infantsCount,
-          pets: petsCount,
-        },
-        // setCalculatedCosts,
-        setLoading,
-        setError
-      )
-    } else {
-      // setError('Please select valid dates and guests.');
+    setError('')
+    setSuccessMessage('')
+
+    if (!checkInOut || adultsCount === 0) {
+      setError('Please select valid dates and at least one adult.')
+      return
     }
+
+    const reservationData = {
+      checkInDate,
+      checkOutDate,
+      guests: {
+        adults: adultsCount,
+        children: childrenCount,
+        infants: infantsCount,
+        pets: petsCount,
+      },
+      totalPrice
+    };
+
+    try {
+      setLoading(true);
+
+      const response = await axios.post(
+        (`http://localhost:8800/bookings/reservations/${productId}`),
+        reservationData
+      );
+
+      setSuccessMessage('Reservation submitted successfully!');
+      setCalculatedCosts(response.data.calculatedCosts);
+    } catch (err) {
+      console.error('Error submitting reservation:', err);
+      setError('Failed to submit the reservation. Please try again later.');
+    } finally {
+      setLoading(false);
+    }    
   }
 
   const closeGuestsPopup = () => setShowGuests(false)
@@ -194,7 +229,8 @@ function ReservationCard({
                 }
                 className={styles.reserveButton}
               >
-                {checkInOut && !loading ? 'Reserve' : 'Check availability'}
+                {/* {checkInOut && !loading ? 'Reserve' : 'Check availability'} */}
+                {loading ? 'Submitting...' : checkInOut ? 'Reserve' : 'Check availability'}
               </button>
             </div>
           ) : (
@@ -205,6 +241,7 @@ function ReservationCard({
             </div>
           )}
           {error && <p className={styles.errorMessage}>{error}</p>}
+          {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         </form>
         {isBookingOpen && (
           <div className={styles.noDatesMessage}>
@@ -224,7 +261,11 @@ function ReservationCard({
           airbnbServiceFee={airbnbServiceFee}
           longStayDiscount={longStayDiscount}
           nightsCountForDiscount={nightsCountForDiscount}
-          // calculatedCosts={calculatedCosts}
+          calculatedCosts={calculatedCosts}
+          nights={nights}
+          basePrice={basePrice}
+          isDiscount={isDiscount}
+          totalPrice={totalPrice}
         />
       )}
     </div>
