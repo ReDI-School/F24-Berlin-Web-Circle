@@ -78,6 +78,22 @@ const CategoryTabs = () => {
     };
   }, []);
 
+  // Touch Scrolling Handlers
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+    const scrollContainer = scrollContainerRef.current;
+    const deltaX = touchStartX.current - touchEndX.current;
+    scrollContainer.scrollBy({ left: deltaX, behavior: 'smooth' });
+    touchStartX.current = touchEndX.current;
+  };
+
   return (
     <div className={styles.categoryMenu}>
       <div className={styles.categoryTabsContainer}>
@@ -88,7 +104,11 @@ const CategoryTabs = () => {
             </div>
           </div>
         )}
-        <div className={styles.categoryTabsWrapper}>
+        <div
+          className={styles.categoryTabsWrapper}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+        >
           <div className={styles.categoryTabs} ref={scrollContainerRef}>
             {categories.map((category, id) => {
               return (
@@ -104,26 +124,17 @@ const CategoryTabs = () => {
             })}
           </div>
           <div className={styles.filterButtonWrapper}>
-           
+            <FilterButton />
           </div>
-          
         </div>
-        
         {showRightArrow && (
           <div className={styles.scrollButtonRightContainer}>
             <div className={styles.scrollButton} onClick={() => handleScroll('right')}>
               <HiOutlineArrowRightCircle size={28} />
             </div>
-           
           </div>
-          
-          
         )}
-        <div className={styles.filterContainer}>
-        <FilterButton />
-        </div>   
       </div>
-
     </div>
   );
 };
