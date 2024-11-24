@@ -185,6 +185,7 @@ function ReservationCard({
                 />
               )}
               <button
+                type="button"
                 className={styles.guestsNumberPickerSection}
                 ref={guestsRef}
                 onClick={() => toggleShowGuests()}

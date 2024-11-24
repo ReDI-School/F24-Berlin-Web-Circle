@@ -162,6 +162,7 @@ const DatePicker = ({
 
   return (
     <Container
+      type="button"
       className={`${styles.datesPickerSection} ${
         !checkInDate && !renderAsButton ? styles.checkOutBackground : ''
       }`}

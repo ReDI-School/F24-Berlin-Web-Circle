@@ -155,7 +155,7 @@ const ReservationDatesSelector = ({
             </button>
           </div>
           <div className={styles.cancelButton}>
-            <button onClick={() => toggleShowCalendar(false)}>Close</button>
+            <button type="button" onClick={() => toggleShowCalendar(false)}>Close</button>
           </div>
         </div>
       </div>

@@ -56,7 +56,7 @@ const AddGuestsPopUp = ({
           : " Pets aren't allowed."}
       </div>
       <div className={styles.closePopUp}>
-        <button onClick={toggleShowGuests}>Close</button>
+        <button type="button" onClick={toggleShowGuests}>Close</button>
       </div>
     </div>
   )

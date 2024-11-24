@@ -79,6 +79,12 @@ router.post('/reservations/:id', (req, res) => {
       .json({ message: 'Selected dates overlap with existing bookings.' })
   }
 
+  if (totalPrice !== costs.totalPrice) {
+    return res
+      .status(400)
+      .json({ message: 'Total price does not match the calculated price.' })
+  }
+
   const alreadyBookedDatesObject = {
     startDate: checkInDate,
     endDate: checkOutDate,
