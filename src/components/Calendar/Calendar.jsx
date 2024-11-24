@@ -8,7 +8,8 @@ import {
   minStayBeforeBooked, 
   isWithinMinStay, 
   isBetweenCheckInAndOut
-} from '../../utils/dateUtils';
+} from '../../utils/dateUtils'
+import {findNextAvailableDate} from '../../utils/findNextAvailableDate'
 
 const Calendar = ({ 
   dayItemWidth, 
@@ -30,7 +31,6 @@ const Calendar = ({
   searchCheckOut,
   setSearchCheckIn,
   setSearchCheckOut,
-  availableCheckIn
 }) => {
 
   const [currentMonth, setCurrentMonth] = useState(
@@ -60,6 +60,19 @@ const Calendar = ({
     }
     return null;
   });
+
+  useEffect(() => {
+    if (!isSearchBarCalendar && !checkInDate && !checkOutDate) {
+      const { checkIn, checkOut } = findNextAvailableDate(alreadyBookedDates, minStayNights);
+      
+      const formatDate = (date) => {
+        return `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${date.getFullYear()}`;
+      };
+  
+      setCheckInDate(formatDate(checkIn));
+      setCheckOutDate(formatDate(checkOut));
+    }
+  }, []);
 
   useEffect(() => {
     if (!isSearchBarCalendar) {
@@ -225,8 +238,6 @@ const Calendar = ({
       : (checkInDateTime ? date >= checkInDateTime : true);
       const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year, alreadyBookedDates, minStayNights, isSearchBarCalendar);
       const isBeforeCheckIn = checkInDateTime && date < checkInDateTime
-      const isAvailableCheckIn = availableCheckIn && date < (new Date(availableCheckIn)).getTime()
-      const shouldAddPastDate = !checkInDate && availableCheckIn && date < (new Date(availableCheckIn)).getTime();
 
       
       const tooltipClass = `${styles.tooltipText}`        
@@ -259,7 +270,7 @@ const Calendar = ({
       daysArray.push(
         <div
           key={day}
-          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) || isAvailableCheckIn ? styles.pastDate : ''} 
+          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) ? styles.pastDate : ''} 
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
@@ -268,7 +279,6 @@ const Calendar = ({
                       ${isDayBeforeBookedDate ? styles.dayBeforeBookedDate : ''}
                       ${(!isInValidRange && checkInDateTime && !checkOutDate && !isSearchBarCalendar) ? styles.pastDate : ''}                     
                       ${isMinStayBeforeBooked && !isCheckOutDate && !isCheckInDate ? styles.minStayRange : ''} 
-                      ${shouldAddPastDate ? styles.pastDate : ''} 
                     `}
           style={{
             "--pastDate-line-through": textDecoration,

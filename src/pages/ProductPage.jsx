@@ -37,7 +37,6 @@ const ProductPage = () => {
   const [booking, setBooking] = useState(null);
   const [checkInDate, setCheckInDate] = useState(null)
   const [checkOutDate, setCheckOutDate] = useState(null)
-  const [availableCheckIn, setAvailableCheckIn] = useState(null) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -55,12 +54,6 @@ useEffect(() => {
       ]);
       setPlace(placeResponse.data);
       setBooking(bookingsResponse.data);
-
-      if (bookingsResponse.data) {
-        setCheckInDate(bookingsResponse.data.checkInDate);
-        setCheckOutDate(bookingsResponse.data.checkOutDate);
-        setAvailableCheckIn(bookingsResponse.data.checkInDate)
-      }
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
     } finally {
@@ -163,7 +156,6 @@ useEffect(() => {
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
               alreadyBookedDates={booking.alreadyBookedDates}
-              availableCheckIn={availableCheckIn}
             />  
             }
           </div>
@@ -189,7 +181,6 @@ useEffect(() => {
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
               alreadyBookedDates={booking.alreadyBookedDates}
-              availableCheckIn={availableCheckIn}
             />
           }
           </div>

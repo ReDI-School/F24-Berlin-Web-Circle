@@ -5,19 +5,6 @@ const reservations = require('../src/data/reservations.json')
 const { calculateCosts } = require('../src/utils/costs')
 const fs = require('fs')
 const path = require('path')
-const updateBookings = require('../src/utils/updateBookings');
-
-
-
-// const formatDate = (date) => {
-//     const month = String(date.getMonth() + 1).padStart(2, '0');
-//     const day = String(date.getDate()).padStart(2, '0'); 
-//     const year = date.getFullYear(); 
-//     return `${month}/${day}/${year}`; 
-//   };
-
-
-updateBookings();
 
 
 const router = express.Router()
@@ -52,7 +39,6 @@ router.post('/reservations/:id', (req, res) => {
     cleaningFee,
     longStayDiscount,
     nightsCountForLongStayDiscount,
-    // minStayNights
   } = bookingData
 
 

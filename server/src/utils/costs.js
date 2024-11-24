@@ -25,6 +25,7 @@ function calculateCosts({
     totalPrice,
     breakdown: {
       nights,
+      pricePerNight,
       basePrice,
       airbnbServiceFee,
       cleaningFee,

@@ -22,6 +22,7 @@ export const getStayPeriod = (checkIn, checkOut) => {
 }
 
 export const convertStringToDateObject = (dateString) => {
+  if (!dateString) return null;
   const [month, day, year] = dateString.split('/').map(Number)
   return { day, month: month - 1, year }
 }

@@ -10,8 +10,7 @@ const CalendarBlock = ({
   checkOutDate,
   minStayNights,
   toggleKeyboardPopup,
-  alreadyBookedDates,
-  availableCheckIn
+  alreadyBookedDates
 }) => {
 
   const nightsCount =
@@ -58,7 +57,6 @@ const CalendarBlock = ({
             setCheckOutDate={setCheckOutDate}
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
-            availableCheckIn={availableCheckIn}
           />
         </div>
       <div className={styles.buttonsContainer}>
