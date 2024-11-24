@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,62 +8,62 @@ datasource db {
 }
 
 model User {
-  id       Int @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   name     String
   email    String
   password String
 }
 
 model Place {
-  id       Int @id @default(autoincrement())
-  title               String
-  host                String
-  price               String
-  accommodation       String
-  address             String
-  guests              Int
-  bedrooms            Int
-  beds                Int
-  baths               Int
-  starGrade           Float
-  reviewsCount        Int
-  highlightCheckIn    String?
-  highlightAward      String?
-  highlightWifi       String?
-  highlightCancellation String?
-  amenitiesKitchen    Boolean?
-  amenitiesWorkspace  Boolean?
-  amenitiesSauna      Boolean?
-  amenitiesBalcony    Boolean?
-  amenitiesFireplace  Boolean?
-  amenitiesWifi       Boolean?
-  amenitiesParking    Boolean?
-  amenitiesPets       Boolean?
-  amenitiesBackyard   Boolean?
-  amenitiesFirepit    Boolean?
-  reviewSummaryTotalAvgRating Float
+  id                             Int      @id @default(autoincrement())
+  title                          String
+  host                           String
+  price                          String
+  accommodation                  String
+  address                        String
+  guests                         Int
+  bedrooms                       Int
+  beds                           Int
+  baths                          Int
+  starGrade                      Float
+  reviewsCount                   Int
+  highlightCheckIn               String?
+  highlightAward                 String?
+  highlightWifi                  String?
+  highlightCancellation          String?
+  amenitiesKitchen               Boolean?
+  amenitiesWorkspace             Boolean?
+  amenitiesSauna                 Boolean?
+  amenitiesBalcony               Boolean?
+  amenitiesFireplace             Boolean?
+  amenitiesWifi                  Boolean?
+  amenitiesParking               Boolean?
+  amenitiesPets                  Boolean?
+  amenitiesBackyard              Boolean?
+  amenitiesFirepit               Boolean?
+  reviewSummaryTotalAvgRating    Float
   reviewSummaryTotalReviewsCount Int
-  cleanlinessAvgRating Float
-  accuracyAvgRating    Float
-  checkInAvgRating     Float
-  communicationAvgRating Float
-  locationAvgRating    Float
-  valueAvgRating       Float
-  starTotalFiveStar    Int
-  starTotalFourStar    Int
-  starTotalThreeStar   Int
-  starTotalTwoStar     Int
-  starTotalOneStar     Int
-  lon                  Float
-  lat                  Float
-  mapAddress           String
-  mapAddressDescription String
-  hostName             String
-  hostingDuration      Int
-  role                 String
-  hostProfilePicUrl    String
-  descriptionPlace     String
-  descriptionSpace     String
-  guestAccess          String
-  otherThings          String
+  cleanlinessAvgRating           Float
+  accuracyAvgRating              Float
+  checkInAvgRating               Float
+  communicationAvgRating         Float
+  locationAvgRating              Float
+  valueAvgRating                 Float
+  starTotalFiveStar              Int
+  starTotalFourStar              Int
+  starTotalThreeStar             Int
+  starTotalTwoStar               Int
+  starTotalOneStar               Int
+  lon                            Float
+  lat                            Float
+  mapAddress                     String
+  mapAddressDescription          String
+  hostName                       String
+  hostingDuration                Int
+  role                           String
+  hostProfilePicUrl              String
+  descriptionPlace               String
+  descriptionSpace               String
+  guestAccess                    String
+  otherThings                    String
 }
