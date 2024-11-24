@@ -66,6 +66,15 @@ router.post('/reservations/:id', (req, res) => {
     breakdown: costs.breakdown,
   }
 
+  const newBookingToClient = {
+    productId: productId,
+    checkInDate,
+    checkOutDate,
+    guestCounts: guests,
+    totalPrice: costs.totalPrice,
+    breakdown: costs.breakdown,
+  }
+
 
   const isOverlapping = alreadyBookedDates.some(
     (date) =>
@@ -112,7 +121,7 @@ router.post('/reservations/:id', (req, res) => {
       })
   }
 
-  res.status(201).json({ message: 'Reservation successful!', newBooking })
+  res.status(201).json({ message: 'Reservation successful!', newBookingToClient })
 })
 
 module.exports = router

@@ -416,6 +416,7 @@ const Calendar = ({
       <div className={styles.calendar}>
         <div className={styles.calendarRow}>
           <button
+            type='button'
             className={styles.prevButton}
             style={{"--button-right-margin": buttonRightMargin}}
             onClick={goToPrevMonth}
@@ -428,6 +429,7 @@ const Calendar = ({
           {renderCalendarForMonth(getNextMonth())}
 
           <button 
+            type='button'
             className={styles.nextButton} 
             style={{"--button-left-margin": buttonLeftMargin}}
             onClick={goToNextMonth}
