@@ -30,7 +30,7 @@ const Calendar = ({
   searchCheckIn,
   searchCheckOut,
   setSearchCheckIn,
-  setSearchCheckOut,
+  setSearchCheckOut
 }) => {
 
   const [currentMonth, setCurrentMonth] = useState(

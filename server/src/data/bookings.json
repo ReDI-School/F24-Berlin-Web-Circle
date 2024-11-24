@@ -20,40 +20,7 @@
         "petsNumber": 2
       }
     },
-    "alreadyBookedDates": [
-      {
-        "startDate": "11/24/2024",
-        "endDate": "11/27/2024"
-      },
-      {
-        "startDate": "11/29/2024",
-        "endDate": "12/03/2024"
-      },
-      {
-        "startDate": "12/06/2024",
-        "endDate": "12/09/2024"
-      },
-      {
-        "startDate": "12/16/2024",
-        "endDate": "12/20/2024"
-      },
-      {
-        "startDate": "12/22/2024",
-        "endDate": "12/25/2024"
-      },
-      {
-        "startDate": "12/26/2024",
-        "endDate": "12/30/2024"
-      },
-      {
-        "startDate": "01/01/2025",
-        "endDate": "01/04/2025"
-      },
-      {
-        "startDate": "01/05/2025",
-        "endDate": "01/10/2025"
-      }
-    ]
+    "alreadyBookedDates": []
   },
   {
     "id": 2,
@@ -122,12 +89,7 @@
         "petsNumber": 2
       }
     },
-    "alreadyBookedDates": [
-      {
-        "startDate": "11/24/2024",
-        "endDate": "11/27/2024"
-      }
-    ]
+    "alreadyBookedDates": []
   },
   {
     "id": 5,
@@ -288,7 +250,12 @@
         "petsNumber": 0
       }
     },
-    "alreadyBookedDates": []
+    "alreadyBookedDates": [
+      {
+        "startDate": "11/24/2024",
+        "endDate": "11/29/2024"
+      }
+    ]
   },
   {
     "id": 12,

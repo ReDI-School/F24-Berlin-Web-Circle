@@ -12,18 +12,10 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { calculateNights } from '../../utils/dateUtils'
 import Swal from 'react-sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 
 function ReservationCard({
-  pricePerNight,
-  cleaningFee,
-  airbnbServiceFee,
-  longStayDiscount,
-  nightsCountForDiscount,
-  guestCounts: defaultGuestCounts,
-  allowGuestsNumber,
-  minStayNights,
-  isBookingOpen,
   toggleShortcutsPopup,
   toggleGuestCountPopup,
   setShowGuests,
@@ -34,8 +26,25 @@ function ReservationCard({
   checkOutDate,
   setCheckInDate,
   setCheckOutDate,
-  alreadyBookedDates
+  booking,
 }) {
+
+  const navigate = useNavigate();
+
+  const {
+    bookingData: {
+      pricePerNight,
+      cleaningFee,
+      airbnbServiceFee,
+      longStayDiscount,
+      nightsCountForLongStayDiscount,
+      allowGuestsNumber,
+      minStayNights,
+      isBookingOpen,
+    },
+    guestCounts: defaultGuestCounts,
+    alreadyBookedDates,
+  } = booking || {};
 
   const [guestCounts, setGuestCounts] = useState(defaultGuestCounts || {});
   const [guestsList, setGuestsList] = useState([
@@ -49,7 +58,7 @@ function ReservationCard({
   const [error, setError] = useState('')
   const [successMessage, setSuccessMessage] = useState('');
   const { productId } = useParams();
-console.log('successData', successData)
+
   const currentTotalPeople = guestCounts.adults + guestCounts.children;
 
   const toggleShowGuests = () => {
@@ -82,7 +91,7 @@ console.log('successData', successData)
 
   const nights =
   checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
-  const isDiscount = nights >= nightsCountForDiscount
+  const isDiscount = nights >= nightsCountForLongStayDiscount
   const basePrice = nights * pricePerNight
   const totalPrice =
     basePrice +
@@ -170,10 +179,13 @@ console.log('successData', successData)
         `}
         icon="success"
         confirmButtonText="OK"
-        onConfirm={() => setSuccessData(null)} 
+        onConfirm={() => {
+          setSuccessData(null)
+          navigate('/'); 
+        }} 
       />
       <div className={styles.reservationSection}>
-        <form onSubmit={handleFormSubmit}>
+        <div>
           {isBookingOpen ? (
             <div className={styles.pricingGuestSection}>
               {checkInOut && !loading ? (
@@ -247,6 +259,7 @@ console.log('successData', successData)
             </div>
           )}
           {isBookingOpen ? (
+          <form onSubmit={handleFormSubmit}>
             <div className="buttonContainer">
               <button
                 type={checkInOut && !loading ? 'submit' : 'button'}
@@ -260,6 +273,7 @@ console.log('successData', successData)
                 {loading ? 'Submitting...' : checkInOut ? 'Reserve' : 'Check availability'}
               </button>
             </div>
+          </form>
           ) : (
             <div className="buttonContainer">
               <button className={styles.soldOutButton} disabled>
@@ -269,7 +283,7 @@ console.log('successData', successData)
           )}
           {error && <p className={styles.errorMessage}>{error}</p>}
           {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
-        </form>
+        </div>
         {isBookingOpen && (
           <div className={styles.noDatesMessage}>
             {!checkInOut && (
@@ -287,7 +301,7 @@ console.log('successData', successData)
           cleaningFee={cleaningFee}
           airbnbServiceFee={airbnbServiceFee}
           longStayDiscount={longStayDiscount}
-          nightsCountForDiscount={nightsCountForDiscount}
+          nightsCountForDiscount={nightsCountForLongStayDiscount}
           // calculatedCosts={calculatedCosts}
           nights={nights}
           basePrice={basePrice}
