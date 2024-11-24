@@ -34,7 +34,7 @@
     flex: 1;
     align-items: center;
 }
-.button {
+button.button {
     border-radius: 100%;
     background-color: white;
     color: black;
@@ -49,13 +49,12 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: rgb(106, 106, 106);
 }
-.button:hover {
+button.button:hover {
     cursor: pointer;
     border-color: var(--primary);
 }
-.buttonDisable {
+button.buttonDisable {
     border-radius: 100%;
     background-color: white;
     color: rgb(235, 235, 235);
@@ -70,12 +69,26 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: rgb(235, 235, 235);
 }
-.buttonDisable:hover {
+button.buttonDisable:hover {
     cursor: not-allowed;
 }
+
 .count {
     width: 2.5rem;
     text-align: center;
+}
+
+.whoDropdownContainer {
+    display: flex;
+    gap: 148px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.whoDropdownContainer:last-child {
+    border-bottom: none;
+}
+
+.whoDropdownDetailContainer {
+    padding: 12px 2px 12px 0;
 }
