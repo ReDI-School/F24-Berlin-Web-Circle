@@ -13,7 +13,7 @@ const HeaderUserMenu = () => {
       <button
         type="button"
         className={styles.headerButton}
-        expanded={isOpen}
+        aria-expanded={isOpen}
         label="Main navigation menu"
         onClick={handleClick}
       >
