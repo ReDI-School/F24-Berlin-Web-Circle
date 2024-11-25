@@ -213,3 +213,55 @@ export function convertDateObjectToString(dateObject) {
   const year = dateObject.getFullYear();
   return `${String(month + 1).padStart(2, "0")}/${String(day).padStart(2, "0")}/${year}`;
 };
+
+
+export const isDateDisabled = (day, month, year, isSearchBarCalendar, alreadyBookedDates, minStayNights) => {
+  if (isSearchBarCalendar) {
+    return false;
+  }
+
+  const currentDate = new Date(year, month, day).getTime();
+
+  const getTimestamp = (dateStr) => {
+    const [month, day, year] = dateStr.split('/').map(Number);
+    return new Date(year, month - 1, day).getTime();
+  };
+
+  const bookingPeriods = alreadyBookedDates
+    .map((booking) => ({
+      start: getTimestamp(booking.startDate),
+      end: getTimestamp(booking.endDate) + 24 * 60 * 60 * 1000 - 1,
+    }))
+    .sort((a, b) => a.start - b.start);
+
+  const nextBooking = bookingPeriods.find((period) => period.start > currentDate);
+  const previousBooking = [...bookingPeriods]
+    .reverse()
+    .find((period) => period.end < currentDate);
+  
+  if (previousBooking && nextBooking) {
+    const gapFromPreviousBooking = Math.floor(
+      (currentDate - previousBooking.end) / (1000 * 60 * 60 * 24)
+    );
+    const gapUntilNextBooking = Math.floor(
+      (nextBooking.start - currentDate) / (1000 * 60 * 60 * 24)
+    );
+
+    if (gapFromPreviousBooking + gapUntilNextBooking + 1 < minStayNights) {
+      return true;
+    }
+
+    const totalGap = Math.floor(
+      (nextBooking.start - previousBooking.end) / (1000 * 60 * 60 * 24)
+    );
+    if (totalGap <= minStayNights && currentDate > previousBooking.end && currentDate < nextBooking.start) {
+      return true;
+    }
+  }
+
+  if (isBooked(day, month, year, alreadyBookedDates, false)) {
+    return true;
+  }
+
+  return false;
+};

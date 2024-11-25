@@ -7,7 +7,8 @@ import {
   isDayBeforeBooked, 
   minStayBeforeBooked, 
   isWithinMinStay, 
-  isBetweenCheckInAndOut
+  isBetweenCheckInAndOut,
+  isDateDisabled
 } from '../../utils/dateUtils'
 import {findNextAvailableDate} from '../../utils/findNextAvailableDate'
 
@@ -244,6 +245,7 @@ const Calendar = ({
       : (checkInDateTime ? date >= checkInDateTime : true);
       const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year, alreadyBookedDates, minStayNights, isSearchBarCalendar);
       const isBeforeCheckIn = checkInDateTime && date < checkInDateTime
+      const isDisabled = isDateDisabled(day, month, year, isSearchBarCalendar, alreadyBookedDates, minStayNights);
 
       
       const tooltipClass = `${styles.tooltipText}`        
@@ -276,7 +278,7 @@ const Calendar = ({
       daysArray.push(
         <div
           key={day}
-          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) ? styles.pastDate : ''} 
+          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) || isDisabled ? styles.pastDate : ''} 
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
@@ -295,7 +297,8 @@ const Calendar = ({
                 !checkInDate && isDayBeforeBookedDate) || 
                 (checkInDate && checkOutDate && isDayBeforeBookedDate) || 
                 (!checkInDate && isMinStayBeforeBooked) ||
-                (checkInDate && checkOutDate && isMinStayBeforeBooked)) {
+                (checkInDate && checkOutDate && isMinStayBeforeBooked) ||
+                 isDisabled) {
                   return;
                 }  
             if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
