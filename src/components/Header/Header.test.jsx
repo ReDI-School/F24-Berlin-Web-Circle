@@ -21,7 +21,8 @@ vi.mock('../HeaderUserMenu/HeaderUserMenu.jsx', () => ({
 describe('Header Component', () => {
     it('should render the AirBnB logo', () => {
         renderComponent();
-        screen.debug();
+        //TODO: Uncomment the line below to see the debug output. Delete after demo.
+        // screen.debug();
         const logo = screen.getByAltText('The Logo of AirBnB');
         expect(logo).toBeInTheDocument();
     });
