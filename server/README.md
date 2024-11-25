@@ -1,4 +1,4 @@
-If you prefer running postgres using docker like ,
+If you prefer running postgres using docker,
 I included a docker-compose.yaml file to spin an instance.\
 #### Steps
 1. Create a .env file if you dont have one in this directory.
