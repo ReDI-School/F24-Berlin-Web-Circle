@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 import { 
@@ -31,7 +31,8 @@ const Calendar = ({
   searchCheckIn,
   searchCheckOut,
   setSearchCheckIn,
-  setSearchCheckOut
+  setSearchCheckOut,
+  isInitializedRef
 }) => {
 
   const getInitialMonth = () => {
@@ -69,18 +70,20 @@ const Calendar = ({
   });
 
   useEffect(() => {
-    if (!isSearchBarCalendar && !checkInDate && !checkOutDate) {
+    if (!isInitializedRef.current && !isSearchBarCalendar && !checkInDate && !checkOutDate) {
       const { checkIn, checkOut } = findNextAvailableDate(alreadyBookedDates, minStayNights);
       
       const formatDate = (date) => {
         return `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${date.getFullYear()}`;
       };
-  
       setCheckInDate(formatDate(checkIn));
       setCheckOutDate(formatDate(checkOut));
+      
+      isInitializedRef.current = true; 
     }
   }, []);
 
+ 
   useEffect(() => {
     if (!isSearchBarCalendar) {
       if (checkInDate) {

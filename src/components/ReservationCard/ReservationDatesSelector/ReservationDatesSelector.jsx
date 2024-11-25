@@ -16,6 +16,7 @@ const ReservationDatesSelector = ({
   minStayNights,
   toggleShortcutsPopup,
   alreadyBookedDates,
+  isInitializedRef
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
 
@@ -129,6 +130,7 @@ const ReservationDatesSelector = ({
             setCheckOutDate={setCheckOutDate}
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
+            isInitializedRef={isInitializedRef}
           />
         </div>
       <div className={styles.buttonsContainer}>

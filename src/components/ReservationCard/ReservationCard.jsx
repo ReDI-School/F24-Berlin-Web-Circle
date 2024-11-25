@@ -27,6 +27,7 @@ function ReservationCard({
   setCheckInDate,
   setCheckOutDate,
   booking,
+  isInitializedRef
 }) {
 
   const navigate = useNavigate();
@@ -224,6 +225,7 @@ function ReservationCard({
                   minStayNights={minStayNights}
                   toggleShortcutsPopup={toggleShortcutsPopup}
                   alreadyBookedDates={alreadyBookedDates}
+                  isInitializedRef={isInitializedRef}
                 />
               )}
               <button

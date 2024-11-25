@@ -18,7 +18,7 @@ import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
 import { useParams } from "react-router-dom";
@@ -39,6 +39,9 @@ const ProductPage = () => {
   const [checkOutDate, setCheckOutDate] = useState(null)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const isInitializedRef = useRef(false)
+
 
   const { productId } = useParams();
 
@@ -139,6 +142,7 @@ const ProductPage = () => {
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
+              isInitializedRef={isInitializedRef}
             />  
             }
           </div>
@@ -155,6 +159,7 @@ const ProductPage = () => {
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
+              isInitializedRef={isInitializedRef}
             />
           }
           </div>
