@@ -5,9 +5,7 @@ import "./App.css";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import PriceRangeFilter from "./components/priceRange/PriceRangeFilter";
 import { BASE_URL } from "./constants/constants";
-import FilterButton from "./components/FilterButton/FilterButton";
 
 
 function App() {
@@ -61,8 +59,6 @@ function App() {
       </div>
       
       <CategoryTabs />  
-
-      <PriceRangeFilter histogramData= {histogramData}/>
 
       <div className="grid">
         {places.map((place) => {

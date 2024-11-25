@@ -13,6 +13,16 @@
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    z-index: 1000;
+  }
+
 .filterButton:hover {
     background-color: rgb(240, 240, 240);
     border-color: rgb(96, 96, 96);
