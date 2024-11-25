@@ -16,6 +16,7 @@
 }
 
 .categoryMenu {
+  width: 95vw;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -23,6 +24,7 @@
 }
 
 .categoryTabsWrapper {
+  width: 95vw;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -30,8 +32,9 @@
   position: relative;
 }
 
-.filterContainer {
-  margin-left: 50px;
+.filterButtonWrapper {
+  margin-right: 60px;
+  margin-left: 20px;
   margin-bottom: 35px;
 }
 
@@ -75,7 +78,7 @@
   position: absolute;
   top: 55%;
   width: 28px;
-  right: 150px;
+  right: 220px;
   z-index: 1010;
 }
 
@@ -150,3 +153,56 @@
   width: auto;
 }
 
+@media (max-width: 768px) {
+  .scrollButton {
+    display: none;
+  }
+
+  .categoryTabsContainer {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    max-height: 100px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 998;
+    padding-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .tabIcon {
+    margin-bottom: 0px;
+  }
+
+  .categoryTabs {
+    margin-left: 0;
+    padding-top: 10px;
+    width: 95vw;
+    display: flex;
+    overflow-x: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+  }
+
+  .filterButtonWrapper {
+   display: none;
+  }
+
+  .tabItem {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #696969;
+    position: relative; /* Required for ::after positioning */
+  }
+}
