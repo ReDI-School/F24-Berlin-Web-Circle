@@ -13,6 +13,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Category {
+  BEACHFRONT
+  LUXE
+  CABINS
+  CASTLES
+  BEACH_HOUSES
+  CHALETS
+  TINY_HOMES
+  RIVERSIDE_CABINS
+  LUXURY_VILLAS
+  AMAZING_POOLS
+  CAMPING
+  ARCTIC
+  CARAVANS
+  TREE_HOUSES
+  FISHING_BOATS
+  SAILBOATS
+}
+
+
 model User {
   id       Int @id @default(autoincrement())
   name     String
@@ -28,6 +48,7 @@ model Product {
   price                Float
   accommodation        String     @db.VarChar(150)
   address              String     @db.VarChar(150)
+  category              Category[]
   guests               Int
   bedrooms             Int
   beds                 Int
