@@ -33,14 +33,20 @@ const Calendar = ({
   setSearchCheckOut
 }) => {
 
-  const [currentMonth, setCurrentMonth] = useState(
-    checkInDate
-      ? (() => {
-          const { year, month } = convertStringToDateObject(checkInDate);
-          return new Date(year, month, 1);
-        })()
-      : new Date()
-  );
+  const getInitialMonth = () => {
+    if (checkInDate) {
+      const { year, month } = convertStringToDateObject(checkInDate);
+      return new Date(year, month, 1);
+    }
+
+    if (alreadyBookedDates && alreadyBookedDates.length > 0) {
+      const { checkIn } = findNextAvailableDate(alreadyBookedDates, minStayNights);
+      return new Date(checkIn.getFullYear(), checkIn.getMonth(), 1);
+    }
+
+    return new Date();
+  };
+  const [currentMonth, setCurrentMonth] = useState(getInitialMonth());
   const [animationDirection, setAnimationDirection] = useState("")
 
   const [pickedCheckIn, setPickedCheckIn] = useState(() => {
