@@ -25,8 +25,6 @@ function renderComponent() {
 describe('Header Component', () => {
     it('should render the AirBnB logo', () => {
         renderComponent();
-        //TODO: Uncomment the line below to see the debug output. Delete after demo.
-        // screen.debug();
         const logo = screen.getByAltText('The Logo of AirBnB');
         expect(logo).toBeInTheDocument();
     });
