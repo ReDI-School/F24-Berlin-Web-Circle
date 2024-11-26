@@ -109,3 +109,7 @@
   text-align: center;
   color: var(--primary);
 }
+
+.errorMessage {
+  color: rgb(189, 30, 89);
+}

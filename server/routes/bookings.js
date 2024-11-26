@@ -94,6 +94,12 @@ router.post('/reservations/:id', (req, res) => {
       .json({ message: 'Total price does not match the calculated price.' })
   }
 
+  if (guests.adults < 1 || guests.children < 0 || guests.infants < 0 || guests.pets < 0) {
+    return res
+      .status(400)
+      .json({ message: 'Invalid guest counts.' })
+  }
+
   const alreadyBookedDatesObject = {
     startDate: checkInDate,
     endDate: checkOutDate,

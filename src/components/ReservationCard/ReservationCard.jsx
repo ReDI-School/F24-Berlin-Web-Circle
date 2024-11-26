@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom'
 import { calculateNights } from '../../utils/dateUtils'
 import Swal from 'react-sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import { getSuccessHtml } from '../../utils/displayHelpers';
 
 
 function ReservationCard({
@@ -154,36 +155,16 @@ function ReservationCard({
 
   return (
     <div className={styles.reservationCard}>
-       <Swal
+      <Swal
         show={!!successData}
         title="Reservation Successful!"
-        html={`
-          <div style="margin: 0 auto; text-align: left; font-size: 1rem;">
-            <ul style="text-align: left; list-style: none; padding: 0; font-size: 1rem;">
-              <li style="margin-bottom: 0.5rem; font-weight: 500; color: green;"><strong style="color: #595959;">Check-in:</strong> ${successData?.checkInDate}</li>
-              <li style="margin-bottom: 0.5rem; font-weight: 500; color: green;"><strong style="color: #595959;">Check-out:</strong> ${successData?.checkOutDate}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Nights:</strong> ${successData?.breakdown.nights}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Price per night:</strong> €${successData?.breakdown.pricePerNight}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Airbnb service fee:</strong> €${successData?.breakdown.airbnbServiceFee}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Cleaning fee:</strong> €${successData?.breakdown.cleaningFee}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Long stay discount:</strong> €${successData?.breakdown.longStayDiscount}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Number of adults:</strong> ${successData?.guestCounts.adults}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Number of children:</strong> ${successData?.guestCounts.children}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Number of infants:</strong> ${successData?.guestCounts.infants}</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Number of pets:</strong> ${successData?.guestCounts.pets}</li>
-              <li style="margin-top: 1rem; font-size: 1.2rem; color: green; font-weight: bold;">
-                Total price: €${successData?.totalPrice}
-              </li>
-            </ul>
-            <p style="text-align: center; font-weight: 500;">Thank you for using our service😊</p>
-          </div>
-        `}
+        html={getSuccessHtml(successData)}
         icon="success"
         confirmButtonText="OK"
         onConfirm={() => {
           setSuccessData(null)
-          navigate('/'); 
-        }} 
+          navigate('/')
+        }}
       />
       <div className={styles.reservationSection}>
         <div>
