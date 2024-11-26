@@ -18,6 +18,10 @@ vi.mock('../HeaderUserMenu/HeaderUserMenu.jsx', () => ({
     default: () => <div data-testid="mocked-component-header-user-menu">Mocked Header User Menu</div>,
 }));
 
+function renderComponent() {
+    render(<Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}><Header/></Router>);
+}
+
 describe('Header Component', () => {
     it('should render the AirBnB logo', () => {
         renderComponent();
@@ -46,10 +50,5 @@ describe('Header Component', () => {
         renderComponent();
         expect(screen.getByTestId('mocked-component-header-user-menu')).toBeInTheDocument();
     });
-
-
-    function renderComponent() {
-        render(<Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}><Header/></Router>);
-    }
 
 });

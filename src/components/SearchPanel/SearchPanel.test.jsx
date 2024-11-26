@@ -41,6 +41,16 @@ vi.mock('react-router-dom', async () => {
     };
 });
 
+
+function renderComponent() {
+    render(
+        // Use actual BrowserRouter from the mocked module
+        <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
+            <SearchPanel/>
+        </Router>
+    );
+}
+
 describe('SearchPanel Component', () => {
 
     beforeEach(() => {
@@ -73,13 +83,4 @@ describe('SearchPanel Component', () => {
             search: 'region=Berlin&checkIn=2023-01-01&checkOut=2023-01-07&adults=4&children=3&infants=2&pets=1',
         });
     });
-
-    function renderComponent() {
-        render(
-            // Use actual BrowserRouter from the mocked module
-            <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
-                <SearchPanel/>
-            </Router>
-        );
-    }
 });
