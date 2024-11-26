@@ -48,3 +48,5 @@ app.listen(PORT, (error) => {
   if (error) console.log("Error starting the server:", error);
   else console.log(`Server listening on PORT ${PORT}`);
 });
+
+module.exports = app;
