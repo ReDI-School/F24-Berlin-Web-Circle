@@ -4,7 +4,7 @@ CREATE TABLE "Product" (
     "title" VARCHAR(150) NOT NULL,
     "host" VARCHAR(150) NOT NULL,
     "star_grade" DOUBLE PRECISION NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
+    "price" TEXT NOT NULL,
     "accommodation" VARCHAR(150) NOT NULL,
     "address" VARCHAR(150) NOT NULL,
     "guests" INTEGER NOT NULL,
@@ -59,8 +59,8 @@ CREATE TABLE "Amenitie" (
 CREATE TABLE "Image" (
     "image_id" SERIAL NOT NULL,
     "product_id" INTEGER NOT NULL,
-    "image" VARCHAR(250) NOT NULL,
-    "image_location" VARCHAR(150) NOT NULL,
+    "image_url" VARCHAR(250) NOT NULL,
+    "product_section" VARCHAR(150) NOT NULL,
 
     CONSTRAINT "Image_pkey" PRIMARY KEY ("image_id")
 );
@@ -82,6 +82,28 @@ CREATE TABLE "Review" (
     CONSTRAINT "Review_pkey" PRIMARY KEY ("review_id")
 );
 
+-- CreateTable
+CREATE TABLE "Booking" (
+    "booking_id" SERIAL NOT NULL,
+    "product_id" INTEGER NOT NULL,
+    "checkInDate" TIMESTAMP(3) NOT NULL,
+    "checkOutDate" TIMESTAMP(3) NOT NULL,
+    "totalPrice" DOUBLE PRECISION NOT NULL,
+    "pricePerNight" DOUBLE PRECISION NOT NULL,
+    "cleaningFee" DOUBLE PRECISION NOT NULL,
+    "airbnbServiceFee" DOUBLE PRECISION NOT NULL,
+    "longStayDiscount" DOUBLE PRECISION NOT NULL,
+    "nightsCountForLongStayDiscount" INTEGER NOT NULL,
+    "minStayNights" INTEGER NOT NULL,
+    "isBookingOpen" BOOLEAN NOT NULL,
+    "adults" INTEGER NOT NULL,
+    "children" INTEGER NOT NULL,
+    "infants" INTEGER NOT NULL,
+    "pets" INTEGER NOT NULL,
+
+    CONSTRAINT "Booking_pkey" PRIMARY KEY ("booking_id")
+);
+
 -- CreateIndex
 CREATE INDEX "Highlight_product_id_idx" ON "Highlight"("product_id");
 
@@ -94,6 +116,9 @@ CREATE INDEX "Image_product_id_idx" ON "Image"("product_id");
 -- CreateIndex
 CREATE INDEX "Review_product_id_idx" ON "Review"("product_id");
 
+-- CreateIndex
+CREATE INDEX "Booking_product_id_idx" ON "Booking"("product_id");
+
 -- AddForeignKey
 ALTER TABLE "Highlight" ADD CONSTRAINT "Highlight_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "Product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -105,3 +130,6 @@ ALTER TABLE "Image" ADD CONSTRAINT "Image_product_id_fkey" FOREIGN KEY ("product
 
 -- AddForeignKey
 ALTER TABLE "Review" ADD CONSTRAINT "Review_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "Product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Booking" ADD CONSTRAINT "Booking_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "Product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
