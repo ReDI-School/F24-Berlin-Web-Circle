@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Calendar.module.css'
 import { CalendarLeftArrowIcon, CalendarRightArrowIcon } from '../../icons'
 import { 
@@ -8,7 +8,8 @@ import {
   minStayBeforeBooked, 
   isWithinMinStay, 
   isBetweenCheckInAndOut,
-  isDateDisabled
+  isDateDisabled,
+  getInitialMonth
 } from '../../utils/dateUtils'
 import {findNextAvailableDate} from '../../utils/findNextAvailableDate'
 
@@ -35,22 +36,11 @@ const Calendar = ({
   isInitializedRef
 }) => {
 
-  const getInitialMonth = () => {
-    if (checkInDate) {
-      const { year, month } = convertStringToDateObject(checkInDate);
-      return new Date(year, month, 1);
-    }
+  const [currentMonth, setCurrentMonth] = useState(getInitialMonth(
+    checkInDate, alreadyBookedDates, findNextAvailableDate, minStayNights)
+  );
 
-    if (alreadyBookedDates && alreadyBookedDates.length > 0) {
-      const { checkIn } = findNextAvailableDate(alreadyBookedDates, minStayNights);
-      return new Date(checkIn.getFullYear(), checkIn.getMonth(), 1);
-    }
-
-    return new Date();
-  };
-  const [currentMonth, setCurrentMonth] = useState(getInitialMonth());
   const [animationDirection, setAnimationDirection] = useState("")
-
   const [pickedCheckIn, setPickedCheckIn] = useState(() => {
     if (checkInDate && !isSearchBarCalendar) {
       return convertStringToDateObject(checkInDate);
@@ -70,19 +60,38 @@ const Calendar = ({
   });
 
   useEffect(() => {
-    if (!isInitializedRef.current && !isSearchBarCalendar && !checkInDate && !checkOutDate) {
+    if (!isSearchBarCalendar && checkInDate) {
+      const { year, month } = convertStringToDateObject(checkInDate);
+      const targetMonth = new Date(year, month, 1);
+  
+      const nextMonth = new Date(
+        currentMonth.getFullYear(),
+        currentMonth.getMonth() + 1,
+        1
+      );
+  
+      if (
+        targetMonth.getTime() !== currentMonth.getTime() &&
+        targetMonth.getTime() !== nextMonth.getTime()
+      ) {
+        setCurrentMonth(targetMonth);
+      }
+    }
+  }, [checkInDate, isSearchBarCalendar]);
+  
+  useEffect(() => {
+    if (!isSearchBarCalendar && !isInitializedRef.current && !checkInDate && !checkOutDate) {
       const { checkIn, checkOut } = findNextAvailableDate(alreadyBookedDates, minStayNights);
-      
+
       const formatDate = (date) => {
         return `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${date.getFullYear()}`;
       };
       setCheckInDate(formatDate(checkIn));
       setCheckOutDate(formatDate(checkOut));
-      
+
       isInitializedRef.current = true; 
     }
   }, []);
-
  
   useEffect(() => {
     if (!isSearchBarCalendar) {

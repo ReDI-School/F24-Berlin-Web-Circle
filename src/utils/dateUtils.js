@@ -215,10 +215,48 @@ export function convertDateObjectToString(dateObject) {
 };
 
 
+export const getInitialMonth = (checkInDate, alreadyBookedDates, findNextAvailableDate, minStayNights) => {
+  if (checkInDate) {
+    const { year, month } = convertStringToDateObject(checkInDate);
+    return new Date(year, month, 1);
+  }
+
+  if (alreadyBookedDates && alreadyBookedDates.length > 0) {
+    const { checkIn } = findNextAvailableDate(alreadyBookedDates, minStayNights);
+    return new Date(checkIn.getFullYear(), checkIn.getMonth(), 1);
+  }
+
+  return new Date();
+};
+
+
 export const isDateDisabled = (day, month, year, isSearchBarCalendar, alreadyBookedDates, minStayNights) => {
   if (isSearchBarCalendar) {
     return false;
   }
+
+  const today = new Date();
+  const yearObject = today.getFullYear();
+  const monthObject = today.getMonth() + 1;
+  const dayObject = 1;
+  
+  const currentMonthDate = `${monthObject.toString().padStart(2, '0')}/${dayObject.toString().padStart(2, '0')}/${yearObject}`;
+
+
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayDate = yesterday.getDate();
+ 
+  const formattedYesterdayDate = `${monthObject.toString().padStart(2, '0')}/${yesterdayDate.toString().padStart(2, '0')}/${yearObject}`;
+
+
+const beforeTodayDates = {
+  startDate: currentMonthDate,
+  endDate: formattedYesterdayDate
+}
+
+const bookedDatesPlusBeforeTodayDates = [ beforeTodayDates , ...alreadyBookedDates]
+
 
   const currentDate = new Date(year, month, day).getTime();
 
@@ -227,7 +265,7 @@ export const isDateDisabled = (day, month, year, isSearchBarCalendar, alreadyBoo
     return new Date(year, month - 1, day).getTime();
   };
 
-  const bookingPeriods = alreadyBookedDates
+  const bookingPeriods = bookedDatesPlusBeforeTodayDates
     .map((booking) => ({
       start: getTimestamp(booking.startDate),
       end: getTimestamp(booking.endDate) + 24 * 60 * 60 * 1000 - 1,
@@ -259,7 +297,7 @@ export const isDateDisabled = (day, month, year, isSearchBarCalendar, alreadyBoo
     }
   }
 
-  if (isBooked(day, month, year, alreadyBookedDates, false)) {
+  if (isBooked(day, month, year, bookedDatesPlusBeforeTodayDates, false)) {
     return true;
   }
 
