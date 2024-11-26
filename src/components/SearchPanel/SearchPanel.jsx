@@ -5,6 +5,7 @@ import styles from "./SearchPanel.module.css";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import FilterButton from "../FilterButton/FilterButton";
 
 const SearchPanel = () => {
     const [searchType, setSearchType] = useState("stays");
@@ -60,34 +61,35 @@ const SearchPanel = () => {
                 </div>
             </div>
 
-{/* Mobile Version */}
-<div className={styles.mobileSearch}>
+            {/* Mobile Version */}
+            <div className={styles.mobileSearch}>
+                <div className={styles.mobileSearchInputWrapper}>
+                    {/* Search Icon on the Left */}
+                    <button className={styles.mobileSearchButton} onClick={handleMobileSearch}>
+                        <FontAwesomeIcon icon={faSearch} />
+                    </button>
 
-  <div className={styles.mobileSearchInputWrapper}>
+                    {/* Input and Placeholder Text Block */}
+                    <div className={styles.inputPlaceholderBlock}>
+                        <input
+                            type="text"
+                            className={styles.mobileSearchInput}
+                            placeholder="Where to?"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <div className={styles.mobileSearchPlaceholder}>
+                            Anywhere <span className={styles.dot}>•</span> Any week{" "}
+                            <span className={styles.dot}>•</span> Add guests
+                        </div>
+                    </div>
+                </div>
 
-    {/* Search Icon on the Left */}
-    <button className={styles.mobileSearchButton} onClick={handleMobileSearch}>
-      <FontAwesomeIcon icon={faSearch} />
-    </button>
-
-    {/* Input and Placeholder Text Block */}
-    <div className={styles.inputPlaceholderBlock}>
-      <input
-        type="text"
-        className={styles.mobileSearchInput}
-        placeholder="Where to?"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <div className={styles.mobileSearchPlaceholder}>
-        Anywhere <span className={styles.dot}>•</span> Any week <span className={styles.dot}>•</span> Add guests
-      </div>
-    </div>
-    
-  </div>
-
-</div>
-
+                {/* Filter Button placed next to the search bar */}
+                <div className={styles.filterButtonWrapper}>
+                    <FilterButton />
+                </div>
+            </div>
         </div>
     );
 };
