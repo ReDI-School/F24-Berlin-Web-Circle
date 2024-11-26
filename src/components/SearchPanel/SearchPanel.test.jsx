@@ -16,6 +16,15 @@ vi.mock('../SearchBar/SearchBar.jsx', () => ({
                 children: 3,
                 infants: 2,
                 pets: 1
+            })}>Search Berlin
+            </button>
+            <button onClick={() => onSearch({
+                checkIn: '2023-01-01',
+                checkOut: '2023-01-07',
+                adults: 4,
+                children: 3,
+                infants: 2,
+                pets: 1
             })}>Search
             </button>
         </div>
@@ -72,11 +81,21 @@ describe('SearchPanel Component', () => {
         expect(screen.getByText('Mocked Search Bar - experiences')).toBeInTheDocument();
     });
 
-    it('should call handleAirbnbSearch with correct parameters when search button is clicked', () => {
+
+    it('should not call navigate when region is not set and search button is clicked ', () => {
         //given
         const searchButton = screen.getByText('Search');
         //when
         fireEvent.click(searchButton);
+        //then
+        expect(navigate).not.toHaveBeenCalled();
+    });
+
+    it('should call navigate with correct parameters when region is set and search button is clicked', () => {
+        //given
+        const searchBerlinButton = screen.getByText('Search Berlin');
+        //when
+        fireEvent.click(searchBerlinButton);
         //then
         expect(navigate).toHaveBeenCalledWith({
             pathname: '/s/Berlin/homes',
