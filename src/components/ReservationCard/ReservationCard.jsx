@@ -5,7 +5,6 @@ import ReservationDatesSelector from './ReservationDatesSelector/ReservationDate
 import DatePicker from './DatePicker/DatePicker'
 import GuestCountDisplay from './GuestCountDisplay/GuestCountDisplay'
 import useOutsideClick from '../../hooks/useOutsideClick'
-import { fetchCalculatedCosts } from '../../api/pricingApi'
 import { calculateGuestCounts } from '../../utils/guestCounts'
 import { useState } from 'react'
 import axios from 'axios'
@@ -285,7 +284,6 @@ function ReservationCard({
           airbnbServiceFee={airbnbServiceFee}
           longStayDiscount={longStayDiscount}
           nightsCountForDiscount={nightsCountForLongStayDiscount}
-          // calculatedCosts={calculatedCosts}
           nights={nights}
           basePrice={basePrice}
           isDiscount={isDiscount}
