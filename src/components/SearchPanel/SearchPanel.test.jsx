@@ -67,7 +67,7 @@ describe('SearchPanel Component', () => {
         const searchButton = screen.getByText('Search');
         //when
         fireEvent.click(searchButton);
-        // Check if handleAirbnbSearch was called with the expected argument
+        //then
         expect(navigate).toHaveBeenCalledWith({
             pathname: '/s/Berlin/homes',
             search: 'region=Berlin&checkIn=2023-01-01&checkOut=2023-01-07&adults=4&children=3&infants=2&pets=1',
