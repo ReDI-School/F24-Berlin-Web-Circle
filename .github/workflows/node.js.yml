@@ -31,5 +31,22 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm test
+
+    - name: Install root dependencies
+      run: |
+        npm ci
+
+    - name: Install dependencies in server
+      run: |
+        cd server
+        npm ci
+        cd ..
+
+    - name: Run tests in the root directory
+      run: |
+        npm test
+
+    - name: Run tests in the server directory
+      run: |
+        cd server
+        npm test
