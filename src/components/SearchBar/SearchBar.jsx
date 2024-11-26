@@ -8,6 +8,8 @@ import DataIncrementsButtonForTheCalendar from "../DataIncrementsButtonForTheCal
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { formatDateToMonthDay, formatDateRange, convertStringToDateObject, convertDateObjectToString } from "../../utils/dateUtils";
 import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
+import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
+import { calculateGuestCounts } from "../../utils/guestCounts";
 
 const SearchBar = ({ searchType, onSearch }) => {
   const [selectedOption, setSelectedOption] = useState('exact');
@@ -16,8 +18,14 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [checkInToServer, setCheckInToServer] = useState('');
   const [checkOutToServer, setCheckOutToServer] = useState('');
   const [location, setLocation] = useState("");
-  const [guests, setGuests] = useState("");
+  const [guests, setGuests] = useState([
+    { typeofGuest: 'Adults', numberOfGuests: 0 },
+    { typeofGuest: 'Children', numberOfGuests: 0 },
+    { typeofGuest: 'Infants', numberOfGuests: 0 },
+    { typeofGuest: 'Pets', numberOfGuests: 0 },
+  ]);
   const [showCalendar, setShowCalendar] = useState(false);
+  const [showWhoDropdown, setShowWhoDropdown] = useState(false);
   const [closing, setClosing] = useState(false);
   const [hoverStates, setHoverStates] = useState({
     location: false,
@@ -28,6 +36,34 @@ const SearchBar = ({ searchType, onSearch }) => {
   });
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [focusedSearchBar, setFocusedSearchBar] = useState(false);
+  const [guestSearchCounts, setGuestSearchCounts] = useState({
+    "adults": 0,
+    "children": 0,
+    "infants": 0,
+    "pets": 0
+  });
+
+  const currentSearchTotalPeople = guestSearchCounts.adults + guestSearchCounts.children;
+
+  const {
+    adultsCount,
+    childrenCount,
+    infantsCount,
+    petsCount,
+    adultsAndChildrenCount,
+  } = calculateGuestCounts(guests)
+
+
+  const handleGuestSearchClick = (updatedGuest) => {
+    setGuests((prevList) =>
+      prevList.map((guest) =>
+        guest.typeofGuest === updatedGuest.typeofGuest
+          ? { ...guest, numberOfGuests: updatedGuest.numberOfGuests }
+          : guest
+      )
+    )
+  }
+
 
   useEffect(() => {
     const createAdjustedDate = (baseDate, daysAdjustment) => {
@@ -85,9 +121,12 @@ const SearchBar = ({ searchType, onSearch }) => {
   }
 
   const closeCalendarPopup = () => setShowCalendar(false)
+  const closeWhoDropdown = () => setShowWhoDropdown(false)
 
   const searchBarRef = useOutsideClick(disableSearchBarFocus);
   const calendarRef = useOutsideClick(closeCalendarPopup)
+  const whoRef = useOutsideClick(closeWhoDropdown)
+
 
   useEffect(() => {
     prevSelectedBlock.current = selectedBlock;
@@ -110,6 +149,10 @@ const SearchBar = ({ searchType, onSearch }) => {
     setShowCalendar((prevState) => !prevState);
   }
 
+  const toggleWhoDropdown = () => {
+    setShowWhoDropdown((prevState) => !prevState);
+  }
+
   useEffect(() => {
     searchCheckIn && searchCheckIn !== "Add dates" ? setSelectedBlock("checkOut") : setSelectedBlock("checkIn")
   }, [searchCheckIn])
@@ -121,40 +164,39 @@ const SearchBar = ({ searchType, onSearch }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (showCalendar && !closing) {
+      if ((showCalendar && !closing) || (showWhoDropdown && !closing)) {
         setClosing(true);
         setFocusedSearchBar(false);
         setSelectedBlock(null);
         setTimeout(() => {
           setShowCalendar(false);
+          setShowWhoDropdown(false);
           setClosing(false);
         }, 300);
       }
     };
-    if (showCalendar) {
+    if (showCalendar || showWhoDropdown) {
       window.addEventListener("scroll", handleScroll);
     } else {
       window.removeEventListener("scroll", handleScroll);
     }
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [showCalendar, closing]);
+  }, [showCalendar, showWhoDropdown, closing]);
 
-  
+
   const handleSearch = () => {
-    const validCheckIn = checkInToServer && !isNaN(new Date(checkInToServer).getTime()) ? checkInToServer : null;
-    const validCheckOut = checkOutToServer && !isNaN(new Date(checkOutToServer).getTime()) ? checkOutToServer : null;
+    const validateCount = (count) => (count && !isNaN(count) ? count : 0);
+    const validateDate = (date) => (date && !isNaN(new Date(date).getTime()) ? date : null);
   
     const searchParams = {
       location,
-      guests,
+      checkIn: validateDate(checkInToServer),
+      checkOut: validateDate(checkOutToServer),
+      adults: validateCount(adultsCount),
+      children: validateCount(childrenCount),
+      infants: validateCount(infantsCount),
+      pets: validateCount(petsCount),
     };
-  
-    if (validCheckIn) {
-      searchParams.checkIn = validCheckIn;
-    }
-    if (validCheckOut) {
-      searchParams.checkOut = validCheckOut;
-    }
   
     onSearch(searchParams);
   };
@@ -395,17 +437,27 @@ const SearchBar = ({ searchType, onSearch }) => {
         >
           <div className={styles.separator}></div>
         </div>
+      <div className={styles.inputContainerWhoWrapper} ref={whoRef}>
         <div className={`${styles.inputContainerWho} 
                          ${selectedBlock === "who" ? styles.selected : ''}
                          ${selectedBlock === "checkOut" || selectedBlock === "date" ? styles.hoveredWhoBlock : ''}
                        `}
           onMouseEnter={() => handleMouseHover("guests", true)}
           onMouseLeave={() => handleMouseHover("guests", false)}
-          onClick={() => handleBlockClick("who")}
+          onClick={() => {
+            handleBlockClick("who")
+            toggleWhoDropdown()
+          }} 
         >
           <div className={styles.inputContainerWhoInner}>
             <span className={styles.label}>Who</span>
-            <span className={styles.guestsText}>{guests}</span>
+            <span className={styles.guestsText}>
+              {adultsAndChildrenCount ? `${adultsAndChildrenCount <=15 ? adultsAndChildrenCount :
+                 adultsAndChildrenCount + '+'} guest${adultsAndChildrenCount !== 1 ? 's' : ''}` : ''}
+              {infantsCount ? `, ${infantsCount} infant${infantsCount !== 1 ? 's' : ''}` : ''}
+              {petsCount ? `, ${petsCount} pet${petsCount !== 1 ? 's' : ''}` : ''}
+              {!adultsAndChildrenCount && !infantsCount && !petsCount && 'Add guests'}
+            </span>
           </div>
           {guests && guests !== "Add guests" && selectedBlock === "guests" && ( 
           <button 
@@ -419,12 +471,34 @@ const SearchBar = ({ searchType, onSearch }) => {
           </button> 
           )}
           <div>
-            <button onClick={handleSearch} className={styles.circleButton}>
+            <button 
+              onClick={(e) => {
+                e.stopPropagation()
+                handleSearch()
+              }}
+              className={styles.circleButton}
+            >
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
         </div>
+        {showWhoDropdown && (
+            <div className={`${styles.whoDropdownWrapper} ${closing ? styles.close : styles.open}`}>
+              <AddGuestsPopUp 
+                isSearchWhoDropdown={true}
+                adultsCount={adultsCount}
+                childrenCount={childrenCount}
+                infantsCount={infantsCount}
+                petsCount={petsCount}
+                setGuestSearchCounts={setGuestSearchCounts}
+                currentSearchTotalPeople={currentSearchTotalPeople}
+                handleGuestSearchClick={handleGuestSearchClick}
+                setGuests={setGuests}
+              />
+            </div>
+          )}
       </div>
+    </div>
     </>
   );
 };
