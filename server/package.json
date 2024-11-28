@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "mocha tests/**/*.js --exit"
+    "test": "mocha tests/**/*.js --exit",
+    "seed": "node prisma/seed.js"
   },
   "keywords": [],
   "author": "",
