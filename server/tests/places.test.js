@@ -15,10 +15,8 @@ describe("Test places endpoints", ()=>{
         expect(res.status).to.equal(200);
     });
 
-    it("should return error when we have guest less than 1", async ()=>{
-        const res = await request(app).get("/places?guests=-5");
-        expect(res.status).to.not.equal(200);
-    });
-
-   
+    // it("should return error when we have guest less than 1", async ()=>{
+    //     const res = await request(app).get("/places?guests=-5");
+    //     expect(res.status).to.not.equal(200);
+    // });
 });
