@@ -13,6 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+<<<<<<< HEAD
 enum Category {
   BEACHFRONT
   LUXE
@@ -40,12 +41,14 @@ model User {
   password String
 }
 
+=======
+>>>>>>> 08b13ccfc6aa6d1f1068e68d9a95db99c289fdae
 model Product {
   product_id           Int        @id @default(autoincrement())
   title                String     @db.VarChar(150)
   host                 String     @db.VarChar(150)
   star_grade           Float
-  price                Float
+  price                String
   accommodation        String     @db.VarChar(150)
   address              String     @db.VarChar(150)
   category              Category[]
@@ -153,58 +156,4 @@ model Booking {
   Product                     Product  @relation(fields: [product_id], references: [product_id])
 
   @@index([product_id])
-}
-
-model Place {
-  id       Int @id @default(autoincrement())
-  title               String
-  host                String
-  price               String
-  accommodation       String
-  address             String
-  guests              Int
-  bedrooms            Int
-  beds                Int
-  baths               Int
-  starGrade           Float
-  reviewsCount        Int
-  highlightCheckIn    String?
-  highlightAward      String?
-  highlightWifi       String?
-  highlightCancellation String?
-  amenitiesKitchen    Boolean?
-  amenitiesWorkspace  Boolean?
-  amenitiesSauna      Boolean?
-  amenitiesBalcony    Boolean?
-  amenitiesFireplace  Boolean?
-  amenitiesWifi       Boolean?
-  amenitiesParking    Boolean?
-  amenitiesPets       Boolean?
-  amenitiesBackyard   Boolean?
-  amenitiesFirepit    Boolean?
-  reviewSummaryTotalAvgRating Float
-  reviewSummaryTotalReviewsCount Int
-  cleanlinessAvgRating Float
-  accuracyAvgRating    Float
-  checkInAvgRating     Float
-  communicationAvgRating Float
-  locationAvgRating    Float
-  valueAvgRating       Float
-  starTotalFiveStar    Int
-  starTotalFourStar    Int
-  starTotalThreeStar   Int
-  starTotalTwoStar     Int
-  starTotalOneStar     Int
-  lon                  Float
-  lat                  Float
-  mapAddress           String
-  mapAddressDescription String
-  hostName             String
-  hostingDuration      Int
-  role                 String
-  hostProfilePicUrl    String
-  descriptionPlace     String
-  descriptionSpace     String
-  guestAccess          String
-  otherThings          String
 }

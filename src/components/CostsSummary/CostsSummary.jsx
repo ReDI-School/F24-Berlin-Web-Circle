@@ -1,26 +1,15 @@
-import { calculateNights } from '../../utils/dateUtils'
 import styles from './CostsSummary.module.css'
 
 const CostsSummary = ({
-  checkInDate,
-  checkOutDate,
   pricePerNight,
   airbnbServiceFee,
   cleaningFee,
   longStayDiscount,
-  nightsCountForDiscount,
+  nights,
+  basePrice,
+  isDiscount,
+  totalPrice
 }) => {
-  
-  const nights =
-  checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
-const isDiscount = nights >= nightsCountForDiscount
-
-  const basePrice = nights * pricePerNight
-  const totalPrice =
-    basePrice +
-    airbnbServiceFee +
-    cleaningFee -
-    (isDiscount ? longStayDiscount : 0)
 
   return (
     <div className={styles.priceSummary}>

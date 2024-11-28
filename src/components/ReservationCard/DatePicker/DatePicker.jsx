@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { CloseButtonIcon } from '../../../icons/CloseButtonIcon'
+import {isDayBeforeBooked, convertStringToDateObject, minStayBeforeBooked} from '../../../utils/dateUtils'
 import styles from './DatePicker.module.css'
 
 const DatePicker = ({
@@ -22,7 +23,6 @@ const DatePicker = ({
   checkInError,
   checkOutError,
   alreadyBookedDates = [],
-  availableCheckIn
 }) => {
   const [checkInFocus, setCheckInFocus] = useState(false)
   const [checkOutFocus, setCheckOutFocus] = useState(false)
@@ -78,14 +78,39 @@ const DatePicker = ({
 
   const checkInDateObj = new Date(checkInDate)
   const checkOutDateObj = new Date(checkOutDate)
-  const availableCheckInObj = new Date(availableCheckIn)
   const MS_PER_DAY = 1000 * 60 * 60 * 24
+  const today = new Date()
 
   const handleCheckInBlur = (dataCheckIn) => {
     if (validateDate(dataCheckIn)) {
       const dataCheckInObj = new Date(dataCheckIn)
 
-      if (isDateBooked(dataCheckIn) || dataCheckInObj < availableCheckInObj) {
+      let isDayBeforeBookedDate;
+        const dateObj = convertStringToDateObject(dataCheckIn);
+        if (dateObj) {
+          isDayBeforeBookedDate = isDayBeforeBooked(
+            dateObj.day,
+            dateObj.month,
+            dateObj.year,
+            alreadyBookedDates,
+            false
+          );
+        }
+
+        let isMinStayBeforeBooked;
+        const dateMinStayObj = convertStringToDateObject(dataCheckIn);
+        if (dateMinStayObj) {
+          isMinStayBeforeBooked = minStayBeforeBooked(
+            dateObj.day,
+            dateObj.month,
+            dateObj.year,
+            alreadyBookedDates,
+            minStayNights,
+            false
+          );
+        }
+
+      if (isDateBooked(dataCheckIn) || dataCheckInObj < today || isDayBeforeBookedDate || isMinStayBeforeBooked) { 
         setCheckInError('This date is unavailable')
         return
       }
@@ -137,6 +162,7 @@ const DatePicker = ({
 
   return (
     <Container
+      type="button"
       className={`${styles.datesPickerSection} ${
         !checkInDate && !renderAsButton ? styles.checkOutBackground : ''
       }`}

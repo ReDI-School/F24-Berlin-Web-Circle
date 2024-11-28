@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./HeaderUserMenu.module.css";
 
 const HeaderUserMenu = () => {
@@ -13,7 +13,7 @@ const HeaderUserMenu = () => {
       <button
         type="button"
         className={styles.headerButton}
-        expanded={isOpen}
+        aria-expanded={isOpen}
         label="Main navigation menu"
         onClick={handleClick}
       >
