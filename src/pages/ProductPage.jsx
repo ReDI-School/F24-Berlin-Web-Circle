@@ -18,13 +18,13 @@ import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import CalendarBlock from "../components/CalendarBlock/CalendarBlock";
 import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/CalendarBlockPopUp";
+import { fetchData } from "../api/fetchProductData";
 
 
 const ProductPage = () => {
@@ -37,39 +37,19 @@ const ProductPage = () => {
   const [booking, setBooking] = useState(null);
   const [checkInDate, setCheckInDate] = useState(null)
   const [checkOutDate, setCheckOutDate] = useState(null)
-  const [availableCheckIn, setAvailableCheckIn] = useState(null) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const isInitializedRef = useRef(false)
+
+
   const { productId } = useParams();
-  
-useEffect(() => {
-  const fetchData = async () => {
-    setLoading(true);
-    setError(null); 
 
-    try {
-      const [placeResponse, bookingsResponse] = await Promise.all([
-        axios.get(`http://localhost:8800/places/${productId}`),
-        axios.get(`http://localhost:8800/bookings/${productId}`)
-      ]);
-      setPlace(placeResponse.data);
-      setBooking(bookingsResponse.data);
 
-      if (bookingsResponse.data) {
-        setCheckInDate(bookingsResponse.data.checkInDate);
-        setCheckOutDate(bookingsResponse.data.checkOutDate);
-        setAvailableCheckIn(bookingsResponse.data.checkInDate)
-      }
-    } catch (err) {
-      setError(err.response?.data?.error || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    fetchData(setLoading, setError, setPlace, setBooking, productId);
+  }, [productId]);
 
-  fetchData();
-}, [productId]);
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -156,28 +136,19 @@ useEffect(() => {
             }
             {booking.bookingData.isBookingOpen && <hr className={styles.separator} />}
             {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
+              booking={booking}
               toggleKeyboardPopup={toggleKeyboardPopup}
-              minStayNights={booking.bookingData.minStayNights}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={booking.alreadyBookedDates}
-              availableCheckIn={availableCheckIn}
+              isInitializedRef={isInitializedRef}
             />  
             }
           </div>
           <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
-              pricePerNight={booking.bookingData.pricePerNight}
-              cleaningFee={booking.bookingData.cleaningFee}
-              airbnbServiceFee={booking.bookingData.airbnbServiceFee}
-              longStayDiscount={booking.bookingData.longStayDiscount}
-              nightsCountForDiscount={booking.bookingData.nightsCountForLongStayDiscount}
-              allowGuestsNumber={booking.bookingData.allowGuestsNumber}
-              minStayNights={booking.bookingData.minStayNights}
-              isBookingOpen={booking.bookingData.isBookingOpen}
-              guestCounts={booking.guestCounts}
+              booking={booking}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
               setShowGuests={setShowGuests}
@@ -188,8 +159,7 @@ useEffect(() => {
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={booking.alreadyBookedDates}
-              availableCheckIn={availableCheckIn}
+              isInitializedRef={isInitializedRef}
             />
           }
           </div>
