@@ -44,9 +44,9 @@ jobs:
 
     - name: Run tests in the root directory
       run: |
-        npm test
+        npm run test:frontend
 
     - name: Run tests in the server directory
       run: |
         cd server
-        npm test
+        npm run test:server
