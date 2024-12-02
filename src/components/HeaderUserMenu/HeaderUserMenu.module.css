@@ -95,3 +95,9 @@
     border-top: 1px solid #ddd; 
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    .headerButton {
+display: none;
+    }
+}
