@@ -13,7 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-<<<<<<< HEAD
 enum Category {
   BEACHFRONT
   LUXE
@@ -34,15 +33,7 @@ enum Category {
 }
 
 
-model User {
-  id       Int @id @default(autoincrement())
-  name     String
-  email    String
-  password String
-}
 
-=======
->>>>>>> 08b13ccfc6aa6d1f1068e68d9a95db99c289fdae
 model Product {
   product_id           Int        @id @default(autoincrement())
   title                String     @db.VarChar(150)
