@@ -1,12 +1,6 @@
 import PriceRangeFilter from "./PriceRangeFilter";
 import { render, screen } from "@testing-library/react";
 
-// Mock ResizeObserver
-global.ResizeObserver = class {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-};
 
 test("renders PriceRangeFilter and checks for specific text", () => {
   // Provide mock histogram data for rendering
