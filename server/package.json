@@ -9,11 +9,14 @@
     "test": "mocha tests/**/*.js --exit",
     "seed": "node prisma/seed.js"
   },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.22.0",
+    "@prisma/client": "^6.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1"
@@ -22,7 +25,8 @@
     "chai": "^4.5.0",
     "mocha": "^10.8.2",
     "nodemon": "^3.1.7",
-    "prisma": "^5.22.0",
+    "prisma": "^6.0.1",
     "supertest": "^7.0.0"
+
   }
 }
