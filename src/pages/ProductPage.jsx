@@ -41,7 +41,6 @@ const ProductPage = () => {
   const [error, setError] = useState(null);
 
   const isInitializedRef = useRef(false)
-console.log('place', place)
 
   const { productId } = useParams();
 
