@@ -35,3 +35,23 @@
     margin-top: 10px;
     margin-right: 20px;
 }
+
+@media (max-width: 768px) {
+    .userMenusWrapper {
+    display: none;
+}
+.logoAirbnb{
+    display: none;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: fixed;
+    background-color: #ffffff;
+    height: 90px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+}
