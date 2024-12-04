@@ -113,3 +113,10 @@
 .errorMessage {
   color: rgb(189, 30, 89);
 }
+
+
+@media (max-width: 900px) {
+  .reservationCard {
+    width: 18rem;
+  }
+}

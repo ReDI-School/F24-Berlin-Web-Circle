@@ -135,7 +135,7 @@ const ProductPage = () => {
               />
             }
             {booking.bookingData.isBookingOpen && <hr className={styles.separator} />}
-            {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
+            {/* {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
               booking={booking}
               toggleKeyboardPopup={toggleKeyboardPopup}
               checkInDate={checkInDate}
@@ -144,9 +144,9 @@ const ProductPage = () => {
               setCheckOutDate={setCheckOutDate}
               isInitializedRef={isInitializedRef}
             />  
-            }
+            } */}
           </div>
-          {/* <div className={styles.ReservationCard}>
+          <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
               booking={booking}
               toggleShortcutsPopup={toggleShortcutsPopup}
@@ -184,10 +184,10 @@ const ProductPage = () => {
                 isVisible={isKeybordPopupVisible}
                 onClose={toggleKeyboardPopup}
               />
-            )} */}
+            )}
         </div>
-        {/* <hr className={styles.separator} />
-        {!!place.reviewSummary && <ReviewSummary
+        {/* <hr className={styles.separator} /> */}
+        {/* {!!place.reviewSummary && <ReviewSummary
           totalAvgRating={place.reviewSummary.valueAvgRating}
           totalReviewsCount={place.reviewSummary.totalReviewsCount}
           ratings={{
@@ -205,8 +205,8 @@ const ProductPage = () => {
               oneStar: place.reviewSummary.ratings.starTotals.oneStar,
             },
           }}
-        />}
-        { !!place.reviews &&
+        />} */}
+        {/* { !!place.reviews &&
           <div className={styles.reviews}>
             <ReviewsSection reviews={place.reviews}/>
           </div>

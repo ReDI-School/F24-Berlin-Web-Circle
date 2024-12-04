@@ -67,9 +67,5 @@
   .IconButton {
     margin-top: 0;
   }
-  .ReservationCard {
-    display: none;
-    flex-basis: 10%;
-  }
 }
 
