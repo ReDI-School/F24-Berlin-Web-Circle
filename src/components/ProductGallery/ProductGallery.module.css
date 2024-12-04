@@ -1,6 +1,7 @@
 .productGalleryMain {
   height: 450px;
   width: 100%;
+  max-width: 100%;
   display: flex;
   gap: 7px;
   margin-top: 30px;
@@ -77,4 +78,23 @@
   margin-right: 5px;
   height: 15px;
   width: 15px;
+}
+
+
+@media (max-width: 768px) {
+  .productGalleryMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+  }
+  .bigImgContainer {
+    width: 100%;
+    min-height: 80%;
+  }
+  .smallImgsContainer {
+    width: 100%;
+    min-height: 80%;
+  }
 }

@@ -99,7 +99,7 @@ const ProductPage = () => {
           smallBottomLeftImage={place.images[3]}
           smallBottomRightImage={place.images[4]}
         />}
-        <div className={styles.ProductDescriptionContainer}>
+         <div className={styles.ProductDescriptionContainer}>
           <div className={styles.ProductDescription}>
             {!!place.productSummary && <ProductSummary
               accommodation={place.productSummary.accommodation}
@@ -146,7 +146,7 @@ const ProductPage = () => {
             />  
             }
           </div>
-          <div className={styles.ReservationCard}>
+          {/* <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
               booking={booking}
               toggleShortcutsPopup={toggleShortcutsPopup}
@@ -184,9 +184,9 @@ const ProductPage = () => {
                 isVisible={isKeybordPopupVisible}
                 onClose={toggleKeyboardPopup}
               />
-            )}
+            )} */}
         </div>
-        <hr className={styles.separator} />
+        {/* <hr className={styles.separator} />
         {!!place.reviewSummary && <ReviewSummary
           totalAvgRating={place.reviewSummary.valueAvgRating}
           totalReviewsCount={place.reviewSummary.totalReviewsCount}
@@ -215,9 +215,9 @@ const ProductPage = () => {
           mapViewSampleImg={mapViewSampleImg}
           address="Königslutter am Elm, Niedersachsen, Germany"
           addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
-        />
+        />  */}
       </div>
-      <MeetYourHostSection />
+      {/* <MeetYourHostSection /> */}
     </div>
   }
   </>);

@@ -12,6 +12,7 @@
 .titlePage {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .IconButton {
   margin-top: 40px;
@@ -43,3 +44,32 @@
   padding-top: 40px;
   margin-top: 40px;
 }
+
+
+@media (max-width: 768px) {
+  .ProductDescriptionContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ProductDescription {
+    flex-basis: 90%;
+  }
+  .ProductPageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14rem;
+    height: 100vh;
+  }
+  .titlePage {
+    padding-top: 20px;
+  }
+  .IconButton {
+    margin-top: 0;
+  }
+  .ReservationCard {
+    display: none;
+    flex-basis: 10%;
+  }
+}
+
