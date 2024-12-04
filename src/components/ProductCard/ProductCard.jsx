@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./ProductCard.module.css";
 import SharePopup from "../SharePopup/SharePopup";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ images = [], children, onClick }) => {
+const ProductCard = ({ images = [], children, onClick, linkTo }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -68,12 +69,6 @@ const ProductCard = ({ images = [], children, onClick }) => {
           </span>
         </button>
 
-        <img
-          src={images[currentImageIndex]}
-          alt=""
-          className={styles.productImage}
-        />
-
         {hovered && (
           <div className={styles.imageNavigation}>
             <button onClick={handlePreviousImage} className={styles.arrowButton}>
@@ -95,12 +90,20 @@ const ProductCard = ({ images = [], children, onClick }) => {
             ></span>
           ))}
         </div>
-
-        <div className={styles.cardContent}>
-          {children} {/* This will render the title, host, and price */}
-        </div>
+        <Link to={linkTo} className={styles.linkWrapper}>
+          <>
+            <img
+              src={images[currentImageIndex]}
+              alt=""
+              className={styles.productImage}
+            />
+    
+            <div className={styles.cardContent}>
+              {children} {/* This will render the title, host, and price */}
+            </div>
+          </>
+        </Link>
       </div>
-
       {/* Render Overlay and SharePopup */}
       {modalIsVisible && (
         <>

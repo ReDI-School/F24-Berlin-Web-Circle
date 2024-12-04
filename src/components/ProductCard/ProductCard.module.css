@@ -79,6 +79,7 @@
   justify-content: space-between; /* Space out the arrow buttons */
   transform: translateY(-50%); /* Center the navigation buttons vertically */
   z-index: 10; /* Ensure it's on top of other elements */
+  pointer-events: none;
 }
 
 .arrowButton {
@@ -95,6 +96,7 @@
   width: 30px;
   height: 30px;
   transition: background-color 0.3s ease; /* Smooth transition */
+  pointer-events: all;
 }
 
 .arrowButton:hover {
@@ -139,6 +141,7 @@
   left: 40%;
   position: absolute;
   text-align: center;
+  pointer-events: none;
 }
 
 .dot {
