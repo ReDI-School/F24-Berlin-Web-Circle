@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ProductGallery.module.css";
 import ProductGalleryPopup from "../ProductGalleryPopup/ProductGalleryPopup";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 const ProductGallery = ({
   bigImage,
@@ -13,6 +14,8 @@ const ProductGallery = ({
   const showPopupHandler = () => {
     setShowPopupProductGallery((prevState) => !prevState);
   };
+
+  const windowWidth = useWindowSize();
 
   const roomsData = [
     {
@@ -51,7 +54,26 @@ const ProductGallery = ({
           alt="bigImage"
           className={styles.bigImage}
         />
+        { windowWidth < 768 && (
+          <div className={styles.smallScreenShowPhotosBtn} onClick={showPopupHandler}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              className={styles.showPhotosBtnSvg}
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 11.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-10-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-10-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"
+              ></path>
+            </svg>
+            <span>Show all photos</span>
+          </div>
+        )}
       </div>
+      { windowWidth > 768 && (
       <div className={styles.smallImgsContainer}>
         <img
           onClick={showPopupHandler}
@@ -96,6 +118,7 @@ const ProductGallery = ({
           </div>
         </div>
       </div>
+      )}
       {showPopupProductGallery && (
         <ProductGalleryPopup
           showPopupHandler={showPopupHandler}

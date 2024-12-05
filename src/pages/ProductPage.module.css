@@ -46,6 +46,12 @@
 }
 
 
+@media (max-width: 1140px) {
+  .reviews {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .ProductDescriptionContainer {
     flex-direction: column;
@@ -55,14 +61,11 @@
   .ProductDescription {
     flex-basis: 90%;
   }
-  .ProductPageContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 14rem;
-    height: 100vh;
+  .ReservationCard {
+    display: none;
   }
   .titlePage {
-    padding-top: 20px;
+    margin-top: -80px;
   }
   .IconButton {
     margin-top: 0;

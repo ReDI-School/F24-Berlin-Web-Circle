@@ -51,3 +51,8 @@
   font-weight: 500;
 }
 
+@media (max-width: 900px) {
+  .container {
+    display: none;
+  }
+}

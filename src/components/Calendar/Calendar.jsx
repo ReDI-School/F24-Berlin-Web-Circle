@@ -12,6 +12,7 @@ import {
   getInitialMonth
 } from '../../utils/dateUtils'
 import {findNextAvailableDate} from '../../utils/findNextAvailableDate'
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 const Calendar = ({ 
   dayItemWidth, 
@@ -33,7 +34,8 @@ const Calendar = ({
   searchCheckOut,
   setSearchCheckIn,
   setSearchCheckOut,
-  isInitializedRef
+  isInitializedRef,
+  isCalendarBlock
 }) => {
 
   const [currentMonth, setCurrentMonth] = useState(getInitialMonth(
@@ -133,6 +135,7 @@ const Calendar = ({
     }
   }, [searchCheckOut, isSearchBarCalendar]);
 
+  const windowWidth = useWindowSize();
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()
@@ -435,7 +438,7 @@ const Calendar = ({
   return (
     <div className={styles.calendarPopUp}>
       <div className={styles.calendar}>
-        <div className={styles.calendarRow}>
+        <div className={`${windowWidth < 1140 && isCalendarBlock ? styles.calendarBlockRow : styles.calendarRow}`}>
           <button
             type='button'
             className={styles.prevButton}

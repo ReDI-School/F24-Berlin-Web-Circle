@@ -135,7 +135,7 @@ const ProductPage = () => {
               />
             }
             {booking.bookingData.isBookingOpen && <hr className={styles.separator} />}
-            {/* {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
+            {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
               booking={booking}
               toggleKeyboardPopup={toggleKeyboardPopup}
               checkInDate={checkInDate}
@@ -144,7 +144,7 @@ const ProductPage = () => {
               setCheckOutDate={setCheckOutDate}
               isInitializedRef={isInitializedRef}
             />  
-            } */}
+            }
           </div>
           <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
@@ -186,8 +186,8 @@ const ProductPage = () => {
               />
             )}
         </div>
-        {/* <hr className={styles.separator} /> */}
-        {/* {!!place.reviewSummary && <ReviewSummary
+        <hr className={styles.separator} />
+        {!!place.reviewSummary && <ReviewSummary
           totalAvgRating={place.reviewSummary.valueAvgRating}
           totalReviewsCount={place.reviewSummary.totalReviewsCount}
           ratings={{
@@ -205,8 +205,8 @@ const ProductPage = () => {
               oneStar: place.reviewSummary.ratings.starTotals.oneStar,
             },
           }}
-        />} */}
-        {/* { !!place.reviews &&
+        />}
+        { !!place.reviews &&
           <div className={styles.reviews}>
             <ReviewsSection reviews={place.reviews}/>
           </div>
@@ -215,7 +215,7 @@ const ProductPage = () => {
           mapViewSampleImg={mapViewSampleImg}
           address="Königslutter am Elm, Niedersachsen, Germany"
           addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
-        />  */}
+        /> 
       </div>
       {/* <MeetYourHostSection /> */}
     </div>
