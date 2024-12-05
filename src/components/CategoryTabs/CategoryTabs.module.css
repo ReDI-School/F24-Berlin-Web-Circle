@@ -10,12 +10,13 @@
   left: 0;
   right: 0;
   background-color: white;
-  z-index: 998;
+  z-index: 499;
   padding-top: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .categoryMenu {
+  z-index: 1;
   width: 95vw;
   display: flex;
   flex-direction: row;
@@ -29,7 +30,8 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  position: relative;
+  /* position: relative; */
+  z-index: 1;
 }
 
 .filterButtonWrapper {
