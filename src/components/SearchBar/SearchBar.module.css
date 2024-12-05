@@ -363,7 +363,6 @@
   position: absolute;
   right: 0;
   top: 76px;
-  /* padding: 0 16px; */
   background-color: white;
   z-index: 1200;
   width: 49%;
@@ -374,12 +373,9 @@
   transform: translateY(0);
 }
 
-/* .whoDropdownWrapper.open {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-.whoDropdownWrapper.close {
-  opacity: 0;
-  transform: translateY(-140px);
-} */
+@media (max-width: 880px) {
+  .searchBar {
+    width: 751px;
+  }
+}
