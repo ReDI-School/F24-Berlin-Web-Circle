@@ -61,9 +61,6 @@
   .ProductDescription {
     flex-basis: 90%;
   }
-  .ReservationCard {
-    display: none;
-  }
   .titlePage {
     margin-top: -80px;
   }

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import WarningMessage from '../WarningMessage/WarningMessage'
 import { calculateNights, getStayPeriod } from '../../../utils/dateUtils'
 import Calendar from '../../Calendar/Calendar'
+import { useWindowSize } from '../../../hooks/useWindowSize'
 
 const ReservationDatesSelector = ({
   setCheckInDate,
@@ -19,6 +20,8 @@ const ReservationDatesSelector = ({
   isInitializedRef
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
+
+  const windowWidth = useWindowSize();
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
   const [userSelectedCheckOut, setUserSelectedCheckOut] = useState(false)
@@ -114,6 +117,7 @@ const ReservationDatesSelector = ({
           <WarningMessage message={checkInError || checkOutError} />
         </div>
       </div>
+      {windowWidth > 768 && (
         <div className={styles.calendarWrapper}>
           <Calendar 
             dayItemWidth="42px" 
@@ -133,6 +137,7 @@ const ReservationDatesSelector = ({
             isInitializedRef={isInitializedRef}
           />
         </div>
+      )}
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}

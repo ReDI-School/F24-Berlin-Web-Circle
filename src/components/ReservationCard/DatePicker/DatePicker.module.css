@@ -130,3 +130,11 @@
 .clearInputDateBtn:focus-visible {
   outline: none;
 }
+
+
+@media (max-width: 420px) {
+  div.datesPickerSection {
+    display: flex;
+    flex-direction: column;
+  }  
+}

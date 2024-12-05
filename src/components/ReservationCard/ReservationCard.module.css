@@ -120,3 +120,15 @@
     width: 18rem;
   }
 }
+
+@media (max-width: 768px) {
+  .reservationCard {
+    width: 23rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .reservationCard {
+    width: 18rem;
+  }
+}
