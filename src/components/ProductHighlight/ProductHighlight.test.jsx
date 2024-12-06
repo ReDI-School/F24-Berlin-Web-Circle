@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import ProductHighlight from "./ProductHighlight";
 import { CHECK_IN, AWARD, CANCELLATION } from "../../constants/constants";
 import { describe, it, expect } from "vitest";
+import '@testing-library/jest-dom';
+
 
 describe("ProductHighlight Component", () => {
   const mockHighlights = [
