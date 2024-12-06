@@ -11,7 +11,7 @@ const ProductHighlight = ({highlights}) => {
 			default: return <PinIcon/>;
 		}
 	}
-	
+	console.log('highlights', highlights)
 	return (
 		<ul className={styles.highlights}>
 			{highlights.map((feature, i) => {
