@@ -45,4 +45,13 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6); 
   z-index: 1100;
+  overflow: hidden;
+}
+
+html.modalOpen,
+body.modalOpen {
+  overflow: hidden;
+  height: 100%;  
+  position: fixed;
+  width: 100%;
 }
