@@ -34,25 +34,25 @@ describe("ReviewSummary Component", () => {
   it("renders overall rating and reviews count correctly", () => {
     render(<ReviewSummary {...props} />);
 
-    expect(screen.getByText("4.5 · 100 reviews")).toBeTruthy(); // Changed here
+    expect(screen.getByText("4.5 · 100 reviews")).toBeTruthy();
   });
 
   it("renders category ratings and icons correctly", () => {
     render(<ReviewSummary {...props} />);
 
-    expect(screen.getByText("Cleanliness")).toBeTruthy(); // Changed here
-    expect(screen.getByText("4.0")).toBeTruthy(); // Changed here
+    expect(screen.getByText("Cleanliness")).toBeTruthy();
+    expect(screen.getByText("4.0")).toBeTruthy();
 
-    expect(screen.getByText("Accuracy")).toBeTruthy(); // Changed here
-    expect(screen.getByText("4.2")).toBeTruthy(); // Changed here
+    expect(screen.getByText("Accuracy")).toBeTruthy();
+    expect(screen.getByText("4.2")).toBeTruthy();
 
-    expect(screen.getByText("CleanlinessIcon")).toBeTruthy(); // Changed here
-    expect(screen.getByText("AccuracyIcon")).toBeTruthy(); // Changed here
+    expect(screen.getByText("CleanlinessIcon")).toBeTruthy();
+    expect(screen.getByText("AccuracyIcon")).toBeTruthy();
   });
 
   it("renders RatingBar with correct title", () => {
     render(<ReviewSummary {...props} />);
 
-    expect(screen.getByText("Overall rating")).toBeTruthy(); // Changed here
+    expect(screen.getByText("Overall rating")).toBeTruthy();
   });
 });
