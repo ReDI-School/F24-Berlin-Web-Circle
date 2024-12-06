@@ -29,8 +29,6 @@ const PriceRangeFilter = () => {
     { from: 287.5, to: 300, count: 3 },
     { from: 300, to: 312.5, count: 2 },
     { from: 312.5, to: 325, count: 1 },
-    { from: 325, to: 337.5, count: 1 },
-    { from: 337.5, to: 350, count: 1 },
   ];
   
 

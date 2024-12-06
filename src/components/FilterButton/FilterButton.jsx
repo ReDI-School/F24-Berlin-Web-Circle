@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styles from "./FilterButton.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
-import PriceRangeModal from "../PriceRangeModal/PriceRangeModal";
 
-const FilterButton = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [histogramData, setHistogramData] = useState([]);
-
+const FilterButton = ({toggleModal, setHistogramData = () => {}}) => {
   // Simulating dynamic data fetching or processing
   useEffect(() => {
+    if (!setHistogramData) {
+      console.warn("setHistogramData is not provided to FilterButton");
+      return;
+    }
     // Replace this logic with actual data processing from the provided file or API
     const generateHistogramData = () => {
       const minPrice = 9;
@@ -28,11 +28,9 @@ const FilterButton = () => {
       return mockData;
     };
 
-    const data = generateHistogramData();
-    setHistogramData(data);
-  }, []);
-
-  const toggleModal = () => setModalOpen((prev) => !prev);
+      const data = generateHistogramData();
+      setHistogramData(data);
+    }, [setHistogramData]);
 
   return (
     <>
@@ -43,16 +41,6 @@ const FilterButton = () => {
           <h6>Filters</h6>
         </div>
       </div>
-
-      {/* Modal for price range */}
-      {isModalOpen && (
-        <PriceRangeModal
-          isOpen={isModalOpen}
-          className={styles.overlay}
-          onClose={toggleModal}
-          histogramData={histogramData} // Pass the dynamically generated data
-        />
-      )}
     </>
   );
 };
