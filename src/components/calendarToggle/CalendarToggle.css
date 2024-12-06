@@ -39,4 +39,10 @@
   .calendertoggle-option:hover:not(.active) {
     background-color: #eaeaea;
   }
+
+  @media (max-width: 768px) {
+    .calendertoggle-wrapper {
+      display: none;
+    }
+}
   

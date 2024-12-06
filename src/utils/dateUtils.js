@@ -22,6 +22,7 @@ export const getStayPeriod = (checkIn, checkOut) => {
 }
 
 export const convertStringToDateObject = (dateString) => {
+  if (!dateString) return null;
   const [month, day, year] = dateString.split('/').map(Number)
   return { day, month: month - 1, year }
 }
@@ -211,4 +212,94 @@ export function convertDateObjectToString(dateObject) {
   const month = dateObject.getMonth();
   const year = dateObject.getFullYear();
   return `${String(month + 1).padStart(2, "0")}/${String(day).padStart(2, "0")}/${year}`;
+};
+
+
+export const getInitialMonth = (checkInDate, alreadyBookedDates, findNextAvailableDate, minStayNights) => {
+  if (checkInDate) {
+    const { year, month } = convertStringToDateObject(checkInDate);
+    return new Date(year, month, 1);
+  }
+
+  if (alreadyBookedDates && alreadyBookedDates.length > 0) {
+    const { checkIn } = findNextAvailableDate(alreadyBookedDates, minStayNights);
+    return new Date(checkIn.getFullYear(), checkIn.getMonth(), 1);
+  }
+
+  return new Date();
+};
+
+
+export const isDateDisabled = (day, month, year, isSearchBarCalendar, alreadyBookedDates, minStayNights) => {
+  if (isSearchBarCalendar) {
+    return false;
+  }
+
+  const today = new Date();
+  const yearObject = today.getFullYear();
+  const monthObject = today.getMonth() + 1;
+  const dayObject = 1;
+  
+  const currentMonthDate = `${monthObject.toString().padStart(2, '0')}/${dayObject.toString().padStart(2, '0')}/${yearObject}`;
+
+
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayDate = yesterday.getDate();
+ 
+  const formattedYesterdayDate = `${monthObject.toString().padStart(2, '0')}/${yesterdayDate.toString().padStart(2, '0')}/${yearObject}`;
+
+
+const beforeTodayDates = {
+  startDate: currentMonthDate,
+  endDate: formattedYesterdayDate
+}
+
+const bookedDatesPlusBeforeTodayDates = [ beforeTodayDates , ...alreadyBookedDates]
+
+
+  const currentDate = new Date(year, month, day).getTime();
+
+  const getTimestamp = (dateStr) => {
+    const [month, day, year] = dateStr.split('/').map(Number);
+    return new Date(year, month - 1, day).getTime();
+  };
+
+  const bookingPeriods = bookedDatesPlusBeforeTodayDates
+    .map((booking) => ({
+      start: getTimestamp(booking.startDate),
+      end: getTimestamp(booking.endDate) + 24 * 60 * 60 * 1000 - 1,
+    }))
+    .sort((a, b) => a.start - b.start);
+
+  const nextBooking = bookingPeriods.find((period) => period.start > currentDate);
+  const previousBooking = [...bookingPeriods]
+    .reverse()
+    .find((period) => period.end < currentDate);
+  
+  if (previousBooking && nextBooking) {
+    const gapFromPreviousBooking = Math.floor(
+      (currentDate - previousBooking.end) / (1000 * 60 * 60 * 24)
+    );
+    const gapUntilNextBooking = Math.floor(
+      (nextBooking.start - currentDate) / (1000 * 60 * 60 * 24)
+    );
+
+    if (gapFromPreviousBooking + gapUntilNextBooking + 1 < minStayNights) {
+      return true;
+    }
+
+    const totalGap = Math.floor(
+      (nextBooking.start - previousBooking.end) / (1000 * 60 * 60 * 24)
+    );
+    if (totalGap <= minStayNights && currentDate > previousBooking.end && currentDate < nextBooking.start) {
+      return true;
+    }
+  }
+
+  if (isBooked(day, month, year, bookedDatesPlusBeforeTodayDates, false)) {
+    return true;
+  }
+
+  return false;
 };

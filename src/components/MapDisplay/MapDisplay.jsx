@@ -8,7 +8,7 @@ const MapDisplay = ({ lat, lng }) => {
     <div className={styles.mainContainer}>
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY || " "}>
         <Map
-          mapId={import.meta.env.VITE_mapId}
+          mapId="20a9930d81d7adbc"
           className={styles.mainMap}
           defaultCenter={{ lat: lat, lng: lng }}
           defaultZoom={12}

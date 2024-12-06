@@ -7,6 +7,8 @@ export default defineConfig({
     passWithNoTests: true,
     globals: true,
     environment: "jsdom",
+    include: ['src/**/*.test.{js,jsx}'],
+
   },
   plugins: [react()],
 })

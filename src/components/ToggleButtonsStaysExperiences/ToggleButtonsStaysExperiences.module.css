@@ -38,3 +38,9 @@
     background: rgb(245, 243, 243);
     color: black;
 }
+
+@media (max-width: 768px) {
+    .buttonContainer {
+display: none;
+    }
+}
