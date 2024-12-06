@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/**/*.js --exit",
     "seed": "node prisma/seed.js"
   },
   "keywords": [],
@@ -19,7 +19,10 @@
     "express": "^4.21.1"
   },
   "devDependencies": {
+    "chai": "^4.5.0",
+    "mocha": "^10.8.2",
     "nodemon": "^3.1.7",
-    "prisma": "^5.22.0"
+    "prisma": "^5.22.0",
+    "supertest": "^7.0.0"
   }
 }
