@@ -56,9 +56,6 @@ const SearchPanel = () => {
                 <div className={styles.searchBarContainer}>
                     <SearchBar
                         searchType={searchType}
-                        checkIn=""
-                        checkOut=""
-                        guests=""
                         onSearch={handleAirbnbSearch}
                     />
                 </div>
