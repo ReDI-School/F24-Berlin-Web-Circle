@@ -1,0 +1,208 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.submitSection {
+  padding-left: 0px;
+  padding-right: 10px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.increment {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.sub {
+  font-weight: 400;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+}
+
+button.button {
+  border-radius: 100%;
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(176, 176, 176);
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: .938rem;
+  text-align: center;
+  display: inline-flex;
+  font-size: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+button.button:hover {
+  cursor: pointer;
+  border-color: var(--primary);
+}
+
+button.buttonDisable {
+  border-radius: 100%;
+  background-color: white;
+  color: rgb(235, 235, 235);
+  border: 1px solid rgb(235, 235, 235);
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: .938rem;
+  text-align: center;
+  display: inline-flex;
+  font-size: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+button.buttonDisable:hover {
+  cursor: not-allowed;
+}
+
+.button {
+  border-radius: 100%;
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(176, 176, 176);
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: .938rem;
+  text-align: center;
+  display: inline-flex;
+  font-size: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.subtitle {
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: medium;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 20px;
+
+}
+
+.priceModal {
+  position: fixed;
+  width: 30vw;
+  flex-direction: column;
+  position: fixed;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  padding-top: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+}
+
+.priceModal .header {
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Position to allow absolute positioning of CloseIcon */
+  padding: 10px;
+  /* Add vertical padding */
+  border-bottom: 1px solid #ccc;
+  /* Optional border for header separation */
+}
+
+.priceModal .header h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  /* Remove default margin */
+  text-align: center;
+}
+
+.customCloseWrapper {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  /* If the icon is not centered vertically */
+  justify-content: center;
+}
+
+.roomsSection {
+  border-bottom: 1px solid #e7e7e7;
+  /* Optional border for header separation */
+  padding: 10px;
+}
+
+.range {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.buttonModal {
+  color: aliceblue;
+  max-height: 50px;
+  background-color: rgb(0, 0, 0);
+}
+
+.clearAll:hover {
+  border: none;
+  background-color: rgb(236, 236, 236);
+}
+
+h4 {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .priceModal {
+    position: fixed;
+    width: 100vw;
+
+  }
+
+}

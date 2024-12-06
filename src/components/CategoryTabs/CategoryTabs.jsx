@@ -28,7 +28,7 @@ const categories = [
   { label: "Riverside Cabins", tag: constants.RIVERSIDE_CABINS, icon: <MdOutlineCabin size={28} /> },
 ];
 
-const CategoryTabs = () => {
+const CategoryTabs = ({toggleModal, setHistogramData}) => {
   const [activeTab, setActiveTab] = useState(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
@@ -124,7 +124,7 @@ const CategoryTabs = () => {
             })}
           </div>
           <div className={styles.filterButtonWrapper}>
-            <FilterButton />
+            <FilterButton toggleModal={toggleModal} setHistogramData={setHistogramData} />
           </div>
         </div>
         {showRightArrow && (
