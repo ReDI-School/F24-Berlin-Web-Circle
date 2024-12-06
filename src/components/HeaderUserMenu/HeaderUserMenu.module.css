@@ -1,7 +1,7 @@
 .headerContainer {
-  z-index:;
     position: relative;
-    display: inline-block;  
+    display: inline-block;
+    margin-top: -3px;  
   }
   
   .headerButton {
@@ -99,6 +99,6 @@
 
   @media (max-width: 768px) {
     .headerButton {
-display: none;
+      display: none;
     }
 }
