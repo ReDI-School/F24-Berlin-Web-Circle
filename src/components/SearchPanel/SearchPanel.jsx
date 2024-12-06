@@ -18,12 +18,15 @@ const SearchPanel = () => {
     };
 
     // Search handler for desktop
-    const handleAirbnbSearch = ({ location: region, checkIn, checkOut, guests }) => {
+    const handleAirbnbSearch = ({ location: region, checkIn, checkOut, adults, children, infants, pets }) => {
         const searchQueries = {
             region,
             checkIn,
             checkOut,
-            guests,
+            adults,
+            children,
+            infants,
+            pets
         };
 
         if (region) {
