@@ -259,18 +259,12 @@
       {
         "reservationId": 1,
         "customerId": 3,
-		"dates": [
-			"2025-02-15T13:00:00.000Z",
-			"2025-02-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-02-15T13:00:00.000Z", "2025-02-19T10:00:00.000Z"]
       },
       {
         "reservationId": 2,
         "customerId": 4,
-		"dates": [
-			"2025-03-15T13:00:00.000Z",
-			"2025-03-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-03-15T13:00:00.000Z", "2025-03-19T10:00:00.000Z"]
       }
     ]
   },
@@ -358,7 +352,7 @@
       "hostName": "John and Sarah",
       "hostingDuration": 2,
       "role": "Superhosts",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/efc6b4ed-8f2f-4d3d-8470-41a87c47efed.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/df212d47-887e-4a2a-bd44-b0d8967d111d.jpg?im_w=240&im_format=avif"
     },
     "productDescription": {
       "descriptionPlace": "A charming lakeside cottage perfect for families or groups.",
@@ -395,18 +389,12 @@
       {
         "reservationId": 3,
         "customerId": 7,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 4,
         "customerId": 8,
-        "dates": [
-			"2025-01-22T13:00:00.000Z",
-			"2025-01-25T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-22T13:00:00.000Z", "2025-01-25T10:00:00.000Z"]
       }
     ]
   },
@@ -490,7 +478,7 @@
       "hostName": "Mike and Laura",
       "hostingDuration": 1,
       "role": "Superhosts",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/b7b4fc9e-dc5c-4df9-a0bc-2b007b295d8d.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/01b0f59b-6f7a-4ebf-a58d-afec2d5437f8.jpg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A sleek and modern loft in the heart of San Francisco.",
@@ -527,18 +515,12 @@
       {
         "reservationId": 3,
         "customerId": 7,
-		"dates": [
-			"2025-03-15T13:00:00.000Z",
-			"2025-03-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-03-15T13:00:00.000Z", "2025-03-19T10:00:00.000Z"]
       },
       {
         "reservationId": 4,
         "customerId": 8,
-        "dates": [
-			"2025-05-15T13:00:00.000Z",
-			"2025-05-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-05-15T13:00:00.000Z", "2025-05-19T10:00:00.000Z"]
       }
     ]
   },
@@ -557,7 +539,12 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Big Bear Lake, USA",
-      "categories": ["TINY_HOMES", "BEACHFRONT", "BEACH_HOUSES", "RIVERSIDE_CABINS"],
+      "categories": [
+        "TINY_HOMES",
+        "BEACHFRONT",
+        "BEACH_HOUSES",
+        "RIVERSIDE_CABINS"
+      ],
       "guests": { "key": "guest", "value": 6 },
       "bedrooms": { "key": "bedroom", "value": 3 },
       "beds": { "key": "bed", "value": 4 },
@@ -626,7 +613,7 @@
       "hostName": "Emma and Jack",
       "hostingDuration": 3,
       "role": "Superhosts",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/f94f165b-bc9b-45d2-81b0-8eb8b2d0c18b.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/b928aa00-1f48-45b5-85b2-57590a6d3f3f.jpg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A rustic cabin nestled in the woods, ideal for families or groups.",
@@ -663,18 +650,12 @@
       {
         "reservationId": 3,
         "customerId": 7,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 4,
         "customerId": 8,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -693,7 +674,12 @@
     "productSummary": {
       "accommodation": "Entire rental unit",
       "address": "Miami Beach, USA",
-      "categories": ["TINY_HOMES", "BEACHFRONT", "BEACH_HOUSES", "RIVERSIDE_CABINS"],
+      "categories": [
+        "TINY_HOMES",
+        "BEACHFRONT",
+        "BEACH_HOUSES",
+        "RIVERSIDE_CABINS"
+      ],
       "guests": { "key": "guest", "value": 4 },
       "bedrooms": { "key": "bedroom", "value": 2 },
       "beds": { "key": "bed", "value": 3 },
@@ -762,7 +748,7 @@
       "hostName": "Anna",
       "hostingDuration": 4,
       "role": "Superhost",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/a1d73f04-c2b2-4a4a-babc-c9e527754fa0.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/90544828-d048-4686-8ea3-5f15d8d6d14b.jpg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A beautiful beachfront property with stunning ocean views.",
@@ -799,18 +785,12 @@
       {
         "reservationId": 3,
         "customerId": 7,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 4,
         "customerId": 8,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -893,7 +873,7 @@
       "hostName": "Sarah",
       "hostingDuration": 2,
       "role": "Superhost",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/e849f0a3-88b5-4870-b6bc-4b484d75e0a7.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/2eddc3fc-7319-4069-acee-e2ba580b52f9.jpg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A cozy apartment located in the bustling city center.",
@@ -930,18 +910,12 @@
       {
         "reservationId": 3,
         "customerId": 7,
-        "dates": [
-			"2025-01-10T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-10T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 4,
         "customerId": 8,
-        "dates": [
-			"2025-01-20T13:00:00.000Z",
-			"2025-01-29T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-20T13:00:00.000Z", "2025-01-29T10:00:00.000Z"]
       }
     ]
   },
@@ -1029,7 +1003,7 @@
       "hostName": "Lisa",
       "hostingDuration": 5,
       "role": "Superhosts",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/9e1d8c57-54f3-46a3-a0f2-86cb64b2b11a.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/User/original/79ce66a9-ea58-4956-a585-c40bdaa01046.jpeg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A luxurious villa with all the amenities for a perfect getaway.",
@@ -1066,10 +1040,7 @@
       {
         "reservationId": 5,
         "customerId": 2,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -1156,7 +1127,7 @@
       "hostName": "John",
       "hostingDuration": 3,
       "role": "Superhost",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/3a504583-6178-48bc-9235-d1b589e15e9a.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/3cf42ce2-e7f4-4d1b-b25b-eb5ba1628b06.jpg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A charming cottage nestled in the beautiful Napa Valley.",
@@ -1193,18 +1164,12 @@
       {
         "reservationId": 7,
         "customerId": 5,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 8,
         "customerId": 6,
-		"dates": [
-			"2025-01-25T13:00:00.000Z",
-			"2025-01-29T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-25T13:00:00.000Z", "2025-01-29T10:00:00.000Z"]
       }
     ]
   },
@@ -1287,7 +1252,7 @@
       "hostName": "Eric",
       "hostingDuration": 1,
       "role": "Superhost",
-      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/8f9ed7ed-9b90-40b2-b6f4-c9f50d5b42ff.jpg?im_w=240"
+      "profilePicUrl": "https://a0.muscache.com/im/pictures/user/67b469bf-61d2-4049-9576-25436e37ae0d.jpg?im_w=240"
     },
     "productDescription": {
       "descriptionPlace": "A modern loft with breathtaking views of San Francisco.",
@@ -1324,10 +1289,7 @@
       {
         "reservationId": 9,
         "customerId": 12,
-		"dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -1442,10 +1404,7 @@
       {
         "reservationId": 11,
         "customerId": 15,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -1560,10 +1519,7 @@
       {
         "reservationId": 13,
         "customerId": 17,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -1678,10 +1634,7 @@
       {
         "reservationId": 15,
         "customerId": 19,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -1705,7 +1658,7 @@
       "beds": { "key": "bed", "value": 2 },
       "baths": { "key": "bath", "value": 2 },
       "starGrade": 4.9,
-      "categories": [ "LUXURY_VILLAS"],
+      "categories": ["LUXURY_VILLAS"],
       "reviews": 100
     },
     "highlights": [
@@ -1902,10 +1855,7 @@
       {
         "reservationId": 19,
         "customerId": 23,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -2020,18 +1970,12 @@
       {
         "reservationId": 21,
         "customerId": 25,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 22,
         "customerId": 26,
-		"dates": [
-			"2025-01-19T13:00:00.000Z",
-			"2025-01-20T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-19T13:00:00.000Z", "2025-01-20T10:00:00.000Z"]
       }
     ]
   },
@@ -2145,10 +2089,7 @@
       {
         "reservationId": 23,
         "customerId": 27,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -2375,18 +2316,12 @@
       {
         "reservationId": 27,
         "customerId": 31,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 28,
         "customerId": 32,
-        "dates": [
-			"2025-01-25T13:00:00.000Z",
-			"2025-01-29T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-25T13:00:00.000Z", "2025-01-29T10:00:00.000Z"]
       }
     ]
   },
@@ -2504,18 +2439,12 @@
       {
         "reservationId": 29,
         "customerId": 33,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       },
       {
         "reservationId": 30,
         "customerId": 34,
-        "dates": [
-			"2025-01-05T13:00:00.000Z",
-			"2025-01-09T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-05T13:00:00.000Z", "2025-01-09T10:00:00.000Z"]
       }
     ]
   },
@@ -2625,18 +2554,12 @@
       {
         "reservationId": 31,
         "customerId": 35,
-        "dates": [
-			"2025-01-05T13:00:00.000Z",
-			"2025-01-09T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-05T13:00:00.000Z", "2025-01-09T10:00:00.000Z"]
       },
       {
         "reservationId": 32,
         "customerId": 36,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -2754,18 +2677,12 @@
       {
         "reservationId": 33,
         "customerId": 37,
-        "dates": [
-			"2025-01-05T13:00:00.000Z",
-			"2025-01-09T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-05T13:00:00.000Z", "2025-01-09T10:00:00.000Z"]
       },
       {
         "reservationId": 34,
         "customerId": 38,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -2875,10 +2792,7 @@
       {
         "reservationId": 35,
         "customerId": 39,
-        "dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   },
@@ -2989,10 +2903,7 @@
       {
         "reservationId": 37,
         "customerId": 41,
-		"dates": [
-			"2025-01-15T13:00:00.000Z",
-			"2025-01-19T10:00:00.000Z"
-		  ]
+        "dates": ["2025-01-15T13:00:00.000Z", "2025-01-19T10:00:00.000Z"]
       }
     ]
   }
