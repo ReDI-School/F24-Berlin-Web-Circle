@@ -1,15 +1,18 @@
 import { useState } from "react";
 import styles from "./HeaderUserMenu.module.css";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 const HeaderUserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevState) => !prevState);
   };
 
+  const userMenuRef = useOutsideClick(() => setIsOpen(false));
+
   return (
-    <div className={styles.headerContainer}>
+    <div className={styles.headerContainer} ref={userMenuRef}>
       <button
         type="button"
         className={styles.headerButton}
