@@ -157,7 +157,7 @@ const Guest = ({
         )}
       </div>
       <div className={styles.buttonContainer}>
-        <button
+        <button data-testid={"minus_button"}
           className={!isSearchWhoDropdown ?
             ((count !== 0 && title !== 'Adults') ||
             (count > 1 && title === 'Adults')
@@ -175,9 +175,9 @@ const Guest = ({
           -
         </button>
 
-        <div className={styles.count}>{count}</div>
+        <div className={styles.count} data-testid={"guest_count"}>{count}</div>
         
-        <button
+        <button data-testid={"plus_button"}
           className={
             !isSearchWhoDropdown
               ? ((title === 'Adults' || title === 'Children') &&
