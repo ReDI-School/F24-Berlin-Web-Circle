@@ -4,7 +4,6 @@ import { CHECK_IN, AWARD, CANCELLATION } from "../../constants/constants";
 import { describe, it, expect } from "vitest";
 import '@testing-library/jest-dom';
 
-
 describe("ProductHighlight Component", () => {
   const mockHighlights = [
     { type: CHECK_IN, text: "Easy Check-In", subText: "Arrive anytime after 3 PM" },

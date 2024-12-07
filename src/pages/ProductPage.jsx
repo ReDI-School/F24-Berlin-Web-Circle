@@ -42,7 +42,6 @@ const ProductPage = () => {
 
   const isInitializedRef = useRef(false)
 
-
   const { productId } = useParams();
 
 
@@ -188,7 +187,7 @@ const ProductPage = () => {
         </div>
         <hr className={styles.separator} />
         {!!place.reviewSummary && <ReviewSummary
-          totalAvgRating={place.reviewSummary.valueAvgRating}
+          totalAvgRating={place.reviewSummary.totalAvgRating}
           totalReviewsCount={place.reviewSummary.totalReviewsCount}
           ratings={{
             cleanlinessAvgRating: place.reviewSummary.ratings.cleanlinessAvgRating,
@@ -217,7 +216,16 @@ const ProductPage = () => {
           addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
         /> 
       </div>
-      {/* <MeetYourHostSection /> */}
+      {/*<MeetYourHostSection 
+          name={place.hostSummary.hostName} 
+          image={place.hostSummary.profilePicUrl} 
+          role={place.hostSummary.role}
+          verified={true}
+          reviews={place.reviewSummary.totalReviewsCount}
+          rating={place.reviewSummary.totalAvgRating}
+          yearsHosting={place.hostSummary.hostingDuration}
+          profileText={place.productDescription.descriptionPlace}
+      /> */}
     </div>
   }
   </>);
