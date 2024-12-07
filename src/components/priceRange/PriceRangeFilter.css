@@ -1,12 +1,13 @@
 .price-range-container {
   position: relative;
-  width: 30%;
-  padding: 20px;
+  padding: 10px;
   color: #fff;
 }
 
 h2 {
   margin-bottom: 10px;
+  font-size: larger;
+  font-weight: 500;
   text-align: left;
   color: black;
 }
@@ -15,40 +16,50 @@ p {
   text-align: left;
   margin-bottom: 20px;
   color: black;
+  font-size: medium;
+  font-weight: 400;
 }
 
 /* slider */
 .horizontal-slider {
   width: 100%;
-  height: 10px;
+  height: 80px;
   margin: 0;
   position: relative;
   z-index: 2;
 }
 
 .track {
-  height: 10px;
+  height: 2px;
 }
 
-.thumb {
-  height: 20px;
-  width: 20px;
-  background-color: white;
-  border: 2px solid #ff5a5f; 
-  border-radius: 50%;
-  cursor: grab;
-  position: absolute;
-  top: -5px;
-  z-index: 3;
-}
+  .thumb {
+    top: -15px;
+    cursor: grab;
+    border-radius: 100%;
+    background-color: white;
+    color: black;
+    border: 1px solid lightgrey;
+    width: 2rem;
+    height: 2rem;
+    padding: .938rem;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 1px 5px 22px rgba(0, 0, 0, 0.1);
+  }
+
 
 /* Histogram styling */
 .histogram {
   display: flex;
   justify-content: space-between;
   align-items: flex-end; 
-  height: 150px; 
-  margin: 0 15px; /* Pull histogram up to remove space with slider */
+  height: 100px; 
+  margin: 0 125px; /* Pull histogram up to remove space with slider */
   position: relative; 
   z-index: 1; 
 }
@@ -57,28 +68,24 @@ p {
   display: flex;
   flex-direction: column-reverse;
   text-align: center;
-  width: 100%;
-  height: 100%;
-  margin: o 1px;
 }
 
 .histogram-bar {
-  background-color: red;
-  width: 100%;
-  max-width: 20px;
-  margin: 0 auto;
+  background-color: rgb(196, 0, 91);
+  max-width: 6px;
 }
 
 .histogram-label {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 5px;
 }
 
 /* inputs */
 .price-inputs-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: -30px;
+  margin-bottom: 40px;
   width: 100%;
 }
 
@@ -98,16 +105,10 @@ p {
   color: black;
   width: 100px;
   outline: none;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .price-input label {
   margin-bottom: 5px;
   font-size: 14px;
   color: #666;
-}
-
-.price-input input:focus {
-  border-color: #ff5a5f; 
-  box-shadow: 0 2px 8px rgba(255, 90, 95, 0.3);
 }
