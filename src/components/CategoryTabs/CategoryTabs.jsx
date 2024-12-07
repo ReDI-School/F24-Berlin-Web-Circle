@@ -119,7 +119,7 @@ const CategoryTabs = ({ toggleModal, setHistogramData }) => {
 
   const handleScroll = (direction) => {
     const scrollContainer = scrollContainerRef.current
-    const scrollAmount = window.innerWidth * 0.1
+    const scrollAmount = window.innerWidth * 0.4
 
     if (direction === 'left') {
       scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
