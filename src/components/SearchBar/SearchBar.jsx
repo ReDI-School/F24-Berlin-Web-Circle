@@ -29,7 +29,6 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showWhoDropdown, setShowWhoDropdown] = useState(false);
   const [closing, setClosing] = useState(false);
-  // const [handelGuestsPopUp, setHandelGuestsPopUp] = useState(false);
   const [handelDestinationPopUp, setHandelDestinationPopUp] = useState(false);
   const [hoverStates, setHoverStates] = useState({
     location: false,
@@ -124,15 +123,10 @@ const SearchBar = ({ searchType, onSearch }) => {
   }
 
   const closeCalendarPopup = () => setShowCalendar(false)
-  const closeDestinationPopup = () => setHandelDestinationPopUp(false) //
-  // const closeGuestPopup = () => setHandelGuestsPopUp(false)
-
-  // const searchBarRef = useOutsideClick(disableSearchBarFocus);
-  // const calendarRef = useOutsideClick(closeCalendarPopup)
-  const destinationRef = useOutsideClick(closeDestinationPopup)
-  // const guestRef = useOutsideClick(closeGuestPopup)
+  const closeDestinationPopup = () => setHandelDestinationPopUp(false)
   const closeWhoDropdown = () => setShowWhoDropdown(false)
 
+  const destinationRef = useOutsideClick(closeDestinationPopup)
   const searchBarRef = useOutsideClick(disableSearchBarFocus);
   const calendarRef = useOutsideClick(closeCalendarPopup)
   const whoRef = useOutsideClick(closeWhoDropdown)
@@ -223,9 +217,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   
     onSearch(searchParams);
   };
-  // const handelWhoPopup = () => {
-  //   setHandelGuestsPopUp(!handelGuestsPopUp);
-  // }
+
   const handelDestinationClick = () =>{
     setHandelDestinationPopUp(!handelDestinationPopUp);
   }
@@ -505,11 +497,6 @@ const SearchBar = ({ searchType, onSearch }) => {
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
-          <div>
-              <button onClick={handleSearch} className={styles.circleButton}>
-                <FontAwesomeIcon icon={faSearch} />
-              </button>
-            </div>
         </div>
         {showWhoDropdown && (
             <div className={`${styles.whoDropdownWrapper} ${closing ? styles.close : styles.open}`}>
