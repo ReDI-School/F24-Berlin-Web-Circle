@@ -55,13 +55,12 @@ function App() {
             <ProductCard
               key={place.id}
               images={place.images}
+              linkTo={`/rooms/${place.id}`}
               onClick={() => handlePlaceClick(place.id)}
             >
-              <Link to={`/rooms/${place.id}`}>
-                <h2 className="title">{place.title}</h2>
-                <p className="host">{place.host}</p>
-                <p className="price">{place.price}</p>
-              </Link>
+            <h2 className="title">{place.title}</h2>
+            <p className="host">{place.host}</p>
+            <p className="price">{place.price}</p>
             </ProductCard>
           );
         })}
