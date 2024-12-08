@@ -2,6 +2,7 @@ import { KeyboardIcon } from '../../icons/KeyboardIcon'
 import styles from './CalendarBlock.module.css'
 import { calculateNights, getStayPeriod } from '../../utils/dateUtils'
 import  Calendar  from '../Calendar/Calendar' 
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 const CalendarBlock = ({
   setCheckInDate,
@@ -10,8 +11,11 @@ const CalendarBlock = ({
   checkOutDate,
   toggleKeyboardPopup,
   booking,
-  isInitializedRef
+  isInitializedRef,
+  isCalendarBlock = true
 }) => {
+
+  const windowWidth = useWindowSize();
 
     const {
       bookingData: {
@@ -49,6 +53,7 @@ const CalendarBlock = ({
         </div>
       </div>
       <div className={styles.calendarWrapper}>
+        {isCalendarBlock && (windowWidth > 1140 || windowWidth < 520) ? (
         <Calendar 
             dayItemWidth="44px" 
             dayItemHeight="42px"
@@ -65,7 +70,28 @@ const CalendarBlock = ({
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
             isInitializedRef={isInitializedRef}
+            isCalendarBlock={isCalendarBlock}
           />
+        ) : (
+          <Calendar 
+            dayItemWidth="54px" 
+            dayItemHeight="52px"
+            pickedDayWidth="52px"
+            pickedDayHeight="52px"  
+            monthContainerPadding="16px" 
+            textDecoration="line-through" 
+            buttonRightMargin="-46px"
+            buttonLeftMargin="-46px"
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
+            isInitializedRef={isInitializedRef}
+            isCalendarBlock={isCalendarBlock}
+          />
+        )}
         </div>
       <div className={styles.buttonsContainer}>
         <button

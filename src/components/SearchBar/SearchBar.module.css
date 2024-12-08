@@ -374,6 +374,12 @@
 }
 
 
+@media (max-width: 1200px) {
+  .calendarToggleWrapper {
+    display: none;
+  }
+}
+
 @media (max-width: 880px) {
   .searchBar {
     width: 751px;

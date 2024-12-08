@@ -216,3 +216,11 @@
   animation: flipLeftToRight 0.4s ease forwards;
 }
 
+.calendarBlockRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
