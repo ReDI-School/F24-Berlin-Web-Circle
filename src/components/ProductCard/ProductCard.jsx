@@ -67,12 +67,6 @@ const ProductCard = ({
           </span>
         </button>
 
-        <img
-          src={images[currentImageIndex]}
-          alt=""
-          className={styles.productImage}
-        />
-
         {hovered && (
           <div className={styles.imageNavigation}>
             <button onClick={handlePreviousImage} className={styles.arrowButton}>
@@ -94,10 +88,19 @@ const ProductCard = ({
             ></span>
           ))}
         </div>
-
-        <div className={styles.cardContent}>
-          {children} {/* This will render the title, host, and price */}
-        </div>
+        <Link to={linkTo} className={styles.linkWrapper}>
+          <>
+            <img
+              src={images[currentImageIndex]}
+              alt=""
+              className={styles.productImage}
+            />
+    
+            <div className={styles.cardContent}>
+              {children} {/* This will render the title, host, and price */}
+            </div>
+          </>
+        </Link>
       </div>
     </>
   );

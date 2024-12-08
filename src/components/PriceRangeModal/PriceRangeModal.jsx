@@ -3,7 +3,7 @@ import styles from "./PriceRangeModal.module.css";
 import PriceRangeFilter from "../priceRange/PriceRangeFilter";
 import { CloseIcon } from "../../icons/CloseIcon";
 
-const PriceRangeModal = ({ isOpen, onClose, histogramData, className }) => {
+const PriceRangeModal = ({ isOpen, onClose, histogramData, className, priceRangeRef }) => {
   const [bedrooms, setBedrooms] = useState(0); // State for Bedrooms
   const [beds, setBeds] = useState(0); // State for Beds
   const [bathrooms, setBathrooms] = useState(0); // State for Bathrooms
@@ -18,7 +18,7 @@ const PriceRangeModal = ({ isOpen, onClose, histogramData, className }) => {
 
   return (
     <div className={className}>
-      <div className={styles.priceModal}>
+      <div className={styles.priceModal} ref={priceRangeRef}>
         {/* Header Section */}
         <div className={styles.header}>
           <div className={styles.customCloseWrapper} onClick={onClose}>

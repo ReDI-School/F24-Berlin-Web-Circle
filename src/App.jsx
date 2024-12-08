@@ -7,6 +7,7 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
 import { BASE_URL } from "./constants/constants";
 import PriceRangeModal from "./components/PriceRangeModal/PriceRangeModal";
+import useOutsideClick from "./hooks/useOutsideClick";
 
 
 function App() {
@@ -18,6 +19,16 @@ function App() {
   const [histogramData, setHistogramData] = useState([]);
 
   const toggleModal = () => setModalOpen((prev) => !prev);
+
+  const priceRangeRef = useOutsideClick(() => setModalOpen(false))
+
+	useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('modalOpen');
+    } else {
+      document.body.classList.remove('modalOpen');
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     axios
@@ -41,7 +52,7 @@ function App() {
   };
 
   return (
-    <>
+    <div> 
       <div>
         <CalendarToggle />
       </div>
@@ -56,16 +67,15 @@ function App() {
             <ProductCard
               key={place.id}
               images={place.images}
+              linkTo={`/rooms/${place.id}`}
               onClick={() => handlePlaceClick(place.id)}
               modalIsVisible={modalIsVisible}
               setModalIsVisible={setModalIsVisible}
               closeModal={closeModal}
             >
-              <Link to={`/rooms/${place.id}`}>
-                <h2 className="title">{place.title}</h2>
-                <p className="host">{place.host}</p>
-                <p className="price">{place.price}</p>
-              </Link>
+            <h2 className="title">{place.title}</h2>
+            <p className="host">{place.host}</p>
+            <p className="price">{place.price}</p>
             </ProductCard>
           );
         })}
@@ -76,9 +86,10 @@ function App() {
           className="overlay"
           onClose={toggleModal}
           histogramData={histogramData}
+          priceRangeRef={priceRangeRef}
         />
       )}
-    </>
+    </div>
   );
 }
 

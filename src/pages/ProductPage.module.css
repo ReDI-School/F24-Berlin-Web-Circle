@@ -14,6 +14,7 @@
 .titlePage {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .IconButton {
   margin-top: 40px;
@@ -45,4 +46,29 @@
   padding-top: 40px;
   margin-top: 40px;
 }
+
+
+@media (max-width: 1140px) {
+  .reviews {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProductDescriptionContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ProductDescription {
+    flex-basis: 90%;
+  }
+  .titlePage {
+    margin-top: -80px;
+  }
+  .IconButton {
+    margin-top: 0;
+  }
+}
+
 
