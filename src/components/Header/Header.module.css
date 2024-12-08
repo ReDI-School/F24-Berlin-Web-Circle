@@ -37,6 +37,7 @@
     margin-right: 20px;
 }
 
+
 @media (max-width: 768px) {
     .userMenusWrapper {
     display: none;
