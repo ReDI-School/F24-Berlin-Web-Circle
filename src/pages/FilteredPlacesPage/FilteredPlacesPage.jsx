@@ -60,26 +60,30 @@ function FilteredPlacesPage() {
       <CategoryTabs toggleModal={toggleModal} setHistogramData={setHistogramData} />
 
       <div className="grid">
-        {places.map((place) => {
-          if (!place.id) return null;
-
-          return (
-            <ProductCard
-              key={place.id}
-              images={place.images}
-              linkTo={`/rooms/${place.id}`}
-              onClick={() => handlePlaceClick(place.id)}
-              modalIsVisible={modalIsVisible}
-              setModalIsVisible={setModalIsVisible}
-              closeModal={closeModal}
-            >
-            <h2 className="title">{place.title}</h2>
-            <p className="host">{place.host}</p>
-            <p className="price">{place.price}</p>
-            </ProductCard>
-          );
-        })}
+        {places.length === 0 || places.every((place) => !place.id) ? (
+          <div className="noCategoryMessage">Sorry, no places were found in this category</div>
+        ) : (
+          places.map(
+            (place) =>
+              place.id && (
+              <ProductCard
+                key={place.id}
+                images={place.images}
+                linkTo={`/rooms/${place.id}`}
+                onClick={() => handlePlaceClick(place.id)}
+                modalIsVisible={modalIsVisible}
+                setModalIsVisible={setModalIsVisible}
+                closeModal={closeModal}
+              >
+                <h2 className="title">{place.title}</h2>
+                <p className="host">{place.host}</p>
+                <p className="price">{place.price}</p>
+              </ProductCard>
+            )
+          )
+        )}
       </div>
+			
       {isModalOpen && (
         <PriceRangeModal
           isOpen={isModalOpen}

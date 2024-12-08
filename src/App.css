@@ -57,3 +57,9 @@ body.modalOpen {
   position: fixed;
   width: 100%;
 }
+
+.noCategoryMessage {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 100px;
+}
