@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./ProductCard.module.css";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ 
   images = [], 
   children, 
   onClick, 
   modalIsVisible, 
-  setModalIsVisible
+  setModalIsVisible,
+  linkTo
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
