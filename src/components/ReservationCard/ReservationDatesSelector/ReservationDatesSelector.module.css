@@ -105,3 +105,28 @@
 .datePickerWrapper .datePickerContainer > * {
   border-radius: 6px;
 }
+
+@media (max-width: 768px) {
+  .selectorTitle {
+    margin-bottom: 24px;
+  }
+  .selectorContainer {
+    top: -24px;
+    right: -25px;
+    width: 23rem;
+    min-height: fit-content;
+  }
+  .datePickerWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .selectorContainer {
+    width: 18rem;
+  }
+}

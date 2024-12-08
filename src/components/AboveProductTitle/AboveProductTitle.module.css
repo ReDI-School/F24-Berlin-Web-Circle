@@ -5,3 +5,23 @@
   font-size: 40px;
   font-weight: 500;
 }
+
+@media (max-width: 800px) {
+  .text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 440px) {
+  .text {
+    font-size: 18px;
+  }
+}

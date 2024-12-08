@@ -14,7 +14,7 @@
     box-sizing: border-box;
     position: fixed;
     background-color: #ffffff;
-    height: 180px;
+    height: 170px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -31,10 +31,12 @@
 
 .userMenusWrapper {
     display: flex;
-    align-items: top;
+    justify-content: center;
+    align-items: start;
     margin-top: 10px;
     margin-right: 20px;
 }
+
 
 @media (max-width: 768px) {
     .userMenusWrapper {

@@ -82,23 +82,20 @@
     display: none;
     /* Hide desktop search for smaller screens */
   }
-    .mobileSearch {
-      margin-right: 10vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80vw;
-        padding: 10px;
-    }
-    
-
+  .mobileSearch {
+    margin-right: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    padding: 10px;
+  }
   .searchPanel {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-
   .filterButtonWrapper {
     display: flex;
     justify-content: center;
@@ -106,6 +103,13 @@
     margin-left: 20px;
     /* Space between the search bar and filter button */
   }
+}
 
-
+@media screen and (max-width: 400px) {
+  .inputPlaceholderBlock {
+    overflow: hidden;
+  }
+  .mobileSearchPlaceholder {
+    font-size: 10px;
+  }
 }
