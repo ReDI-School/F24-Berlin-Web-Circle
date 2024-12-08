@@ -10,6 +10,7 @@ import { formatDateToMonthDay, formatDateRange, convertStringToDateObject, conve
 import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
 import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
 import { calculateGuestCounts } from "../../utils/guestCounts";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 const SearchBar = ({ searchType, onSearch }) => {
   const [selectedOption, setSelectedOption] = useState('exact');
@@ -52,7 +53,6 @@ const SearchBar = ({ searchType, onSearch }) => {
     petsCount,
     adultsAndChildrenCount,
   } = calculateGuestCounts(guests)
-
 
   const handleGuestSearchClick = (updatedGuest) => {
     setGuests((prevList) =>
@@ -162,6 +162,8 @@ const SearchBar = ({ searchType, onSearch }) => {
   }, [searchCheckIn, searchType, searchCheckOut])
   
 
+  const windowWidth = useWindowSize();
+
   useEffect(() => {
     const handleScroll = () => {
       if ((showCalendar && !closing) || (showWhoDropdown && !closing)) {
@@ -175,13 +177,24 @@ const SearchBar = ({ searchType, onSearch }) => {
         }, 300);
       }
     };
-    if (showCalendar || showWhoDropdown) {
+    const handleScrollDefault = () => {
+      if ((showCalendar && !closing) || (showWhoDropdown && !closing)) {
+        setClosing(false);
+        setFocusedSearchBar(true);
+      }
+    };
+
+    if (windowWidth > 1200 && (showCalendar || showWhoDropdown)) {
       window.addEventListener("scroll", handleScroll);
     } else {
-      window.removeEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScrollDefault);
     }
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [showCalendar, showWhoDropdown, closing]);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollDefault);
+    };
+  }, [showCalendar, showWhoDropdown, closing, windowWidth]);
 
 
   const handleSearch = () => {

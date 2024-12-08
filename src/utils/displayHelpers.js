@@ -31,7 +31,7 @@ export const getSuccessHtml = (data) => {
       <p style="margin-top: 1rem; font-size: 1.2rem; color: green; font-weight: bold;">
         Total price: €${data?.totalPrice}
       </p>
-      <p style="text-align: center; font-weight: 500;">Thank you for using our service😊</p>
+      <p style="text-align: center; margin-top: 1.6rem; font-weight: 500;">Thank you for using our service😊</p>
     </div>
   `;
 };
