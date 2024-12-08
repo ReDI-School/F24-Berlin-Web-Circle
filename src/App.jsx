@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useOutletContext, useSearchParams } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import "./App.css";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import ProductCard from "./components/ProductCard/ProductCard";
@@ -60,26 +60,30 @@ function App() {
       <CategoryTabs toggleModal={toggleModal} setHistogramData={setHistogramData} />
 
       <div className="grid">
-        {places.map((place) => {
-          if (!place.id) return null;
-
-          return (
-            <ProductCard
-              key={place.id}
-              images={place.images}
-              linkTo={`/rooms/${place.id}`}
-              onClick={() => handlePlaceClick(place.id)}
-              modalIsVisible={modalIsVisible}
-              setModalIsVisible={setModalIsVisible}
-              closeModal={closeModal}
-            >
-            <h2 className="title">{place.title}</h2>
-            <p className="host">{place.host}</p>
-            <p className="price">{place.price}</p>
-            </ProductCard>
-          );
-        })}
+        {places.length === 0 || places.every((place) => !place.id) ? (
+          <div className="noCategoryMessage">Sorry, no places were found in this category</div>
+        ) : (
+          places.map(
+            (place) =>
+              place.id && (
+              <ProductCard
+                key={place.id}
+                images={place.images}
+                linkTo={`/rooms/${place.id}`}
+                onClick={() => handlePlaceClick(place.id)}
+                modalIsVisible={modalIsVisible}
+                setModalIsVisible={setModalIsVisible}
+                closeModal={closeModal}
+              >
+                <h2 className="title">{place.title}</h2>
+                <p className="host">{place.host}</p>
+                <p className="price">{place.price}</p>
+              </ProductCard>
+            )
+          )
+        )}
       </div>
+
       {isModalOpen && (
         <PriceRangeModal
           isOpen={isModalOpen}
