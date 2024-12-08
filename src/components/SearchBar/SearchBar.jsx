@@ -9,6 +9,7 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 import { formatDateToMonthDay, formatDateRange, convertStringToDateObject, convertDateObjectToString } from "../../utils/dateUtils";
 import { CloseButtonIcon } from "../../icons/CloseButtonIcon";
 import AddGuestsPopUp from "../AddGuestsPopUp/AddGuestsPopUp";
+import DestinationPopUp from "../DestinationPopUp/DestinationPopUp";
 import { calculateGuestCounts } from "../../utils/guestCounts";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
@@ -28,6 +29,7 @@ const SearchBar = ({ searchType, onSearch }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showWhoDropdown, setShowWhoDropdown] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [handelDestinationPopUp, setHandelDestinationPopUp] = useState(false);
   const [hoverStates, setHoverStates] = useState({
     location: false,
     checkIn: false,
@@ -121,8 +123,10 @@ const SearchBar = ({ searchType, onSearch }) => {
   }
 
   const closeCalendarPopup = () => setShowCalendar(false)
+  const closeDestinationPopup = () => setHandelDestinationPopUp(false)
   const closeWhoDropdown = () => setShowWhoDropdown(false)
 
+  const destinationRef = useOutsideClick(closeDestinationPopup)
   const searchBarRef = useOutsideClick(disableSearchBarFocus);
   const calendarRef = useOutsideClick(closeCalendarPopup)
   const whoRef = useOutsideClick(closeWhoDropdown)
@@ -213,7 +217,13 @@ const SearchBar = ({ searchType, onSearch }) => {
   
     onSearch(searchParams);
   };
-  
+
+  const handelDestinationClick = () =>{
+    setHandelDestinationPopUp(!handelDestinationPopUp);
+  }
+  const handelDestination = (destination) =>{
+    setLocation(destination);
+  }
   return (
     <>
       <div className={`${styles.searchBar} ${focusedSearchBar ? styles.focused : ''}`} ref={searchBarRef}>
@@ -226,7 +236,7 @@ const SearchBar = ({ searchType, onSearch }) => {
           onMouseLeave={() => handleMouseHover("location", false)}
           onClick={() => handleBlockClick("where")}  
         >
-          <div className={styles.locationContentWrapper}>
+          <div className={styles.locationContentWrapper} onClick={handelDestinationClick}>
             <span className={styles.label}>Where</span>
             <input
               className={styles.inputTextPlaceholder}
@@ -234,20 +244,13 @@ const SearchBar = ({ searchType, onSearch }) => {
               placeholder="Search destinations"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-
             />
           </div>
-          {location && selectedBlock === "where" && (
-            <button 
-              onClick={(e) => {
-                e.stopPropagation()
-                setLocation("")
-              }}
-              className={styles.searchDeleteContentBtn}
-            >
-              <CloseButtonIcon />
-            </button>
-          )}
+          { handelDestinationPopUp && 
+            <div className={styles.popupContainer} ref={destinationRef}>
+              <DestinationPopUp title={"Search by region"} onClick={(e)=>handelDestination(e)}/>
+            </div>
+          }
         </div>
         <div className={styles.separatorWrapper}
              style={{ opacity: hoverStates.location ||
