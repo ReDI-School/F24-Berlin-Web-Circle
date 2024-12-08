@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "./ProductCard.module.css";
-import SharePopup from "../SharePopup/SharePopup";
-import { Link } from "react-router-dom";
 
-const ProductCard = ({ images = [], children, onClick, linkTo }) => {
+const ProductCard = ({ 
+  images = [], 
+  children, 
+  onClick, 
+  modalIsVisible, 
+  setModalIsVisible
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [modalIsVisible, setModalIsVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   // Function to open the share modal
   const openModal = () => {
     setModalIsVisible(true);
-  };
-
-  // Function to close the share modal
-  const closeModal = () => {
-    setModalIsVisible(false);
   };
 
   // Disable scrolling when the modal is visible
@@ -104,13 +102,6 @@ const ProductCard = ({ images = [], children, onClick, linkTo }) => {
           </>
         </Link>
       </div>
-      {/* Render Overlay and SharePopup */}
-      {modalIsVisible && (
-        <>
-          <div className={styles.overlay} onClick={closeModal}></div>
-          <SharePopup onClick={closeModal} />
-        </>
-      )}
     </>
   );
 };

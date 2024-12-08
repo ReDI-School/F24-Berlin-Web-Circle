@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useOutletContext, useSearchParams } from "react-router-dom";
 import "./App.css";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import ProductCard from "./components/ProductCard/ProductCard";
@@ -14,6 +14,7 @@ function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
   const [searchParams] = useSearchParams();
+  const { modalIsVisible, setModalIsVisible, closeModal } = useOutletContext();
   const [isModalOpen, setModalOpen] = useState(false);
   const [histogramData, setHistogramData] = useState([]);
 
@@ -68,6 +69,9 @@ function App() {
               images={place.images}
               linkTo={`/rooms/${place.id}`}
               onClick={() => handlePlaceClick(place.id)}
+              modalIsVisible={modalIsVisible}
+              setModalIsVisible={setModalIsVisible}
+              closeModal={closeModal}
             >
             <h2 className="title">{place.title}</h2>
             <p className="host">{place.host}</p>
