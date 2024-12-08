@@ -53,7 +53,7 @@ const CalendarBlock = ({
         </div>
       </div>
       <div className={styles.calendarWrapper}>
-        {isCalendarBlock && (windowWidth > 1140 || windowWidth < 520) ? (
+        {isCalendarBlock && (windowWidth >= 1140) && (
         <Calendar 
             dayItemWidth="44px" 
             dayItemHeight="42px"
@@ -72,7 +72,8 @@ const CalendarBlock = ({
             isInitializedRef={isInitializedRef}
             isCalendarBlock={isCalendarBlock}
           />
-        ) : (
+        )} 
+        {isCalendarBlock && (windowWidth <= 1139 && windowWidth > 519) && (
           <Calendar 
             dayItemWidth="54px" 
             dayItemHeight="52px"
@@ -92,7 +93,27 @@ const CalendarBlock = ({
             isCalendarBlock={isCalendarBlock}
           />
         )}
-        </div>
+         {isCalendarBlock && (windowWidth < 520) && (
+          <Calendar 
+            dayItemWidth="40px" 
+            dayItemHeight="38px"
+            pickedDayWidth="38px"
+            pickedDayHeight="38px"  
+            monthContainerPadding="10px" 
+            textDecoration="line-through" 
+            buttonRightMargin="-46px"
+            buttonLeftMargin="-46px"
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
+            isInitializedRef={isInitializedRef}
+            isCalendarBlock={isCalendarBlock}
+          />
+        )}
+      </div>
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}
