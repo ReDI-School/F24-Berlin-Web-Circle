@@ -1,0 +1,58 @@
+.filterButton {
+    position: fixed;
+    margin-left: 20px;
+    max-height: 45px;
+    background-color: white;
+    border: 1px solid rgb(116, 116, 116);
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filterButton:hover {
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(96, 96, 96);
+}
+
+.contentFilter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 20px; /* Size of the icon */
+}
+
+h6 {
+    font-size: small;
+    font-weight: 600;
+}
+
+/* Mobile Version */
+@media (max-width: 768px) {
+    .filterButton {
+        border-radius: 50%; /* Makes the button circular */
+        width: 40px; /* Fixed width for circular shape */
+        height: 40px; /* Fixed height for circular shape */
+        padding: 0; /* Removes internal padding */
+    }
+
+    .contentFilter {
+        gap: 0; /* Removes gap for a centered icon */
+        flex-direction: column; /* Optional if more alignment control needed */
+    }
+
+    h6 {
+        display: none; /* Hides the text on mobile */
+    }
+
+    .icon {
+        font-size: 16px; /* Size of the icon */
+    }
+}

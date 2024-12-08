@@ -18,13 +18,13 @@ import ReviewSummary from "../components/ReviewSummary/ReviewSummary";
 import ReviewsSection from "../components/ReviewsSection/ReviewsSection";
 import MeetYourHostSection from "../components/MeetYourhostSection/MeetYourHostSection";
 import Amenities from "../components/Amenities/Amenities";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ShortcutsPopUp from '../components/ReservationCard/ShortcutsPopUp/ShortcutsPopUp'
 import GuestCountPopUp from '../components/ReservationCard/GuestCountPopUp/GuestCountPopUp'
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import CalendarBlock from "../components/CalendarBlock/CalendarBlock";
 import CalendarBlockPopUp from "../components/CalendarBlock/CalendarBlockPopUp/CalendarBlockPopUp";
+import { fetchData } from "../api/fetchProductData";
 
 
 const ProductPage = () => {
@@ -37,39 +37,18 @@ const ProductPage = () => {
   const [booking, setBooking] = useState(null);
   const [checkInDate, setCheckInDate] = useState(null)
   const [checkOutDate, setCheckOutDate] = useState(null)
-  const [availableCheckIn, setAvailableCheckIn] = useState(null) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const isInitializedRef = useRef(false)
+
   const { productId } = useParams();
-  
-useEffect(() => {
-  const fetchData = async () => {
-    setLoading(true);
-    setError(null); 
 
-    try {
-      const [placeResponse, bookingsResponse] = await Promise.all([
-        axios.get(`http://localhost:8800/places/${productId}`),
-        axios.get(`http://localhost:8800/bookings/${productId}`)
-      ]);
-      setPlace(placeResponse.data);
-      setBooking(bookingsResponse.data);
 
-      if (bookingsResponse.data) {
-        setCheckInDate(bookingsResponse.data.checkInDate);
-        setCheckOutDate(bookingsResponse.data.checkOutDate);
-        setAvailableCheckIn(bookingsResponse.data.checkInDate)
-      }
-    } catch (err) {
-      setError(err.response?.data?.error || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    fetchData(setLoading, setError, setPlace, setBooking, productId);
+  }, [productId]);
 
-  fetchData();
-}, [productId]);
 
   const toggleShortcutsPopup = () => {
     setIsShortcutsPopupVisible((prevState) => !prevState)
@@ -119,7 +98,7 @@ useEffect(() => {
           smallBottomLeftImage={place.images[3]}
           smallBottomRightImage={place.images[4]}
         />}
-        <div className={styles.ProductDescriptionContainer}>
+         <div className={styles.ProductDescriptionContainer}>
           <div className={styles.ProductDescription}>
             {!!place.productSummary && <ProductSummary
               accommodation={place.productSummary.accommodation}
@@ -156,28 +135,19 @@ useEffect(() => {
             }
             {booking.bookingData.isBookingOpen && <hr className={styles.separator} />}
             {!!booking && booking.bookingData.isBookingOpen && <CalendarBlock 
+              booking={booking}
               toggleKeyboardPopup={toggleKeyboardPopup}
-              minStayNights={booking.bookingData.minStayNights}
               checkInDate={checkInDate}
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={booking.alreadyBookedDates}
-              availableCheckIn={availableCheckIn}
+              isInitializedRef={isInitializedRef}
             />  
             }
           </div>
           <div className={styles.ReservationCard}>
           {!!booking && <ReservationCard
-              pricePerNight={booking.bookingData.pricePerNight}
-              cleaningFee={booking.bookingData.cleaningFee}
-              airbnbServiceFee={booking.bookingData.airbnbServiceFee}
-              longStayDiscount={booking.bookingData.longStayDiscount}
-              nightsCountForDiscount={booking.bookingData.nightsCountForLongStayDiscount}
-              allowGuestsNumber={booking.bookingData.allowGuestsNumber}
-              minStayNights={booking.bookingData.minStayNights}
-              isBookingOpen={booking.bookingData.isBookingOpen}
-              guestCounts={booking.guestCounts}
+              booking={booking}
               toggleShortcutsPopup={toggleShortcutsPopup}
               toggleGuestCountPopup={toggleGuestCountPopup}
               setShowGuests={setShowGuests}
@@ -188,8 +158,7 @@ useEffect(() => {
               checkOutDate={checkOutDate}
               setCheckInDate={setCheckInDate}
               setCheckOutDate={setCheckOutDate}
-              alreadyBookedDates={booking.alreadyBookedDates}
-              availableCheckIn={availableCheckIn}
+              isInitializedRef={isInitializedRef}
             />
           }
           </div>
@@ -218,7 +187,7 @@ useEffect(() => {
         </div>
         <hr className={styles.separator} />
         {!!place.reviewSummary && <ReviewSummary
-          totalAvgRating={place.reviewSummary.valueAvgRating}
+          totalAvgRating={place.reviewSummary.totalAvgRating}
           totalReviewsCount={place.reviewSummary.totalReviewsCount}
           ratings={{
             cleanlinessAvgRating: place.reviewSummary.ratings.cleanlinessAvgRating,
@@ -245,9 +214,18 @@ useEffect(() => {
           mapViewSampleImg={mapViewSampleImg}
           address="Königslutter am Elm, Niedersachsen, Germany"
           addressDescription="In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will In the midst of a diverse nature park, you will find yourself surrounded by hilly landscapes covered with dense forests, moors, gorgeous heaths and salt marshes. The surroundings invite you to explore them at any time of the year: hike through one of the largest beech forests in the region, where you will occasionally encounter rare forest dwellers, go mushroom hunting in a popular hiking area nearby, or take a bike ride to a vantage point overlooking aln the midst of a diverse nature park, you will"
-        />
+        /> 
       </div>
-      <MeetYourHostSection />
+      <MeetYourHostSection 
+          name={place.hostSummary.hostName} 
+          image={place.hostSummary.profilePicUrl} 
+          role={place.hostSummary.role}
+          verified={true}
+          reviews={place.reviewSummary.totalReviewsCount}
+          rating={place.reviewSummary.totalAvgRating}
+          yearsHosting={place.hostSummary.hostingDuration}
+          profileText={place.productDescription.descriptionPlace}
+      />
     </div>
   }
   </>);

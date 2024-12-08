@@ -1,42 +1,41 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import "./App.css";
 import CategoryTabs from "./components/CategoryTabs/CategoryTabs";
 import ProductCard from "./components/ProductCard/ProductCard";
 import CalendarToggle from "./components/calendarToggle/CalendarToggle";
-import PriceRangeFilter from "./components/priceRange/PriceRangeFilter";
 import { BASE_URL } from "./constants/constants";
+import PriceRangeModal from "./components/PriceRangeModal/PriceRangeModal";
+import useOutsideClick from "./hooks/useOutsideClick";
 
 
 function App() {
   const [places, setPlaces] = useState([]);
   const [selectPlaceId, setSelectPlaceId] = useState(null);
+  const [searchParams] = useSearchParams();
+  const { modalIsVisible, setModalIsVisible, closeModal } = useOutletContext();
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [histogramData, setHistogramData] = useState([]);
 
-  const histogramData = [
-    { from: 16, to: 23, count: 2 },
-    { from: 37, to: 44, count: 13 },
-    { from: 55, to: 63, count: 30 },
-    { from: 76, to: 84, count: 50 },
-    { from: 95, to: 103, count: 90 },
-    { from: 116, to: 123, count: 60 },
-    { from: 135, to: 143, count: 20 },
-    { from: 156, to: 156, count: 12 },
-    { from: 174, to: 182, count: 15 },
-    { from: 194, to: 202, count: 8 },
-    { from: 216, to: 224, count: 5 },
-    { from: 233, to: 242, count: 10 },
-    { from: 254, to: 261, count: 25 },
-    { from: 273, to: 281, count: 40 },
-    { from: 292, to: 304, count: 22 },
-  ];
+  const toggleModal = () => setModalOpen((prev) => !prev);
+
+  const priceRangeRef = useOutsideClick(() => setModalOpen(false))
+
+	useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('modalOpen');
+    } else {
+      document.body.classList.remove('modalOpen');
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}places`)
+      .get(`${BASE_URL}places`, {params: searchParams})
       .then((response) => setPlaces(response?.data))
       .catch((error) => console.error(`Something went wrong. ${error.message}.`));
-  }, []);
+  }, [searchParams]);
 
   const handlePlaceClick = (placeId) => {
     setSelectPlaceId(placeId);
@@ -53,38 +52,48 @@ function App() {
   };
 
   return (
-    <>
+    <div> 
       <div>
         <CalendarToggle />
       </div>
       
-      <CategoryTabs />  
-
-      <PriceRangeFilter histogramData= {histogramData}/>
+      <CategoryTabs toggleModal={toggleModal} setHistogramData={setHistogramData} />
 
       <div className="grid">
-        {places.map((place) => {
-          if (!place.id) return null;
-
-          return (
-            <>
-            <ProductCard
-              key={place.id}
-              images={place.images}
-              onClick={() => handlePlaceClick(place.id)}
-            >
-              <Link to={`/rooms/${place.id}`}>
+        {places.length === 0 || places.every((place) => !place.id) ? (
+          <div className="noCategoryMessage">Sorry, no places were found in this category</div>
+        ) : (
+          places.map(
+            (place) =>
+              place.id && (
+              <ProductCard
+                key={place.id}
+                images={place.images}
+                linkTo={`/rooms/${place.id}`}
+                onClick={() => handlePlaceClick(place.id)}
+                modalIsVisible={modalIsVisible}
+                setModalIsVisible={setModalIsVisible}
+                closeModal={closeModal}
+              >
                 <h2 className="title">{place.title}</h2>
                 <p className="host">{place.host}</p>
                 <p className="price">{place.price}</p>
-              </Link>
-            </ProductCard>
-
-            </>
-          );
-        })}
+              </ProductCard>
+            )
+          )
+        )}
       </div>
-    </>
+
+      {isModalOpen && (
+        <PriceRangeModal
+          isOpen={isModalOpen}
+          className="overlay"
+          onClose={toggleModal}
+          histogramData={histogramData}
+          priceRangeRef={priceRangeRef}
+        />
+      )}
+    </div>
   );
 }
 

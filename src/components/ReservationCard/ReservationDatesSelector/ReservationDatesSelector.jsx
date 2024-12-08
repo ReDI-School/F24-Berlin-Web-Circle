@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import WarningMessage from '../WarningMessage/WarningMessage'
 import { calculateNights, getStayPeriod } from '../../../utils/dateUtils'
 import Calendar from '../../Calendar/Calendar'
+import { useWindowSize } from '../../../hooks/useWindowSize'
 
 const ReservationDatesSelector = ({
   setCheckInDate,
@@ -16,9 +17,11 @@ const ReservationDatesSelector = ({
   minStayNights,
   toggleShortcutsPopup,
   alreadyBookedDates,
-  availableCheckIn
+  isInitializedRef
 }) => {
   const calendarRef = useOutsideClick(() => toggleShowCalendar(false))
+
+  const windowWidth = useWindowSize();
 
   const [userSelectedCheckIn, setUserSelectedCheckIn] = useState(false)
   const [userSelectedCheckOut, setUserSelectedCheckOut] = useState(false)
@@ -110,11 +113,11 @@ const ReservationDatesSelector = ({
             setInputCheckOutDate={setInputCheckOutDate}
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
-            availableCheckIn={availableCheckIn}
           />
           <WarningMessage message={checkInError || checkOutError} />
         </div>
       </div>
+      {windowWidth > 768 && (
         <div className={styles.calendarWrapper}>
           <Calendar 
             dayItemWidth="42px" 
@@ -131,9 +134,10 @@ const ReservationDatesSelector = ({
             setCheckOutDate={setCheckOutDate}
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
-            availableCheckIn={availableCheckIn}
+            isInitializedRef={isInitializedRef}
           />
         </div>
+      )}
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}
@@ -158,7 +162,7 @@ const ReservationDatesSelector = ({
             </button>
           </div>
           <div className={styles.cancelButton}>
-            <button onClick={() => toggleShowCalendar(false)}>Close</button>
+            <button type="button" onClick={() => toggleShowCalendar(false)}>Close</button>
           </div>
         </div>
       </div>

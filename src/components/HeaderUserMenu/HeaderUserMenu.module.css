@@ -1,6 +1,7 @@
 .headerContainer {
     position: relative;
-    display: inline-block;  
+    display: inline-block;
+    margin-top: -3px;  
   }
   
   .headerButton {
@@ -56,7 +57,7 @@
     top: 50px;
     right: 0;
     background-color: #ffffff;   
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
     border-radius: 15px;
     overflow: hidden;
     z-index: 1002;
@@ -95,3 +96,9 @@
     border-top: 1px solid #ddd; 
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    .headerButton {
+      display: none;
+    }
+}

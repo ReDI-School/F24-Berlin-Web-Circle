@@ -7,8 +7,12 @@ import {
   isDayBeforeBooked, 
   minStayBeforeBooked, 
   isWithinMinStay, 
-  isBetweenCheckInAndOut
-} from '../../utils/dateUtils';
+  isBetweenCheckInAndOut,
+  isDateDisabled,
+  getInitialMonth
+} from '../../utils/dateUtils'
+import {findNextAvailableDate} from '../../utils/findNextAvailableDate'
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 const Calendar = ({ 
   dayItemWidth, 
@@ -30,19 +34,15 @@ const Calendar = ({
   searchCheckOut,
   setSearchCheckIn,
   setSearchCheckOut,
-  availableCheckIn
+  isInitializedRef,
+  isCalendarBlock
 }) => {
 
-  const [currentMonth, setCurrentMonth] = useState(
-    checkInDate
-      ? (() => {
-          const { year, month } = convertStringToDateObject(checkInDate);
-          return new Date(year, month, 1);
-        })()
-      : new Date()
+  const [currentMonth, setCurrentMonth] = useState(getInitialMonth(
+    checkInDate, alreadyBookedDates, findNextAvailableDate, minStayNights)
   );
-  const [animationDirection, setAnimationDirection] = useState("")
 
+  const [animationDirection, setAnimationDirection] = useState("")
   const [pickedCheckIn, setPickedCheckIn] = useState(() => {
     if (checkInDate && !isSearchBarCalendar) {
       return convertStringToDateObject(checkInDate);
@@ -61,6 +61,40 @@ const Calendar = ({
     return null;
   });
 
+  useEffect(() => {
+    if (!isSearchBarCalendar && checkInDate) {
+      const { year, month } = convertStringToDateObject(checkInDate);
+      const targetMonth = new Date(year, month, 1);
+  
+      const nextMonth = new Date(
+        currentMonth.getFullYear(),
+        currentMonth.getMonth() + 1,
+        1
+      );
+  
+      if (
+        targetMonth.getTime() !== currentMonth.getTime() &&
+        targetMonth.getTime() !== nextMonth.getTime()
+      ) {
+        setCurrentMonth(targetMonth);
+      }
+    }
+  }, [checkInDate, isSearchBarCalendar]);
+  
+  useEffect(() => {
+    if (!isSearchBarCalendar && !isInitializedRef.current && !checkInDate && !checkOutDate) {
+      const { checkIn, checkOut } = findNextAvailableDate(alreadyBookedDates, minStayNights);
+
+      const formatDate = (date) => {
+        return `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${date.getFullYear()}`;
+      };
+      setCheckInDate(formatDate(checkIn));
+      setCheckOutDate(formatDate(checkOut));
+
+      isInitializedRef.current = true; 
+    }
+  }, []);
+ 
   useEffect(() => {
     if (!isSearchBarCalendar) {
       if (checkInDate) {
@@ -101,6 +135,7 @@ const Calendar = ({
     }
   }, [searchCheckOut, isSearchBarCalendar]);
 
+  const windowWidth = useWindowSize();
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
   const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay()
@@ -225,8 +260,7 @@ const Calendar = ({
       : (checkInDateTime ? date >= checkInDateTime : true);
       const isMinStayBeforeBooked = minStayBeforeBooked(day, month, year, alreadyBookedDates, minStayNights, isSearchBarCalendar);
       const isBeforeCheckIn = checkInDateTime && date < checkInDateTime
-      const isAvailableCheckIn = availableCheckIn && date < (new Date(availableCheckIn)).getTime()
-      const shouldAddPastDate = !checkInDate && availableCheckIn && date < (new Date(availableCheckIn)).getTime();
+      const isDisabled = isDateDisabled(day, month, year, isSearchBarCalendar, alreadyBookedDates, minStayNights);
 
       
       const tooltipClass = `${styles.tooltipText}`        
@@ -259,7 +293,7 @@ const Calendar = ({
       daysArray.push(
         <div
           key={day}
-          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) || isAvailableCheckIn ? styles.pastDate : ''} 
+          className={`${styles.date} ${isPastDate || (isBeforeCheckIn && !pickedCheckOut && !isSearchBarCalendar) || isDisabled ? styles.pastDate : ''} 
                       ${isBetweenDates ? styles.betweenDates : ''}
                       ${isCheckInDate ? styles.betweenDatesAndCheckIn : ''}
                       ${isCheckOutDate ? styles.betweenDatesAndCheckOut : ''}
@@ -268,7 +302,6 @@ const Calendar = ({
                       ${isDayBeforeBookedDate ? styles.dayBeforeBookedDate : ''}
                       ${(!isInValidRange && checkInDateTime && !checkOutDate && !isSearchBarCalendar) ? styles.pastDate : ''}                     
                       ${isMinStayBeforeBooked && !isCheckOutDate && !isCheckInDate ? styles.minStayRange : ''} 
-                      ${shouldAddPastDate ? styles.pastDate : ''} 
                     `}
           style={{
             "--pastDate-line-through": textDecoration,
@@ -279,7 +312,8 @@ const Calendar = ({
                 !checkInDate && isDayBeforeBookedDate) || 
                 (checkInDate && checkOutDate && isDayBeforeBookedDate) || 
                 (!checkInDate && isMinStayBeforeBooked) ||
-                (checkInDate && checkOutDate && isMinStayBeforeBooked)) {
+                (checkInDate && checkOutDate && isMinStayBeforeBooked) ||
+                 isDisabled) {
                   return;
                 }  
             if (!isInMinStayRange || (isInMinStayRange && isBetweenDates)) {
@@ -404,8 +438,9 @@ const Calendar = ({
   return (
     <div className={styles.calendarPopUp}>
       <div className={styles.calendar}>
-        <div className={styles.calendarRow}>
+        <div className={`${windowWidth < 1140 && isCalendarBlock ? styles.calendarBlockRow : styles.calendarRow}`}>
           <button
+            type='button'
             className={styles.prevButton}
             style={{"--button-right-margin": buttonRightMargin}}
             onClick={goToPrevMonth}
@@ -418,6 +453,7 @@ const Calendar = ({
           {renderCalendarForMonth(getNextMonth())}
 
           <button 
+            type='button'
             className={styles.nextButton} 
             style={{"--button-left-margin": buttonLeftMargin}}
             onClick={goToNextMonth}

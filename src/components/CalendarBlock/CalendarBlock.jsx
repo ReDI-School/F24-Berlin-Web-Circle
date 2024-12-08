@@ -2,17 +2,27 @@ import { KeyboardIcon } from '../../icons/KeyboardIcon'
 import styles from './CalendarBlock.module.css'
 import { calculateNights, getStayPeriod } from '../../utils/dateUtils'
 import  Calendar  from '../Calendar/Calendar' 
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 const CalendarBlock = ({
   setCheckInDate,
   setCheckOutDate,
   checkInDate,
   checkOutDate,
-  minStayNights,
   toggleKeyboardPopup,
-  alreadyBookedDates,
-  availableCheckIn
+  booking,
+  isInitializedRef,
+  isCalendarBlock = true
 }) => {
+
+  const windowWidth = useWindowSize();
+
+    const {
+      bookingData: {
+        minStayNights,
+      },
+      alreadyBookedDates
+    } = booking || {};
 
   const nightsCount =
     checkInDate && checkOutDate ? calculateNights(checkInDate, checkOutDate) : 0
@@ -43,6 +53,7 @@ const CalendarBlock = ({
         </div>
       </div>
       <div className={styles.calendarWrapper}>
+        {isCalendarBlock && (windowWidth >= 1140) && (
         <Calendar 
             dayItemWidth="44px" 
             dayItemHeight="42px"
@@ -58,9 +69,51 @@ const CalendarBlock = ({
             setCheckOutDate={setCheckOutDate}
             minStayNights={minStayNights}
             alreadyBookedDates={alreadyBookedDates}
-            availableCheckIn={availableCheckIn}
+            isInitializedRef={isInitializedRef}
+            isCalendarBlock={isCalendarBlock}
           />
-        </div>
+        )} 
+        {isCalendarBlock && (windowWidth <= 1139 && windowWidth > 519) && (
+          <Calendar 
+            dayItemWidth="54px" 
+            dayItemHeight="52px"
+            pickedDayWidth="52px"
+            pickedDayHeight="52px"  
+            monthContainerPadding="16px" 
+            textDecoration="line-through" 
+            buttonRightMargin="-46px"
+            buttonLeftMargin="-46px"
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
+            isInitializedRef={isInitializedRef}
+            isCalendarBlock={isCalendarBlock}
+          />
+        )}
+         {isCalendarBlock && (windowWidth < 520) && (
+          <Calendar 
+            dayItemWidth="40px" 
+            dayItemHeight="38px"
+            pickedDayWidth="38px"
+            pickedDayHeight="38px"  
+            monthContainerPadding="10px" 
+            textDecoration="line-through" 
+            buttonRightMargin="-46px"
+            buttonLeftMargin="-46px"
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+            minStayNights={minStayNights}
+            alreadyBookedDates={alreadyBookedDates}
+            isInitializedRef={isInitializedRef}
+            isCalendarBlock={isCalendarBlock}
+          />
+        )}
+      </div>
       <div className={styles.buttonsContainer}>
         <button
           className={styles.shortcutsPopupButton}

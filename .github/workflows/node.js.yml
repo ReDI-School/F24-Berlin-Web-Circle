@@ -6,6 +6,7 @@ name: tests checking the PR code
 on:
   push:
     branches:
+      - "*"
       - "main"
       - "feature/*"
       - "fix/*"
@@ -31,5 +32,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm test
+
+    - name: Install root dependencies
+      run: |
+        npm ci
+        npm test
+
+    - name: Install dependencies in server
+      run: |
+        cd server
+        npm ci
+        npm test

@@ -8,7 +8,6 @@
     text-align: left;   
     max-width: 1100px;
     margin: auto;
-    
 }
 
 .meetYourHostTitle {
@@ -25,4 +24,17 @@
     gap: 48px;
     grid-template-columns: 380px 1fr;
     max-width: 1120px;
+}
+
+
+@media (max-width: 768px) {  
+    .meetYourHostSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }  
+    .meetYourHostSectionInnerContainer {
+        grid-template-columns: 280px;
+    }
 }

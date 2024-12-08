@@ -12,11 +12,13 @@
 
 .grid {
   margin-top: 100px;
+  margin-bottom: 70px;
   display: flex;
   flex-wrap: wrap;
   width: 95vw;
   overflow: hidden;
   justify-content: center;
+  padding-bottom: 1rem;
 }
 
 .title {
@@ -35,4 +37,29 @@
 
 .host {
   color: grey;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); 
+  z-index: 1100;
+  overflow: hidden;
+}
+
+html.modalOpen,
+body.modalOpen {
+  overflow: hidden;
+  height: 100%;  
+  position: fixed;
+  width: 100%;
+}
+
+.noCategoryMessage {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 100px;
 }
