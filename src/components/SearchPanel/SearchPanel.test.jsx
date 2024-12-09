@@ -82,13 +82,16 @@ describe('SearchPanel Component', () => {
     });
 
 
-    it('should not call navigate when region is not set and search button is clicked ', () => {
+    it('should navigate to root with search params when region is not set and search button is clicked', () => {
         //given
         const searchButton = screen.getByText('Search');
         //when
         fireEvent.click(searchButton);
         //then
-        expect(navigate).not.toHaveBeenCalled();
+        expect(navigate).toHaveBeenCalledWith({
+            pathname: '/',
+            search: 'checkIn=2023-01-01&checkOut=2023-01-07&adults=4&children=3&infants=2&pets=1'
+        });
     });
 
     it('should call navigate with correct parameters when region is set and search button is clicked', () => {
