@@ -11,15 +11,14 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     padding-bottom: 1.5rem;
-    overflow: scroll;
 }
 .title {
     display: flex;
     align-items: flex-start;
     font-weight: 800;
     color: black;
-    padding: 1.25rem;
-    width: 90%;
+    padding: 20px 0 20px 7px;
+    width: 100%;
 }
 .regionContainer{
     grid-row-gap: 0%;

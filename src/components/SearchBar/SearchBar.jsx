@@ -200,13 +200,26 @@ const SearchBar = ({ searchType, onSearch }) => {
     };
   }, [showCalendar, showWhoDropdown, closing, windowWidth]);
 
+  useEffect(() => {
+    if (location && showCalendar) {
+      setSelectedBlock("checkIn");
+    }
+  }, [location, showCalendar]);
 
   const handleSearch = () => {
     const validateCount = (count) => (count && !isNaN(count) ? count : 0);
     const validateDate = (date) => (date && !isNaN(new Date(date).getTime()) ? date : null);
   
+    const transformLocation = (location) => {
+      if (location === "United States") return "USA";
+      if (location === "Middle East") return "Jordan";
+      if (location === "Southeast Asia") return "Thailand";
+      if (location === "I'm flexible") return '';
+      return location;
+    };
+
     const searchParams = {
-      location,
+      location: transformLocation(location),
       checkIn: validateDate(checkInToServer),
       checkOut: validateDate(checkOutToServer),
       adults: validateCount(adultsCount),
@@ -219,11 +232,13 @@ const SearchBar = ({ searchType, onSearch }) => {
   };
 
   const handelDestinationClick = () =>{
-    setHandelDestinationPopUp(!handelDestinationPopUp);
+    setHandelDestinationPopUp(true);
   }
   const handelDestination = (destination) =>{
     setLocation(destination);
+    setShowCalendar(true);
   }
+
   return (
     <>
       <div className={`${styles.searchBar} ${focusedSearchBar ? styles.focused : ''}`} ref={searchBarRef}>
@@ -234,7 +249,11 @@ const SearchBar = ({ searchType, onSearch }) => {
                     `}
           onMouseEnter={() => handleMouseHover("location", true)}
           onMouseLeave={() => handleMouseHover("location", false)}
-          onClick={() => handleBlockClick("where")}  
+          onClick={() => {
+            handleBlockClick("where")
+            handelDestinationClick()
+          }}
+          ref={destinationRef}
         >
           <div className={styles.locationContentWrapper} onClick={handelDestinationClick}>
             <span className={styles.label}>Where</span>
@@ -244,10 +263,17 @@ const SearchBar = ({ searchType, onSearch }) => {
               placeholder="Search destinations"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              onKeyDown={(e) => {
+                // handleSearch(); //Uncomment in case we want autosearch
+                if (e.key === 'Enter') {
+                  setHandelDestinationPopUp(false);
+                  setShowCalendar(true);
+                }
+              }}    
             />
           </div>
           { handelDestinationPopUp && 
-            <div className={styles.popupContainer} ref={destinationRef}>
+            <div className={styles.popupContainer}>
               <DestinationPopUp title={"Search by region"} onClick={(e)=>handelDestination(e)}/>
             </div>
           }
@@ -491,6 +517,7 @@ const SearchBar = ({ searchType, onSearch }) => {
               onClick={(e) => {
                 e.stopPropagation()
                 handleSearch()
+                setShowWhoDropdown(false)
               }}
               className={styles.circleButton}
             >

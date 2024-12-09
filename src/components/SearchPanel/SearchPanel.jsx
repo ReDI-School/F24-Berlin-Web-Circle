@@ -20,7 +20,7 @@ const SearchPanel = () => {
     // Search handler for desktop
     const handleAirbnbSearch = ({ location: region, checkIn, checkOut, adults, children, infants, pets }) => {
         const searchQueries = {
-            region,
+            ...(region && { region }),
             checkIn,
             checkOut,
             adults,
@@ -30,11 +30,17 @@ const SearchPanel = () => {
         };
 
         if (region) {
+            searchQueries.region = region;
             navigate({
-                pathname: `/s/${region}/homes`,
-                search: createSearchParams(searchQueries).toString(),
+              pathname: `/s/${region}/homes`,
+              search: createSearchParams(searchQueries).toString(),
             });
-        }
+          } else {
+            navigate({
+              pathname: `/`, 
+              search: createSearchParams(searchQueries).toString(),
+            });
+          }
     };
 
     // Search handler for mobile
