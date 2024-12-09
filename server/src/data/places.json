@@ -922,7 +922,7 @@
   {
     "id": 8,
     "title": "Nice room with ensuite bathroom",
-    "host": "Hosted by Lisa",
+    "host": "Hosted by Wadi Musa",
     "price": "$70 per night",
     "images": [
       "https://a0.muscache.com/im/pictures/031ee4ab-2b53-4b77-895f-31a58c121259.jpg?im_w=1200",
@@ -933,7 +933,7 @@
     ],
     "productSummary": {
       "accommodation": "Entire rental unit",
-      "address": "Beverly Hills, USA",
+      "address": "Wadi Musa, Ma'an Governorate, Jordan",
       "categories": ["TINY_HOMES"],
       "guests": { "key": "guest", "value": 8 },
       "bedrooms": { "key": "bedroom", "value": 4 },
@@ -1000,7 +1000,7 @@
       }
     ],
     "hostSummary": {
-      "hostName": "Lisa",
+      "hostName": "Wadi Musa",
       "hostingDuration": 5,
       "role": "Superhosts",
       "profilePicUrl": "https://a0.muscache.com/im/pictures/user/User/original/79ce66a9-ea58-4956-a585-c40bdaa01046.jpeg?im_w=240"
@@ -1033,8 +1033,8 @@
     "mapView": {
       "lon": 13.24118749634843,
       "lat": 52.437529182378114,
-      "address": "Beverly Hills, California, USA",
-      "addressDescription": "A prime location in the heart of Beverly Hills."
+      "address": "Wadi Musa, Ma'an Governorate, Jordan",
+      "addressDescription": "A prime location in the heart of Jordan."
     },
     "reservations": [
       {
@@ -1640,8 +1640,8 @@
   },
   {
     "id": 14,
-    "title": "USA, New York, Manhattan",
-    "host": "Hosted by John",
+    "title": "House in nature lodge in Phanom, Thailand",
+    "host": "Hosted by Waritsara",
     "price": "$250 per night",
     "images": [
       "https://a0.muscache.com/im/pictures/869c2655-7faa-4a50-9e0b-a331a5aec718.jpg?im_w=1200",
@@ -1652,7 +1652,7 @@
     ],
     "productSummary": {
       "accommodation": "Entire apartment",
-      "address": "New York, USA",
+      "address": "Phanom, Thailand",
       "guests": { "key": "guest", "value": 4 },
       "bedrooms": { "key": "bedroom", "value": 2 },
       "beds": { "key": "bed", "value": 2 },
@@ -1709,7 +1709,7 @@
       }
     ],
     "hostSummary": {
-      "hostName": "John",
+      "hostName": "Waritsara",
       "hostingDuration": 4,
       "role": "Superhost",
       "profilePicUrl": "https://a0.muscache.com/im/pictures/user/44e649e1-efcc-425f-897b-f2792b62f472.jpg?im_w=240"
@@ -1742,7 +1742,7 @@
     "mapView": {
       "lon": -73.985428,
       "lat": 40.748817,
-      "address": "New York, Manhattan, USA",
+      "address": "Phanom, Thailand",
       "addressDescription": "Located near famous landmarks in Manhattan."
     },
     "reservations": []
