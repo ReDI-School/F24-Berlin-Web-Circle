@@ -517,6 +517,7 @@ const SearchBar = ({ searchType, onSearch }) => {
               onClick={(e) => {
                 e.stopPropagation()
                 handleSearch()
+                setShowWhoDropdown(false)
               }}
               className={styles.circleButton}
             >
